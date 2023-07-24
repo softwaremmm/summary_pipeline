@@ -2,6 +2,7 @@ import logging
 import json
 import argparse
 import os
+
 """
 def generate_sample_details():
     details = {}
@@ -14,16 +15,22 @@ def generate_sample_details():
                 }
     return details
 """
+
+
 def convert_to_int(val):
     if not val == None:
         return int(val)
     else:
         None
+
+
 def generate_mycobacterium_results(mapping_blob, mykrobe_blob, fail_hard):
-    myco = {"Species" : [], "Phylogenic Group" : {}, "Subspecies": {}, "Lineage" : []}
+    myco = {"Species": [], "Phylogenic Group": {}, "Subspecies": {}, "Lineage": []}
     for entry in mapping_blob:
         new_species = {}
-        genome_name = get_field("genome_name", entry, fail_hard).replace(" complete genome", "")
+        genome_name = get_field("genome_name", entry, fail_hard).replace(
+            " complete genome", ""
+        )
         gen_reads = convert_to_int(get_field("numreads", entry, fail_hard))
         coverage = get_field("coverage", entry, fail_hard)
         meandepth = get_field("meandepth", entry, fail_hard)
@@ -34,25 +41,37 @@ def generate_mycobacterium_results(mapping_blob, mykrobe_blob, fail_hard):
                 "Num Reads": gen_reads,
                 "Coverage": coverage,
                 "Mean Depth": meandepth,
-                "Length": length
+                "Length": length,
             }
             myco["Species"].append(new_species)
     phylo_group = get_field("phylo_group", mykrobe_blob, fail_hard)
     if not (len(phylo_group.keys()) == 1):
-        logging.error("Require only 1 phylo group. Found " + str(len(phylo_group.keys())))
+        logging.error(
+            "Require only 1 phylo group. Found " + str(len(phylo_group.keys()))
+        )
         should_fail_hard(fail_hard)
     else:
         myco["Phylogenic Group"]["Name"] = list(phylo_group.keys())[0]
-        myco["Phylogenic Group"]["Coverage"] = get_field("percent_coverage", phylo_group[myco["Phylogenic Group"]["Name"]], fail_hard)
-        myco["Phylogenic Group"]["Median Depth"] = get_field("median_depth", phylo_group[myco["Phylogenic Group"]["Name"]], fail_hard)
+        myco["Phylogenic Group"]["Coverage"] = get_field(
+            "percent_coverage", phylo_group[myco["Phylogenic Group"]["Name"]], fail_hard
+        )
+        myco["Phylogenic Group"]["Median Depth"] = get_field(
+            "median_depth", phylo_group[myco["Phylogenic Group"]["Name"]], fail_hard
+        )
     subspecies = get_field("species", mykrobe_blob, fail_hard)
     if not (len(subspecies.keys()) == 1):
-        logging.error("Require only 1 species group. Found " + str(len(subspecies.keys())))
+        logging.error(
+            "Require only 1 species group. Found " + str(len(subspecies.keys()))
+        )
         should_fail_hard(fail_hard)
     else:
         myco["Subspecies"]["Name"] = list(subspecies.keys())[0]
-        myco["Subspecies"]["Coverage"] = get_field("percent_coverage", subspecies[myco["Subspecies"]["Name"]], fail_hard)
-        myco["Subspecies"]["Median Depth"] = get_field("median_depth", subspecies[myco["Subspecies"]["Name"]], fail_hard)
+        myco["Subspecies"]["Coverage"] = get_field(
+            "percent_coverage", subspecies[myco["Subspecies"]["Name"]], fail_hard
+        )
+        myco["Subspecies"]["Median Depth"] = get_field(
+            "median_depth", subspecies[myco["Subspecies"]["Name"]], fail_hard
+        )
     lineages = get_field("lineage", mykrobe_blob, fail_hard)
     line_list = get_field("lineage", lineages, fail_hard)
     for entry in line_list:
@@ -60,13 +79,13 @@ def generate_mycobacterium_results(mapping_blob, mykrobe_blob, fail_hard):
         line_name = entry
         calls = get_field("calls", lineages, fail_hard)
         specific_line = get_field(line_name, calls, fail_hard)
-        #TODO: Needs review. Trying to be generic, should this come from the first item in the list???
-        #TODO: This section also needs better error handling
+        # TODO: Needs review. Trying to be generic, should this come from the first item in the list???
+        # TODO: This section also needs better error handling
         top_level = list(specific_line.keys())[0]
         variant_level = get_field(top_level, specific_line, fail_hard)
         variant_name = list(variant_level.keys())[0]
-        info_level =get_field(variant_name, variant_level, fail_hard)
-        #TODO: Chained getfields would be nicer...Or better generic handling of this
+        info_level = get_field(variant_name, variant_level, fail_hard)
+        # TODO: Chained getfields would be nicer...Or better generic handling of this
         info = get_field("info", info_level, fail_hard)
         cov = get_field("coverage", info, fail_hard)
         ref = get_field("reference", cov, fail_hard)
@@ -79,26 +98,38 @@ def generate_mycobacterium_results(mapping_blob, mykrobe_blob, fail_hard):
         }
         myco["Lineage"].append(new_line)
     return myco
+
+
 def generate_organism_identification(gatekeeper_blob, fail_hard):
-    organism = {"Human Reads": None, # comes from CLI data
-                "Unclassified Reads": get_field("Unclassified", gatekeeper_blob, fail_hard),
-                "Non-Mycobacterium Bacteria Reads": None,
-                "Mycobacterium Reads": get_field("Mycobacteriaceae", gatekeeper_blob, fail_hard)
-                }
+    organism = {
+        "Human Reads": None,  # comes from CLI data
+        "Unclassified Reads": get_field("Unclassified", gatekeeper_blob, fail_hard),
+        "Non-Mycobacterium Bacteria Reads": None,
+        "Mycobacterium Reads": get_field(
+            "Mycobacteriaceae", gatekeeper_blob, fail_hard
+        ),
+    }
     logging.warning("Human read data not supported in this version")
     bac = get_field("Bacteria", gatekeeper_blob, fail_hard)
     if bac and organism["Mycobacterium Reads"]:
-        organism["Non-Mycobacterium Bacteria Reads"] = bac - organism["Mycobacterium Reads"]
+        organism["Non-Mycobacterium Bacteria Reads"] = (
+            bac - organism["Mycobacterium Reads"]
+        )
     return organism
+
+
 def generate_sequencing_quality(mapping_blob, fail_hard):
-    #Much of this data is a repeat of data already in Myco Results
-    seq_qual = { "Mapped To": None,
-                 "Num Reads Mapped": None,
-                 "Coverage %": None,
-                 "Mean Depth": None
+    # Much of this data is a repeat of data already in Myco Results
+    seq_qual = {
+        "Mapped To": None,
+        "Num Reads Mapped": None,
+        "Coverage %": None,
+        "Mean Depth": None,
     }
     for entry in mapping_blob:
-        genome_name = get_field("genome_name", entry, fail_hard).replace(" complete genome", "")
+        genome_name = get_field("genome_name", entry, fail_hard).replace(
+            " complete genome", ""
+        )
         if "tuberculosis" in genome_name:
             gen_reads = convert_to_int(get_field("numreads", entry, fail_hard))
             coverage = get_field("coverage", entry, fail_hard)
@@ -112,11 +143,13 @@ def generate_sequencing_quality(mapping_blob, fail_hard):
             }
             return seq_qual
     return seq_qual
+
+
 def generate_resistance_prediction(gnom_json, fail_hard):
     amr = {"Resistance Prediction Summary": {}, "Resistance Prediction Detail": []}
     data = get_field("data", gnom_json, fail_hard)
     antibio = get_field("antibiogram", data, fail_hard)
-    #reformat data to make search easier later
+    # reformat data to make search easier later
     all_mutations_details = {}
     mutations_list = get_field("mutations", data, fail_hard)
     for m in mutations_list:
@@ -140,8 +173,10 @@ def generate_resistance_prediction(gnom_json, fail_hard):
         new_drug = {"Drug Name": drug, "Mutations": []}
         interesting_mutants = []
         for mutant in effects[drug]:
-            mutant_data = get_field("prediction", mutant, False) # this is horrible as it will throw errors for pheno data
-            if mutant_data and not mutant_data ==  "S":
+            mutant_data = get_field(
+                "prediction", mutant, False
+            )  # this is horrible as it will throw errors for pheno data
+            if mutant_data and not mutant_data == "S":
                 interesting_mutants.append(mutant)
         for im in interesting_mutants:
             gene = get_field("gene", im, fail_hard)
@@ -151,7 +186,9 @@ def generate_resistance_prediction(gnom_json, fail_hard):
             position = None
             cov = None
             if new_mutation in all_mutations_details.keys():
-                position = get_field("gene_position", all_mutations_details[new_mutation], fail_hard)
+                position = get_field(
+                    "gene_position", all_mutations_details[new_mutation], fail_hard
+                )
                 ref = get_field("ref", all_mutations_details[new_mutation], fail_hard)
                 alt = get_field("alt", all_mutations_details[new_mutation], fail_hard)
                 if ref and alt:
@@ -163,20 +200,29 @@ def generate_resistance_prediction(gnom_json, fail_hard):
                 if position in all_gene_name_pos_res[gene].keys():
                     cov = all_gene_name_pos_res[gene][position]
                 else:
-                    logging.error("position not in gene position list: " + gene + " " + str(position))
+                    logging.error(
+                        "position not in gene position list: "
+                        + gene
+                        + " "
+                        + str(position)
+                    )
                     should_fail_hard(fail_hard)
             else:
                 logging.error("gene not in genes list: " + gene)
                 should_fail_hard(fail_hard)
-            new_drug["Mutations"].append({
-                "Gene": gene,
-                "Position": position,
-                "Ref to Alt": ref_to_alt,
-                "Cov": cov,
-                "Prediction": prediction
-            })
+            new_drug["Mutations"].append(
+                {
+                    "Gene": gene,
+                    "Position": position,
+                    "Ref to Alt": ref_to_alt,
+                    "Cov": cov,
+                    "Prediction": prediction,
+                }
+            )
         amr["Resistance Prediction Detail"].append(new_drug)
     return amr
+
+
 def get_field(field_name, source, fail_hard):
     if field_name not in source.keys():
         logging.error(field_name + " key not found")
@@ -184,34 +230,60 @@ def get_field(field_name, source, fail_hard):
         return None
     else:
         return source[field_name]
+
+
 def should_fail_hard(fail_hard):
     if fail_hard:
         logging.error("Fail hard enabled. Exiting....")
         exit(1)
+
+
 def read_json_file(path, fail_hard):
-    if not(os.path.isfile(path)):
+    if not (os.path.isfile(path)):
         logging.error("File " + path + " does not exist. Data could not be loaded")
         should_fail_hard(fail_hard)
-    with open(path, 'r') as f:
+    with open(path, "r") as f:
         data = json.load(f)
     return data
-if __name__=="__main__":
-    parser = argparse.ArgumentParser(description='Process pipeline output to create mega.json')
-    parser.add_argument('--fail_hard', dest='fail_hard', action='store_true', default=False)
-    parser.add_argument('--gatekeeper', dest='gatekeeper', help='Path to gatekeeper_report.json file')
-    parser.add_argument('--mapping', dest='mapping', help='Path to competitivemapping_report.json file')
-    parser.add_argument('--mykrobe', dest='mykrobe', help='Path to mykrobe_report.json file')
-    parser.add_argument('--gnominicus', dest='gnom', help='Path to gnomonicus.json file')
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Process pipeline output to create mega.json"
+    )
+    parser.add_argument(
+        "--fail_hard", dest="fail_hard", action="store_true", default=False
+    )
+    parser.add_argument(
+        "--gatekeeper", dest="gatekeeper", help="Path to gatekeeper_report.json file"
+    )
+    parser.add_argument(
+        "--mapping", dest="mapping", help="Path to competitivemapping_report.json file"
+    )
+    parser.add_argument(
+        "--mykrobe", dest="mykrobe", help="Path to mykrobe_report.json file"
+    )
+    parser.add_argument(
+        "--gnominicus", dest="gnom", help="Path to gnomonicus.json file"
+    )
     args = parser.parse_args()
     output = {}
-    #output["Sample Details"] = generate_sample_details()
+    # output["Sample Details"] = generate_sample_details()
     gatekeeper_json = read_json_file(args.gatekeeper, args.fail_hard)
     mapping_json = read_json_file(args.mapping, args.fail_hard)
     mykrobe_json = read_json_file(args.mykrobe, args.fail_hard)
     gnom_json = read_json_file(args.gnom, args.fail_hard)
-    output["Organism Identification"] = generate_organism_identification(gatekeeper_json, args.fail_hard)
-    output["Mycobacterium Results"] = generate_mycobacterium_results(mapping_json, mykrobe_json, args.fail_hard)
-    output["Sequencing Quality"] = generate_sequencing_quality(mapping_json, args.fail_hard)
-    output["Resistance Prediction"] = generate_resistance_prediction(gnom_json, args.fail_hard)
-    with open("Mega.json", 'w') as f:
+    output["Organism Identification"] = generate_organism_identification(
+        gatekeeper_json, args.fail_hard
+    )
+    output["Mycobacterium Results"] = generate_mycobacterium_results(
+        mapping_json, mykrobe_json, args.fail_hard
+    )
+    output["Sequencing Quality"] = generate_sequencing_quality(
+        mapping_json, args.fail_hard
+    )
+    output["Resistance Prediction"] = generate_resistance_prediction(
+        gnom_json, args.fail_hard
+    )
+    with open("Mega.json", "w") as f:
         f.write(json.dumps(output, indent=4))
