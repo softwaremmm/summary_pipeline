@@ -2,6 +2,7 @@ import logging
 import json
 import argparse
 import os
+from pathlib import Path
 
 """
 def generate_sample_details():
@@ -247,6 +248,37 @@ def read_json_file(path, fail_hard):
     return data
 
 
+def create_summary(
+    gatekeeper: Path,
+    mapping: Path,
+    mykrobe: Path,
+    gnomonicus: Path,
+    fail_hard: bool = False,
+) -> dict:
+    output = {}
+    # output["Sample Details"] = generate_sample_details()
+    gatekeeper_json = read_json_file(gatekeeper, fail_hard)
+    mapping_json = read_json_file(mapping, fail_hard)
+    mykrobe_json = read_json_file(mykrobe, fail_hard)
+    gnom_json = read_json_file(gnomonicus, fail_hard)
+    output["Organism Identification"] = generate_organism_identification(
+        gatekeeper_json, fail_hard
+    )
+    output["Mycobacterium Results"] = generate_mycobacterium_results(
+        mapping_json, mykrobe_json, fail_hard
+    )
+    output["Sequencing Quality"] = generate_sequencing_quality(mapping_json, fail_hard)
+    output["Resistance Prediction"] = generate_resistance_prediction(
+        gnom_json, fail_hard
+    )
+    return output
+
+
+def write_summary(output: dict, location: Path = "Mega.json"):
+    with open(location, "w") as f:
+        f.write(json.dumps(output, indent=4))
+
+
 if __name__ == "__main__":
     logging.basicConfig(
         format="%(asctime)s — %(name)s — %(levelname)s — %(funcName)s:%(lineno)d — %(message)s",
@@ -268,26 +300,10 @@ if __name__ == "__main__":
         "--mykrobe", dest="mykrobe", help="Path to mykrobe_report.json file"
     )
     parser.add_argument(
-        "--gnominicus", dest="gnom", help="Path to gnomonicus.json file"
+        "--gnomonicus", dest="gnomonicus", help="Path to gnomonicus.json file"
     )
     args = parser.parse_args()
-    output = {}
-    # output["Sample Details"] = generate_sample_details()
-    gatekeeper_json = read_json_file(args.gatekeeper, args.fail_hard)
-    mapping_json = read_json_file(args.mapping, args.fail_hard)
-    mykrobe_json = read_json_file(args.mykrobe, args.fail_hard)
-    gnom_json = read_json_file(args.gnom, args.fail_hard)
-    output["Organism Identification"] = generate_organism_identification(
-        gatekeeper_json, args.fail_hard
+    summary = create_summary(
+        args.gatekeeper, args.mapping, args.mykrobe, args.gnomonicus
     )
-    output["Mycobacterium Results"] = generate_mycobacterium_results(
-        mapping_json, mykrobe_json, args.fail_hard
-    )
-    output["Sequencing Quality"] = generate_sequencing_quality(
-        mapping_json, args.fail_hard
-    )
-    output["Resistance Prediction"] = generate_resistance_prediction(
-        gnom_json, args.fail_hard
-    )
-    with open("Mega.json", "w") as f:
-        f.write(json.dumps(output, indent=4))
+    write_summary(summary)
