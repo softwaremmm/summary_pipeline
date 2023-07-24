@@ -14,5 +14,5 @@ conda activate summary_pipeline
 ```
 
 ```{bash}
-python summarise.py --gatekeeper test_data/example_input/gatekeeper_report.json --mapping test_data/example_input/competitivemapping_report.json --mykrobe test_data/example_input/mykrobe_report.json --gnominicus test_data/example_input/tb/gnomonicus.json
+python summarise.py --gatekeeper test_data/example_input/2/gatekeeper_report.json --mapping test_data/example_input/2/competitivemapping_report.json --mykrobe test_data/example_input/2/mykrobe_report.json --gnominicus test_data/example_input/2/tb/gnomonicus.json
 ```
