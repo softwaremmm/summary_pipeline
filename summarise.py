@@ -248,6 +248,10 @@ def read_json_file(path, fail_hard):
 
 
 if __name__ == "__main__":
+    logging.basicConfig(
+        format="%(asctime)s — %(name)s — %(levelname)s — %(funcName)s:%(lineno)d — %(message)s",
+        datefmt="%Y-%m-%dT%H:%M:%S%z",
+    )
     parser = argparse.ArgumentParser(
         description="Process pipeline output to create mega.json"
     )
