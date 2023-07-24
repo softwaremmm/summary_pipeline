@@ -166,4 +166,4 @@ cython_debug/
 *.json
 
 # Tests / examples
-!test_data
+!test_data/*
