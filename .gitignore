@@ -161,3 +161,9 @@ cython_debug/
 
 # vscode
 .vscode
+
+# Outputs
+*.json
+
+# Tests / examples
+!test_data
