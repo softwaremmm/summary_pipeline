@@ -305,11 +305,11 @@ def summarise() -> None:
     parser.add_argument(
         "--output_path",
         default="Mega.json",
-        dest="output_path",
+        dest="output",
         help="Path including name for output .json file",
     )
     args = parser.parse_args()
     summary = create_summary(
         args.gatekeeper, args.mapping, args.mykrobe, args.gnomonicus
     )
-    write_summary(summary, args.output_path)
+    write_summary(summary, args.output)
