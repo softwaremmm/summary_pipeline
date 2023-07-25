@@ -279,7 +279,7 @@ def write_summary(output: dict, location: Path = "Mega.json"):
         f.write(json.dumps(output, indent=4))
 
 
-if __name__ == "__main__":
+def summarise() -> None:
     logging.basicConfig(
         format="%(asctime)s — %(name)s — %(levelname)s — %(funcName)s:%(lineno)d — %(message)s",
         datefmt="%Y-%m-%dT%H:%M:%S%z",
