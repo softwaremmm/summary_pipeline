@@ -1,4 +1,4 @@
-import summarise
+from summary import summarise
 from pathlib import Path
 
 

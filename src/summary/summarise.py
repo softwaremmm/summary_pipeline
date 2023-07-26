@@ -279,7 +279,7 @@ def write_summary(output: dict, location: Path = "Mega.json"):
         f.write(json.dumps(output, indent=4))
 
 
-if __name__ == "__main__":
+def summarise() -> None:
     logging.basicConfig(
         format="%(asctime)s — %(name)s — %(levelname)s — %(funcName)s:%(lineno)d — %(message)s",
         datefmt="%Y-%m-%dT%H:%M:%S%z",
@@ -302,8 +302,14 @@ if __name__ == "__main__":
     parser.add_argument(
         "--gnomonicus", dest="gnomonicus", help="Path to gnomonicus.json file"
     )
+    parser.add_argument(
+        "--output_path",
+        default="Mega.json",
+        dest="output",
+        help="Path including name for output .json file",
+    )
     args = parser.parse_args()
     summary = create_summary(
         args.gatekeeper, args.mapping, args.mykrobe, args.gnomonicus
     )
-    write_summary(summary)
+    write_summary(summary, args.output)

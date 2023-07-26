@@ -165,5 +165,11 @@ cython_debug/
 # Outputs
 *.json
 
+# NextFlow
+/work/
+/.nextflow.log*
+/.nf-test*
+/.nextflow*
+
 # Tests / examples
 !test_data/*
