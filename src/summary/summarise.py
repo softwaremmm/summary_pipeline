@@ -5,17 +5,15 @@ import os
 from pathlib import Path
 
 
-def generate_organism_identification(gatekeeper_blob, fail_hard):
+def generate_organism_identification(gatekeeper_data, fail_hard):
     organism = {
         "Human Reads": None,  # comes from CLI data
-        "Unclassified Reads": get_field("Unclassified", gatekeeper_blob, fail_hard),
+        "Unclassified Reads": gatekeeper_data.get("Unclassified"),
         "Non-Mycobacterium Bacteria Reads": None,
-        "Mycobacterium Reads": get_field(
-            "Mycobacteriaceae", gatekeeper_blob, fail_hard
-        ),
+        "Mycobacterium Reads": gatekeeper_data.get("Mycobacteriaceae"),
     }
     logging.warning("Human read data not supported in this version")
-    bac = get_field("Bacteria", gatekeeper_blob, fail_hard)
+    bac = gatekeeper_data.get("Bacteria")
     if bac and organism["Mycobacterium Reads"]:
         organism["Non-Mycobacterium Bacteria Reads"] = (
             bac - organism["Mycobacterium Reads"]
