@@ -9,7 +9,6 @@ def generate_mycobacterium_results(mappings, mykrobe_blob, fail_hard):
     myco = {"Species": [], "Phylogenic Group": {}, "Subspecies": {}, "Lineage": []}
     # Competitive mapping
     for mapping in mappings:
-        new_species = {}
         genome_name = mapping.get("genome_name").replace(" complete genome", "")
         gen_reads = mapping.get("numreads")
         coverage = mapping.get("coverage")
