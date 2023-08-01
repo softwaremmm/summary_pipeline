@@ -93,26 +93,14 @@ def generate_mycobacterium_results(mappings, mykrobe_data, fail_hard):
 
 def generate_sequencing_quality(mappings, fail_hard):
     # Much of this data is a repeat of data already in Myco Results
-    seq_qual = {
-        "Mapped To": None,
-        "Num Reads Mapped": None,
-        "Coverage %": None,
-        "Mean Depth": None,
-    }
-    for entry in mappings:
-        genome_name = get_field("genome_name", entry, fail_hard).replace(
-            " complete genome", ""
-        )
+    for mapping in mappings:
+        genome_name = mapping.get("genome_name").replace(" complete genome", "")
         if "tuberculosis" in genome_name:
-            gen_reads = get_field("numreads", entry, fail_hard)
-            coverage = get_field("coverage", entry, fail_hard)
-            meandepth = get_field("meandepth", entry, fail_hard)
-            mapped_to = get_field("#rname", entry, fail_hard)
             seq_qual = {
-                "Mapped To": mapped_to,
-                "Num Reads": gen_reads,
-                "Coverage": coverage,
-                "Mean Depth": meandepth,
+                "Mapped To": mapping.get("#rname"),
+                "Num Reads": mapping.get("numreads"),
+                "Coverage": mapping.get("coverage"),
+                "Mean Depth": mapping.get("meandepth"),
             }
             return seq_qual
     return seq_qual
