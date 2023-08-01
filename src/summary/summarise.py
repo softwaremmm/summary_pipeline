@@ -4,19 +4,6 @@ import argparse
 import os
 from pathlib import Path
 
-"""
-def generate_sample_details():
-    details = {}
-    details = {"Sequencing Location": None,
-                "Plate ID": None,
-                "GUUID" : None,
-                "Collection Date": None,
-                "Sequencing Date": None,
-                "Pipeline Start": None
-                }
-    return details
-"""
-
 
 def convert_to_int(val):
     if not val == None:
