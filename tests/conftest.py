@@ -17,7 +17,21 @@ WTCHG_885333_73225298_1_2 = {
     "expected_output": "test_data/example_output/WTCHG_885333_73225298_1/2/Mega_2.json",
 }
 
+WTCHG_885333_73225298_1_52 = {
+    "gatekeeper_report": "test_data/example_input/WTCHG_885333_73225298_1/52/gatekeeper_report.json",
+    "competitivemapping_report": "test_data/example_input/WTCHG_885333_73225298_1/52/competitivemapping_report.json",
+    "mykrobe_report": "test_data/example_input/WTCHG_885333_73225298_1/52/mykrobe_report.json",
+    "gnomonicus": "test_data/example_input/WTCHG_885333_73225298_1/52/tb/gnomonicus.json",
+    "expected_output": "test_data/example_output/WTCHG_885333_73225298_1/52/main_report.json",
+}
 
-@pytest.fixture(params=[WTCHG_885333_73225298_1_1, WTCHG_885333_73225298_1_2])
+
+@pytest.fixture(
+    params=[
+        WTCHG_885333_73225298_1_1,
+        WTCHG_885333_73225298_1_2,
+        WTCHG_885333_73225298_1_52,
+    ]
+)
 def test_set(request) -> dict:
     return request.param
