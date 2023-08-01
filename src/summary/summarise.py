@@ -5,17 +5,16 @@ import os
 from pathlib import Path
 
 
-def generate_mycobacterium_results(mapping_blob, mykrobe_blob, fail_hard):
+def generate_mycobacterium_results(mappings, mykrobe_blob, fail_hard):
     myco = {"Species": [], "Phylogenic Group": {}, "Subspecies": {}, "Lineage": []}
-    for entry in mapping_blob:
+    # Competitive mapping
+    for mapping in mappings:
         new_species = {}
-        genome_name = get_field("genome_name", entry, fail_hard).replace(
-            " complete genome", ""
-        )
-        gen_reads = get_field("numreads", entry, fail_hard)
-        coverage = get_field("coverage", entry, fail_hard)
-        meandepth = get_field("meandepth", entry, fail_hard)
-        length = get_field("length", entry, fail_hard)
+        genome_name = mapping.get("genome_name").replace(" complete genome", "")
+        gen_reads = mapping.get("numreads")
+        coverage = mapping.get("coverage")
+        meandepth = mapping.get("meandepth")
+        length = mapping.get("length")
         if coverage > 80 or "tuberculosis" in genome_name:
             new_species = {
                 "Name": genome_name,
@@ -25,7 +24,8 @@ def generate_mycobacterium_results(mapping_blob, mykrobe_blob, fail_hard):
                 "Length": length,
             }
             myco["Species"].append(new_species)
-    phylo_group = get_field("phylo_group", mykrobe_blob, fail_hard)
+    # Mykrobe
+    phylo_group = mykrobe_blob.get("phylo_group")
     if not (len(phylo_group.keys()) == 1):
         logging.error(
             "Require only 1 phylo group. Found " + str(len(phylo_group.keys()))
@@ -99,7 +99,7 @@ def generate_organism_identification(gatekeeper_blob, fail_hard):
     return organism
 
 
-def generate_sequencing_quality(mapping_blob, fail_hard):
+def generate_sequencing_quality(mappings, fail_hard):
     # Much of this data is a repeat of data already in Myco Results
     seq_qual = {
         "Mapped To": None,
@@ -107,7 +107,7 @@ def generate_sequencing_quality(mapping_blob, fail_hard):
         "Coverage %": None,
         "Mean Depth": None,
     }
-    for entry in mapping_blob:
+    for entry in mappings:
         genome_name = get_field("genome_name", entry, fail_hard).replace(
             " complete genome", ""
         )
