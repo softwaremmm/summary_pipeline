@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 
 
-def generate_mycobacterium_results(mappings, mykrobe_blob, fail_hard):
+def generate_mycobacterium_results(mappings, mykrobe_data, fail_hard):
     myco = {"Species": [], "Phylogenic Group": {}, "Subspecies": {}, "Lineage": []}
     # Competitive mapping
     for mapping in mappings:
@@ -24,55 +24,50 @@ def generate_mycobacterium_results(mappings, mykrobe_blob, fail_hard):
             }
             myco["Species"].append(new_species)
     # Mykrobe
-    phylo_group = mykrobe_blob.get("phylo_group")
+    phylo_group = mykrobe_data.get("phylo_group")
     if not (len(phylo_group.keys()) == 1):
-        logging.error(
+        raise ValueError(
             "Require only 1 phylo group. Found " + str(len(phylo_group.keys()))
         )
-        should_fail_hard(fail_hard)
     else:
         myco["Phylogenic Group"]["Name"] = list(phylo_group.keys())[0]
-        myco["Phylogenic Group"]["Coverage"] = get_field(
-            "percent_coverage", phylo_group[myco["Phylogenic Group"]["Name"]], fail_hard
-        )
-        myco["Phylogenic Group"]["Median Depth"] = get_field(
-            "median_depth", phylo_group[myco["Phylogenic Group"]["Name"]], fail_hard
-        )
-    subspecies = get_field("species", mykrobe_blob, fail_hard)
+        myco["Phylogenic Group"]["Coverage"] = phylo_group[
+            myco["Phylogenic Group"]["Name"]
+        ].get("percent_coverage")
+        myco["Phylogenic Group"]["Median Depth"] = phylo_group[
+            myco["Phylogenic Group"]["Name"]
+        ].get("median_depth")
+    subspecies = mykrobe_data.get("species")  # Why is species assigned to subspecies?
     if not (len(subspecies.keys()) == 1):
-        logging.error(
+        raise ValueError(
             "Require only 1 species group. Found " + str(len(subspecies.keys()))
         )
-        should_fail_hard(fail_hard)
     else:
         myco["Subspecies"]["Name"] = list(subspecies.keys())[0]
-        myco["Subspecies"]["Coverage"] = get_field(
-            "percent_coverage", subspecies[myco["Subspecies"]["Name"]], fail_hard
+        myco["Subspecies"]["Coverage"] = subspecies[myco["Subspecies"]["Name"]].get(
+            "percent_coverage"
         )
-        myco["Subspecies"]["Median Depth"] = get_field(
-            "median_depth", subspecies[myco["Subspecies"]["Name"]], fail_hard
+        myco["Subspecies"]["Median Depth"] = subspecies[myco["Subspecies"]["Name"]].get(
+            "median_depth"
         )
-    lineages = get_field("lineage", mykrobe_blob, fail_hard)
-    line_list = get_field("lineage", lineages, fail_hard)
-    for entry in line_list:
-        new_line = {}
-        line_name = entry
-        calls = get_field("calls", lineages, fail_hard)
-        specific_line = get_field(line_name, calls, fail_hard)
+    lineages = mykrobe_data.get("lineage")
+    for lineage_name in lineages.get("lineage"):
+        calls = lineages.get("calls")
+        specific_line = calls.get(lineage_name)
         # TODO: Needs review. Trying to be generic, should this come from the first item in the list???
         # TODO: This section also needs better error handling
         top_level = list(specific_line.keys())[0]
-        variant_level = get_field(top_level, specific_line, fail_hard)
+        variant_level = specific_line.get(top_level)
         variant_name = list(variant_level.keys())[0]
-        info_level = get_field(variant_name, variant_level, fail_hard)
+        info_level = variant_level.get(variant_name)
         # TODO: Chained getfields would be nicer...Or better generic handling of this
-        info = get_field("info", info_level, fail_hard)
-        cov = get_field("coverage", info, fail_hard)
-        ref = get_field("reference", cov, fail_hard)
-        coverage = get_field("percent_coverage", ref, fail_hard)
-        mediandepth = get_field("median_depth", ref, fail_hard)
+        info = info_level.get("info")
+        cov = info.get("coverage")
+        ref = cov.get("reference")
+        coverage = ref.get("percent_coverage")
+        mediandepth = ref.get("median_depth")
         new_line = {
-            "Name": line_name,
+            "Name": lineage_name,
             "Coverage": coverage,
             "Median Depth": mediandepth,
         }
