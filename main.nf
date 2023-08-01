@@ -10,6 +10,8 @@ ANSI_RESET = "\033[0m"
 params.help = ''
 
 process summary_json {
+    cpus 1
+    memory '0.5 GB'
     container 'lhr.ocir.io/lrbvkel2wjot/gpas/summary_pipeline:latest'
 
   input:
