@@ -102,7 +102,6 @@ def generate_sequencing_quality(mappings, fail_hard):
                 "Coverage": mapping.get("coverage"),
                 "Mean Depth": mapping.get("meandepth"),
             }
-            return seq_qual
     return seq_qual
 
 
