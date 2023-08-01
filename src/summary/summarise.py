@@ -5,13 +5,6 @@ import os
 from pathlib import Path
 
 
-def convert_to_int(val):
-    if not val == None:
-        return int(val)
-    else:
-        None
-
-
 def generate_mycobacterium_results(mapping_blob, mykrobe_blob, fail_hard):
     myco = {"Species": [], "Phylogenic Group": {}, "Subspecies": {}, "Lineage": []}
     for entry in mapping_blob:
@@ -19,14 +12,14 @@ def generate_mycobacterium_results(mapping_blob, mykrobe_blob, fail_hard):
         genome_name = get_field("genome_name", entry, fail_hard).replace(
             " complete genome", ""
         )
-        gen_reads = convert_to_int(get_field("numreads", entry, fail_hard))
+        gen_reads = get_field("numreads", entry, fail_hard)
         coverage = get_field("coverage", entry, fail_hard)
         meandepth = get_field("meandepth", entry, fail_hard)
-        length = convert_to_int(get_field("length", entry, fail_hard))
+        length = get_field("length", entry, fail_hard)
         if coverage > 80 or "tuberculosis" in genome_name:
             new_species = {
                 "Name": genome_name,
-                "Num Reads": gen_reads,
+                "Num Reads": int(gen_reads),
                 "Coverage": coverage,
                 "Mean Depth": meandepth,
                 "Length": length,
@@ -78,7 +71,7 @@ def generate_mycobacterium_results(mapping_blob, mykrobe_blob, fail_hard):
         cov = get_field("coverage", info, fail_hard)
         ref = get_field("reference", cov, fail_hard)
         coverage = get_field("percent_coverage", ref, fail_hard)
-        mediandepth = convert_to_int(get_field("median_depth", ref, fail_hard))
+        mediandepth = get_field("median_depth", ref, fail_hard)
         new_line = {
             "Name": line_name,
             "Coverage": coverage,
@@ -119,7 +112,7 @@ def generate_sequencing_quality(mapping_blob, fail_hard):
             " complete genome", ""
         )
         if "tuberculosis" in genome_name:
-            gen_reads = convert_to_int(get_field("numreads", entry, fail_hard))
+            gen_reads = get_field("numreads", entry, fail_hard)
             coverage = get_field("coverage", entry, fail_hard)
             meandepth = get_field("meandepth", entry, fail_hard)
             mapped_to = get_field("#rname", entry, fail_hard)
