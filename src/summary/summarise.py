@@ -5,6 +5,24 @@ import os
 from pathlib import Path
 
 
+def generate_organism_identification(gatekeeper_blob, fail_hard):
+    organism = {
+        "Human Reads": None,  # comes from CLI data
+        "Unclassified Reads": get_field("Unclassified", gatekeeper_blob, fail_hard),
+        "Non-Mycobacterium Bacteria Reads": None,
+        "Mycobacterium Reads": get_field(
+            "Mycobacteriaceae", gatekeeper_blob, fail_hard
+        ),
+    }
+    logging.warning("Human read data not supported in this version")
+    bac = get_field("Bacteria", gatekeeper_blob, fail_hard)
+    if bac and organism["Mycobacterium Reads"]:
+        organism["Non-Mycobacterium Bacteria Reads"] = (
+            bac - organism["Mycobacterium Reads"]
+        )
+    return organism
+
+
 def generate_mycobacterium_results(mappings, mykrobe_data, fail_hard):
     myco = {"Species": [], "Phylogenic Group": {}, "Subspecies": {}, "Lineage": []}
     # Competitive mapping
@@ -73,24 +91,6 @@ def generate_mycobacterium_results(mappings, mykrobe_data, fail_hard):
         }
         myco["Lineage"].append(new_line)
     return myco
-
-
-def generate_organism_identification(gatekeeper_blob, fail_hard):
-    organism = {
-        "Human Reads": None,  # comes from CLI data
-        "Unclassified Reads": get_field("Unclassified", gatekeeper_blob, fail_hard),
-        "Non-Mycobacterium Bacteria Reads": None,
-        "Mycobacterium Reads": get_field(
-            "Mycobacteriaceae", gatekeeper_blob, fail_hard
-        ),
-    }
-    logging.warning("Human read data not supported in this version")
-    bac = get_field("Bacteria", gatekeeper_blob, fail_hard)
-    if bac and organism["Mycobacterium Reads"]:
-        organism["Non-Mycobacterium Bacteria Reads"] = (
-            bac - organism["Mycobacterium Reads"]
-        )
-    return organism
 
 
 def generate_sequencing_quality(mappings, fail_hard):
