@@ -177,15 +177,6 @@ def generate_resistance_prediction(gnomonicus_data, fail_hard):
     return amr
 
 
-def get_field(field_name, source, fail_hard):
-    if field_name not in source.keys():
-        logging.error(field_name + " key not found")
-        should_fail_hard((fail_hard))
-        return None
-    else:
-        return source[field_name]
-
-
 def should_fail_hard(fail_hard):
     if fail_hard:
         logging.error("Fail hard enabled. Exiting....")
