@@ -185,8 +185,9 @@ def should_fail_hard(fail_hard):
 
 def read_json_file(path, fail_hard):
     if not (os.path.isfile(path)):
-        logging.error("File " + path + " does not exist. Data could not be loaded")
-        should_fail_hard(fail_hard)
+        raise FileNotFoundError(
+            "File " + path + " does not exist. Data could not be loaded"
+        )
     with open(path, "r") as f:
         data = json.load(f)
     return data
