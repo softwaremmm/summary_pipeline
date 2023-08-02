@@ -105,71 +105,65 @@ def generate_sequencing_quality(mappings, fail_hard):
     return seq_qual
 
 
-def generate_resistance_prediction(gnom_json, fail_hard):
+def generate_resistance_prediction(gnomonicus_data, fail_hard):
     amr = {"Resistance Prediction Summary": {}, "Resistance Prediction Detail": []}
-    data = get_field("data", gnom_json, fail_hard)
-    antibio = get_field("antibiogram", data, fail_hard)
+    data = gnomonicus_data.get("data")
     # reformat data to make search easier later
     all_mutations_details = {}
-    mutations_list = get_field("mutations", data, fail_hard)
-    for m in mutations_list:
-        mutation_name = get_field("mutation", m, fail_hard)
+    mutations_list = data.get("mutations")
+    for mutation in mutations_list:
+        mutation_name = mutation.get("mutation")
         if mutation_name:
-            all_mutations_details[mutation_name] = m
+            all_mutations_details[mutation_name] = mutation
     # reformat data to make search easier later
     all_gene_name_pos_res = {}
-    variants = get_field("variants", data, fail_hard)
-    for v in variants:
-        gene_name = get_field("gene_name", v, fail_hard)
-        gene_position = get_field("gene_position", v, fail_hard)
-        vcf = get_field("vcf_evidence", v, fail_hard)
-        cov = get_field("COV", vcf, fail_hard)
+    variants = data.get("variants")
+    for variant in variants:
+        gene_name = variant.get("gene_name")
+        gene_position = variant.get("gene_position")
+        vcf = variant.get("vcf_evidence")
+        cov = vcf.get("COV")
         if gene_name not in all_gene_name_pos_res.keys():
             all_gene_name_pos_res[gene_name] = {}
         all_gene_name_pos_res[gene_name][gene_position] = cov
-    amr["Resistance Prediction Summary"] = antibio
-    effects = get_field("effects", data, fail_hard)
+    amr["Resistance Prediction Summary"] = data.get("antibiogram")
+    effects = data.get("effects")
     for drug in effects.keys():
         new_drug = {"Drug Name": drug, "Mutations": []}
         interesting_mutants = []
         for mutant in effects[drug]:
-            mutant_data = get_field(
-                "prediction", mutant, False
+            mutant_data = mutant.get(
+                "prediction"
             )  # this is horrible as it will throw errors for pheno data
             if mutant_data and not mutant_data == "S":
                 interesting_mutants.append(mutant)
         for im in interesting_mutants:
-            gene = get_field("gene", im, fail_hard)
-            new_mutation = get_field("mutation", im, fail_hard)
-            prediction = get_field("prediction", im, fail_hard)
+            gene = im.get("gene")
+            new_mutation = im.get("mutation")
+            prediction = im.get("prediction")
             ref_to_alt = None
             position = None
             cov = None
             if new_mutation in all_mutations_details.keys():
-                position = get_field(
-                    "gene_position", all_mutations_details[new_mutation], fail_hard
-                )
-                ref = get_field("ref", all_mutations_details[new_mutation], fail_hard)
-                alt = get_field("alt", all_mutations_details[new_mutation], fail_hard)
+                position = all_mutations_details[new_mutation].get("gene_position")
+                ref = all_mutations_details[new_mutation].get("ref")
+                alt = all_mutations_details[new_mutation].get("alt")
                 if ref and alt:
                     ref_to_alt = ref + "->" + alt
             else:
-                logging.error("Mutation not in mustations list: " + new_mutation)
-                should_fail_hard(fail_hard)
+                raise ValueError("Mutation not in mutations list: " + new_mutation)
             if gene in all_gene_name_pos_res.keys():
                 if position in all_gene_name_pos_res[gene].keys():
                     cov = all_gene_name_pos_res[gene][position]
                 else:
-                    logging.error(
-                        "position not in gene position list: "
+                    raise ValueError(
+                        "Position not in gene position list: "
                         + gene
                         + " "
                         + str(position)
                     )
-                    should_fail_hard(fail_hard)
             else:
-                logging.error("gene not in genes list: " + gene)
-                should_fail_hard(fail_hard)
+                raise ValueError("Gene not in genes list: " + gene)
             new_drug["Mutations"].append(
                 {
                     "Gene": gene,
