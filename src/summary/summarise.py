@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 
 
-def generate_organism_identification(gatekeeper_data, fail_hard):
+def generate_organism_identification(gatekeeper_data):
     organism = {
         "Human Reads": None,  # comes from CLI data
         "Unclassified Reads": gatekeeper_data.get("Unclassified"),
@@ -21,7 +21,7 @@ def generate_organism_identification(gatekeeper_data, fail_hard):
     return organism
 
 
-def generate_mycobacterium_results(mappings, mykrobe_data, fail_hard):
+def generate_mycobacterium_results(mappings, mykrobe_data):
     myco = {"Species": [], "Phylogenic Group": {}, "Subspecies": {}, "Lineage": []}
     # Competitive mapping
     for mapping in mappings:
@@ -91,7 +91,7 @@ def generate_mycobacterium_results(mappings, mykrobe_data, fail_hard):
     return myco
 
 
-def generate_sequencing_quality(mappings, fail_hard):
+def generate_sequencing_quality(mappings):
     # Much of this data is a repeat of data already in Myco Results
     for mapping in mappings:
         genome_name = mapping.get("genome_name").replace(" complete genome", "")
@@ -105,7 +105,7 @@ def generate_sequencing_quality(mappings, fail_hard):
     return seq_qual
 
 
-def generate_resistance_prediction(gnomonicus_data, fail_hard):
+def generate_resistance_prediction(gnomonicus_data):
     amr = {"Resistance Prediction Summary": {}, "Resistance Prediction Detail": []}
     data = gnomonicus_data.get("data")
     # reformat data to make search easier later
@@ -177,7 +177,7 @@ def generate_resistance_prediction(gnomonicus_data, fail_hard):
     return amr
 
 
-def read_json_file(path, fail_hard):
+def read_json_file(path):
     if not (os.path.isfile(path)):
         raise FileNotFoundError(
             "File " + path + " does not exist. Data could not be loaded"
@@ -192,24 +192,21 @@ def create_summary(
     mapping: Path,
     mykrobe: Path,
     gnomonicus: Path,
-    fail_hard: bool = False,
 ) -> dict:
     output = {}
     # output["Sample Details"] = generate_sample_details()
-    gatekeeper_json = read_json_file(gatekeeper, fail_hard)
-    mapping_json = read_json_file(mapping, fail_hard)
-    mykrobe_json = read_json_file(mykrobe, fail_hard)
-    gnom_json = read_json_file(gnomonicus, fail_hard)
+    gatekeeper_json = read_json_file(gatekeeper)
+    mapping_json = read_json_file(mapping)
+    mykrobe_json = read_json_file(mykrobe)
+    gnom_json = read_json_file(gnomonicus)
     output["Organism Identification"] = generate_organism_identification(
-        gatekeeper_json, fail_hard
+        gatekeeper_json
     )
     output["Mycobacterium Results"] = generate_mycobacterium_results(
-        mapping_json, mykrobe_json, fail_hard
+        mapping_json, mykrobe_json
     )
-    output["Sequencing Quality"] = generate_sequencing_quality(mapping_json, fail_hard)
-    output["Resistance Prediction"] = generate_resistance_prediction(
-        gnom_json, fail_hard
-    )
+    output["Sequencing Quality"] = generate_sequencing_quality(mapping_json)
+    output["Resistance Prediction"] = generate_resistance_prediction(gnom_json)
     return output
 
 
@@ -225,9 +222,6 @@ def summarise() -> None:
     )
     parser = argparse.ArgumentParser(
         description="Process pipeline output to create mega.json"
-    )
-    parser.add_argument(
-        "--fail_hard", dest="fail_hard", action="store_true", default=False
     )
     parser.add_argument(
         "--gatekeeper", dest="gatekeeper", help="Path to gatekeeper_report.json file"

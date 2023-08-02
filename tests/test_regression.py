@@ -10,6 +10,6 @@ def test_regression(test_set: dict):
         test_set["gnomonicus"],
     )
 
-    expected_summary = summarise.read_json_file(test_set["expected_output"], False)
+    expected_summary = summarise.read_json_file(test_set["expected_output"])
 
     assert summary == expected_summary
