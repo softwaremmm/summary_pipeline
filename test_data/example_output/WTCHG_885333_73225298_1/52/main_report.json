@@ -1,0 +1,701 @@
+{
+    "Organism Identification": {
+        "Human Reads": null,
+        "Unclassified Reads": null,
+        "Non-Mycobacterium Bacteria Reads": 297,
+        "Mycobacterium Reads": 192847
+    },
+    "Mycobacterium Results": {
+        "Species": [
+            {
+                "Name": "Mycobacterium tuberculosis H37Rv",
+                "Num Reads": 385151,
+                "Coverage": 97.2382,
+                "Mean Depth": 12.8581,
+                "Length": 4411532
+            }
+        ],
+        "Phylogenic Group": {
+            "Name": "Mycobacterium_tuberculosis_complex",
+            "Coverage": 98.212,
+            "Median Depth": 12
+        },
+        "Subspecies": {
+            "Name": "Mycobacterium_tuberculosis",
+            "Coverage": 96.158,
+            "Median Depth": 10
+        },
+        "Lineage": [
+            {
+                "Name": "lineage4.3.4.2",
+                "Coverage": 100,
+                "Median Depth": 10
+            }
+        ]
+    },
+    "Sequencing Quality": {
+        "Mapped To": "AL123456.3",
+        "Num Reads": 385151,
+        "Coverage": 97.2382,
+        "Mean Depth": 12.8581
+    },
+    "Resistance Prediction": {
+        "Resistance Prediction Summary": {
+            "CAP": "U",
+            "STM": "U",
+            "EMB": "U",
+            "LEV": "U",
+            "MXF": "U",
+            "INH": "R",
+            "PZA": "U",
+            "RIF": "U",
+            "ETH": "U",
+            "DLM": "U",
+            "AMI": "U",
+            "KAN": "U",
+            "LZD": "S"
+        },
+        "Resistance Prediction Detail": [
+            {
+                "Drug Name": "CAP",
+                "Mutations": [
+                    {
+                        "Gene": "rrs",
+                        "Position": -15.0,
+                        "Ref to Alt": null,
+                        "Cov": [
+                            8,
+                            2
+                        ],
+                        "Prediction": "U"
+                    }
+                ]
+            },
+            {
+                "Drug Name": "STM",
+                "Mutations": [
+                    {
+                        "Gene": "gid",
+                        "Position": 50.0,
+                        "Ref to Alt": "ctg->cgg",
+                        "Cov": [
+                            0,
+                            16
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "gid",
+                        "Position": 86.0,
+                        "Ref to Alt": "ctc->zzz",
+                        "Cov": [
+                            10,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "rrs",
+                        "Position": -15.0,
+                        "Ref to Alt": null,
+                        "Cov": [
+                            8,
+                            2
+                        ],
+                        "Prediction": "U"
+                    }
+                ]
+            },
+            {
+                "Drug Name": "EMB",
+                "Mutations": [
+                    {
+                        "Gene": "embB",
+                        "Position": 170.0,
+                        "Ref to Alt": "gcg->gcx",
+                        "Cov": [
+                            0,
+                            0
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "embA",
+                        "Position": 877.0,
+                        "Ref to Alt": "atc->zzz",
+                        "Cov": [
+                            10,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "embA",
+                        "Position": 781.0,
+                        "Ref to Alt": "ctc->zzz",
+                        "Cov": [
+                            10,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "embA",
+                        "Position": 381.0,
+                        "Ref to Alt": "ccc->zzz",
+                        "Cov": [
+                            2,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "embA",
+                        "Position": 890.0,
+                        "Ref to Alt": "cag->zzz",
+                        "Cov": [
+                            6,
+                            4
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "embA",
+                        "Position": 241.0,
+                        "Ref to Alt": "cgc->zzz",
+                        "Cov": [
+                            10,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "embA",
+                        "Position": 531.0,
+                        "Ref to Alt": "gtg->zzz",
+                        "Cov": [
+                            12,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "embA",
+                        "Position": 753.0,
+                        "Ref to Alt": "gtt->zzz",
+                        "Cov": [
+                            14,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "embB",
+                        "Position": 24.0,
+                        "Ref to Alt": "cgc->zzz",
+                        "Cov": [
+                            4,
+                            4
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "embB",
+                        "Position": 498.0,
+                        "Ref to Alt": "acc->zzz",
+                        "Cov": [
+                            8,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "embB",
+                        "Position": 1028.0,
+                        "Ref to Alt": "tgg->zzz",
+                        "Cov": [
+                            8,
+                            2
+                        ],
+                        "Prediction": "U"
+                    }
+                ]
+            },
+            {
+                "Drug Name": "LEV",
+                "Mutations": [
+                    {
+                        "Gene": "gyrA",
+                        "Position": 351.0,
+                        "Ref to Alt": "ggg->zzz",
+                        "Cov": [
+                            14,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "gyrA",
+                        "Position": 524.0,
+                        "Ref to Alt": "gga->zzz",
+                        "Cov": [
+                            12,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "gyrA",
+                        "Position": 458.0,
+                        "Ref to Alt": "atc->zzz",
+                        "Cov": [
+                            6,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "gyrB",
+                        "Position": 297.0,
+                        "Ref to Alt": "tat->zzz",
+                        "Cov": [
+                            6,
+                            2
+                        ],
+                        "Prediction": "U"
+                    }
+                ]
+            },
+            {
+                "Drug Name": "MXF",
+                "Mutations": [
+                    {
+                        "Gene": "gyrA",
+                        "Position": 351.0,
+                        "Ref to Alt": "ggg->zzz",
+                        "Cov": [
+                            14,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "gyrA",
+                        "Position": 524.0,
+                        "Ref to Alt": "gga->zzz",
+                        "Cov": [
+                            12,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "gyrA",
+                        "Position": 458.0,
+                        "Ref to Alt": "atc->zzz",
+                        "Cov": [
+                            6,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "gyrB",
+                        "Position": 297.0,
+                        "Ref to Alt": "tat->zzz",
+                        "Cov": [
+                            6,
+                            2
+                        ],
+                        "Prediction": "U"
+                    }
+                ]
+            },
+            {
+                "Drug Name": "INH",
+                "Mutations": [
+                    {
+                        "Gene": "katG",
+                        "Position": 315.0,
+                        "Ref to Alt": "agc->acc",
+                        "Cov": [
+                            0,
+                            14
+                        ],
+                        "Prediction": "R"
+                    },
+                    {
+                        "Gene": "inhA",
+                        "Position": 45.0,
+                        "Ref to Alt": "cgg->zzz",
+                        "Cov": [
+                            14,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "fabG1",
+                        "Position": 227.0,
+                        "Ref to Alt": "gag->zzz",
+                        "Cov": [
+                            10,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "fabG1",
+                        "Position": 52.0,
+                        "Ref to Alt": "cca->zzz",
+                        "Cov": [
+                            8,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "fabG1",
+                        "Position": 17.0,
+                        "Ref to Alt": "tca->zzz",
+                        "Cov": [
+                            10,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "katG",
+                        "Position": 585.0,
+                        "Ref to Alt": "gcc->zzz",
+                        "Cov": [
+                            6,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "katG",
+                        "Position": 487.0,
+                        "Ref to Alt": "gac->zzz",
+                        "Cov": [
+                            10,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "katG",
+                        "Position": 534.0,
+                        "Ref to Alt": "ggg->zzz",
+                        "Cov": [
+                            12,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "katG",
+                        "Position": 560.0,
+                        "Ref to Alt": "ggc->zzz",
+                        "Cov": [
+                            6,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "katG",
+                        "Position": 734.0,
+                        "Ref to Alt": "ctc->zzz",
+                        "Cov": [
+                            10,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "katG",
+                        "Position": 732.0,
+                        "Ref to Alt": "atg->zzz",
+                        "Cov": [
+                            10,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "katG",
+                        "Position": 373.0,
+                        "Ref to Alt": "cgc->zzz",
+                        "Cov": [
+                            8,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "katG",
+                        "Position": -19.0,
+                        "Ref to Alt": null,
+                        "Cov": [
+                            6,
+                            2
+                        ],
+                        "Prediction": "U"
+                    }
+                ]
+            },
+            {
+                "Drug Name": "PZA",
+                "Mutations": [
+                    {
+                        "Gene": "pncA",
+                        "Position": 100.0,
+                        "Ref to Alt": "acc->gcc",
+                        "Cov": [
+                            0,
+                            8
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "pncA",
+                        "Position": 2.0,
+                        "Ref to Alt": "cgg->zzz",
+                        "Cov": [
+                            10,
+                            2
+                        ],
+                        "Prediction": "U"
+                    }
+                ]
+            },
+            {
+                "Drug Name": "RIF",
+                "Mutations": [
+                    {
+                        "Gene": "rpoB",
+                        "Position": 908.0,
+                        "Ref to Alt": "gac->zzz",
+                        "Cov": [
+                            10,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "rpoB",
+                        "Position": 463.0,
+                        "Ref to Alt": "ggg->zzz",
+                        "Cov": [
+                            10,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "rpoB",
+                        "Position": 889.0,
+                        "Ref to Alt": "atc->zzz",
+                        "Cov": [
+                            12,
+                            2
+                        ],
+                        "Prediction": "U"
+                    }
+                ]
+            },
+            {
+                "Drug Name": "ETH",
+                "Mutations": [
+                    {
+                        "Gene": "ethA",
+                        "Position": 46.0,
+                        "Ref to Alt": "gat->zzz",
+                        "Cov": [
+                            16,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "ethA",
+                        "Position": 133.0,
+                        "Ref to Alt": "ttc->zzz",
+                        "Cov": [
+                            10,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "inhA",
+                        "Position": 45.0,
+                        "Ref to Alt": "cgg->zzz",
+                        "Cov": [
+                            14,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "fabG1",
+                        "Position": 227.0,
+                        "Ref to Alt": "gag->zzz",
+                        "Cov": [
+                            10,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "fabG1",
+                        "Position": 52.0,
+                        "Ref to Alt": "cca->zzz",
+                        "Cov": [
+                            8,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "fabG1",
+                        "Position": 17.0,
+                        "Ref to Alt": "tca->zzz",
+                        "Cov": [
+                            10,
+                            2
+                        ],
+                        "Prediction": "U"
+                    }
+                ]
+            },
+            {
+                "Drug Name": "DLM",
+                "Mutations": [
+                    {
+                        "Gene": "ddn",
+                        "Position": 4.0,
+                        "Ref to Alt": "tca->zzz",
+                        "Cov": [
+                            12,
+                            2
+                        ],
+                        "Prediction": "U"
+                    }
+                ]
+            },
+            {
+                "Drug Name": "AMI",
+                "Mutations": [
+                    {
+                        "Gene": "eis",
+                        "Position": 247.0,
+                        "Ref to Alt": "gat->zzz",
+                        "Cov": [
+                            10,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "eis",
+                        "Position": 55.0,
+                        "Ref to Alt": "ggt->zzz",
+                        "Cov": [
+                            6,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "eis",
+                        "Position": 141.0,
+                        "Ref to Alt": "acg->zzz",
+                        "Cov": [
+                            6,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "eis",
+                        "Position": -19.0,
+                        "Ref to Alt": null,
+                        "Cov": [
+                            6,
+                            4
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "rrs",
+                        "Position": -15.0,
+                        "Ref to Alt": null,
+                        "Cov": [
+                            8,
+                            2
+                        ],
+                        "Prediction": "U"
+                    }
+                ]
+            },
+            {
+                "Drug Name": "KAN",
+                "Mutations": [
+                    {
+                        "Gene": "eis",
+                        "Position": 247.0,
+                        "Ref to Alt": "gat->zzz",
+                        "Cov": [
+                            10,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "eis",
+                        "Position": 55.0,
+                        "Ref to Alt": "ggt->zzz",
+                        "Cov": [
+                            6,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "eis",
+                        "Position": 141.0,
+                        "Ref to Alt": "acg->zzz",
+                        "Cov": [
+                            6,
+                            2
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "eis",
+                        "Position": -19.0,
+                        "Ref to Alt": null,
+                        "Cov": [
+                            6,
+                            4
+                        ],
+                        "Prediction": "U"
+                    },
+                    {
+                        "Gene": "rrs",
+                        "Position": -15.0,
+                        "Ref to Alt": null,
+                        "Cov": [
+                            8,
+                            2
+                        ],
+                        "Prediction": "U"
+                    }
+                ]
+            }
+        ]
+    }
+}
