@@ -1,3 +1,5 @@
+"""Summay JSON output from GPAS"""
+
 import logging
 import json
 import argparse
@@ -5,7 +7,15 @@ import os
 from pathlib import Path
 
 
-def generate_organism_identification(gatekeeper_data):
+def generate_organism_identification(gatekeeper_data: dict) -> dict:
+    """Summarises organism identification data.
+
+    Args:
+        gatekeeper_data (dict): Output from Gatekeeper
+
+    Returns:
+        dict: Summary of organism identification data
+    """
     organism = {
         "Human Reads": None,  # comes from CLI data
         "Unclassified Reads": gatekeeper_data.get("Unclassified"),
@@ -21,7 +31,20 @@ def generate_organism_identification(gatekeeper_data):
     return organism
 
 
-def generate_mycobacterium_results(mappings, mykrobe_data):
+def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
+    """Summarises Competitive Mapping and Mykrobe outputs.
+
+    Args:
+        mappings (dict): Output from Competitive Mapping.
+        mykrobe_data (dict): Output from Mykrobe.
+
+    Raises:
+        ValueError: Multiple phylo groups.
+        ValueError: Multiple species groups.
+
+    Returns:
+        dict: Summary of Competitive Mapping and Mykrobe outputs.
+    """
     myco = {"Species": [], "Phylogenic Group": {}, "Subspecies": {}, "Lineage": []}
     # Competitive mapping
     for mapping in mappings:
@@ -41,36 +64,35 @@ def generate_mycobacterium_results(mappings, mykrobe_data):
             myco["Species"].append(new_species)
     # Mykrobe
     phylo_group = mykrobe_data.get("phylo_group")
-    if not (len(phylo_group.keys()) == 1):
+    if not len(phylo_group.keys()) == 1:
         raise ValueError(
             "Require only 1 phylo group. Found " + str(len(phylo_group.keys()))
         )
-    else:
-        myco["Phylogenic Group"]["Name"] = list(phylo_group.keys())[0]
-        myco["Phylogenic Group"]["Coverage"] = phylo_group[
-            myco["Phylogenic Group"]["Name"]
-        ].get("percent_coverage")
-        myco["Phylogenic Group"]["Median Depth"] = phylo_group[
-            myco["Phylogenic Group"]["Name"]
-        ].get("median_depth")
+    myco["Phylogenic Group"]["Name"] = list(phylo_group.keys())[0]
+    myco["Phylogenic Group"]["Coverage"] = phylo_group[
+        myco["Phylogenic Group"]["Name"]
+    ].get("percent_coverage")
+    myco["Phylogenic Group"]["Median Depth"] = phylo_group[
+        myco["Phylogenic Group"]["Name"]
+    ].get("median_depth")
     subspecies = mykrobe_data.get("species")  # Why is species assigned to subspecies?
-    if not (len(subspecies.keys()) == 1):
+    if not len(subspecies.keys()) == 1:
         raise ValueError(
             "Require only 1 species group. Found " + str(len(subspecies.keys()))
         )
-    else:
-        myco["Subspecies"]["Name"] = list(subspecies.keys())[0]
-        myco["Subspecies"]["Coverage"] = subspecies[myco["Subspecies"]["Name"]].get(
-            "percent_coverage"
-        )
-        myco["Subspecies"]["Median Depth"] = subspecies[myco["Subspecies"]["Name"]].get(
-            "median_depth"
-        )
+    myco["Subspecies"]["Name"] = list(subspecies.keys())[0]
+    myco["Subspecies"]["Coverage"] = subspecies[myco["Subspecies"]["Name"]].get(
+        "percent_coverage"
+    )
+    myco["Subspecies"]["Median Depth"] = subspecies[myco["Subspecies"]["Name"]].get(
+        "median_depth"
+    )
     lineages = mykrobe_data.get("lineage")
     for lineage_name in lineages.get("lineage"):
         calls = lineages.get("calls")
         specific_line = calls.get(lineage_name)
-        # TODO: Needs review. Trying to be generic, should this come from the first item in the list???
+        # TODO: Needs review. Trying to be generic,
+        # should this come from the first item in the list???
         # TODO: This section also needs better error handling
         top_level = list(specific_line.keys())[0]
         variant_level = specific_line.get(top_level)
@@ -91,7 +113,15 @@ def generate_mycobacterium_results(mappings, mykrobe_data):
     return myco
 
 
-def generate_sequencing_quality(mappings):
+def generate_sequencing_quality(mappings: dict) -> dict:
+    """Summarises sequencing quality.
+
+    Args:
+        mappings (dict): Competitive Mapping output.
+
+    Returns:
+        dict: Summary of sequencing quality.
+    """
     # Much of this data is a repeat of data already in Myco Results
     for mapping in mappings:
         genome_name = mapping.get("genome_name").replace(" complete genome", "")
@@ -105,7 +135,20 @@ def generate_sequencing_quality(mappings):
     return seq_qual
 
 
-def generate_resistance_prediction(gnomonicus_data):
+def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
+    """Summarises resistance prediction information,
+
+    Args:
+        gnomonicus_data (dict): Gnomonmicus output.
+
+    Raises:
+        ValueError: Unknown mutation.
+        ValueError: Unknown gene position.
+        ValueError: Unknown gene.
+
+    Returns:
+        dict: Summary of resistance prediction information.
+    """
     amr = {"Resistance Prediction Summary": {}, "Resistance Prediction Detail": []}
     data = gnomonicus_data.get("data")
     # reformat data to make search easier later
@@ -123,12 +166,12 @@ def generate_resistance_prediction(gnomonicus_data):
         gene_position = variant.get("gene_position")
         vcf = variant.get("vcf_evidence")
         cov = vcf.get("COV")
-        if gene_name not in all_gene_name_pos_res.keys():
+        if gene_name not in all_gene_name_pos_res:
             all_gene_name_pos_res[gene_name] = {}
         all_gene_name_pos_res[gene_name][gene_position] = cov
     amr["Resistance Prediction Summary"] = data.get("antibiogram")
     effects = data.get("effects")
-    for drug in effects.keys():
+    for drug in effects:
         new_drug = {"Drug Name": drug, "Mutations": []}
         interesting_mutants = []
         for mutant in effects[drug]:
@@ -137,14 +180,14 @@ def generate_resistance_prediction(gnomonicus_data):
             )  # this is horrible as it will throw errors for pheno data
             if mutant_data and not mutant_data == "S":
                 interesting_mutants.append(mutant)
-        for im in interesting_mutants:
-            gene = im.get("gene")
-            new_mutation = im.get("mutation")
-            prediction = im.get("prediction")
+        for intmut in interesting_mutants:
+            gene = intmut.get("gene")
+            new_mutation = intmut.get("mutation")
+            prediction = intmut.get("prediction")
             ref_to_alt = None
             position = None
             cov = None
-            if new_mutation in all_mutations_details.keys():
+            if new_mutation in all_mutations_details:
                 position = all_mutations_details[new_mutation].get("gene_position")
                 ref = all_mutations_details[new_mutation].get("ref")
                 alt = all_mutations_details[new_mutation].get("alt")
@@ -152,8 +195,8 @@ def generate_resistance_prediction(gnomonicus_data):
                     ref_to_alt = ref + "->" + alt
             else:
                 raise ValueError("Mutation not in mutations list: " + new_mutation)
-            if gene in all_gene_name_pos_res.keys():
-                if position in all_gene_name_pos_res[gene].keys():
+            if gene in all_gene_name_pos_res:
+                if position in all_gene_name_pos_res[gene]:
                     cov = all_gene_name_pos_res[gene][position]
                 else:
                     raise ValueError(
@@ -177,13 +220,24 @@ def generate_resistance_prediction(gnomonicus_data):
     return amr
 
 
-def read_json_file(path):
-    if not (os.path.isfile(path)):
+def read_json_file(path: Path) -> dict:
+    """Utility function to load JSON files.
+
+    Args:
+        path (Path): Path to JSON file.
+
+    Raises:
+        FileNotFoundError: JSON file does not exist.
+
+    Returns:
+        dict: JSON file represented as a dictionary.
+    """
+    if not os.path.isfile(path):
         raise FileNotFoundError(
-            "File " + path + " does not exist. Data could not be loaded"
+            "File " + str(path) + " does not exist. Data could not be loaded"
         )
-    with open(path, "r") as f:
-        data = json.load(f)
+    with open(path, "r") as file:
+        data = json.load(file)
     return data
 
 
@@ -193,8 +247,18 @@ def create_summary(
     mykrobe: Path,
     gnomonicus: Path,
 ) -> dict:
+    """Summarises GPAS pipeline output.
+
+    Args:
+        gatekeeper (Path): Path to Gatekeeper report.
+        mapping (Path): Path to Competitive Mapping report.
+        mykrobe (Path): Path to Mykrobe report.
+        gnomonicus (Path): Path to gnomonicus report.
+
+    Returns:
+        dict: Summary GPAS pipeline output.
+    """
     output = {}
-    # output["Sample Details"] = generate_sample_details()
     gatekeeper_json = read_json_file(gatekeeper)
     mapping_json = read_json_file(mapping)
     mykrobe_json = read_json_file(mykrobe)
@@ -210,12 +274,19 @@ def create_summary(
     return output
 
 
-def write_summary(output: dict, location: Path = "Mega.json"):
-    with open(location, "w") as f:
-        f.write(json.dumps(output, indent=4))
+def write_summary(output: dict, location: Path = Path("Mega.json")) -> None:
+    """Write summary to JSON file.
+
+    Args:
+        output (dict): Summary information.
+        location (Path, optional): Path to write to. Defaults to "Mega.json".
+    """
+    with open(location, "w") as file:
+        file.write(json.dumps(output, indent=4))
 
 
 def summarise() -> None:
+    """CLI entry point."""
     logging.basicConfig(
         format="%(asctime)s — %(name)s — %(levelname)s — %(funcName)s:%(lineno)d — %(message)s",
         datefmt="%Y-%m-%dT%H:%M:%S%z",
