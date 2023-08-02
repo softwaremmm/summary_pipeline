@@ -177,12 +177,6 @@ def generate_resistance_prediction(gnomonicus_data, fail_hard):
     return amr
 
 
-def should_fail_hard(fail_hard):
-    if fail_hard:
-        logging.error("Fail hard enabled. Exiting....")
-        exit(1)
-
-
 def read_json_file(path, fail_hard):
     if not (os.path.isfile(path)):
         raise FileNotFoundError(
