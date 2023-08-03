@@ -135,11 +135,11 @@ def generate_sequencing_quality(mappings: dict) -> dict:
     return seq_qual
 
 
-def construct_payload(df: pandas.DataFrame) -> list:
+def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
     """Construct Resistance Prediction Details payload for the summary JSON.
 
     Args:
-        df (pandas.DataFrame):
+        significant_variants_df (pandas.DataFrame):
 
     Returns:
         list: results for incorporation in summary JSON
@@ -147,56 +147,55 @@ def construct_payload(df: pandas.DataFrame) -> list:
 
     drugs=[]
     payload = []
-    entry = {}
     valid_nucleotides = ['a', 't', 'c', 'g', 'x', 'z']
 
     # TODO: tried to do more elegantly with pandas.to_json() but ended up doing simply
 
     # create an alphabetical list of the drugs
-    drugs = df.index.unique()
+    drugs = significant_variants_df.index.unique()
     drugs = sorted(drugs)
 
     drug_blocks = {}
     for drug in drugs:
         drug_blocks[drug] = {"Drug Name": drug, "Mutations": []}
 
-    for idx,row in df.iterrows():
+    for idx,row in significant_variants_df.iterrows():
 
-        result = {}
-        result['Gene'] = row.gene
-        result['Mutation'] = row.mutation
-        result['Position'] = int(row.gene_position)
+        significant_variant = {}
+        significant_variant['Gene'] = row.gene
+        significant_variant['Mutation'] = row.mutation
+        significant_variant['Position'] = int(row.gene_position)
         if isinstance(row.ref, str):
-            result['Ref']= row.ref
+            significant_variant['Ref']= row.ref
         elif row.mutation[0] in valid_nucleotides and row.mutation[-1] in valid_nucleotides:
-            result['Ref'] = row.mutation[0]
+            significant_variant['Ref'] = row.mutation[0]
         else:
-            result['Ref'] = ''
+            significant_variant['Ref'] = ''
         if isinstance(row.alt, str):
-            result['Alt']= row.alt
+            significant_variant['Alt']= row.alt
         elif row.mutation[0] in valid_nucleotides and row.mutation[-1] in valid_nucleotides:
-            result['Alt'] = row.mutation[-1]
+            significant_variant['Alt'] = row.mutation[-1]
         else:
-            result['Alt'] = ''
+            significant_variant['Alt'] = ''
         if row.coverage_ref>=0 and row.coverage_alt>=0:
-            result['Coverage'] = [int(row.coverage_ref), int(row.coverage_alt)]
+            significant_variant['Coverage'] = [int(row.coverage_ref), int(row.coverage_alt)]
         else:
-            result['Coverage'] = [None, None]
-        result['Prediction'] = row.prediction
+            significant_variant['Coverage'] = [None, None]
+        significant_variant['Prediction'] = row.prediction
         if row.evidence == {}:
-            result['Evidence'] = ''
+            significant_variant['Evidence'] = ''
         else:
-            result['Evidence'] = row.evidence
+            significant_variant['Evidence'] = row.evidence
 
-        drug_blocks[idx]['Mutations'].append(result)
+        drug_blocks[idx]['Mutations'].append(significant_variant)
 
     for drug_name in drugs:
         payload.append(drug_blocks[drug_name])
 
-    return(payload)
+    return payload
 
 
-def unpack_info(row: pandas.Series) -> pandas.Series:
+def unpack_COV_from_info(row: pandas.Series) -> pandas.Series:
     """Helper pandas function for retrieving the COV from the INFO column
 
     Args:
@@ -205,14 +204,12 @@ def unpack_info(row: pandas.Series) -> pandas.Series:
     Returns:
         pandas.Series: REF and ALT coverage values
     """
+    result = pandas.Series([None,None])
     if row.vcf_idx>=0:
         idx = int(row.vcf_idx)
         if 'COV' in row.vcf_evidence:
-            return(pandas.Series([row.vcf_evidence['COV'][0],row.vcf_evidence['COV'][idx]]))
-        else:
-            return(pandas.Series([None,None]))
-    else:
-        return(pandas.Series([None,None]))
+            result = pandas.Series([row.vcf_evidence['COV'][0],row.vcf_evidence['COV'][idx]])
+    return result
 
 def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
     """Summarises resistance prediction information,
@@ -232,8 +229,8 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
     data = gnomonicus_data.get("data")
     antibiogram = dict(sorted((data.get("antibiogram")).items()))
     amr["Resistance Prediction Summary"] = antibiogram
-    
-    # retrieve the effects block and build our base pandas DataFrame 
+
+    # retrieve the effects block and build our base pandas DataFrame
     effects = data.get("effects")
     effects_list=[]
     for drug_name in effects:
@@ -251,9 +248,9 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
 
     # now left-join mutations to effects so we can get the a few extra columns
     # note that this can be many:1 since a single mutation can affect multiple drugs
-    df = effects_df.join(mutations_df[['ref', 'alt', 'gene_position']])
-    df.reset_index(inplace=True)
-    df.set_index(['gene', 'gene_position'], inplace=True)
+    effects_muts_df = effects_df.join(mutations_df[['ref', 'alt', 'gene_position']])
+    effects_muts_df.reset_index(inplace=True)
+    effects_muts_df.set_index(['gene', 'gene_position'], inplace=True)
 
     # finally, retrieve the variants block and build the final DataFrame
     variants = data.get("variants")
@@ -261,23 +258,25 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
     variants_df.rename(columns={'gene_name': 'gene'}, inplace=True)
     variants_df.set_index(['gene', 'gene_position'], inplace=True)
 
-    # now left-join to variants so we can get at the INFO field held in vcf_evidence as this contains COV
-    # note this can be 1:many since a single mutation can be made up of multiple variants (e.g. multiple SNPs, minor alleles etc)
-    df = df.join(variants_df[['vcf_evidence', 'vcf_idx']])
-    df.reset_index(inplace=True)
-    df.set_index(['drug', 'gene', 'mutation'], inplace=True)
+    # now left-join to variants so we can get at the INFO field held
+    #  in vcf_evidence as this contains COV
+    # note this can be 1:many since a single mutation can be made up
+    #  of multiple variants (e.g. multiple SNPs, minor alleles etc)
+    effects_muts_vars_df = effects_muts_df.join(variants_df[['vcf_evidence', 'vcf_idx']])
+    effects_muts_vars_df.reset_index(inplace=True)
+    effects_muts_vars_df.set_index(['drug', 'gene', 'mutation'], inplace=True)
 
     # use the pandas helper function defined elsewhere to extract COV from the vcf_evidence field
-    df[['coverage_ref', 'coverage_alt']] = df.apply(unpack_info, axis=1)
-    df.drop(columns=['vcf_evidence', 'vcf_idx'], inplace=True)
+    effects_muts_vars_df[['coverage_ref', 'coverage_alt']] = effects_muts_vars_df.apply(unpack_COV_from_info, axis=1)
+    effects_muts_vars_df.drop(columns=['vcf_evidence', 'vcf_idx'], inplace=True)
 
     # ignore mutations that have no effect
-    df = df[df.prediction!='S']
+    effects_muts_vars_df = effects_muts_vars_df[effects_muts_vars_df.prediction!='S']
 
     # now we have a DataFrame with all the fields and so can construct the dict payload
-    df.reset_index(inplace=True)
-    df.set_index('drug', inplace=True)
-    payload = construct_payload(df)
+    effects_muts_vars_df.reset_index(inplace=True)
+    effects_muts_vars_df.set_index('drug', inplace=True)
+    payload = construct_payload(effects_muts_vars_df)
     amr["Resistance Prediction Detail"]=payload
 
     return amr
