@@ -41,79 +41,72 @@
     },
     "Resistance Prediction": {
         "Resistance Prediction Summary": {
-            "CAP": "S",
-            "EMB": "S",
-            "PZA": "U",
-            "LEV": "S",
-            "MXF": "S",
-            "STM": "U",
-            "INH": "R",
-            "RIF": "S",
-            "LZD": "S",
-            "DLM": "S",
             "AMI": "S",
+            "CAP": "S",
+            "DLM": "S",
+            "EMB": "S",
             "ETH": "S",
-            "KAN": "S"
+            "INH": "R",
+            "KAN": "S",
+            "LEV": "S",
+            "LZD": "S",
+            "MXF": "S",
+            "PZA": "U",
+            "RIF": "S",
+            "STM": "U"
         },
         "Resistance Prediction Detail": [
             {
-                "Drug Name": "CAP",
-                "Mutations": []
-            },
-            {
-                "Drug Name": "EMB",
-                "Mutations": []
+                "Drug Name": "INH",
+                "Mutations": [
+                    {
+                        "Gene": "katG",
+                        "Mutation": "S315T",
+                        "Position": 315,
+                        "Ref": "agc",
+                        "Alt": "acc",
+                        "Coverage": [
+                            0,
+                            103
+                        ],
+                        "Prediction": "R",
+                        "Evidence": ""
+                    }
+                ]
             },
             {
                 "Drug Name": "PZA",
                 "Mutations": [
                     {
                         "Gene": "pncA",
+                        "Mutation": "T100A",
                         "Position": 100,
-                        "Ref to Alt": "acc->gcc",
-                        "Cov": [
+                        "Ref": "acc",
+                        "Alt": "gcc",
+                        "Coverage": [
                             0,
                             97
                         ],
-                        "Prediction": "U"
+                        "Prediction": "U",
+                        "Evidence": ""
                     }
                 ]
-            },
-            {
-                "Drug Name": "LEV",
-                "Mutations": []
-            },
-            {
-                "Drug Name": "MXF",
-                "Mutations": []
             },
             {
                 "Drug Name": "STM",
                 "Mutations": [
                     {
                         "Gene": "gid",
+                        "Mutation": "L50R",
                         "Position": 50,
-                        "Ref to Alt": "ctg->cgg",
-                        "Cov": [
+                        "Ref": "ctg",
+                        "Alt": "cgg",
+                        "Coverage": [
                             0,
                             88
                         ],
-                        "Prediction": "U"
-                    }
-                ]
-            },
-            {
-                "Drug Name": "INH",
-                "Mutations": [
-                    {
-                        "Gene": "katG",
-                        "Position": 315,
-                        "Ref to Alt": "agc->acc",
-                        "Cov": [
-                            0,
-                            103
-                        ],
-                        "Prediction": "R"
+                        "Prediction": "U",
+                        "Evidence": ""
                     }
                 ]
             }
