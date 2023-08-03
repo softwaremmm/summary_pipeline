@@ -5,7 +5,7 @@ import json
 import argparse
 import os
 from pathlib import Path
-
+import pandas
 
 def generate_organism_identification(gatekeeper_data: dict) -> dict:
     """Summarises organism identification data.
@@ -135,11 +135,90 @@ def generate_sequencing_quality(mappings: dict) -> dict:
     return seq_qual
 
 
+def construct_payload(df: pandas.DataFrame) -> list:
+    """Construct Resistance Prediction Details payload for the summary JSON.
+
+    Args:
+        df (pandas.DataFrame):
+
+    Returns:
+        list: results for incorporation in summary JSON
+    """
+
+    drugs=[]
+    payload = []
+    entry = {}
+    valid_nucleotides = ['a', 't', 'c', 'g', 'x', 'z']
+
+    # TODO: tried to do more elegantly with pandas.to_json() but ended up doing simply
+
+    # create an alphabetical list of the drugs
+    drugs = df.index.unique()
+    drugs = sorted(drugs)
+
+    drug_blocks = {}
+    for drug in drugs:
+        drug_blocks[drug] = {"Drug Name": drug, "Mutations": []}
+
+    for idx,row in df.iterrows():
+
+        result = {}
+        result['Gene'] = row.gene
+        result['Mutation'] = row.mutation
+        result['Position'] = int(row.gene_position)
+        if isinstance(row.ref, str):
+            result['Ref']= row.ref
+        elif row.mutation[0] in valid_nucleotides and row.mutation[-1] in valid_nucleotides:
+            result['Ref'] = row.mutation[0]
+        else:
+            result['Ref'] = ''
+        if isinstance(row.alt, str):
+            result['Alt']= row.alt
+        elif row.mutation[0] in valid_nucleotides and row.mutation[-1] in valid_nucleotides:
+            result['Alt'] = row.mutation[-1]
+        else:
+            result['Alt'] = ''
+        if row.coverage_ref>=0 and row.coverage_alt>=0:
+            result['Coverage'] = [int(row.coverage_ref), int(row.coverage_alt)]
+        else:
+            result['Coverage'] = [None, None]
+        result['Prediction'] = row.prediction
+        if row.evidence == {}:
+            result['Evidence'] = ''
+        else:
+            result['Evidence'] = row.evidence
+
+        drug_blocks[idx]['Mutations'].append(result)
+
+    for drug_name in drugs:
+        payload.append(drug_blocks[drug_name])
+
+    return(payload)
+
+
+def unpack_info(row: pandas.Series) -> pandas.Series:
+    """Helper pandas function for retrieving the COV from the INFO column
+
+    Args:
+        row (pandas.Series): row passed from pandas apply function
+
+    Returns:
+        pandas.Series: REF and ALT coverage values
+    """
+    if row.vcf_idx>=0:
+        idx = int(row.vcf_idx)
+        if 'COV' in row.vcf_evidence:
+            return(pandas.Series([row.vcf_evidence['COV'][0],row.vcf_evidence['COV'][idx]]))
+        else:
+            return(pandas.Series([None,None]))
+    else:
+        return(pandas.Series([None,None]))
+
 def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
     """Summarises resistance prediction information,
 
     Args:
-        gnomonicus_data (dict): Gnomonmicus output.
+        gnomonicus_data (dict): Gnomonicus output.
 
     Raises:
         ValueError: Unknown mutation.
@@ -151,72 +230,56 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
     """
     amr = {"Resistance Prediction Summary": {}, "Resistance Prediction Detail": []}
     data = gnomonicus_data.get("data")
-    # reformat data to make search easier later
-    all_mutations_details = {}
-    mutations_list = data.get("mutations")
-    for mutation in mutations_list:
-        mutation_name = mutation.get("mutation")
-        if mutation_name:
-            all_mutations_details[mutation_name] = mutation
-    # reformat data to make search easier later
-    all_gene_name_pos_res = {}
-    variants = data.get("variants")
-    for variant in variants:
-        gene_name = variant.get("gene_name")
-        gene_position = variant.get("gene_position")
-        vcf = variant.get("vcf_evidence")
-        cov = vcf.get("COV")
-        if gene_name not in all_gene_name_pos_res:
-            all_gene_name_pos_res[gene_name] = {}
-        all_gene_name_pos_res[gene_name][gene_position] = cov
-    amr["Resistance Prediction Summary"] = data.get("antibiogram")
+    antibiogram = dict(sorted((data.get("antibiogram")).items()))
+    amr["Resistance Prediction Summary"] = antibiogram
+    
+    # retrieve the effects block and build our base pandas DataFrame 
     effects = data.get("effects")
-    for drug in effects:
-        new_drug = {"Drug Name": drug, "Mutations": []}
-        interesting_mutants = []
-        for mutant in effects[drug]:
-            mutant_data = mutant.get(
-                "prediction"
-            )  # this is horrible as it will throw errors for pheno data
-            if mutant_data and not mutant_data == "S":
-                interesting_mutants.append(mutant)
-        for intmut in interesting_mutants:
-            gene = intmut.get("gene")
-            new_mutation = intmut.get("mutation")
-            prediction = intmut.get("prediction")
-            ref_to_alt = None
-            position = None
-            cov = None
-            if new_mutation in all_mutations_details:
-                position = all_mutations_details[new_mutation].get("gene_position")
-                ref = all_mutations_details[new_mutation].get("ref")
-                alt = all_mutations_details[new_mutation].get("alt")
-                if ref and alt:
-                    ref_to_alt = ref + "->" + alt
-            else:
-                raise ValueError("Mutation not in mutations list: " + new_mutation)
-            if gene in all_gene_name_pos_res:
-                if position in all_gene_name_pos_res[gene]:
-                    cov = all_gene_name_pos_res[gene][position]
-                else:
-                    raise ValueError(
-                        "Position not in gene position list: "
-                        + gene
-                        + " "
-                        + str(position)
-                    )
-            else:
-                raise ValueError("Gene not in genes list: " + gene)
-            new_drug["Mutations"].append(
-                {
-                    "Gene": gene,
-                    "Position": position,
-                    "Ref to Alt": ref_to_alt,
-                    "Cov": cov,
-                    "Prediction": prediction,
-                }
-            )
-        amr["Resistance Prediction Detail"].append(new_drug)
+    effects_list=[]
+    for drug_name in effects:
+        for effect_mutation in effects[drug_name]:
+            if 'phenotype' not in effect_mutation:
+                effect_mutation['drug']=drug_name
+                effects_list.append(effect_mutation)
+    effects_df = pandas.DataFrame(effects_list)
+    effects_df.set_index(['gene', 'mutation'], inplace=True)
+
+    # retrieve the mutations block and build another pandas DataFrame
+    mutations_list = data.get("mutations")
+    mutations_df = pandas.DataFrame(mutations_list)
+    mutations_df.set_index(['gene', 'mutation'], inplace=True)
+
+    # now left-join mutations to effects so we can get the a few extra columns
+    # note that this can be many:1 since a single mutation can affect multiple drugs
+    df = effects_df.join(mutations_df[['ref', 'alt', 'gene_position']])
+    df.reset_index(inplace=True)
+    df.set_index(['gene', 'gene_position'], inplace=True)
+
+    # finally, retrieve the variants block and build the final DataFrame
+    variants = data.get("variants")
+    variants_df = pandas.DataFrame(variants)
+    variants_df.rename(columns={'gene_name': 'gene'}, inplace=True)
+    variants_df.set_index(['gene', 'gene_position'], inplace=True)
+
+    # now left-join to variants so we can get at the INFO field held in vcf_evidence as this contains COV
+    # note this can be 1:many since a single mutation can be made up of multiple variants (e.g. multiple SNPs, minor alleles etc)
+    df = df.join(variants_df[['vcf_evidence', 'vcf_idx']])
+    df.reset_index(inplace=True)
+    df.set_index(['drug', 'gene', 'mutation'], inplace=True)
+
+    # use the pandas helper function defined elsewhere to extract COV from the vcf_evidence field
+    df[['coverage_ref', 'coverage_alt']] = df.apply(unpack_info, axis=1)
+    df.drop(columns=['vcf_evidence', 'vcf_idx'], inplace=True)
+
+    # ignore mutations that have no effect
+    df = df[df.prediction!='S']
+
+    # now we have a DataFrame with all the fields and so can construct the dict payload
+    df.reset_index(inplace=True)
+    df.set_index('drug', inplace=True)
+    payload = construct_payload(df)
+    amr["Resistance Prediction Detail"]=payload
+
     return amr
 
 
