@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "summary_pipeline"
 description = "Summarises output from GPAS sub-workflows (part of WP8)."
 dependencies = [
-    "pandas > 2"
+    "pandas ~=2.0"
 ]
 classifiers = [
     "Environment :: Console",
