@@ -7,6 +7,50 @@ import os
 from pathlib import Path
 import pandas
 
+treatment_classes = {   'First-line treatment': ['INH', 'RIF', 'PZA', 'EMB'],\
+                        'Second-line treatment': ['MXF', 'LEV', 'LZD', 'BDQ'],\
+                        'Reserve treatment': ['AMI', 'KAN', 'STM', 'CAP', 'ETH', 'DLM']  }
+
+drug_names = {'AMC': 'Amoxicilin-Clavulanate',
+  'AMI': 'Amikacin',
+  'AMX': 'Amoxicilin',
+  'AZM': 'Azithromycin',
+  'BDQ': 'Bedaquiline',
+  'CAP': 'Capreomycin',
+  'CFZ': 'Clofazimine',
+  'CIP': 'Ciprofloxacin',
+  'CLR': 'Clarithromycin',
+  'CYC': 'Cycloserine',
+  'DCS': 'D-Cycloserine',
+  'DLM': 'Delamanid',
+  'EMB': 'Ethambutol',
+  'ETH': 'Ethionamide',
+  'ETP': 'Ertapenem',
+  'FQS': 'Fluoroquinolone',
+  'GEN': 'Gentamicin',
+  'GFX': 'Gatifloxacin',
+  'IMI': 'Imipenem',
+  'INH': 'Isoniazid',
+  'KAN': 'Kanamycin',
+  'LEV': 'Levofloxacin',
+  'LZD': 'Linezolid',
+  'MEF': 'Mefloquine',
+  'MPM': 'Meropenem',
+  'MXF': 'Moxifloxacin',
+  'OFX': 'Ofloxacin',
+  'PAN': 'Pretomanid',
+  'PAS': 'Pas',
+  'PTO': 'Prothionamide',
+  'PZA': 'Pyrazinamide',
+  'RFB': 'Rifabutin',
+  'RIF': 'Rifampicin',
+  'STM': 'Streptomycin',
+  'STX': 'Sitafloxacin',
+  'SXT': 'Cotrimoxazole',
+  'SZD': 'Sutezolid',
+  'TRD': 'Terizidone',
+  'TZE': 'Thioacetazone'}
+
 def generate_organism_identification(gatekeeper_data: dict) -> dict:
     """Summarises organism identification data.
 
@@ -45,7 +89,7 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
     Returns:
         dict: Summary of Competitive Mapping and Mykrobe outputs.
     """
-    myco = {"Species": [], "Phylogenic Group": {}, "Subspecies": {}, "Lineage": []}
+    myco = {"Summary": [], "Species": [], "Phylogenic Group": {}, "Subspecies": {}, "Lineage": []}
     # Competitive mapping
     for mapping in mappings:
         genome_name = mapping.get("genome_name").replace(" complete genome", "")
@@ -110,6 +154,29 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
             "Median Depth": mediandepth,
         }
         myco["Lineage"].append(new_line)
+
+        # if Mykrobe has returned one or more lineages we must be dealing with MTB
+        lineage_number = lineage_name.split('lineage')[1]
+        new_summary = {
+            "Name": "M. tuberculosis (Lineage " + lineage_number + ")",
+            "Coverage": float(coverage),
+            "Depth": float(mediandepth),
+        }
+        myco["Summary"].append(new_summary)
+
+    # now iterate through the species detected by competitive mapping, ignoring MTB
+    # on the assumption that is has been picked up by Mykrobe
+    for detected_species in myco["Species"]:
+
+        # skip over MTB
+        if "tuberculosis" not in detected_species['Name']:
+            new_summary = {
+                "Name": detected_species['Name'],
+                "Coverage": float(detected_species['Coverage']),
+                "Depth": float(detected_species['Mean Depth']),
+            }
+            myco["Summary"].append(new_summary)
+
     return myco
 
 
@@ -131,6 +198,9 @@ def generate_sequencing_quality(mappings: dict) -> dict:
                 "Num Reads": mapping.get("numreads"),
                 "Coverage": mapping.get("coverage"),
                 "Mean Depth": mapping.get("meandepth"),
+                # FIXME: below is a placeholder for the number of mixed ("het") calls
+                # found in the gVCF which gives you an indication of sample quality
+                "Mixed calls": 0
             }
     return seq_qual
 
@@ -227,7 +297,16 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
     """
     amr = {"Resistance Prediction Summary": {}, "Resistance Prediction Detail": []}
     data = gnomonicus_data.get("data")
-    antibiogram = dict(sorted((data.get("antibiogram")).items()))
+    raw_antibiogram = dict(sorted((data.get("antibiogram")).items()))
+    raw_antibiogram['BDQ'] = '-'
+    antibiogram={}
+    for treatment_category, drug_list in treatment_classes.items():
+        antibiogram[treatment_category]={}
+        for drug3 in drug_list:
+            if drug3 in raw_antibiogram.keys():
+                drug_name_long = drug_names[drug3] + " (" + drug3 + ")"
+                antibiogram[treatment_category][drug_name_long] = raw_antibiogram[drug3]
+
     amr["Resistance Prediction Summary"] = antibiogram
 
     # retrieve the effects block and build our base pandas DataFrame
@@ -331,8 +410,17 @@ def create_summary(
     output["Mycobacterium Results"] = generate_mycobacterium_results(
         mapping_json, mykrobe_json
     )
-    output["Sequencing Quality"] = generate_sequencing_quality(mapping_json)
-    output["Resistance Prediction"] = generate_resistance_prediction(gnom_json)
+    # make this next block a list to cope with the future when other species are also mapped,
+    # and potentially also have resistance predictions returned
+    # for now we can hard code much of this since there will only ever be one and it will always
+    # be M. tuberculosis
+    output["Genomes"] = []
+    genome = {}
+    genome["Name"] = "M. tuberculosis"
+    genome["Sequencing Quality"] = generate_sequencing_quality(mapping_json)
+    genome["Resistance Prediction"] = generate_resistance_prediction(gnom_json)
+    output["Genomes"].append(genome)
+
     return output
 
 
