@@ -25,10 +25,10 @@ process summary_json {
     path "main_error.json", emit: main_error
 
   script:
-    def gatekeeper_param = gatekeeper.name != 'EMPTY' ? "--gatekeeper $gatekeeper" : ''
-    def mapping_param = mapping.name != 'EMPTY' ? "--mapping $mapping" : ''
-    def mykrobe_param = mykrobe.name != 'EMPTY' ? "--mykrobe $mykrobe" : ''
-    def gnomonicus_param = gnomonicus.name != 'EMPTY' ? "--gnomonicus $gnomonicus" : ''
+    def gatekeeper_param = gatekeeper.name != '/EMPTY' ? "--gatekeeper $gatekeeper" : ''
+    def mapping_param = mapping.name != '/EMPTY' ? "--mapping $mapping" : ''
+    def mykrobe_param = mykrobe.name != '/EMPTY' ? "--mykrobe $mykrobe" : ''
+    def gnomonicus_param = gnomonicus.name != '/EMPTY' ? "--gnomonicus $gnomonicus" : ''
     """
     summary_json ${gatekeeper_param} ${mapping_param} ${mykrobe_param} ${gnomonicus_param} --output main_report.json
     touch main_error.json
