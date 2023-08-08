@@ -488,6 +488,13 @@ def summarise() -> None:
     named_reports.add_argument(
         "--gnomonicus", dest="gnomonicus", help="Path to gnomonicus.json file"
     )
+    report_list = parser.add_argument_group(title="Path to report list")
+    report_list.add_argument(
+        "--reports",
+        nargs="+",
+        dest="reports",
+        help="A list of report files, the contents of which will be inferred by filename",
+    )
     outputs = parser.add_argument_group(title="Output parameters")
     outputs.add_argument(
         "--output_path",
