@@ -475,19 +475,21 @@ def summarise() -> None:
     parser = argparse.ArgumentParser(
         description="Process pipeline output to create mega.json"
     )
-    parser.add_argument(
+    named_reports = parser.add_argument_group(title="Paths to individual reports")
+    named_reports.add_argument(
         "--gatekeeper", dest="gatekeeper", help="Path to gatekeeper_report.json file"
     )
-    parser.add_argument(
+    named_reports.add_argument(
         "--mapping", dest="mapping", help="Path to competitivemapping_report.json file"
     )
-    parser.add_argument(
+    named_reports.add_argument(
         "--mykrobe", dest="mykrobe", help="Path to mykrobe_report.json file"
     )
-    parser.add_argument(
+    named_reports.add_argument(
         "--gnomonicus", dest="gnomonicus", help="Path to gnomonicus.json file"
     )
-    parser.add_argument(
+    outputs = parser.add_argument_group(title="Output parameters")
+    outputs.add_argument(
         "--output_path",
         default="Mega.json",
         dest="output",
