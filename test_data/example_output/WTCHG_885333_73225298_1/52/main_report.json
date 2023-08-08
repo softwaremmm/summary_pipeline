@@ -6,13 +6,20 @@
         "Mycobacterium Reads": 192847
     },
     "Mycobacterium Results": {
+        "Summary": [
+            {
+                "Name": "M. tuberculosis (Lineage 4.3.4.2)",
+                "Coverage": 100.0,
+                "Depth": 10.0
+            }
+        ],
         "Species": [
             {
                 "Name": "Mycobacterium tuberculosis H37Rv",
                 "Num Reads": 385151,
                 "Coverage": 97.2382,
                 "Mean Depth": 12.8581,
-                "Length": 4411532
+                "Length": 4411532.0
             }
         ],
         "Phylogenic Group": {
@@ -33,843 +40,856 @@
             }
         ]
     },
-    "Sequencing Quality": {
-        "Mapped To": "AL123456.3",
-        "Num Reads": 385151,
-        "Coverage": 97.2382,
-        "Mean Depth": 12.8581
-    },
-    "Resistance Prediction": {
-        "Resistance Prediction Summary": {
-            "AMI": "U",
-            "CAP": "U",
-            "DLM": "U",
-            "EMB": "U",
-            "ETH": "U",
-            "INH": "R",
-            "KAN": "U",
-            "LEV": "U",
-            "LZD": "S",
-            "MXF": "U",
-            "PZA": "U",
-            "RIF": "U",
-            "STM": "U"
-        },
-        "Resistance Prediction Detail": [
-            {
-                "Drug Name": "AMI",
-                "Mutations": [
-                    {
-                        "Gene": "eis",
-                        "Mutation": "t-19c:0.4",
-                        "Position": -19,
-                        "Ref": "",
-                        "Alt": "",
-                        "Coverage": [
-                            6,
-                            4
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "eis",
-                        "Mutation": "G55C:0.25",
-                        "Position": 55,
-                        "Ref": "ggt",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            6,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "eis",
-                        "Mutation": "T141K:0.25",
-                        "Position": 141,
-                        "Ref": "acg",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            6,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "eis",
-                        "Mutation": "D247G:0.167",
-                        "Position": 247,
-                        "Ref": "gat",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            10,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "rrs",
-                        "Mutation": "a-15t:0.2",
-                        "Position": -15,
-                        "Ref": "",
-                        "Alt": "",
-                        "Coverage": [
-                            8,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    }
-                ]
+    "Genomes": [
+        {
+            "Name": "M. tuberculosis",
+            "Sequencing Quality": {
+                "Mapped To": "AL123456.3",
+                "Num Reads": 385151.0,
+                "Coverage": 97.2382,
+                "Mean Depth": 12.8581,
+                "Mixed calls": 0
             },
-            {
-                "Drug Name": "CAP",
-                "Mutations": [
-                    {
-                        "Gene": "rrs",
-                        "Mutation": "a-15t:0.2",
-                        "Position": -15,
-                        "Ref": "",
-                        "Alt": "",
-                        "Coverage": [
-                            8,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
+            "Resistance Prediction": {
+                "Resistance Prediction Summary": {
+                    "First-line treatment": {
+                        "Isoniazid (INH)": "R",
+                        "Rifampicin (RIF)": "U",
+                        "Pyrazinamide (PZA)": "U",
+                        "Ethambutol (EMB)": "U"
+                    },
+                    "Second-line treatment": {
+                        "Moxifloxacin (MXF)": "U",
+                        "Levofloxacin (LEV)": "U",
+                        "Linezolid (LZD)": "S",
+                        "Bedaquiline (BDQ)": "-"
+                    },
+                    "Reserve treatment": {
+                        "Amikacin (AMI)": "U",
+                        "Kanamycin (KAN)": "U",
+                        "Streptomycin (STM)": "U",
+                        "Capreomycin (CAP)": "U",
+                        "Ethionamide (ETH)": "U",
+                        "Delamanid (DLM)": "U"
                     }
-                ]
-            },
-            {
-                "Drug Name": "DLM",
-                "Mutations": [
+                },
+                "Resistance Prediction Detail": [
                     {
-                        "Gene": "ddn",
-                        "Mutation": "S4T:0.143",
-                        "Position": 4,
-                        "Ref": "tca",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            12,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    }
-                ]
-            },
-            {
-                "Drug Name": "EMB",
-                "Mutations": [
-                    {
-                        "Gene": "embA",
-                        "Mutation": "R241L:0.167",
-                        "Position": 241,
-                        "Ref": "cgc",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            10,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
+                        "Drug Name": "AMI",
+                        "Mutations": [
+                            {
+                                "Gene": "eis",
+                                "Mutation": "t-19c:0.4",
+                                "Position": -19,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    6,
+                                    4
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "eis",
+                                "Mutation": "G55C:0.25",
+                                "Position": 55,
+                                "Ref": "ggt",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    6,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "eis",
+                                "Mutation": "T141K:0.25",
+                                "Position": 141,
+                                "Ref": "acg",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    6,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "eis",
+                                "Mutation": "D247G:0.167",
+                                "Position": 247,
+                                "Ref": "gat",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    10,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "rrs",
+                                "Mutation": "a-15t:0.2",
+                                "Position": -15,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    8,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
                     },
                     {
-                        "Gene": "embA",
-                        "Mutation": "P381H:0.5",
-                        "Position": 381,
-                        "Ref": "ccc",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            2,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
+                        "Drug Name": "CAP",
+                        "Mutations": [
+                            {
+                                "Gene": "rrs",
+                                "Mutation": "a-15t:0.2",
+                                "Position": -15,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    8,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
                     },
                     {
-                        "Gene": "embA",
-                        "Mutation": "V531L:0.143",
-                        "Position": 531,
-                        "Ref": "gtg",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            12,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
+                        "Drug Name": "DLM",
+                        "Mutations": [
+                            {
+                                "Gene": "ddn",
+                                "Mutation": "S4T:0.143",
+                                "Position": 4,
+                                "Ref": "tca",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    12,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
                     },
                     {
-                        "Gene": "embA",
-                        "Mutation": "V753G:0.125",
-                        "Position": 753,
-                        "Ref": "gtt",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            14,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
+                        "Drug Name": "EMB",
+                        "Mutations": [
+                            {
+                                "Gene": "embA",
+                                "Mutation": "R241L:0.167",
+                                "Position": 241,
+                                "Ref": "cgc",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    10,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "embA",
+                                "Mutation": "P381H:0.5",
+                                "Position": 381,
+                                "Ref": "ccc",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    2,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "embA",
+                                "Mutation": "V531L:0.143",
+                                "Position": 531,
+                                "Ref": "gtg",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    12,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "embA",
+                                "Mutation": "V753G:0.125",
+                                "Position": 753,
+                                "Ref": "gtt",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    14,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "embA",
+                                "Mutation": "L781H:0.167",
+                                "Position": 781,
+                                "Ref": "ctc",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    10,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "embA",
+                                "Mutation": "I877N:0.167",
+                                "Position": 877,
+                                "Ref": "atc",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    10,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "embA",
+                                "Mutation": "Q890P:0.4",
+                                "Position": 890,
+                                "Ref": "cag",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    6,
+                                    4
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "embB",
+                                "Mutation": "R24P:0.5",
+                                "Position": 24,
+                                "Ref": "cgc",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    4,
+                                    4
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "embB",
+                                "Mutation": "A170X",
+                                "Position": 170,
+                                "Ref": "gcg",
+                                "Alt": "gcx",
+                                "Coverage": [
+                                    null,
+                                    null
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "embB",
+                                "Mutation": "T498I:0.2",
+                                "Position": 498,
+                                "Ref": "acc",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    8,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "embB",
+                                "Mutation": "W1028C:0.2",
+                                "Position": 1028,
+                                "Ref": "tgg",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    8,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
                     },
                     {
-                        "Gene": "embA",
-                        "Mutation": "L781H:0.167",
-                        "Position": 781,
-                        "Ref": "ctc",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            10,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
+                        "Drug Name": "ETH",
+                        "Mutations": [
+                            {
+                                "Gene": "ethA",
+                                "Mutation": "D46Y:0.111",
+                                "Position": 46,
+                                "Ref": "gat",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    16,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "ethA",
+                                "Mutation": "F133V:0.167",
+                                "Position": 133,
+                                "Ref": "ttc",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    10,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "fabG1",
+                                "Mutation": "S17!:0.167",
+                                "Position": 17,
+                                "Ref": "tca",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    10,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "fabG1",
+                                "Mutation": "P52Q:0.2",
+                                "Position": 52,
+                                "Ref": "cca",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    8,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "fabG1",
+                                "Mutation": "E227D:0.167",
+                                "Position": 227,
+                                "Ref": "gag",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    10,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "inhA",
+                                "Mutation": "R45L:0.125",
+                                "Position": 45,
+                                "Ref": "cgg",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    14,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
                     },
                     {
-                        "Gene": "embA",
-                        "Mutation": "I877N:0.167",
-                        "Position": 877,
-                        "Ref": "atc",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            10,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
+                        "Drug Name": "INH",
+                        "Mutations": [
+                            {
+                                "Gene": "fabG1",
+                                "Mutation": "S17!:0.167",
+                                "Position": 17,
+                                "Ref": "tca",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    10,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "fabG1",
+                                "Mutation": "P52Q:0.2",
+                                "Position": 52,
+                                "Ref": "cca",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    8,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "fabG1",
+                                "Mutation": "E227D:0.167",
+                                "Position": 227,
+                                "Ref": "gag",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    10,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "inhA",
+                                "Mutation": "R45L:0.125",
+                                "Position": 45,
+                                "Ref": "cgg",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    14,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "katG",
+                                "Mutation": "a-19g:0.25",
+                                "Position": -19,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    6,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "katG",
+                                "Mutation": "S315T",
+                                "Position": 315,
+                                "Ref": "agc",
+                                "Alt": "acc",
+                                "Coverage": [
+                                    0,
+                                    14
+                                ],
+                                "Prediction": "R",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "katG",
+                                "Mutation": "R373G:0.2",
+                                "Position": 373,
+                                "Ref": "cgc",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    8,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "katG",
+                                "Mutation": "D487Y:0.167",
+                                "Position": 487,
+                                "Ref": "gac",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    10,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "katG",
+                                "Mutation": "G534W:0.143",
+                                "Position": 534,
+                                "Ref": "ggg",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    12,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "katG",
+                                "Mutation": "G560C:0.25",
+                                "Position": 560,
+                                "Ref": "ggc",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    6,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "katG",
+                                "Mutation": "A585S:0.25",
+                                "Position": 585,
+                                "Ref": "gcc",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    6,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "katG",
+                                "Mutation": "M732I:0.167",
+                                "Position": 732,
+                                "Ref": "atg",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    10,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "katG",
+                                "Mutation": "L734H:0.167",
+                                "Position": 734,
+                                "Ref": "ctc",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    10,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
                     },
                     {
-                        "Gene": "embA",
-                        "Mutation": "Q890P:0.4",
-                        "Position": 890,
-                        "Ref": "cag",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            6,
-                            4
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
+                        "Drug Name": "KAN",
+                        "Mutations": [
+                            {
+                                "Gene": "eis",
+                                "Mutation": "t-19c:0.4",
+                                "Position": -19,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    6,
+                                    4
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "eis",
+                                "Mutation": "G55C:0.25",
+                                "Position": 55,
+                                "Ref": "ggt",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    6,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "eis",
+                                "Mutation": "T141K:0.25",
+                                "Position": 141,
+                                "Ref": "acg",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    6,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "eis",
+                                "Mutation": "D247G:0.167",
+                                "Position": 247,
+                                "Ref": "gat",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    10,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "rrs",
+                                "Mutation": "a-15t:0.2",
+                                "Position": -15,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    8,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
                     },
                     {
-                        "Gene": "embB",
-                        "Mutation": "R24P:0.5",
-                        "Position": 24,
-                        "Ref": "cgc",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            4,
-                            4
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
+                        "Drug Name": "LEV",
+                        "Mutations": [
+                            {
+                                "Gene": "gyrA",
+                                "Mutation": "G351W:0.125",
+                                "Position": 351,
+                                "Ref": "ggg",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    14,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "gyrA",
+                                "Mutation": "I458L:0.25",
+                                "Position": 458,
+                                "Ref": "atc",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    6,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "gyrA",
+                                "Mutation": "G524!:0.143",
+                                "Position": 524,
+                                "Ref": "gga",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    12,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "gyrB",
+                                "Mutation": "Y297S:0.25",
+                                "Position": 297,
+                                "Ref": "tat",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    6,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
                     },
                     {
-                        "Gene": "embB",
-                        "Mutation": "A170X",
-                        "Position": 170,
-                        "Ref": "gcg",
-                        "Alt": "gcx",
-                        "Coverage": [
-                            null,
-                            null
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
+                        "Drug Name": "MXF",
+                        "Mutations": [
+                            {
+                                "Gene": "gyrA",
+                                "Mutation": "G351W:0.125",
+                                "Position": 351,
+                                "Ref": "ggg",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    14,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "gyrA",
+                                "Mutation": "I458L:0.25",
+                                "Position": 458,
+                                "Ref": "atc",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    6,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "gyrA",
+                                "Mutation": "G524!:0.143",
+                                "Position": 524,
+                                "Ref": "gga",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    12,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "gyrB",
+                                "Mutation": "Y297S:0.25",
+                                "Position": 297,
+                                "Ref": "tat",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    6,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
                     },
                     {
-                        "Gene": "embB",
-                        "Mutation": "T498I:0.2",
-                        "Position": 498,
-                        "Ref": "acc",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            8,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
+                        "Drug Name": "PZA",
+                        "Mutations": [
+                            {
+                                "Gene": "pncA",
+                                "Mutation": "R2L:0.167",
+                                "Position": 2,
+                                "Ref": "cgg",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    10,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "pncA",
+                                "Mutation": "T100A",
+                                "Position": 100,
+                                "Ref": "acc",
+                                "Alt": "gcc",
+                                "Coverage": [
+                                    0,
+                                    8
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
                     },
                     {
-                        "Gene": "embB",
-                        "Mutation": "W1028C:0.2",
-                        "Position": 1028,
-                        "Ref": "tgg",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            8,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    }
-                ]
-            },
-            {
-                "Drug Name": "ETH",
-                "Mutations": [
-                    {
-                        "Gene": "ethA",
-                        "Mutation": "D46Y:0.111",
-                        "Position": 46,
-                        "Ref": "gat",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            16,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
+                        "Drug Name": "RIF",
+                        "Mutations": [
+                            {
+                                "Gene": "rpoB",
+                                "Mutation": "G463W:0.167",
+                                "Position": 463,
+                                "Ref": "ggg",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    10,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "rpoB",
+                                "Mutation": "I889F:0.143",
+                                "Position": 889,
+                                "Ref": "atc",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    12,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "rpoB",
+                                "Mutation": "D908E:0.167",
+                                "Position": 908,
+                                "Ref": "gac",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    10,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
                     },
                     {
-                        "Gene": "ethA",
-                        "Mutation": "F133V:0.167",
-                        "Position": 133,
-                        "Ref": "ttc",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            10,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "fabG1",
-                        "Mutation": "S17!:0.167",
-                        "Position": 17,
-                        "Ref": "tca",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            10,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "fabG1",
-                        "Mutation": "P52Q:0.2",
-                        "Position": 52,
-                        "Ref": "cca",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            8,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "fabG1",
-                        "Mutation": "E227D:0.167",
-                        "Position": 227,
-                        "Ref": "gag",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            10,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "inhA",
-                        "Mutation": "R45L:0.125",
-                        "Position": 45,
-                        "Ref": "cgg",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            14,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    }
-                ]
-            },
-            {
-                "Drug Name": "INH",
-                "Mutations": [
-                    {
-                        "Gene": "fabG1",
-                        "Mutation": "S17!:0.167",
-                        "Position": 17,
-                        "Ref": "tca",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            10,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "fabG1",
-                        "Mutation": "P52Q:0.2",
-                        "Position": 52,
-                        "Ref": "cca",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            8,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "fabG1",
-                        "Mutation": "E227D:0.167",
-                        "Position": 227,
-                        "Ref": "gag",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            10,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "inhA",
-                        "Mutation": "R45L:0.125",
-                        "Position": 45,
-                        "Ref": "cgg",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            14,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "katG",
-                        "Mutation": "a-19g:0.25",
-                        "Position": -19,
-                        "Ref": "",
-                        "Alt": "",
-                        "Coverage": [
-                            6,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "katG",
-                        "Mutation": "S315T",
-                        "Position": 315,
-                        "Ref": "agc",
-                        "Alt": "acc",
-                        "Coverage": [
-                            0,
-                            14
-                        ],
-                        "Prediction": "R",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "katG",
-                        "Mutation": "R373G:0.2",
-                        "Position": 373,
-                        "Ref": "cgc",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            8,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "katG",
-                        "Mutation": "D487Y:0.167",
-                        "Position": 487,
-                        "Ref": "gac",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            10,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "katG",
-                        "Mutation": "G534W:0.143",
-                        "Position": 534,
-                        "Ref": "ggg",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            12,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "katG",
-                        "Mutation": "G560C:0.25",
-                        "Position": 560,
-                        "Ref": "ggc",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            6,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "katG",
-                        "Mutation": "A585S:0.25",
-                        "Position": 585,
-                        "Ref": "gcc",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            6,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "katG",
-                        "Mutation": "M732I:0.167",
-                        "Position": 732,
-                        "Ref": "atg",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            10,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "katG",
-                        "Mutation": "L734H:0.167",
-                        "Position": 734,
-                        "Ref": "ctc",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            10,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    }
-                ]
-            },
-            {
-                "Drug Name": "KAN",
-                "Mutations": [
-                    {
-                        "Gene": "eis",
-                        "Mutation": "t-19c:0.4",
-                        "Position": -19,
-                        "Ref": "",
-                        "Alt": "",
-                        "Coverage": [
-                            6,
-                            4
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "eis",
-                        "Mutation": "G55C:0.25",
-                        "Position": 55,
-                        "Ref": "ggt",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            6,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "eis",
-                        "Mutation": "T141K:0.25",
-                        "Position": 141,
-                        "Ref": "acg",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            6,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "eis",
-                        "Mutation": "D247G:0.167",
-                        "Position": 247,
-                        "Ref": "gat",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            10,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "rrs",
-                        "Mutation": "a-15t:0.2",
-                        "Position": -15,
-                        "Ref": "",
-                        "Alt": "",
-                        "Coverage": [
-                            8,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    }
-                ]
-            },
-            {
-                "Drug Name": "LEV",
-                "Mutations": [
-                    {
-                        "Gene": "gyrA",
-                        "Mutation": "G351W:0.125",
-                        "Position": 351,
-                        "Ref": "ggg",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            14,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "gyrA",
-                        "Mutation": "I458L:0.25",
-                        "Position": 458,
-                        "Ref": "atc",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            6,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "gyrA",
-                        "Mutation": "G524!:0.143",
-                        "Position": 524,
-                        "Ref": "gga",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            12,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "gyrB",
-                        "Mutation": "Y297S:0.25",
-                        "Position": 297,
-                        "Ref": "tat",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            6,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    }
-                ]
-            },
-            {
-                "Drug Name": "MXF",
-                "Mutations": [
-                    {
-                        "Gene": "gyrA",
-                        "Mutation": "G351W:0.125",
-                        "Position": 351,
-                        "Ref": "ggg",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            14,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "gyrA",
-                        "Mutation": "I458L:0.25",
-                        "Position": 458,
-                        "Ref": "atc",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            6,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "gyrA",
-                        "Mutation": "G524!:0.143",
-                        "Position": 524,
-                        "Ref": "gga",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            12,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "gyrB",
-                        "Mutation": "Y297S:0.25",
-                        "Position": 297,
-                        "Ref": "tat",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            6,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    }
-                ]
-            },
-            {
-                "Drug Name": "PZA",
-                "Mutations": [
-                    {
-                        "Gene": "pncA",
-                        "Mutation": "R2L:0.167",
-                        "Position": 2,
-                        "Ref": "cgg",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            10,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "pncA",
-                        "Mutation": "T100A",
-                        "Position": 100,
-                        "Ref": "acc",
-                        "Alt": "gcc",
-                        "Coverage": [
-                            0,
-                            8
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    }
-                ]
-            },
-            {
-                "Drug Name": "RIF",
-                "Mutations": [
-                    {
-                        "Gene": "rpoB",
-                        "Mutation": "G463W:0.167",
-                        "Position": 463,
-                        "Ref": "ggg",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            10,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "rpoB",
-                        "Mutation": "I889F:0.143",
-                        "Position": 889,
-                        "Ref": "atc",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            12,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "rpoB",
-                        "Mutation": "D908E:0.167",
-                        "Position": 908,
-                        "Ref": "gac",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            10,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    }
-                ]
-            },
-            {
-                "Drug Name": "STM",
-                "Mutations": [
-                    {
-                        "Gene": "gid",
-                        "Mutation": "L50R",
-                        "Position": 50,
-                        "Ref": "ctg",
-                        "Alt": "cgg",
-                        "Coverage": [
-                            0,
-                            16
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "gid",
-                        "Mutation": "L86P:0.167",
-                        "Position": 86,
-                        "Ref": "ctc",
-                        "Alt": "zzz",
-                        "Coverage": [
-                            10,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
-                    },
-                    {
-                        "Gene": "rrs",
-                        "Mutation": "a-15t:0.2",
-                        "Position": -15,
-                        "Ref": "",
-                        "Alt": "",
-                        "Coverage": [
-                            8,
-                            2
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
+                        "Drug Name": "STM",
+                        "Mutations": [
+                            {
+                                "Gene": "gid",
+                                "Mutation": "L50R",
+                                "Position": 50,
+                                "Ref": "ctg",
+                                "Alt": "cgg",
+                                "Coverage": [
+                                    0,
+                                    16
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "gid",
+                                "Mutation": "L86P:0.167",
+                                "Position": 86,
+                                "Ref": "ctc",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    10,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": "rrs",
+                                "Mutation": "a-15t:0.2",
+                                "Position": -15,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    8,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
                     }
                 ]
             }
-        ]
-    }
+        }
+    ]
 }

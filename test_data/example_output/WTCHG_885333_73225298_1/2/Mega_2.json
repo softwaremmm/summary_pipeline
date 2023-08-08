@@ -6,13 +6,20 @@
         "Mycobacterium Reads": null
     },
     "Mycobacterium Results": {
+        "Summary": [
+            {
+                "Name": "M. tuberculosis (Lineage 4.3.4.2)",
+                "Coverage": 100.0,
+                "Depth": 143.0
+            }
+        ],
         "Species": [
             {
                 "Name": "Mycobacterium tuberculosis H37Rv",
                 "Num Reads": 4175866,
                 "Coverage": 98.6959,
                 "Mean Depth": 141.949,
-                "Length": 4411532
+                "Length": 4411532.0
             }
         ],
         "Phylogenic Group": {
@@ -33,83 +40,96 @@
             }
         ]
     },
-    "Sequencing Quality": {
-        "Mapped To": "AL123456.3",
-        "Num Reads": 4175866,
-        "Coverage": 98.6959,
-        "Mean Depth": 141.949
-    },
-    "Resistance Prediction": {
-        "Resistance Prediction Summary": {
-            "AMI": "S",
-            "CAP": "S",
-            "DLM": "S",
-            "EMB": "S",
-            "ETH": "S",
-            "INH": "R",
-            "KAN": "S",
-            "LEV": "S",
-            "LZD": "S",
-            "MXF": "S",
-            "PZA": "U",
-            "RIF": "S",
-            "STM": "U"
-        },
-        "Resistance Prediction Detail": [
-            {
-                "Drug Name": "INH",
-                "Mutations": [
-                    {
-                        "Gene": "katG",
-                        "Mutation": "S315T",
-                        "Position": 315,
-                        "Ref": "agc",
-                        "Alt": "acc",
-                        "Coverage": [
-                            0,
-                            103
-                        ],
-                        "Prediction": "R",
-                        "Evidence": ""
-                    }
-                ]
+    "Genomes": [
+        {
+            "Name": "M. tuberculosis",
+            "Sequencing Quality": {
+                "Mapped To": "AL123456.3",
+                "Num Reads": 4175866.0,
+                "Coverage": 98.6959,
+                "Mean Depth": 141.949,
+                "Mixed calls": 0
             },
-            {
-                "Drug Name": "PZA",
-                "Mutations": [
-                    {
-                        "Gene": "pncA",
-                        "Mutation": "T100A",
-                        "Position": 100,
-                        "Ref": "acc",
-                        "Alt": "gcc",
-                        "Coverage": [
-                            0,
-                            97
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
+            "Resistance Prediction": {
+                "Resistance Prediction Summary": {
+                    "First-line treatment": {
+                        "Isoniazid (INH)": "R",
+                        "Rifampicin (RIF)": "S",
+                        "Pyrazinamide (PZA)": "U",
+                        "Ethambutol (EMB)": "S"
+                    },
+                    "Second-line treatment": {
+                        "Moxifloxacin (MXF)": "S",
+                        "Levofloxacin (LEV)": "S",
+                        "Linezolid (LZD)": "S",
+                        "Bedaquiline (BDQ)": "-"
+                    },
+                    "Reserve treatment": {
+                        "Amikacin (AMI)": "S",
+                        "Kanamycin (KAN)": "S",
+                        "Streptomycin (STM)": "U",
+                        "Capreomycin (CAP)": "S",
+                        "Ethionamide (ETH)": "S",
+                        "Delamanid (DLM)": "S"
                     }
-                ]
-            },
-            {
-                "Drug Name": "STM",
-                "Mutations": [
+                },
+                "Resistance Prediction Detail": [
                     {
-                        "Gene": "gid",
-                        "Mutation": "L50R",
-                        "Position": 50,
-                        "Ref": "ctg",
-                        "Alt": "cgg",
-                        "Coverage": [
-                            0,
-                            88
-                        ],
-                        "Prediction": "U",
-                        "Evidence": ""
+                        "Drug Name": "INH",
+                        "Mutations": [
+                            {
+                                "Gene": "katG",
+                                "Mutation": "S315T",
+                                "Position": 315,
+                                "Ref": "agc",
+                                "Alt": "acc",
+                                "Coverage": [
+                                    0,
+                                    103
+                                ],
+                                "Prediction": "R",
+                                "Evidence": ""
+                            }
+                        ]
+                    },
+                    {
+                        "Drug Name": "PZA",
+                        "Mutations": [
+                            {
+                                "Gene": "pncA",
+                                "Mutation": "T100A",
+                                "Position": 100,
+                                "Ref": "acc",
+                                "Alt": "gcc",
+                                "Coverage": [
+                                    0,
+                                    97
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
+                    },
+                    {
+                        "Drug Name": "STM",
+                        "Mutations": [
+                            {
+                                "Gene": "gid",
+                                "Mutation": "L50R",
+                                "Position": 50,
+                                "Ref": "ctg",
+                                "Alt": "cgg",
+                                "Coverage": [
+                                    0,
+                                    88
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
                     }
                 ]
             }
-        ]
-    }
+        }
+    ]
 }

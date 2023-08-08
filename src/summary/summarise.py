@@ -7,6 +7,55 @@ import os
 from pathlib import Path
 import pandas
 
+treatment_classes = {
+    "First-line treatment": ["INH", "RIF", "PZA", "EMB"],
+    "Second-line treatment": ["MXF", "LEV", "LZD", "BDQ"],
+    "Reserve treatment": ["AMI", "KAN", "STM", "CAP", "ETH", "DLM"],
+}
+
+drug_names = {
+    "AMC": "Amoxicilin-Clavulanate",
+    "AMI": "Amikacin",
+    "AMX": "Amoxicilin",
+    "AZM": "Azithromycin",
+    "BDQ": "Bedaquiline",
+    "CAP": "Capreomycin",
+    "CFZ": "Clofazimine",
+    "CIP": "Ciprofloxacin",
+    "CLR": "Clarithromycin",
+    "CYC": "Cycloserine",
+    "DCS": "D-Cycloserine",
+    "DLM": "Delamanid",
+    "EMB": "Ethambutol",
+    "ETH": "Ethionamide",
+    "ETP": "Ertapenem",
+    "FQS": "Fluoroquinolone",
+    "GEN": "Gentamicin",
+    "GFX": "Gatifloxacin",
+    "IMI": "Imipenem",
+    "INH": "Isoniazid",
+    "KAN": "Kanamycin",
+    "LEV": "Levofloxacin",
+    "LZD": "Linezolid",
+    "MEF": "Mefloquine",
+    "MPM": "Meropenem",
+    "MXF": "Moxifloxacin",
+    "OFX": "Ofloxacin",
+    "PAN": "Pretomanid",
+    "PAS": "Pas",
+    "PTO": "Prothionamide",
+    "PZA": "Pyrazinamide",
+    "RFB": "Rifabutin",
+    "RIF": "Rifampicin",
+    "STM": "Streptomycin",
+    "STX": "Sitafloxacin",
+    "SXT": "Cotrimoxazole",
+    "SZD": "Sutezolid",
+    "TRD": "Terizidone",
+    "TZE": "Thioacetazone",
+}
+
+
 def generate_organism_identification(gatekeeper_data: dict) -> dict:
     """Summarises organism identification data.
 
@@ -45,7 +94,13 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
     Returns:
         dict: Summary of Competitive Mapping and Mykrobe outputs.
     """
-    myco = {"Species": [], "Phylogenic Group": {}, "Subspecies": {}, "Lineage": []}
+    myco = {
+        "Summary": [],
+        "Species": [],
+        "Phylogenic Group": {},
+        "Subspecies": {},
+        "Lineage": [],
+    }
     # Competitive mapping
     for mapping in mappings:
         genome_name = mapping.get("genome_name").replace(" complete genome", "")
@@ -110,6 +165,28 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
             "Median Depth": mediandepth,
         }
         myco["Lineage"].append(new_line)
+
+        # if Mykrobe has returned one or more lineages we must be dealing with MTB
+        lineage_number = lineage_name.split("lineage")[1]
+        new_summary = {
+            "Name": "M. tuberculosis (Lineage " + lineage_number + ")",
+            "Coverage": float(coverage),
+            "Depth": float(mediandepth),
+        }
+        myco["Summary"].append(new_summary)
+
+    # now iterate through the species detected by competitive mapping, ignoring MTB
+    # on the assumption that is has been picked up by Mykrobe
+    for detected_species in myco["Species"]:
+        # skip over MTB
+        if "tuberculosis" not in detected_species["Name"]:
+            new_summary = {
+                "Name": detected_species["Name"],
+                "Coverage": float(detected_species["Coverage"]),
+                "Depth": float(detected_species["Mean Depth"]),
+            }
+            myco["Summary"].append(new_summary)
+
     return myco
 
 
@@ -131,6 +208,9 @@ def generate_sequencing_quality(mappings: dict) -> dict:
                 "Num Reads": mapping.get("numreads"),
                 "Coverage": mapping.get("coverage"),
                 "Mean Depth": mapping.get("meandepth"),
+                # FIXME: below is a placeholder for the number of mixed ("het") calls
+                # found in the gVCF which gives you an indication of sample quality
+                "Mixed calls": 0,
             }
     return seq_qual
 
@@ -145,9 +225,9 @@ def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
         list: results for incorporation in summary JSON
     """
 
-    drugs=[]
+    drugs = []
     payload = []
-    valid_nucleotides = ['a', 't', 'c', 'g', 'x', 'z']
+    valid_nucleotides = ["a", "t", "c", "g", "x", "z"]
 
     # TODO: tried to do more elegantly with pandas.to_json() but ended up doing simply
 
@@ -159,35 +239,43 @@ def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
     for drug in drugs:
         drug_blocks[drug] = {"Drug Name": drug, "Mutations": []}
 
-    for idx,row in significant_variants_df.iterrows():
-
+    for idx, row in significant_variants_df.iterrows():
         significant_variant = {}
-        significant_variant['Gene'] = row.gene
-        significant_variant['Mutation'] = row.mutation
-        significant_variant['Position'] = int(row.gene_position)
+        significant_variant["Gene"] = row.gene
+        significant_variant["Mutation"] = row.mutation
+        significant_variant["Position"] = int(row.gene_position)
         if isinstance(row.ref, str):
-            significant_variant['Ref']= row.ref
-        elif row.mutation[0] in valid_nucleotides and row.mutation[-1] in valid_nucleotides:
-            significant_variant['Ref'] = row.mutation[0]
+            significant_variant["Ref"] = row.ref
+        elif (
+            row.mutation[0] in valid_nucleotides
+            and row.mutation[-1] in valid_nucleotides
+        ):
+            significant_variant["Ref"] = row.mutation[0]
         else:
-            significant_variant['Ref'] = ''
+            significant_variant["Ref"] = ""
         if isinstance(row.alt, str):
-            significant_variant['Alt']= row.alt
-        elif row.mutation[0] in valid_nucleotides and row.mutation[-1] in valid_nucleotides:
-            significant_variant['Alt'] = row.mutation[-1]
+            significant_variant["Alt"] = row.alt
+        elif (
+            row.mutation[0] in valid_nucleotides
+            and row.mutation[-1] in valid_nucleotides
+        ):
+            significant_variant["Alt"] = row.mutation[-1]
         else:
-            significant_variant['Alt'] = ''
-        if row.coverage_ref>=0 and row.coverage_alt>=0:
-            significant_variant['Coverage'] = [int(row.coverage_ref), int(row.coverage_alt)]
+            significant_variant["Alt"] = ""
+        if row.coverage_ref >= 0 and row.coverage_alt >= 0:
+            significant_variant["Coverage"] = [
+                int(row.coverage_ref),
+                int(row.coverage_alt),
+            ]
         else:
-            significant_variant['Coverage'] = [None, None]
-        significant_variant['Prediction'] = row.prediction
+            significant_variant["Coverage"] = [None, None]
+        significant_variant["Prediction"] = row.prediction
         if row.evidence == {}:
-            significant_variant['Evidence'] = ''
+            significant_variant["Evidence"] = ""
         else:
-            significant_variant['Evidence'] = row.evidence
+            significant_variant["Evidence"] = row.evidence
 
-        drug_blocks[idx]['Mutations'].append(significant_variant)
+        drug_blocks[idx]["Mutations"].append(significant_variant)
 
     for drug_name in drugs:
         payload.append(drug_blocks[drug_name])
@@ -204,12 +292,15 @@ def unpack_COV_from_info(row: pandas.Series) -> pandas.Series:
     Returns:
         pandas.Series: REF and ALT coverage values
     """
-    result = pandas.Series([None,None])
-    if row.vcf_idx>=0:
+    result = pandas.Series([None, None])
+    if row.vcf_idx >= 0:
         idx = int(row.vcf_idx)
-        if 'COV' in row.vcf_evidence:
-            result = pandas.Series([row.vcf_evidence['COV'][0],row.vcf_evidence['COV'][idx]])
+        if "COV" in row.vcf_evidence:
+            result = pandas.Series(
+                [row.vcf_evidence["COV"][0], row.vcf_evidence["COV"][idx]]
+            )
     return result
+
 
 def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
     """Summarises resistance prediction information,
@@ -227,57 +318,76 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
     """
     amr = {"Resistance Prediction Summary": {}, "Resistance Prediction Detail": []}
     data = gnomonicus_data.get("data")
-    antibiogram = dict(sorted((data.get("antibiogram")).items()))
+    # let's put the drugs in alphabetical order
+    raw_antibiogram = dict(sorted((data.get("antibiogram")).items()))
+    # add BDQ as a placeholder as it will be in e.g. version 2 of the WHO catalogue when it arrives
+    raw_antibiogram["BDQ"] = "-"
+    antibiogram = {}
+    # the code below groups the drugs according to the treatment_classes
+    # this effectively hardcodes version 1 of the WHO catalogue
+    # -> will need generalising if we are to use multiple catalogues
+    for treatment_category, drug_list in treatment_classes.items():
+        antibiogram[treatment_category] = {}
+        # drug3 is the 3 letter code
+        for drug3 in drug_list:
+            if drug3 in raw_antibiogram.keys():
+                drug_name_long = drug_names[drug3] + " (" + drug3 + ")"
+                antibiogram[treatment_category][drug_name_long] = raw_antibiogram[drug3]
+
     amr["Resistance Prediction Summary"] = antibiogram
 
     # retrieve the effects block and build our base pandas DataFrame
     effects = data.get("effects")
-    effects_list=[]
+    effects_list = []
     for drug_name in effects:
         for effect_mutation in effects[drug_name]:
-            if 'phenotype' not in effect_mutation:
-                effect_mutation['drug']=drug_name
+            if "phenotype" not in effect_mutation:
+                effect_mutation["drug"] = drug_name
                 effects_list.append(effect_mutation)
     effects_df = pandas.DataFrame(effects_list)
-    effects_df.set_index(['gene', 'mutation'], inplace=True)
+    effects_df.set_index(["gene", "mutation"], inplace=True)
 
     # retrieve the mutations block and build another pandas DataFrame
     mutations_list = data.get("mutations")
     mutations_df = pandas.DataFrame(mutations_list)
-    mutations_df.set_index(['gene', 'mutation'], inplace=True)
+    mutations_df.set_index(["gene", "mutation"], inplace=True)
 
     # now left-join mutations to effects so we can get the a few extra columns
     # note that this can be many:1 since a single mutation can affect multiple drugs
-    effects_muts_df = effects_df.join(mutations_df[['ref', 'alt', 'gene_position']])
+    effects_muts_df = effects_df.join(mutations_df[["ref", "alt", "gene_position"]])
     effects_muts_df.reset_index(inplace=True)
-    effects_muts_df.set_index(['gene', 'gene_position'], inplace=True)
+    effects_muts_df.set_index(["gene", "gene_position"], inplace=True)
 
     # finally, retrieve the variants block and build the final DataFrame
     variants = data.get("variants")
     variants_df = pandas.DataFrame(variants)
-    variants_df.rename(columns={'gene_name': 'gene'}, inplace=True)
-    variants_df.set_index(['gene', 'gene_position'], inplace=True)
+    variants_df.rename(columns={"gene_name": "gene"}, inplace=True)
+    variants_df.set_index(["gene", "gene_position"], inplace=True)
 
     # now left-join to variants so we can get at the INFO field held
     #  in vcf_evidence as this contains COV
     # note this can be 1:many since a single mutation can be made up
     #  of multiple variants (e.g. multiple SNPs, minor alleles etc)
-    effects_muts_vars_df = effects_muts_df.join(variants_df[['vcf_evidence', 'vcf_idx']])
+    effects_muts_vars_df = effects_muts_df.join(
+        variants_df[["vcf_evidence", "vcf_idx"]]
+    )
     effects_muts_vars_df.reset_index(inplace=True)
-    effects_muts_vars_df.set_index(['drug', 'gene', 'mutation'], inplace=True)
+    effects_muts_vars_df.set_index(["drug", "gene", "mutation"], inplace=True)
 
     # use the pandas helper function defined elsewhere to extract COV from the vcf_evidence field
-    effects_muts_vars_df[['coverage_ref', 'coverage_alt']] = effects_muts_vars_df.apply(unpack_COV_from_info, axis=1)
-    effects_muts_vars_df.drop(columns=['vcf_evidence', 'vcf_idx'], inplace=True)
+    effects_muts_vars_df[["coverage_ref", "coverage_alt"]] = effects_muts_vars_df.apply(
+        unpack_COV_from_info, axis=1
+    )
+    effects_muts_vars_df.drop(columns=["vcf_evidence", "vcf_idx"], inplace=True)
 
     # ignore mutations that have no effect
-    effects_muts_vars_df = effects_muts_vars_df[effects_muts_vars_df.prediction!='S']
+    effects_muts_vars_df = effects_muts_vars_df[effects_muts_vars_df.prediction != "S"]
 
     # now we have a DataFrame with all the fields and so can construct the dict payload
     effects_muts_vars_df.reset_index(inplace=True)
-    effects_muts_vars_df.set_index('drug', inplace=True)
+    effects_muts_vars_df.set_index("drug", inplace=True)
     payload = construct_payload(effects_muts_vars_df)
-    amr["Resistance Prediction Detail"]=payload
+    amr["Resistance Prediction Detail"] = payload
 
     return amr
 
@@ -331,8 +441,17 @@ def create_summary(
     output["Mycobacterium Results"] = generate_mycobacterium_results(
         mapping_json, mykrobe_json
     )
-    output["Sequencing Quality"] = generate_sequencing_quality(mapping_json)
-    output["Resistance Prediction"] = generate_resistance_prediction(gnom_json)
+    # make this next block a list to cope with the future when other species are also mapped,
+    # and potentially also have resistance predictions returned
+    # FIXME for now we can hard code much of this since there will only ever be one and it will always
+    # be M. tuberculosis
+    output["Genomes"] = []
+    genome = {}
+    genome["Name"] = "M. tuberculosis"
+    genome["Sequencing Quality"] = generate_sequencing_quality(mapping_json)
+    genome["Resistance Prediction"] = generate_resistance_prediction(gnom_json)
+    output["Genomes"].append(genome)
+
     return output
 
 
