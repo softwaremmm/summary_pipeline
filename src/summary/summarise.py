@@ -473,7 +473,7 @@ def summarise() -> None:
         datefmt="%Y-%m-%dT%H:%M:%S%z",
     )
     parser = argparse.ArgumentParser(
-        description="Process pipeline output to create mega.json"
+        description="Process pipeline output to create a Summary JSON"
     )
     named_reports = parser.add_argument_group(title="Paths to individual reports")
     named_reports.add_argument(
