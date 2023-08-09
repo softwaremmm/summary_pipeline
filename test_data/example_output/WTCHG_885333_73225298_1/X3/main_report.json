@@ -1,0 +1,46 @@
+{
+    "Organism Identification": {
+        "Human Reads": null,
+        "Unclassified Reads": null,
+        "Non-Mycobacterium Bacteria Reads": 297,
+        "Mycobacterium Reads": 192847
+    },
+    "Mycobacterium Results": {
+        "Summary": [
+            {
+                "Name": "M. tuberculosis (Lineage 4.3.4.2)",
+                "Coverage": 100.0,
+                "Depth": 10.0
+            }
+        ],
+        "Species": [
+            {
+                "Name": "Mycobacterium tuberculosis H37Rv",
+                "Num Reads": 385151,
+                "Coverage": 97.2382,
+                "Mean Depth": 12.8581,
+                "Length": 4411532.0
+            }
+        ],
+        "Phylogenic Group": {
+            "Name": "Mycobacterium_tuberculosis_complex",
+            "Coverage": 98.212,
+            "Median Depth": 12
+        },
+        "Subspecies": {
+            "Name": "Mycobacterium_tuberculosis",
+            "Coverage": 96.158,
+            "Median Depth": 10
+        },
+        "Lineage": [
+            {
+                "Name": "lineage4.3.4.2",
+                "Coverage": 100,
+                "Median Depth": 10
+            }
+        ]
+    },
+    "Genomes": {
+        "Insufficient reads": "There were insufficient Mycobacterium tuberculosis reads to determine sequencing quality or predict antibiotic resistances."
+    }
+}
