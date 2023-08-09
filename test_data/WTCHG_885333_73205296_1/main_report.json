@@ -1,0 +1,153 @@
+{
+    "Organism Identification": {
+        "Human Reads": null,
+        "Unclassified Reads": null,
+        "Non-Mycobacterium Bacteria Reads": 652,
+        "Mycobacterium Reads": 1977558
+    },
+    "Mycobacterium Results": {
+        "Summary": [
+            {
+                "Name": "M. tuberculosis (Lineage 4.3.4.2)",
+                "Coverage": 100.0,
+                "Depth": 139.0
+            }
+        ],
+        "Species": [
+            {
+                "Name": "Mycobacterium tuberculosis H37Rv",
+                "Num Reads": 3953437,
+                "Coverage": 98.6837,
+                "Mean Depth": 132.506,
+                "Length": 4411532.0
+            }
+        ],
+        "Phylogenic Group": {
+            "Name": "Mycobacterium_tuberculosis_complex",
+            "Coverage": 99.462,
+            "Median Depth": 123
+        },
+        "Subspecies": {
+            "Name": "Mycobacterium_tuberculosis",
+            "Coverage": 97.738,
+            "Median Depth": 105
+        },
+        "Lineage": [
+            {
+                "Name": "lineage4.3.4.2",
+                "Coverage": 100,
+                "Median Depth": 139
+            }
+        ]
+    },
+    "Genomes": [
+        {
+            "Name": "M. tuberculosis",
+            "Sequencing Quality": {
+                "Mapped To": "AL123456.3",
+                "Num Reads": 3953437.0,
+                "Coverage": 98.6837,
+                "Mean Depth": 132.506,
+                "Mixed calls": 0
+            },
+            "Resistance Prediction": {
+                "Resistance Prediction Summary": {
+                    "First-line treatment": {
+                        "Isoniazid (INH)": "R",
+                        "Rifampicin (RIF)": "S",
+                        "Pyrazinamide (PZA)": "U",
+                        "Ethambutol (EMB)": "U"
+                    },
+                    "Second-line treatment": {
+                        "Moxifloxacin (MXF)": "S",
+                        "Levofloxacin (LEV)": "S",
+                        "Linezolid (LZD)": "S",
+                        "Bedaquiline (BDQ)": "-"
+                    },
+                    "Reserve treatment": {
+                        "Amikacin (AMI)": "S",
+                        "Kanamycin (KAN)": "S",
+                        "Streptomycin (STM)": "U",
+                        "Capreomycin (CAP)": "S",
+                        "Ethionamide (ETH)": "S",
+                        "Delamanid (DLM)": "S"
+                    }
+                },
+                "Resistance Prediction Detail": [
+                    {
+                        "Drug Name": "EMB",
+                        "Mutations": [
+                            {
+                                "Gene": "embB",
+                                "Mutation": "R24P:0.45",
+                                "Position": 24,
+                                "Ref": "cgc",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    11,
+                                    9
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
+                    },
+                    {
+                        "Drug Name": "INH",
+                        "Mutations": [
+                            {
+                                "Gene": "katG",
+                                "Mutation": "S315T",
+                                "Position": 315,
+                                "Ref": "agc",
+                                "Alt": "acc",
+                                "Coverage": [
+                                    0,
+                                    104
+                                ],
+                                "Prediction": "R",
+                                "Evidence": ""
+                            }
+                        ]
+                    },
+                    {
+                        "Drug Name": "PZA",
+                        "Mutations": [
+                            {
+                                "Gene": "pncA",
+                                "Mutation": "T100A",
+                                "Position": 100,
+                                "Ref": "acc",
+                                "Alt": "gcc",
+                                "Coverage": [
+                                    0,
+                                    96
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
+                    },
+                    {
+                        "Drug Name": "STM",
+                        "Mutations": [
+                            {
+                                "Gene": "gid",
+                                "Mutation": "L50R",
+                                "Position": 50,
+                                "Ref": "ctg",
+                                "Alt": "cgg",
+                                "Coverage": [
+                                    0,
+                                    85
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}
