@@ -1,6 +1,7 @@
 import pytest
 from pathlib import Path
 
+
 WTCHG_885333_73225298_1_1 = {
     "gatekeeper_report": "test_data/example_input/WTCHG_885333_73225298_1/1/gatekeeper_report.json",
     "competitivemapping_report": "test_data/example_input/WTCHG_885333_73225298_1/1/competitivemapping_report.json",
@@ -33,5 +34,67 @@ WTCHG_885333_73225298_1_52 = {
         WTCHG_885333_73225298_1_52,
     ]
 )
-def test_set(request) -> dict:
+def regression_test_set(request) -> dict:
     return request.param
+
+
+@pytest.fixture
+def all_reports_set_individually() -> list:
+    return [
+        "--gatekeeper",
+        "test_data/example_input/WTCHG_885333_73225298_1/2/gatekeeper_report.json",
+        "--mapping",
+        "test_data/example_input/WTCHG_885333_73225298_1/2/competitivemapping_report.json",
+        "--mykrobe",
+        "test_data/example_input/WTCHG_885333_73225298_1/2/mykrobe_report.json",
+        "--gnomonicus",
+        "test_data/example_input/WTCHG_885333_73225298_1/2/tb/gnomonicus.json",
+    ]
+
+
+@pytest.fixture
+def four_reports() -> list:
+    return [
+        "--reports",
+        "test_data/example_input/WTCHG_885333_73225298_1/2/gatekeeper_report.json",
+        "test_data/example_input/WTCHG_885333_73225298_1/2/competitivemapping_report.json",
+        "test_data/example_input/WTCHG_885333_73225298_1/2/mykrobe_report.json",
+        "test_data/example_input/WTCHG_885333_73225298_1/2/tb/gnomonicus.json",
+    ]
+
+
+@pytest.fixture
+def three_reports() -> list:
+    return [
+        "--reports",
+        "test_data/example_input/WTCHG_885333_73225298_1/2/gatekeeper_report.json",
+        "test_data/example_input/WTCHG_885333_73225298_1/2/competitivemapping_report.json",
+        "test_data/example_input/WTCHG_885333_73225298_1/2/mykrobe_report.json",
+    ]
+
+
+@pytest.fixture
+def one_report() -> list:
+    return [
+        "--reports",
+        "test_data/example_input/WTCHG_885333_73225298_1/2/gatekeeper_report.json",
+    ]
+
+
+@pytest.fixture
+def bad_report_combination() -> list:
+    return [
+        "--reports",
+        "test_data/example_input/WTCHG_885333_73225298_1/2/gatekeeper_report.json",
+        "test_data/example_input/WTCHG_885333_73225298_1/2/tb/gnomonicus.json",
+    ]
+
+
+@pytest.fixture
+def no_reports() -> list:
+    return ["--reports"]
+
+
+@pytest.fixture
+def bad_reports() -> list:
+    return ["--bad", "bad"]

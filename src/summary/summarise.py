@@ -1,11 +1,13 @@
 """Summay JSON output from GPAS"""
 
+
 import logging
 import json
-import argparse
 import os
 from pathlib import Path
 import pandas
+
+from summary.reports import ReportList, ReportType
 
 treatment_classes = {
     "First-line treatment": ["INH", "RIF", "PZA", "EMB"],
@@ -414,27 +416,21 @@ def read_json_file(path: Path) -> dict:
 
 
 def create_summary(
-    gatekeeper: Path,
-    mapping: Path,
-    mykrobe: Path,
-    gnomonicus: Path,
+    reports: ReportList,
 ) -> dict:
     """Summarises GPAS pipeline output.
 
     Args:
-        gatekeeper (Path): Path to Gatekeeper report.
-        mapping (Path): Path to Competitive Mapping report.
-        mykrobe (Path): Path to Mykrobe report.
-        gnomonicus (Path): Path to gnomonicus report.
+        reports (ReportList): A collection of reports to summarise.
 
     Returns:
         dict: Summary GPAS pipeline output.
     """
     output = {}
-    gatekeeper_json = read_json_file(gatekeeper)
-    mapping_json = read_json_file(mapping)
-    mykrobe_json = read_json_file(mykrobe)
-    gnom_json = read_json_file(gnomonicus)
+    gatekeeper_json = reports.retrieve(ReportType.GATEKEEPER).report_contents
+    mapping_json = reports.retrieve(ReportType.MAPPING).report_contents
+    mykrobe_json = reports.retrieve(ReportType.MYKROBE).report_contents
+    gnom_json = reports.retrieve(ReportType.GNOMONICUS).report_contents
     output["Organism Identification"] = generate_organism_identification(
         gatekeeper_json
     )
@@ -467,7 +463,8 @@ def write_summary(output: dict, location: Path = Path("Mega.json")) -> None:
 
 
 def summarise(cli_args) -> None:
-    summary = create_summary(
-        cli_args.gatekeeper, cli_args.mapping, cli_args.mykrobe, cli_args.gnomonicus
+    reports = ReportList(
+        [cli_args.gatekeeper, cli_args.mapping, cli_args.mykrobe, cli_args.gnomonicus]
     )
+    summary = create_summary(reports)
     write_summary(summary, cli_args.output)

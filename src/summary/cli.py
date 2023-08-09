@@ -1,17 +1,10 @@
 import argparse
-from enum import Enum
 import logging
 from pathlib import Path
 import sys
 
+from summary.reports import ReportType
 from summary.summarise import summarise
-
-
-class Report(Enum):
-    GATEKEEPER = "gatekeeper_report.json"
-    MAPPING = "competitivemapping_report.json"
-    MYKROBE = "mykrobe_report.json"
-    GNOMONICUS = "gnomonicus.json"
 
 
 class Arguments:
@@ -54,29 +47,29 @@ class Arguments:
 
         if args.reports:
             try:
-                self.gatekeeper = self._get_report(args.reports, Report.GATEKEEPER)
+                self.gatekeeper = self._get_report(args.reports, ReportType.GATEKEEPER)
             except ValueError as error:
                 logging.info(error)
             try:
-                self.mapping = self._get_report(args.reports, Report.MAPPING)
+                self.mapping = self._get_report(args.reports, ReportType.MAPPING)
             except ValueError as error:
                 logging.info(error)
             try:
-                self.mykrobe = self._get_report(args.reports, Report.MYKROBE)
+                self.mykrobe = self._get_report(args.reports, ReportType.MYKROBE)
             except ValueError as error:
                 logging.info(error)
             try:
-                self.gnomonicus = self._get_report(args.reports, Report.GNOMONICUS)
+                self.gnomonicus = self._get_report(args.reports, ReportType.GNOMONICUS)
             except ValueError as error:
                 logging.info(error)
         else:
-            self.gatekeeper = args.gatekeeper
-            self.mapping = args.mapping
-            self.mykrobe = args.mykrobe
-            self.gnomonicus = args.gnomonicus
-        self.output = args.output
+            self.gatekeeper = Path(args.gatekeeper)
+            self.mapping = Path(args.mapping)
+            self.mykrobe = Path(args.mykrobe)
+            self.gnomonicus = Path(args.gnomonicus)
+        self.output = Path(args.output)
 
-    def _get_report(self, reports_list: list, report_type: Report) -> Path:
+    def _get_report(self, reports_list: list, report_type: ReportType) -> Path:
         for report in reports_list:
             if Path(report).name == report_type.value:
                 return Path(report)
