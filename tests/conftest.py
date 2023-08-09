@@ -1,5 +1,8 @@
+import json
 import pytest
 from pathlib import Path
+
+from summary.reports import Report, ReportList, ReportType
 
 
 WTCHG_885333_73225298_1_1 = {
@@ -98,3 +101,107 @@ def no_reports() -> list:
 @pytest.fixture
 def bad_reports() -> list:
     return ["--bad", "bad"]
+
+
+@pytest.fixture
+def eg_gatekeeper_report() -> Path:
+    return Path(
+        "test_data/example_input/WTCHG_885333_73225298_1/52/gatekeeper_report.json"
+    )
+
+
+@pytest.fixture
+def eg_gatekeeper_report_contents(eg_gatekeeper_report) -> dict:
+    with open(eg_gatekeeper_report, "r") as file:
+        return json.load(file)
+
+
+@pytest.fixture
+def eg_competitivemapping_report() -> Path:
+    return Path(
+        "test_data/example_input/WTCHG_885333_73225298_1/52/competitivemapping_report.json"
+    )
+
+
+@pytest.fixture
+def eg_competitivemapping_report_contents(eg_competitivemapping_report) -> dict:
+    with open(eg_competitivemapping_report, "r") as file:
+        return json.load(file)
+
+
+@pytest.fixture
+def eg_mykrobe_report() -> Path:
+    return Path(
+        "test_data/example_input/WTCHG_885333_73225298_1/52/mykrobe_report.json"
+    )
+
+
+@pytest.fixture
+def eg_mykrobe_report_contents(eg_mykrobe_report) -> dict:
+    with open(eg_mykrobe_report, "r") as file:
+        return json.load(file)
+
+
+@pytest.fixture
+def eg_gnomonicus_report() -> Path:
+    return Path("test_data/example_input/WTCHG_885333_73225298_1/52/tb/gnomonicus.json")
+
+
+@pytest.fixture
+def eg_gnomonicus_report_contents(eg_gnomonicus_report) -> dict:
+    with open(eg_gnomonicus_report, "r") as file:
+        return json.load(file)
+
+
+@pytest.fixture
+def report_set_one(
+    eg_gatekeeper_report,
+) -> ReportList:
+    return ReportList(
+        [
+            Report(ReportType.GATEKEEPER, eg_gatekeeper_report),
+        ]
+    )
+
+
+@pytest.fixture
+def report_set_three(
+    eg_gatekeeper_report,
+    eg_competitivemapping_report,
+    eg_mykrobe_report,
+) -> ReportList:
+    return ReportList(
+        [
+            Report(ReportType.GATEKEEPER, eg_gatekeeper_report),
+            Report(ReportType.MAPPING, eg_competitivemapping_report),
+            Report(ReportType.MYKROBE, eg_mykrobe_report),
+        ]
+    )
+
+
+@pytest.fixture
+def report_set_four(
+    eg_gatekeeper_report,
+    eg_competitivemapping_report,
+    eg_mykrobe_report,
+    eg_gnomonicus_report,
+) -> ReportList:
+    return ReportList(
+        [
+            Report(ReportType.GATEKEEPER, eg_gatekeeper_report),
+            Report(ReportType.MAPPING, eg_competitivemapping_report),
+            Report(ReportType.MYKROBE, eg_mykrobe_report),
+            Report(ReportType.GNOMONICUS, eg_gnomonicus_report),
+        ]
+    )
+
+
+@pytest.fixture
+def report_set_bad(
+    eg_gnomonicus_report,
+) -> ReportList:
+    return ReportList(
+        [
+            Report(ReportType.GNOMONICUS, eg_gnomonicus_report),
+        ]
+    )
