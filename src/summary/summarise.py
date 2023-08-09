@@ -466,44 +466,8 @@ def write_summary(output: dict, location: Path = Path("Mega.json")) -> None:
         file.write(json.dumps(output, indent=4))
 
 
-def summarise() -> None:
-    """CLI entry point."""
-    logging.basicConfig(
-        format="%(asctime)s — %(name)s — %(levelname)s — %(funcName)s:%(lineno)d — %(message)s",
-        datefmt="%Y-%m-%dT%H:%M:%S%z",
-    )
-    parser = argparse.ArgumentParser(
-        description="Process pipeline output to create a Summary JSON"
-    )
-    named_reports = parser.add_argument_group(title="Paths to individual reports")
-    named_reports.add_argument(
-        "--gatekeeper", dest="gatekeeper", help="Path to gatekeeper_report.json file"
-    )
-    named_reports.add_argument(
-        "--mapping", dest="mapping", help="Path to competitivemapping_report.json file"
-    )
-    named_reports.add_argument(
-        "--mykrobe", dest="mykrobe", help="Path to mykrobe_report.json file"
-    )
-    named_reports.add_argument(
-        "--gnomonicus", dest="gnomonicus", help="Path to gnomonicus.json file"
-    )
-    report_list = parser.add_argument_group(title="Path to report list")
-    report_list.add_argument(
-        "--reports",
-        nargs="+",
-        dest="reports",
-        help="A list of report files, the contents of which will be inferred by filename",
-    )
-    outputs = parser.add_argument_group(title="Output parameters")
-    outputs.add_argument(
-        "--output_path",
-        default="Mega.json",
-        dest="output",
-        help="Path including name for output .json file",
-    )
-    args = parser.parse_args()
+def summarise(cli_args) -> None:
     summary = create_summary(
-        args.gatekeeper, args.mapping, args.mykrobe, args.gnomonicus
+        cli_args.gatekeeper, cli_args.mapping, cli_args.mykrobe, cli_args.gnomonicus
     )
-    write_summary(summary, args.output)
+    write_summary(summary, cli_args.output)
