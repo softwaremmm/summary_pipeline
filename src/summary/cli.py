@@ -1,3 +1,4 @@
+"""Command Line Interface"""
 import argparse
 import logging
 from pathlib import Path
@@ -7,8 +8,15 @@ from summary.reports import ReportType
 from summary.summarise import summarise
 
 
-class Arguments:
+class Arguments:  # pylint: disable=too-few-public-methods
+    """Class for holding command line arguments."""
+
     def __init__(self, argv: list):
+        """Initialise a command line argument object.
+
+        Args:
+            argv (list): A list of command line arguments, usually `sys.argv[1:]`.
+        """
         parser = argparse.ArgumentParser(
             description="Process pipeline output to create a Summary JSON"
         )
@@ -70,6 +78,18 @@ class Arguments:
         self.output = Path(args.output)
 
     def _get_report(self, reports_list: list, report_type: ReportType) -> Path:
+        """Get the path for a given report (e.g. from Gnomonicus).
+
+        Args:
+            reports_list (list): A list of Report objects.
+            report_type (ReportType): The type of Report wanted.
+
+        Raises:
+            ValueError: Error raised when the type of report requested is not present.
+
+        Returns:
+            Path: Path of report.
+        """
         for report in reports_list:
             if Path(report).name == report_type.value:
                 return Path(report)
