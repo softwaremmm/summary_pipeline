@@ -29,12 +29,26 @@ WTCHG_885333_73225298_1_52 = {
     "expected_output": "test_data/example_output/WTCHG_885333_73225298_1/52/main_report.json",
 }
 
+WTCHG_885333_73225298_1_X1 = {
+    "gatekeeper_report": "test_data/example_input/WTCHG_885333_73225298_1/X1/gatekeeper_report.json",
+    "expected_output": "test_data/example_output/WTCHG_885333_73225298_1/X1/main_report.json",
+}
+
+WTCHG_885333_73225298_1_X3 = {
+    "gatekeeper_report": "test_data/example_input/WTCHG_885333_73225298_1/X3/gatekeeper_report.json",
+    "competitivemapping_report": "test_data/example_input/WTCHG_885333_73225298_1/X3/competitivemapping_report.json",
+    "mykrobe_report": "test_data/example_input/WTCHG_885333_73225298_1/X3/mykrobe_report.json",
+    "expected_output": "test_data/example_output/WTCHG_885333_73225298_1/X3/main_report.json",
+}
+
 
 @pytest.fixture(
     params=[
         WTCHG_885333_73225298_1_1,
         WTCHG_885333_73225298_1_2,
         WTCHG_885333_73225298_1_52,
+        WTCHG_885333_73225298_1_X1,
+        WTCHG_885333_73225298_1_X3,
     ]
 )
 def regression_test_set(request) -> dict:

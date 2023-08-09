@@ -451,8 +451,7 @@ def create_summary(
         )
     else:
         output["Mycobacterium Results"] = {
-            "Insufficient reads",
-            "There were insufficient mycobacterial reads to carry out competitive mapping or lineage calling.",
+            "Insufficient reads": "There were insufficient mycobacterial reads to carry out competitive mapping or lineage calling.",
         }
     # make this next block a list to cope with the future when other species are also mapped,
     # and potentially also have resistance predictions returned
@@ -468,8 +467,7 @@ def create_summary(
         output["Genomes"].append(genome)
     else:
         output["Genomes"] = {
-            "Insufficient reads",
-            "There were insufficient Mycobacterium tuberculosis reads to determine sequencing quality or predict antibiotic resistances.",
+            "Insufficient reads": "There were insufficient Mycobacterium tuberculosis reads to determine sequencing quality or predict antibiotic resistances.",
         }
 
     return output
