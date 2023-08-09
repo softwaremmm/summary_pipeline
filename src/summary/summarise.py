@@ -394,27 +394,6 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
     return amr
 
 
-def read_json_file(path: Path) -> dict:
-    """Utility function to load JSON files.
-
-    Args:
-        path (Path): Path to JSON file.
-
-    Raises:
-        FileNotFoundError: JSON file does not exist.
-
-    Returns:
-        dict: JSON file represented as a dictionary.
-    """
-    if not os.path.isfile(path):
-        raise FileNotFoundError(
-            "File " + str(path) + " does not exist. Data could not be loaded"
-        )
-    with open(path, "r") as file:
-        data = json.load(file)
-    return data
-
-
 def create_summary(
     reports: ReportList,
 ) -> dict:
@@ -449,10 +428,8 @@ def create_summary(
         reports.contains(ReportType.MYKROBE),
         reports.contains(ReportType.GNOMONICUS),
     ] == [True, True, True, True]:
-        gatekeeper_json = reports.retrieve(ReportType.GATEKEEPER).report_contents
-        mapping_json = reports.retrieve(ReportType.MAPPING).report_contents
-        mykrobe_json = reports.retrieve(ReportType.MYKROBE).report_contents
-        gnom_json = reports.retrieve(ReportType.GNOMONICUS).report_contents
+        # Pipeline ran to completion
+        pass
     else:
         raise ValueError(
             "Summary cannot be generated from this combination of reports: "
@@ -460,12 +437,15 @@ def create_summary(
         )
 
     if reports.contains(ReportType.GATEKEEPER):
+        gatekeeper_json = reports.retrieve(ReportType.GATEKEEPER).report_contents
         output["Organism Identification"] = generate_organism_identification(
             gatekeeper_json
         )
     else:
         output = "Pipeline failed to produce a summary (summary_pipeline could not find gatekeeper report)."
     if reports.contains(ReportType.MAPPING) and reports.contains(ReportType.MYKROBE):
+        mapping_json = reports.retrieve(ReportType.MAPPING).report_contents
+        mykrobe_json = reports.retrieve(ReportType.MYKROBE).report_contents
         output["Mycobacterium Results"] = generate_mycobacterium_results(
             mapping_json, mykrobe_json
         )
@@ -479,6 +459,7 @@ def create_summary(
     # FIXME for now we can hard code much of this since there will only ever be one and it will always
     # be M. tuberculosis
     if reports.contains(ReportType.MAPPING) and reports.contains(ReportType.GNOMONICUS):
+        gnom_json = reports.retrieve(ReportType.GNOMONICUS).report_contents
         output["Genomes"] = []
         genome = {}
         genome["Name"] = "M. tuberculosis"
