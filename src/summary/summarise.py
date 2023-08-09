@@ -427,26 +427,69 @@ def create_summary(
         dict: Summary GPAS pipeline output.
     """
     output = {}
-    gatekeeper_json = reports.retrieve(ReportType.GATEKEEPER).report_contents
-    mapping_json = reports.retrieve(ReportType.MAPPING).report_contents
-    mykrobe_json = reports.retrieve(ReportType.MYKROBE).report_contents
-    gnom_json = reports.retrieve(ReportType.GNOMONICUS).report_contents
-    output["Organism Identification"] = generate_organism_identification(
-        gatekeeper_json
-    )
-    output["Mycobacterium Results"] = generate_mycobacterium_results(
-        mapping_json, mykrobe_json
-    )
+    if [
+        reports.contains(ReportType.GATEKEEPER),
+        reports.contains(ReportType.MAPPING),
+        reports.contains(ReportType.MYKROBE),
+        reports.contains(ReportType.GNOMONICUS),
+    ] == [True, False, False, False]:
+        # Not enough mycobacterial reads
+        pass
+    elif [
+        reports.contains(ReportType.GATEKEEPER),
+        reports.contains(ReportType.MAPPING),
+        reports.contains(ReportType.MYKROBE),
+        reports.contains(ReportType.GNOMONICUS),
+    ] == [True, True, True, False]:
+        # Not enough TB reads
+        pass
+    elif [
+        reports.contains(ReportType.GATEKEEPER),
+        reports.contains(ReportType.MAPPING),
+        reports.contains(ReportType.MYKROBE),
+        reports.contains(ReportType.GNOMONICUS),
+    ] == [True, True, True, True]:
+        gatekeeper_json = reports.retrieve(ReportType.GATEKEEPER).report_contents
+        mapping_json = reports.retrieve(ReportType.MAPPING).report_contents
+        mykrobe_json = reports.retrieve(ReportType.MYKROBE).report_contents
+        gnom_json = reports.retrieve(ReportType.GNOMONICUS).report_contents
+    else:
+        raise ValueError(
+            "Summary cannot be generated from this combination of reports: "
+            + str(reports)
+        )
+
+    if reports.contains(ReportType.GATEKEEPER):
+        output["Organism Identification"] = generate_organism_identification(
+            gatekeeper_json
+        )
+    else:
+        output = "Pipeline failed to produce a summary (summary_pipeline could not find gatekeeper report)."
+    if reports.contains(ReportType.MAPPING) and reports.contains(ReportType.MYKROBE):
+        output["Mycobacterium Results"] = generate_mycobacterium_results(
+            mapping_json, mykrobe_json
+        )
+    else:
+        output["Mycobacterium Results"] = {
+            "Insufficient reads",
+            "There were insufficient mycobacterial reads to carry out competitive mapping or lineage calling.",
+        }
     # make this next block a list to cope with the future when other species are also mapped,
     # and potentially also have resistance predictions returned
     # FIXME for now we can hard code much of this since there will only ever be one and it will always
     # be M. tuberculosis
-    output["Genomes"] = []
-    genome = {}
-    genome["Name"] = "M. tuberculosis"
-    genome["Sequencing Quality"] = generate_sequencing_quality(mapping_json)
-    genome["Resistance Prediction"] = generate_resistance_prediction(gnom_json)
-    output["Genomes"].append(genome)
+    if reports.contains(ReportType.MAPPING) and reports.contains(ReportType.GNOMONICUS):
+        output["Genomes"] = []
+        genome = {}
+        genome["Name"] = "M. tuberculosis"
+        genome["Sequencing Quality"] = generate_sequencing_quality(mapping_json)
+        genome["Resistance Prediction"] = generate_resistance_prediction(gnom_json)
+        output["Genomes"].append(genome)
+    else:
+        output["Genomes"] = {
+            "Insufficient reads",
+            "There were insufficient Mycobacterium tuberculosis reads to determine sequencing quality or predict antibiotic resistances.",
+        }
 
     return output
 

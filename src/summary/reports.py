@@ -19,10 +19,22 @@ class Report:
 
 
 class ReportList(list):
-    def retrieve(self, report_type: ReportType) -> Report | None:
+    def retrieve(self, report_type: ReportType) -> Report:
         for report in self:
             if report.report_type == report_type:
                 return report
+        raise ValueError(str(report_type) + " not in collection.")
 
-    def check(self) -> bool:
-        return True
+    def contains(self, report_type: ReportType) -> bool:
+        found = False
+        for report in self:
+            if report.report_type == report_type:
+                found = True
+
+        return found
+
+    def __str__(self) -> str:
+        report_strings = []
+        for report in self:
+            report_strings.append(report.report_path)
+        return str(report_strings)
