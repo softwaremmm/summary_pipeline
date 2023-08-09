@@ -476,9 +476,18 @@ def write_summary(output: dict, location: Path = Path("Mega.json")) -> None:
 def summarise(cli_args) -> None:
     reports = {}
     reports["gatekeeper"] = cli_args.gatekeeper
-    reports["mapping"] = cli_args.mapping
-    reports["mykrobe"] = cli_args.mykrobe
-    reports["gnomonicus"] = cli_args.gnomonicus
+    try:
+        reports["mapping"] = cli_args.mapping
+    except AttributeError as error:
+        logging.info(error)
+    try:
+        reports["mykrobe"] = cli_args.mykrobe
+    except AttributeError as error:
+        logging.info(error)
+    try:
+        reports["gnomonicus"] = cli_args.gnomonicus
+    except AttributeError as error:
+        logging.info(error)
 
     summary = create_summary(reports)
     write_summary(summary, cli_args.output)

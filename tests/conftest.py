@@ -3,50 +3,31 @@ import pytest
 from pathlib import Path
 
 
-WTCHG_885333_73225298_1_1 = {
-    "gatekeeper_report": "test_data/example_input/WTCHG_885333_73225298_1/1/gatekeeper_report.json",
-    "competitivemapping_report": "test_data/example_input/WTCHG_885333_73225298_1/1/competitivemapping_report.json",
-    "mykrobe_report": "test_data/example_input/WTCHG_885333_73225298_1/1/mykrobe_report.json",
-    "gnomonicus": "test_data/example_input/WTCHG_885333_73225298_1/1/tb/gnomonicus.json",
-    "expected_output": "test_data/example_output/WTCHG_885333_73225298_1/1/Mega_1.json",
+SRR2097047 = {
+    "gatekeeper_report": "test_data/SRR2097047/gatekeeper_report.json",
+    "expected_output": "test_data/SRR2097047/main_report.json",
 }
 
-WTCHG_885333_73225298_1_2 = {
-    "gatekeeper_report": "test_data/example_input/WTCHG_885333_73225298_1/2/gatekeeper_report.json",
-    "competitivemapping_report": "test_data/example_input/WTCHG_885333_73225298_1/2/competitivemapping_report.json",
-    "mykrobe_report": "test_data/example_input/WTCHG_885333_73225298_1/2/mykrobe_report.json",
-    "gnomonicus": "test_data/example_input/WTCHG_885333_73225298_1/2/tb/gnomonicus.json",
-    "expected_output": "test_data/example_output/WTCHG_885333_73225298_1/2/Mega_2.json",
+abscessus = {
+    "gatekeeper_report": "test_data/WTCHG_885333_73205296_1/gatekeeper_report.json",
+    "competitivemapping_report": "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json",
+    "mykrobe_report": "test_data/WTCHG_885333_73205296_1/mykrobe_report.json",
+    "expected_output": "test_data/WTCHG_885333_73205296_1/Mega_2.json",
 }
 
-WTCHG_885333_73225298_1_52 = {
-    "gatekeeper_report": "test_data/example_input/WTCHG_885333_73225298_1/52/gatekeeper_report.json",
-    "competitivemapping_report": "test_data/example_input/WTCHG_885333_73225298_1/52/competitivemapping_report.json",
-    "mykrobe_report": "test_data/example_input/WTCHG_885333_73225298_1/52/mykrobe_report.json",
-    "gnomonicus": "test_data/example_input/WTCHG_885333_73225298_1/52/tb/gnomonicus.json",
-    "expected_output": "test_data/example_output/WTCHG_885333_73225298_1/52/main_report.json",
-}
-
-WTCHG_885333_73225298_1_X1 = {
-    "gatekeeper_report": "test_data/example_input/WTCHG_885333_73225298_1/X1/gatekeeper_report.json",
-    "expected_output": "test_data/example_output/WTCHG_885333_73225298_1/X1/main_report.json",
-}
-
-WTCHG_885333_73225298_1_X3 = {
-    "gatekeeper_report": "test_data/example_input/WTCHG_885333_73225298_1/X3/gatekeeper_report.json",
-    "competitivemapping_report": "test_data/example_input/WTCHG_885333_73225298_1/X3/competitivemapping_report.json",
-    "mykrobe_report": "test_data/example_input/WTCHG_885333_73225298_1/X3/mykrobe_report.json",
-    "expected_output": "test_data/example_output/WTCHG_885333_73225298_1/X3/main_report.json",
+WTCHG_885333_73205296_1 = {
+    "gatekeeper_report": "test_data/WTCHG_885333_73205296_1/gatekeeper_report.json",
+    "competitivemapping_report": "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json",
+    "mykrobe_report": "test_data/WTCHG_885333_73205296_1/mykrobe_report.json",
+    "gnomonicus": "test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json",
+    "expected_output": "test_data/WTCHG_885333_73205296_1/main_report.json",
 }
 
 
 @pytest.fixture(
     params=[
-        WTCHG_885333_73225298_1_1,
-        WTCHG_885333_73225298_1_2,
-        WTCHG_885333_73225298_1_52,
-        WTCHG_885333_73225298_1_X1,
-        WTCHG_885333_73225298_1_X3,
+        SRR2097047,
+        WTCHG_885333_73205296_1,
     ]
 )
 def regression_test_set(request) -> dict:
@@ -57,13 +38,13 @@ def regression_test_set(request) -> dict:
 def all_reports_set_individually() -> list:
     return [
         "--gatekeeper",
-        "test_data/example_input/WTCHG_885333_73225298_1/2/gatekeeper_report.json",
+        "test_data/WTCHG_885333_73205296_1/gatekeeper_report.json",
         "--mapping",
-        "test_data/example_input/WTCHG_885333_73225298_1/2/competitivemapping_report.json",
+        "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json",
         "--mykrobe",
-        "test_data/example_input/WTCHG_885333_73225298_1/2/mykrobe_report.json",
+        "test_data/WTCHG_885333_73205296_1/mykrobe_report.json",
         "--gnomonicus",
-        "test_data/example_input/WTCHG_885333_73225298_1/2/tb/gnomonicus.json",
+        "test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json",
     ]
 
 
@@ -71,10 +52,10 @@ def all_reports_set_individually() -> list:
 def four_reports() -> list:
     return [
         "--reports",
-        "test_data/example_input/WTCHG_885333_73225298_1/2/gatekeeper_report.json",
-        "test_data/example_input/WTCHG_885333_73225298_1/2/competitivemapping_report.json",
-        "test_data/example_input/WTCHG_885333_73225298_1/2/mykrobe_report.json",
-        "test_data/example_input/WTCHG_885333_73225298_1/2/tb/gnomonicus.json",
+        "test_data/WTCHG_885333_73205296_1/gatekeeper_report.json",
+        "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json",
+        "test_data/WTCHG_885333_73205296_1/mykrobe_report.json",
+        "test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json",
     ]
 
 
@@ -82,9 +63,9 @@ def four_reports() -> list:
 def three_reports() -> list:
     return [
         "--reports",
-        "test_data/example_input/WTCHG_885333_73225298_1/2/gatekeeper_report.json",
-        "test_data/example_input/WTCHG_885333_73225298_1/2/competitivemapping_report.json",
-        "test_data/example_input/WTCHG_885333_73225298_1/2/mykrobe_report.json",
+        "test_data/WTCHG_885333_73205296_1/gatekeeper_report.json",
+        "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json",
+        "test_data/WTCHG_885333_73205296_1/mykrobe_report.json",
     ]
 
 
@@ -92,7 +73,7 @@ def three_reports() -> list:
 def one_report() -> list:
     return [
         "--reports",
-        "test_data/example_input/WTCHG_885333_73225298_1/2/gatekeeper_report.json",
+        "test_data/WTCHG_885333_73205296_1/gatekeeper_report.json",
     ]
 
 
@@ -100,8 +81,8 @@ def one_report() -> list:
 def bad_report_combination() -> list:
     return [
         "--reports",
-        "test_data/example_input/WTCHG_885333_73225298_1/2/gatekeeper_report.json",
-        "test_data/example_input/WTCHG_885333_73225298_1/2/tb/gnomonicus.json",
+        "test_data/WTCHG_885333_73205296_1/gatekeeper_report.json",
+        "test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json",
     ]
 
 
@@ -117,9 +98,7 @@ def bad_reports() -> list:
 
 @pytest.fixture
 def eg_gatekeeper_report() -> Path:
-    return Path(
-        "test_data/example_input/WTCHG_885333_73225298_1/52/gatekeeper_report.json"
-    )
+    return Path("test_data/WTCHG_885333_73205296_1/52/gatekeeper_report.json")
 
 
 @pytest.fixture
@@ -130,9 +109,7 @@ def eg_gatekeeper_report_contents(eg_gatekeeper_report) -> dict:
 
 @pytest.fixture
 def eg_competitivemapping_report() -> Path:
-    return Path(
-        "test_data/example_input/WTCHG_885333_73225298_1/52/competitivemapping_report.json"
-    )
+    return Path("test_data/WTCHG_885333_73205296_1/52/competitivemapping_report.json")
 
 
 @pytest.fixture
@@ -143,9 +120,7 @@ def eg_competitivemapping_report_contents(eg_competitivemapping_report) -> dict:
 
 @pytest.fixture
 def eg_mykrobe_report() -> Path:
-    return Path(
-        "test_data/example_input/WTCHG_885333_73225298_1/52/mykrobe_report.json"
-    )
+    return Path("test_data/WTCHG_885333_73205296_1/52/mykrobe_report.json")
 
 
 @pytest.fixture
@@ -156,7 +131,7 @@ def eg_mykrobe_report_contents(eg_mykrobe_report) -> dict:
 
 @pytest.fixture
 def eg_gnomonicus_report() -> Path:
-    return Path("test_data/example_input/WTCHG_885333_73225298_1/52/tb/gnomonicus.json")
+    return Path("test_data/WTCHG_885333_73205296_1/52/tb/gnomonicus.json")
 
 
 @pytest.fixture
