@@ -9,10 +9,10 @@ SRR2097047 = {
 }
 
 abscessus = {
-    "gatekeeper_report": "test_data/WTCHG_885333_73205296_1/gatekeeper_report.json",
-    "competitivemapping_report": "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json",
-    "mykrobe_report": "test_data/WTCHG_885333_73205296_1/mykrobe_report.json",
-    "expected_output": "test_data/WTCHG_885333_73205296_1/Mega_2.json",
+    "gatekeeper_report": "test_data/abscessus/gatekeeper_report.json",
+    "competitivemapping_report": "test_data/abscessus/competitivemapping_report.json",
+    "mykrobe_report": "test_data/abscessus/mykrobe_report.json",
+    "expected_output": "test_data/abscessus/main_report.json",
 }
 
 WTCHG_885333_73205296_1 = {
@@ -27,6 +27,7 @@ WTCHG_885333_73205296_1 = {
 @pytest.fixture(
     params=[
         SRR2097047,
+        abscessus,
         WTCHG_885333_73205296_1,
     ]
 )

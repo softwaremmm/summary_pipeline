@@ -142,39 +142,41 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
     myco["Subspecies"]["Median Depth"] = subspecies[myco["Subspecies"]["Name"]].get(
         "median_depth"
     )
-    lineages = mykrobe_data.get("lineage")
-    for lineage_name in lineages.get("lineage"):
-        calls = lineages.get("calls")
-        specific_line = calls.get(lineage_name)
-        # TODO: Needs review. Trying to be generic,
-        # should this come from the first item in the list???
-        # TODO: This section also needs better error handling
-        top_level = list(specific_line.keys())[0]
-        variant_level = specific_line.get(top_level)
-        variant_name = list(variant_level.keys())[0]
-        info_level = variant_level.get(variant_name)
-        # TODO: Chained getfields would be nicer...Or better generic handling of this
-        info = info_level.get("info")
-        cov = info.get("coverage")
-        ref = cov.get("reference")
-        coverage = ref.get("percent_coverage")
-        mediandepth = ref.get("median_depth")
-        new_line = {
-            "Name": lineage_name,
-            "Coverage": coverage,
-            "Median Depth": mediandepth,
-        }
-        myco["Lineage"].append(new_line)
+    if "lineage" in mykrobe_data:
+        lineages = mykrobe_data.get("lineage")
+        for lineage_name in lineages.get("lineage"):
+            calls = lineages.get("calls")
+            specific_line = calls.get(lineage_name)
+            # TODO: Needs review. Trying to be generic,
+            # should this come from the first item in the list???
+            # TODO: This section also needs better error handling
+            top_level = list(specific_line.keys())[0]
+            variant_level = specific_line.get(top_level)
+            variant_name = list(variant_level.keys())[0]
+            info_level = variant_level.get(variant_name)
+            # TODO: Chained getfields would be nicer...Or better generic handling of this
+            info = info_level.get("info")
+            cov = info.get("coverage")
+            ref = cov.get("reference")
+            coverage = ref.get("percent_coverage")
+            mediandepth = ref.get("median_depth")
+            new_line = {
+                "Name": lineage_name,
+                "Coverage": coverage,
+                "Median Depth": mediandepth,
+            }
+            myco["Lineage"].append(new_line)
 
-        # if Mykrobe has returned one or more lineages we must be dealing with MTB
-        lineage_number = lineage_name.split("lineage")[1]
-        new_summary = {
-            "Name": "M. tuberculosis (Lineage " + lineage_number + ")",
-            "Coverage": float(coverage),
-            "Depth": float(mediandepth),
-        }
-        myco["Summary"].append(new_summary)
-
+            # if Mykrobe has returned one or more lineages we must be dealing with MTB
+            lineage_number = lineage_name.split("lineage")[1]
+            new_summary = {
+                "Name": "M. tuberculosis (Lineage " + lineage_number + ")",
+                "Coverage": float(coverage),
+                "Depth": float(mediandepth),
+            }
+            myco["Summary"].append(new_summary)
+    else:
+        logging.info("No lineage information in mykrobe report.")
     # now iterate through the species detected by competitive mapping, ignoring MTB
     # on the assumption that is has been picked up by Mykrobe
     for detected_species in myco["Species"]:
