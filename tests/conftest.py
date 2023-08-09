@@ -2,8 +2,6 @@ import json
 import pytest
 from pathlib import Path
 
-from summary.reports import Report, ReportList, ReportType
-
 
 WTCHG_885333_73225298_1_1 = {
     "gatekeeper_report": "test_data/example_input/WTCHG_885333_73225298_1/1/gatekeeper_report.json",
@@ -165,57 +163,3 @@ def eg_gnomonicus_report() -> Path:
 def eg_gnomonicus_report_contents(eg_gnomonicus_report) -> dict:
     with open(eg_gnomonicus_report, "r") as file:
         return json.load(file)
-
-
-@pytest.fixture
-def report_set_one(
-    eg_gatekeeper_report,
-) -> ReportList:
-    return ReportList(
-        [
-            Report(ReportType.GATEKEEPER, eg_gatekeeper_report),
-        ]
-    )
-
-
-@pytest.fixture
-def report_set_three(
-    eg_gatekeeper_report,
-    eg_competitivemapping_report,
-    eg_mykrobe_report,
-) -> ReportList:
-    return ReportList(
-        [
-            Report(ReportType.GATEKEEPER, eg_gatekeeper_report),
-            Report(ReportType.MAPPING, eg_competitivemapping_report),
-            Report(ReportType.MYKROBE, eg_mykrobe_report),
-        ]
-    )
-
-
-@pytest.fixture
-def report_set_four(
-    eg_gatekeeper_report,
-    eg_competitivemapping_report,
-    eg_mykrobe_report,
-    eg_gnomonicus_report,
-) -> ReportList:
-    return ReportList(
-        [
-            Report(ReportType.GATEKEEPER, eg_gatekeeper_report),
-            Report(ReportType.MAPPING, eg_competitivemapping_report),
-            Report(ReportType.MYKROBE, eg_mykrobe_report),
-            Report(ReportType.GNOMONICUS, eg_gnomonicus_report),
-        ]
-    )
-
-
-@pytest.fixture
-def report_set_bad(
-    eg_gnomonicus_report,
-) -> ReportList:
-    return ReportList(
-        [
-            Report(ReportType.GNOMONICUS, eg_gnomonicus_report),
-        ]
-    )

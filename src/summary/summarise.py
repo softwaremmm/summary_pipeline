@@ -7,8 +7,6 @@ import os
 from pathlib import Path
 import pandas
 
-from summary.reports import ReportList, ReportType
-
 treatment_classes = {
     "First-line treatment": ["INH", "RIF", "PZA", "EMB"],
     "Second-line treatment": ["MXF", "LEV", "LZD", "BDQ"],
@@ -395,57 +393,27 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
 
 
 def create_summary(
-    reports: ReportList,
+    reports: dict,
 ) -> dict:
     """Summarises GPAS pipeline output.
 
     Args:
-        reports (ReportList): A collection of reports to summarise.
+        reports (dict): A collection of reports to summarise.
 
     Returns:
         dict: Summary GPAS pipeline output.
     """
     output = {}
-    if [
-        reports.contains(ReportType.GATEKEEPER),
-        reports.contains(ReportType.MAPPING),
-        reports.contains(ReportType.MYKROBE),
-        reports.contains(ReportType.GNOMONICUS),
-    ] == [True, False, False, False]:
-        # Not enough mycobacterial reads
-        pass
-    elif [
-        reports.contains(ReportType.GATEKEEPER),
-        reports.contains(ReportType.MAPPING),
-        reports.contains(ReportType.MYKROBE),
-        reports.contains(ReportType.GNOMONICUS),
-    ] == [True, True, True, False]:
-        # Not enough TB reads
-        pass
-    elif [
-        reports.contains(ReportType.GATEKEEPER),
-        reports.contains(ReportType.MAPPING),
-        reports.contains(ReportType.MYKROBE),
-        reports.contains(ReportType.GNOMONICUS),
-    ] == [True, True, True, True]:
-        # Pipeline ran to completion
-        pass
-    else:
-        raise ValueError(
-            "Summary cannot be generated from this combination of reports: "
-            + str(reports)
-        )
-
-    if reports.contains(ReportType.GATEKEEPER):
-        gatekeeper_json = reports.retrieve(ReportType.GATEKEEPER).report_contents
+    if "gatekeeper" in reports:
+        gatekeeper_json = read_json_file(reports["gatekeeper"])
         output["Organism Identification"] = generate_organism_identification(
             gatekeeper_json
         )
     else:
         output = "Pipeline failed to produce a summary (summary_pipeline could not find gatekeeper report)."
-    if reports.contains(ReportType.MAPPING) and reports.contains(ReportType.MYKROBE):
-        mapping_json = reports.retrieve(ReportType.MAPPING).report_contents
-        mykrobe_json = reports.retrieve(ReportType.MYKROBE).report_contents
+    if "mapping" in reports and "mykrobe" in reports:
+        mapping_json = read_json_file(reports["mapping"])
+        mykrobe_json = read_json_file(reports["mykrobe"])
         output["Mycobacterium Results"] = generate_mycobacterium_results(
             mapping_json, mykrobe_json
         )
@@ -457,8 +425,8 @@ def create_summary(
     # and potentially also have resistance predictions returned
     # FIXME for now we can hard code much of this since there will only ever be one and it will always
     # be M. tuberculosis
-    if reports.contains(ReportType.MAPPING) and reports.contains(ReportType.GNOMONICUS):
-        gnom_json = reports.retrieve(ReportType.GNOMONICUS).report_contents
+    if "mapping" in reports and "gnomonicus" in reports:
+        gnom_json = read_json_file(reports["gnomonicus"])
         output["Genomes"] = []
         genome = {}
         genome["Name"] = "M. tuberculosis"
@@ -473,6 +441,27 @@ def create_summary(
     return output
 
 
+def read_json_file(path: Path) -> dict:
+    """Utility function to load JSON files.
+
+    Args:
+        path (Path): Path to JSON file.
+
+    Raises:
+        FileNotFoundError: JSON file does not exist.
+
+    Returns:
+        dict: JSON file represented as a dictionary.
+    """
+    if not os.path.isfile(path):
+        raise FileNotFoundError(
+            "File " + str(path) + " does not exist. Data could not be loaded"
+        )
+    with open(path, "r") as file:
+        data = json.load(file)
+    return data
+
+
 def write_summary(output: dict, location: Path = Path("Mega.json")) -> None:
     """Write summary to JSON file.
 
@@ -485,8 +474,11 @@ def write_summary(output: dict, location: Path = Path("Mega.json")) -> None:
 
 
 def summarise(cli_args) -> None:
-    reports = ReportList(
-        [cli_args.gatekeeper, cli_args.mapping, cli_args.mykrobe, cli_args.gnomonicus]
-    )
+    reports = {}
+    reports["gatekeeper"] = cli_args.gatekeeper
+    reports["mapping"] = cli_args.mapping
+    reports["mykrobe"] = cli_args.mykrobe
+    reports["gnomonicus"] = cli_args.gnomonicus
+
     summary = create_summary(reports)
     write_summary(summary, cli_args.output)
