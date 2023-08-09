@@ -1,6 +1,7 @@
+import json
+from pathlib import Path
 from summary import summarise
 from summary.reports import ReportList, ReportType, Report
-from pathlib import Path
 
 
 def test_regression(regression_test_set: dict):
@@ -17,6 +18,7 @@ def test_regression(regression_test_set: dict):
 
     summary = summarise.create_summary(test_reports)
 
-    expected_summary = summarise.read_json_file(regression_test_set["expected_output"])
+    with open(regression_test_set["expected_output"], "r") as file:
+        expected_summary = json.load(file)
 
     assert summary == expected_summary
