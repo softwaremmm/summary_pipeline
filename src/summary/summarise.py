@@ -7,6 +7,8 @@ import os
 from pathlib import Path
 import pandas
 
+from summary.cli_args import Arguments
+
 treatment_classes = {
     "First-line treatment": ["INH", "RIF", "PZA", "EMB"],
     "Second-line treatment": ["MXF", "LEV", "LZD", "BDQ"],
@@ -475,7 +477,7 @@ def write_summary(output: dict, location: Path = Path("Mega.json")) -> None:
         file.write(json.dumps(output, indent=4))
 
 
-def summarise(cli_args) -> None:
+def collate_repots(cli_args: Arguments) -> dict:
     reports = {}
     reports["gatekeeper"] = cli_args.gatekeeper
     try:
@@ -490,6 +492,11 @@ def summarise(cli_args) -> None:
         reports["gnomonicus"] = cli_args.gnomonicus
     except AttributeError as error:
         logging.info(error)
+    return reports
+
+
+def summarise(cli_args: Arguments) -> None:
+    reports = collate_repots(cli_args)
 
     summary = create_summary(reports)
     write_summary(summary, cli_args.output)
