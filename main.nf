@@ -25,12 +25,8 @@ process summary_json {
     path "main_error.json", emit: main_error
 
   script:
-    def gatekeeper_param = gatekeeper.name != '/EMPTY' ? "--gatekeeper $gatekeeper" : ''
-    def mapping_param = mapping.name != '/EMPTY' ? "--mapping $mapping" : ''
-    def mykrobe_param = mykrobe.name != '/EMPTY' ? "--mykrobe $mykrobe" : ''
-    def gnomonicus_param = gnomonicus.name != '/EMPTY' ? "--gnomonicus $gnomonicus" : ''
     """
-    summary_json ${gatekeeper_param} ${mapping_param} ${mykrobe_param} ${gnomonicus_param} --output main_report.json
+    summary_json --gatekeeper ${gatekeeper} --mapping ${mapping} --mykrobe ${mykrobe} --gnomonicus ${gnomonicus} --output main_report.json
     touch main_error.json
     """
 }
@@ -45,6 +41,15 @@ workflow summary {
   main:
     if (params.gatekeeper_report_path == '') {
     exit 1, 'error: --gatekeeper_report_path is mandatory'
+    }
+    if (params.mapping_report_path == '') {
+    exit 1, 'error: --mapping_report_path is mandatory'
+    }
+    if (params.mykrobe_report_path == '') {
+    exit 1, 'error: --mykrobe_report_path is mandatory'
+    }
+    if (params.gnomonicus_report_path == '') {
+    exit 1, 'error: --gnomonicus_report_path is mandatory'
     }
 
     if (params.help) {
@@ -91,10 +96,7 @@ workflow summary {
         """
         .stripIndent()
 
-    summary_json_output = summary_json(gatekeeper_report_path, 
-                                       mapping_report_path, 
-                                       mykrobe_report_path, 
-                                       gnomonicus_report_path)
+    summary_json_output = summary_json(gatekeeper_report_path, mapping_report_path, mykrobe_report_path, gnomonicus_report_path)
 
   emit:
     main_report = summary_json_output.main_report
@@ -103,20 +105,5 @@ workflow summary {
 
 workflow {
   main:
-    gatekeeper_report = params.gatekeeper_report_path
-                          ? Channel.fromPath(params.gatekeeper_report_path, checkIfExists:true)
-                          : Channel.empty()
-    mapping_report = params.mapping_report_path
-                          ? Channel.fromPath(params.mapping_report_path, checkIfExists:true)
-                          : Channel.empty()
-    mykrobe_report = params.mykrobe_report_path
-                          ? Channel.fromPath(params.mykrobe_report_path, checkIfExists:true)
-                          : Channel.empty()
-    gnomonicus_report = params.gnomonicus_report_path
-                          ? Channel.fromPath(params.gnomonicus_report_path, checkIfExists:true)
-                          : Channel.empty()
-    summary(gatekeeper_report, 
-            mapping_report.ifEmpty('/EMPTY'), 
-            mykrobe_report.ifEmpty('/EMPTY'), 
-            gnomonicus_report.ifEmpty('/EMPTY'))
+    summary(projectDir/params.gatekeeper_report_path, projectDir/params.mapping_report_path, projectDir/params.mykrobe_report_path, projectDir/params.gnomonicus_report_path)
 }
