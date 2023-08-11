@@ -82,11 +82,21 @@ def three_reports() -> list:
 
 
 @pytest.fixture
+def three_reports_args(three_reports) -> Arguments:
+    return Arguments(three_reports)
+
+
+@pytest.fixture
 def one_report() -> list:
     return [
         "--reports",
         "test_data/WTCHG_885333_73205296_1/gatekeeper_report.json",
     ]
+
+
+@pytest.fixture
+def one_report_args(one_report) -> Arguments:
+    return Arguments(one_report)
 
 
 @pytest.fixture
