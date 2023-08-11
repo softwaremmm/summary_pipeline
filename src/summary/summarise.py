@@ -477,7 +477,15 @@ def write_summary(output: dict, location: Path = Path("Mega.json")) -> None:
         file.write(json.dumps(output, indent=4))
 
 
-def collate_repots(cli_args: Arguments) -> dict:
+def collate_reports(cli_args: Arguments) -> dict:
+    """Builds a dict of reports from the cli arguments.
+
+    Args:
+        cli_args (Arguments): Command line arguments.
+
+    Returns:
+        dict: Pipeline reports.
+    """
     reports = {}
     reports["gatekeeper"] = cli_args.gatekeeper
     try:
@@ -496,7 +504,6 @@ def collate_repots(cli_args: Arguments) -> dict:
 
 
 def summarise(cli_args: Arguments) -> None:
-    reports = collate_repots(cli_args)
-
+    reports = collate_reports(cli_args)
     summary = create_summary(reports)
     write_summary(summary, cli_args.output)

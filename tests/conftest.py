@@ -2,6 +2,7 @@ import json
 import pytest
 from pathlib import Path
 
+from summary.cli_args import Arguments
 
 SRR2097047 = {
     "gatekeeper_report": "test_data/SRR2097047/gatekeeper_report.json",
@@ -50,6 +51,11 @@ def all_reports_set_individually() -> list:
 
 
 @pytest.fixture
+def all_reports_set_individually_args(all_reports_set_individually) -> Arguments:
+    return Arguments(all_reports_set_individually)
+
+
+@pytest.fixture
 def four_reports() -> list:
     return [
         "--reports",
@@ -58,6 +64,11 @@ def four_reports() -> list:
         "test_data/WTCHG_885333_73205296_1/mykrobe_report.json",
         "test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json",
     ]
+
+
+@pytest.fixture
+def four_reports_args(four_reports) -> Arguments:
+    return Arguments(four_reports)
 
 
 @pytest.fixture
