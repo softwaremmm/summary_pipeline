@@ -5,9 +5,16 @@ import logging
 import json
 import os
 from pathlib import Path
+import sys
 import pandas
 
 from summary.cli_args import Arguments
+
+logging.basicConfig(
+    format="%(asctime)s — %(name)s — %(levelname)s — %(funcName)s:%(lineno)d — %(message)s",
+    datefmt="%Y-%m-%dT%H:%M:%S%z",
+    level=logging.DEBUG,
+)
 
 treatment_classes = {
     "First-line treatment": ["INH", "RIF", "PZA", "EMB"],
@@ -503,7 +510,9 @@ def collate_reports(cli_args: Arguments) -> dict:
     return reports
 
 
-def summarise(cli_args: Arguments) -> None:
+def cli_entry_point() -> None:
+    """CLI entry point."""
+    cli_args = Arguments(sys.argv[1:])
     reports = collate_reports(cli_args)
     summary = create_summary(reports)
     write_summary(summary, cli_args.output)

@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install .
-          pip install pytest 
+          pip install pytest pytest-mock
       - name: Test with pytest
         run: |
           pytest

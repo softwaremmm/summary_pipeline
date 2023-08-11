@@ -43,3 +43,14 @@ def test_collate_reports_one(one_report_args):
     )
 
     assert expected_reports == summarise.collate_reports(one_report_args)
+
+
+def test_summarise(all_reports_set_individually, mocker):
+    args = all_reports_set_individually
+    args.insert(0, "summary_json")
+
+    mocker.patch(
+        "sys.argv",
+        args,
+    )
+    summarise.cli_entry_point()
