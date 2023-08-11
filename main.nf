@@ -36,27 +36,7 @@ workflow summary {
     if (params.reports_list == '') {
     exit 1, 'error: A list of reports is mandatory'
     }
-    
-    if (params.help) {
-    log.info '''
-            ========================================================================
-            Summary
-
-            Combines output from workflow steps to create a single summary JSON file.
-
-            Parameters:
-            ------------------------------------------------------------------------
-            --reports_list  List of paths to reports e.g.
-            Path to gatekeeper report (`gatekeeper_report.json`).
-            Path to competitive mapping report (`competitivemapping_report.json`).
-            Path to mykrobe report (`mykrobe_report.json`).
-            Path to gnomonicus report (`gnomonicus.json`).
-            '''
-
-            .stripIndent()
-
-    exit(0)
-    }
+       
 
   log.info """
         ========================================================================
@@ -86,6 +66,26 @@ workflow summary {
 }
 
 workflow {
+  if (params.help) {
+    log.info '''
+            ========================================================================
+            Summary
+
+            Combines output from workflow steps to create a single summary JSON file.
+
+            Parameters:
+            ------------------------------------------------------------------------
+            --reports_list  List of paths to reports e.g.
+            Path to gatekeeper report (`gatekeeper_report.json`).
+            Path to competitive mapping report (`competitivemapping_report.json`).
+            Path to mykrobe report (`mykrobe_report.json`).
+            Path to gnomonicus report (`gnomonicus.json`).
+            '''
+
+            .stripIndent()
+
+    exit(0)
+    }
   main:
     reports_list = params.reports?.split(',') as List
     reports_list_abs = reports_list.collect { it -> projectDir/it }
