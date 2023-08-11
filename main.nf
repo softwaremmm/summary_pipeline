@@ -33,30 +33,16 @@ workflow summary {
     reports_list
 
   main:
-    if (params.reports_list == '') {
-    exit 1, 'error: A list of reports is mandatory'
-    }
-       
-
-  log.info """
+    log.info """
         ========================================================================
         Summary
 
         Combines output from workflow steps to create a single summary JSON file.
+    """.stripIndent()
 
-        Parameters:
-        ------------------------------------------------------------------------
-        --reports_list  ${reports_list}
-
-        Runtime data:
-        ------------------------------------------------------------------------
-
-        Running with profile  ${ANSI_GREEN}${workflow.profile}${ANSI_RESET}
-        Running as user       ${ANSI_GREEN}${workflow.userName}${ANSI_RESET}
-        Launch directory      ${ANSI_GREEN}${workflow.launchDir}${ANSI_RESET}
-        Project directory     ${ANSI_GREEN}${projectDir}${ANSI_RESET}
-        """
-        .stripIndent()
+    if (params.reports_list == '') {
+    exit 1, 'error: A list of reports is mandatory'
+    }
 
     summary_json_output = summary_json(reports_list)
 
@@ -66,6 +52,16 @@ workflow summary {
 }
 
 workflow {
+  log.info """
+        Runtime data:
+        ------------------------------------------------------------------------
+
+        Running with profile  ${ANSI_GREEN}${workflow.profile}${ANSI_RESET}
+        Running as user       ${ANSI_GREEN}${workflow.userName}${ANSI_RESET}
+        Launch directory      ${ANSI_GREEN}${workflow.launchDir}${ANSI_RESET}
+        Project directory     ${ANSI_GREEN}${projectDir}${ANSI_RESET}
+        """
+        .stripIndent()
   if (params.help) {
     log.info '''
             ========================================================================
