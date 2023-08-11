@@ -63,10 +63,7 @@ class Arguments:  # pylint: disable=too-few-public-methods
         args = parser.parse_args(argv)
 
         if args.reports:
-            try:
-                self.gatekeeper = self._get_report(args.reports, ReportType.GATEKEEPER)
-            except ValueError as error:
-                logging.info(error)
+            self.gatekeeper = self._get_report(args.reports, ReportType.GATEKEEPER)
             try:
                 self.mapping = self._get_report(args.reports, ReportType.MAPPING)
             except ValueError as error:
