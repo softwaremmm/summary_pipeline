@@ -12,13 +12,10 @@ params.help = ''
 process summary_json {
     cpus 1
     memory '0.5 GB'
-    container 'lhr.ocir.io/lrbvkel2wjot/gpas/summary_pipeline:latest'
+    container 'lhr.ocir.io/lrbvkel2wjot/gpas/summary_pipeline:reports_list'
 
   input:
-    path gatekeeper
-    path mapping
-    path mykrobe
-    path gnomonicus
+    path reports
 
   output:
     path "main_report.json", emit: main_report
@@ -26,32 +23,20 @@ process summary_json {
 
   script:
     """
-    summary_json --gatekeeper ${gatekeeper} --mapping ${mapping} --mykrobe ${mykrobe} --gnomonicus ${gnomonicus} --output main_report.json
+    summary_json --reports ${reports} --output main_report.json
     touch main_error.json
     """
 }
 
 workflow summary {
   take:
-    gatekeeper_report_path
-    mapping_report_path
-    mykrobe_report_path
-    gnomonicus_report_path
+    reports_list
 
   main:
-    if (params.gatekeeper_report_path == '') {
-    exit 1, 'error: --gatekeeper_report_path is mandatory'
+    if (params.reports_list == '') {
+    exit 1, 'error: A list of reports is mandatory'
     }
-    if (params.mapping_report_path == '') {
-    exit 1, 'error: --mapping_report_path is mandatory'
-    }
-    if (params.mykrobe_report_path == '') {
-    exit 1, 'error: --mykrobe_report_path is mandatory'
-    }
-    if (params.gnomonicus_report_path == '') {
-    exit 1, 'error: --gnomonicus_report_path is mandatory'
-    }
-
+    
     if (params.help) {
     log.info '''
             ========================================================================
@@ -61,10 +46,11 @@ workflow summary {
 
             Parameters:
             ------------------------------------------------------------------------
-            --gatekeeper_report_path  Path to gatekeeper report (`gatekeeper_report.json`).
-            --mapping_report_path  Path to competitive mapping report (`competitivemapping_report.json`).
-            --mykrobe_report_path  Path to mykrobe report (`mykrobe_report.json`).
-            --gnomonicus_report_path  Path to gnomonicus report (`gnomonicus.json`).
+            --reports_list  List of paths to reports e.g.
+            Path to gatekeeper report (`gatekeeper_report.json`).
+            Path to competitive mapping report (`competitivemapping_report.json`).
+            Path to mykrobe report (`mykrobe_report.json`).
+            Path to gnomonicus report (`gnomonicus.json`).
             '''
 
             .stripIndent()
@@ -80,11 +66,11 @@ workflow summary {
 
         Parameters:
         ------------------------------------------------------------------------
-
-        --gatekeeper_report_path    $params.gatekeeper_report_path
-        --mapping_report_path       $params.mapping_report_path
-        --mykrobe_report_path       $params.mykrobe_report_path
-        --gnomonicus_report_path    $params.gnomonicus_report_path
+        --reports_list  List of paths to reports e.g.
+        Path to gatekeeper report (`gatekeeper_report.json`).
+        Path to competitive mapping report (`competitivemapping_report.json`).
+        Path to mykrobe report (`mykrobe_report.json`).
+        Path to gnomonicus report (`gnomonicus.json`).
 
         Runtime data:
         ------------------------------------------------------------------------
@@ -96,7 +82,7 @@ workflow summary {
         """
         .stripIndent()
 
-    summary_json_output = summary_json(gatekeeper_report_path, mapping_report_path, mykrobe_report_path, gnomonicus_report_path)
+    summary_json_output = summary_json(reports_list)
 
   emit:
     main_report = summary_json_output.main_report
@@ -105,5 +91,7 @@ workflow summary {
 
 workflow {
   main:
-    summary(projectDir/params.gatekeeper_report_path, projectDir/params.mapping_report_path, projectDir/params.mykrobe_report_path, projectDir/params.gnomonicus_report_path)
+    reports_list = params.reports?.split(',') as List
+    reports_list_abs = reports_list.collect { it -> projectDir/it }
+    summary(reports_list_abs)
 }
