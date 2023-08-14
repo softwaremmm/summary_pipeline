@@ -15,14 +15,22 @@ Summarises output from sub-workflows (part of WP8)
 conda activate summary_pipeline
 ```
 
-### Bash
+### Python (via CLI)
+
+#### Specify individual report files
 
 ```{bash}
-summary_json --gatekeeper test_data/example_input/WTCHG_885333_73225298_1/2/gatekeeper_report.json --mapping test_data/example_input/WTCHG_885333_73225298_1/2/competitivemapping_report.json --mykrobe test_data/example_input/WTCHG_885333_73225298_1/2/mykrobe_report.json --gnomonicus test_data/example_input/WTCHG_885333_73225298_1/2/tb/gnomonicus.json
+summary_json --gatekeeper test_data/WTCHG_885333_73205296_1/gatekeeper_report.json --mapping test_data/WTCHG_885333_73205296_1/competitivemapping_report.json --mykrobe test_data/WTCHG_885333_73205296_1/mykrobe_report.json --gnomonicus test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json
+```
+
+#### Pass report files as a list
+
+```{bash}
+summary_json --reports test_data/WTCHG_885333_73205296_1/gatekeeper_report.json test_data/WTCHG_885333_73205296_1/competitivemapping_report.json test_data/WTCHG_885333_73205296_1/mykrobe_report.json test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json
 ```
 
 ### NextFlow
 
-```
-nextflow run . --gatekeeper_report_path ./test_data/example_input/WTCHG_885333_73225298_1/2/gatekeeper_report.json --mapping_report_path ./test_data/example_input/WTCHG_885333_73225298_1/2/competitivemapping_report.json --mykrobe_report_path ./test_data/example_input/WTCHG_885333_73225298_1/2/mykrobe_report.json --gnomonicus_report_path ./test_data/example_input/WTCHG_885333_73225298_1/2/tb/gnomonicus.json
+```{bash}
+nextflow run . --gatekeeper_report_path ./test_data/WTCHG_885333_73205296_1/gatekeeper_report.json --mapping_report_path ./test_data/WTCHG_885333_73205296_1/competitivemapping_report.json --mykrobe_report_path ./test_data/WTCHG_885333_73205296_1/mykrobe_report.json --gnomonicus_report_path ./test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json
 ```

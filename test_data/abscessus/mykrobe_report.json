@@ -1,0 +1,20 @@
+{
+  "phylo_group": {
+    "Non_tuberculosis_mycobacterium_complex": {
+      "percent_coverage": 77.143,
+      "median_depth": 66
+    }
+  },
+  "sub_complex": {
+    "Mycobacterium_avium_complex": {
+      "percent_coverage": 97.284,
+      "median_depth": 74
+    }
+  },
+  "species": {
+    "Mycobacterium_paraffinicum": {
+      "percent_coverage": 90.281,
+      "median_depth": 69
+    }
+  }
+}

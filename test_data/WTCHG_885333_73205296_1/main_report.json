@@ -2,41 +2,41 @@
     "Organism Identification": {
         "Human Reads": null,
         "Unclassified Reads": null,
-        "Non-Mycobacterium Bacteria Reads": null,
-        "Mycobacterium Reads": null
+        "Non-Mycobacterium Bacteria Reads": 652,
+        "Mycobacterium Reads": 1977558
     },
     "Mycobacterium Results": {
         "Summary": [
             {
                 "Name": "M. tuberculosis (Lineage 4.3.4.2)",
                 "Coverage": 100.0,
-                "Depth": 143.0
+                "Depth": 139.0
             }
         ],
         "Species": [
             {
                 "Name": "Mycobacterium tuberculosis H37Rv",
-                "Num Reads": 4175866,
-                "Coverage": 98.6959,
-                "Mean Depth": 141.949,
+                "Num Reads": 3953437,
+                "Coverage": 98.6837,
+                "Mean Depth": 132.506,
                 "Length": 4411532.0
             }
         ],
         "Phylogenic Group": {
             "Name": "Mycobacterium_tuberculosis_complex",
-            "Coverage": 99.48,
-            "Median Depth": 129
+            "Coverage": 99.462,
+            "Median Depth": 123
         },
         "Subspecies": {
             "Name": "Mycobacterium_tuberculosis",
-            "Coverage": 97.766,
-            "Median Depth": 110
+            "Coverage": 97.738,
+            "Median Depth": 105
         },
         "Lineage": [
             {
                 "Name": "lineage4.3.4.2",
                 "Coverage": 100,
-                "Median Depth": 143
+                "Median Depth": 139
             }
         ]
     },
@@ -45,9 +45,9 @@
             "Name": "M. tuberculosis",
             "Sequencing Quality": {
                 "Mapped To": "AL123456.3",
-                "Num Reads": 4175866.0,
-                "Coverage": 98.6959,
-                "Mean Depth": 141.949,
+                "Num Reads": 3953437.0,
+                "Coverage": 98.6837,
+                "Mean Depth": 132.506,
                 "Mixed calls": 0
             },
             "Resistance Prediction": {
@@ -56,7 +56,7 @@
                         "Isoniazid (INH)": "R",
                         "Rifampicin (RIF)": "S",
                         "Pyrazinamide (PZA)": "U",
-                        "Ethambutol (EMB)": "S"
+                        "Ethambutol (EMB)": "U"
                     },
                     "Second-line treatment": {
                         "Moxifloxacin (MXF)": "S",
@@ -75,6 +75,24 @@
                 },
                 "Resistance Prediction Detail": [
                     {
+                        "Drug Name": "EMB",
+                        "Mutations": [
+                            {
+                                "Gene": "embB",
+                                "Mutation": "R24P:0.45",
+                                "Position": 24,
+                                "Ref": "cgc",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    11,
+                                    9
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
+                    },
+                    {
                         "Drug Name": "INH",
                         "Mutations": [
                             {
@@ -85,7 +103,7 @@
                                 "Alt": "acc",
                                 "Coverage": [
                                     0,
-                                    103
+                                    104
                                 ],
                                 "Prediction": "R",
                                 "Evidence": ""
@@ -103,7 +121,7 @@
                                 "Alt": "gcc",
                                 "Coverage": [
                                     0,
-                                    97
+                                    96
                                 ],
                                 "Prediction": "U",
                                 "Evidence": ""
@@ -121,7 +139,7 @@
                                 "Alt": "cgg",
                                 "Coverage": [
                                     0,
-                                    88
+                                    85
                                 ],
                                 "Prediction": "U",
                                 "Evidence": ""

@@ -1,11 +1,20 @@
 """Summay JSON output from GPAS"""
 
+
 import logging
 import json
-import argparse
 import os
 from pathlib import Path
+import sys
 import pandas
+
+from summary.cli_args import Arguments
+
+logging.basicConfig(
+    format="%(asctime)s — %(name)s — %(levelname)s — %(funcName)s:%(lineno)d — %(message)s",
+    datefmt="%Y-%m-%dT%H:%M:%S%z",
+    level=logging.DEBUG,
+)
 
 treatment_classes = {
     "First-line treatment": ["INH", "RIF", "PZA", "EMB"],
@@ -142,39 +151,41 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
     myco["Subspecies"]["Median Depth"] = subspecies[myco["Subspecies"]["Name"]].get(
         "median_depth"
     )
-    lineages = mykrobe_data.get("lineage")
-    for lineage_name in lineages.get("lineage"):
-        calls = lineages.get("calls")
-        specific_line = calls.get(lineage_name)
-        # TODO: Needs review. Trying to be generic,
-        # should this come from the first item in the list???
-        # TODO: This section also needs better error handling
-        top_level = list(specific_line.keys())[0]
-        variant_level = specific_line.get(top_level)
-        variant_name = list(variant_level.keys())[0]
-        info_level = variant_level.get(variant_name)
-        # TODO: Chained getfields would be nicer...Or better generic handling of this
-        info = info_level.get("info")
-        cov = info.get("coverage")
-        ref = cov.get("reference")
-        coverage = ref.get("percent_coverage")
-        mediandepth = ref.get("median_depth")
-        new_line = {
-            "Name": lineage_name,
-            "Coverage": coverage,
-            "Median Depth": mediandepth,
-        }
-        myco["Lineage"].append(new_line)
+    if "lineage" in mykrobe_data:
+        lineages = mykrobe_data.get("lineage")
+        for lineage_name in lineages.get("lineage"):
+            calls = lineages.get("calls")
+            specific_line = calls.get(lineage_name)
+            # TODO: Needs review. Trying to be generic,
+            # should this come from the first item in the list???
+            # TODO: This section also needs better error handling
+            top_level = list(specific_line.keys())[0]
+            variant_level = specific_line.get(top_level)
+            variant_name = list(variant_level.keys())[0]
+            info_level = variant_level.get(variant_name)
+            # TODO: Chained getfields would be nicer...Or better generic handling of this
+            info = info_level.get("info")
+            cov = info.get("coverage")
+            ref = cov.get("reference")
+            coverage = ref.get("percent_coverage")
+            mediandepth = ref.get("median_depth")
+            new_line = {
+                "Name": lineage_name,
+                "Coverage": coverage,
+                "Median Depth": mediandepth,
+            }
+            myco["Lineage"].append(new_line)
 
-        # if Mykrobe has returned one or more lineages we must be dealing with MTB
-        lineage_number = lineage_name.split("lineage")[1]
-        new_summary = {
-            "Name": "M. tuberculosis (Lineage " + lineage_number + ")",
-            "Coverage": float(coverage),
-            "Depth": float(mediandepth),
-        }
-        myco["Summary"].append(new_summary)
-
+            # if Mykrobe has returned one or more lineages we must be dealing with MTB
+            lineage_number = lineage_name.split("lineage")[1]
+            new_summary = {
+                "Name": "M. tuberculosis (Lineage " + lineage_number + ")",
+                "Coverage": float(coverage),
+                "Depth": float(mediandepth),
+            }
+            myco["Summary"].append(new_summary)
+    else:
+        logging.info("No lineage information in mykrobe report.")
     # now iterate through the species detected by competitive mapping, ignoring MTB
     # on the assumption that is has been picked up by Mykrobe
     for detected_species in myco["Species"]:
@@ -392,6 +403,55 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
     return amr
 
 
+def create_summary(
+    reports: dict,
+) -> dict:
+    """Summarises GPAS pipeline output.
+
+    Args:
+        reports (dict): A collection of reports to summarise.
+
+    Returns:
+        dict: Summary GPAS pipeline output.
+    """
+    output = {}
+    if "gatekeeper" in reports:
+        gatekeeper_json = read_json_file(reports["gatekeeper"])
+        output["Organism Identification"] = generate_organism_identification(
+            gatekeeper_json
+        )
+    else:
+        output = "Pipeline failed to produce a summary (summary_pipeline could not find gatekeeper report)."
+    if "mapping" in reports and "mykrobe" in reports:
+        mapping_json = read_json_file(reports["mapping"])
+        mykrobe_json = read_json_file(reports["mykrobe"])
+        output["Mycobacterium Results"] = generate_mycobacterium_results(
+            mapping_json, mykrobe_json
+        )
+    else:
+        output["Mycobacterium Results"] = {
+            "Insufficient reads": "There were insufficient mycobacterial reads to carry out competitive mapping or lineage calling.",
+        }
+    # make this next block a list to cope with the future when other species are also mapped,
+    # and potentially also have resistance predictions returned
+    # FIXME for now we can hard code much of this since there will only ever be one and it will always
+    # be M. tuberculosis
+    if "mapping" in reports and "gnomonicus" in reports:
+        gnom_json = read_json_file(reports["gnomonicus"])
+        output["Genomes"] = []
+        genome = {}
+        genome["Name"] = "M. tuberculosis"
+        genome["Sequencing Quality"] = generate_sequencing_quality(mapping_json)
+        genome["Resistance Prediction"] = generate_resistance_prediction(gnom_json)
+        output["Genomes"].append(genome)
+    else:
+        output["Genomes"] = {
+            "Insufficient reads": "There were insufficient Mycobacterium tuberculosis reads to determine sequencing quality or predict antibiotic resistances.",
+        }
+
+    return output
+
+
 def read_json_file(path: Path) -> dict:
     """Utility function to load JSON files.
 
@@ -413,48 +473,6 @@ def read_json_file(path: Path) -> dict:
     return data
 
 
-def create_summary(
-    gatekeeper: Path,
-    mapping: Path,
-    mykrobe: Path,
-    gnomonicus: Path,
-) -> dict:
-    """Summarises GPAS pipeline output.
-
-    Args:
-        gatekeeper (Path): Path to Gatekeeper report.
-        mapping (Path): Path to Competitive Mapping report.
-        mykrobe (Path): Path to Mykrobe report.
-        gnomonicus (Path): Path to gnomonicus report.
-
-    Returns:
-        dict: Summary GPAS pipeline output.
-    """
-    output = {}
-    gatekeeper_json = read_json_file(gatekeeper)
-    mapping_json = read_json_file(mapping)
-    mykrobe_json = read_json_file(mykrobe)
-    gnom_json = read_json_file(gnomonicus)
-    output["Organism Identification"] = generate_organism_identification(
-        gatekeeper_json
-    )
-    output["Mycobacterium Results"] = generate_mycobacterium_results(
-        mapping_json, mykrobe_json
-    )
-    # make this next block a list to cope with the future when other species are also mapped,
-    # and potentially also have resistance predictions returned
-    # FIXME for now we can hard code much of this since there will only ever be one and it will always
-    # be M. tuberculosis
-    output["Genomes"] = []
-    genome = {}
-    genome["Name"] = "M. tuberculosis"
-    genome["Sequencing Quality"] = generate_sequencing_quality(mapping_json)
-    genome["Resistance Prediction"] = generate_resistance_prediction(gnom_json)
-    output["Genomes"].append(genome)
-
-    return output
-
-
 def write_summary(output: dict, location: Path = Path("Mega.json")) -> None:
     """Write summary to JSON file.
 
@@ -466,35 +484,35 @@ def write_summary(output: dict, location: Path = Path("Mega.json")) -> None:
         file.write(json.dumps(output, indent=4))
 
 
-def summarise() -> None:
+def collate_reports(cli_args: Arguments) -> dict:
+    """Builds a dict of reports from the cli arguments.
+
+    Args:
+        cli_args (Arguments): Command line arguments.
+
+    Returns:
+        dict: Pipeline reports.
+    """
+    reports = {}
+    reports["gatekeeper"] = cli_args.gatekeeper
+    try:
+        reports["mapping"] = cli_args.mapping
+    except AttributeError as error:
+        logging.info(error)
+    try:
+        reports["mykrobe"] = cli_args.mykrobe
+    except AttributeError as error:
+        logging.info(error)
+    try:
+        reports["gnomonicus"] = cli_args.gnomonicus
+    except AttributeError as error:
+        logging.info(error)
+    return reports
+
+
+def cli_entry_point() -> None:
     """CLI entry point."""
-    logging.basicConfig(
-        format="%(asctime)s — %(name)s — %(levelname)s — %(funcName)s:%(lineno)d — %(message)s",
-        datefmt="%Y-%m-%dT%H:%M:%S%z",
-    )
-    parser = argparse.ArgumentParser(
-        description="Process pipeline output to create mega.json"
-    )
-    parser.add_argument(
-        "--gatekeeper", dest="gatekeeper", help="Path to gatekeeper_report.json file"
-    )
-    parser.add_argument(
-        "--mapping", dest="mapping", help="Path to competitivemapping_report.json file"
-    )
-    parser.add_argument(
-        "--mykrobe", dest="mykrobe", help="Path to mykrobe_report.json file"
-    )
-    parser.add_argument(
-        "--gnomonicus", dest="gnomonicus", help="Path to gnomonicus.json file"
-    )
-    parser.add_argument(
-        "--output_path",
-        default="Mega.json",
-        dest="output",
-        help="Path including name for output .json file",
-    )
-    args = parser.parse_args()
-    summary = create_summary(
-        args.gatekeeper, args.mapping, args.mykrobe, args.gnomonicus
-    )
-    write_summary(summary, args.output)
+    cli_args = Arguments(sys.argv[1:])
+    reports = collate_reports(cli_args)
+    summary = create_summary(reports)
+    write_summary(summary, cli_args.output)
