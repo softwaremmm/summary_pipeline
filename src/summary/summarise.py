@@ -76,7 +76,7 @@ def generate_organism_identification(gatekeeper_data: dict) -> dict:
     """
     organism = {
         "Human Reads": None,  # comes from CLI data
-        "Unclassified Reads": gatekeeper_data.get("Unclassified"),
+        "Unclassified Reads": gatekeeper_data.get("unclassified"),
         "Non-Mycobacterium Bacteria Reads": None,
         "Mycobacterium Reads": gatekeeper_data.get("Mycobacteriaceae"),
     }
