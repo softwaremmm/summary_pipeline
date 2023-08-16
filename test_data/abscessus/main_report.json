@@ -1,7 +1,7 @@
 {
     "Organism Identification": {
         "Human Reads": null,
-        "Unclassified Reads": null,
+        "Unclassified Reads": 6020,
         "Non-Mycobacterium Bacteria Reads": 17307,
         "Mycobacterium Reads": 1577119
     },
