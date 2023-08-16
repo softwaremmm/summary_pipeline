@@ -51,6 +51,8 @@ def all_reports_set_individually() -> list:
         "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json",
         "--mykrobe",
         "test_data/WTCHG_885333_73205296_1/mykrobe_report.json",
+        "--clockwork",
+        "test_data/WTCHG_885333_73205296_1/tb_clockwork_report.json",
         "--gnomonicus",
         "test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json",
     ]
