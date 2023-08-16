@@ -4,16 +4,21 @@ from pathlib import Path
 
 from summary.cli_args import Arguments
 
+covid = {
+    "gatekeeper_report": "test_data/covid/gatekeeper_report.json",
+    "expected_output": "test_data/covid/main_report.json",
+}
+
 SRR2097047 = {
     "gatekeeper_report": "test_data/SRR2097047/gatekeeper_report.json",
     "expected_output": "test_data/SRR2097047/main_report.json",
 }
 
-abscessus = {
-    "gatekeeper_report": "test_data/abscessus/gatekeeper_report.json",
-    "competitivemapping_report": "test_data/abscessus/competitivemapping_report.json",
-    "mykrobe_report": "test_data/abscessus/mykrobe_report.json",
-    "expected_output": "test_data/abscessus/main_report.json",
+NTM = {
+    "gatekeeper_report": "test_data/NTM/gatekeeper_report.json",
+    "competitivemapping_report": "test_data/NTM/competitivemapping_report.json",
+    "mykrobe_report": "test_data/NTM/mykrobe_report.json",
+    "expected_output": "test_data/NTM/main_report.json",
 }
 
 WTCHG_885333_73205296_1 = {
@@ -27,8 +32,9 @@ WTCHG_885333_73205296_1 = {
 
 @pytest.fixture(
     params=[
+        covid,
         SRR2097047,
-        abscessus,
+        NTM,
         WTCHG_885333_73205296_1,
     ]
 )
