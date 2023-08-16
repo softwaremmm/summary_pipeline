@@ -14,6 +14,7 @@ class ReportType(Enum):
     GATEKEEPER = "gatekeeper_report.json"
     MAPPING = "competitivemapping_report.json"
     MYKROBE = "mykrobe_report.json"
+    CLOCKWORK = "tb_clockwork_report.json"
     GNOMONICUS = "gnomonicus.json"
 
 
@@ -42,6 +43,9 @@ class Arguments:  # pylint: disable=too-few-public-methods
         )
         named_reports.add_argument(
             "--mykrobe", dest="mykrobe", help="Path to mykrobe_report.json file"
+        )
+        named_reports.add_argument(
+            "--clockwork", dest="clockwork", help="Path to tb_clockwork.json file"
         )
         named_reports.add_argument(
             "--gnomonicus", dest="gnomonicus", help="Path to gnomonicus.json file"
@@ -73,6 +77,10 @@ class Arguments:  # pylint: disable=too-few-public-methods
             except ValueError as error:
                 logging.info(error)
             try:
+                self.clockwork = self._get_report(args.reports, ReportType.CLOCKWORK)
+            except ValueError as error:
+                logging.info(error)
+            try:
                 self.gnomonicus = self._get_report(args.reports, ReportType.GNOMONICUS)
             except ValueError as error:
                 logging.info(error)
@@ -80,6 +88,7 @@ class Arguments:  # pylint: disable=too-few-public-methods
             self.gatekeeper = Path(args.gatekeeper)
             self.mapping = Path(args.mapping)
             self.mykrobe = Path(args.mykrobe)
+            self.clockwork = Path(args.clockwork)
             self.gnomonicus = Path(args.gnomonicus)
         self.output = Path(args.output)
 
