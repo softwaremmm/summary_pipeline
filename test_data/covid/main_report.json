@@ -1,0 +1,14 @@
+{
+    "Organism Identification": {
+        "Human Reads": null,
+        "Unclassified Reads": null,
+        "Non-Mycobacterium Bacteria Reads": null,
+        "Mycobacterium Reads": 0
+    },
+    "Mycobacterium Results": {
+        "Insufficient reads": "There were insufficient mycobacterial reads to carry out competitive mapping or lineage calling."
+    },
+    "Genomes": {
+        "Insufficient reads": "There were insufficient Mycobacterium tuberculosis reads to determine sequencing quality or predict antibiotic resistances."
+    }
+}

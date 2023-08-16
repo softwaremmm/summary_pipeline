@@ -163,13 +163,10 @@ cython_debug/
 .vscode
 
 # Outputs
-*.json
+/*.json
 
 # NextFlow
 /work/
 /.nextflow.log*
 /.nf-test*
 /.nextflow*
-
-# Tests / examples
-!test_data/*
