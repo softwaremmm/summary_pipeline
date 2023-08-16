@@ -4,6 +4,11 @@ from pathlib import Path
 
 from summary.cli_args import Arguments
 
+covid = {
+    "gatekeeper_report": "test_data/covid/gatekeeper_report.json",
+    "expected_output": "test_data/covid/main_report.json",
+}
+
 SRR2097047 = {
     "gatekeeper_report": "test_data/SRR2097047/gatekeeper_report.json",
     "expected_output": "test_data/SRR2097047/main_report.json",
@@ -27,6 +32,7 @@ WTCHG_885333_73205296_1 = {
 
 @pytest.fixture(
     params=[
+        covid,
         SRR2097047,
         abscessus,
         WTCHG_885333_73205296_1,
