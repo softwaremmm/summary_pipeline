@@ -81,11 +81,9 @@ def generate_organism_identification(gatekeeper_data: dict) -> dict:
         "Mycobacterium Reads": gatekeeper_data.get("Mycobacteriaceae"),
     }
     logging.warning("Human read data not supported in this version")
-    bac = gatekeeper_data.get("Bacteria")
-    if bac and organism["Mycobacterium Reads"]:
-        organism["Non-Mycobacterium Bacteria Reads"] = (
-            bac - organism["Mycobacterium Reads"]
-        )
+    organism["Non-Mycobacterium Bacteria Reads"] = (
+        gatekeeper_data["Bacteria"] - organism["Mycobacterium Reads"]
+    )
     return organism
 
 
