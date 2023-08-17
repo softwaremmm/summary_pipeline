@@ -209,18 +209,21 @@ def generate_sequencing_quality(mappings: dict) -> dict:
         dict: Summary of sequencing quality.
     """
     # Much of this data is a repeat of data already in Myco Results
-    for mapping in mappings:
-        genome_name = mapping.get("genome_name").replace(" complete genome", "")
-        if "tuberculosis" in genome_name:
-            seq_qual = {
-                "Mapped To": mapping.get("#rname"),
-                "Num Reads": mapping.get("numreads"),
-                "Coverage": mapping.get("coverage"),
-                "Mean Depth": mapping.get("meandepth"),
-                # FIXME: below is a placeholder for the number of mixed ("het") calls
-                # found in the gVCF which gives you an indication of sample quality
-                "Mixed calls": 0,
-            }
+    tb_mappings = list(filter(lambda mapping: "tuberculosis" in mapping["genome_name"], mappings))
+    if len(tb_mappings)>1:
+        raise ValueError("More than one mapping to Mycobacterium tuberculosis. Possible manifest problem.")
+    tb_mapping=tb_mappings[0]
+    
+    seq_qual = {
+        "Mapped To": tb_mapping.get("#rname"),
+        "Num Reads": tb_mapping.get("numreads"),
+        "Coverage": tb_mapping.get("coverage"),
+        "Mean Depth": tb_mapping.get("meandepth"),
+        # FIXME: below is a placeholder for the number of mixed ("het") calls
+        # found in the gVCF which gives you an indication of sample quality
+        "Mixed calls": 0,
+    }
+    
     return seq_qual
 
 
