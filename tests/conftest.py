@@ -128,7 +128,7 @@ def bad_reports() -> list:
 
 @pytest.fixture
 def eg_gatekeeper_report() -> Path:
-    return Path("test_data/WTCHG_885333_73205296_1/52/gatekeeper_report.json")
+    return Path("test_data/WTCHG_885333_73205296_1/gatekeeper_report.json")
 
 
 @pytest.fixture
@@ -139,7 +139,7 @@ def eg_gatekeeper_report_contents(eg_gatekeeper_report) -> dict:
 
 @pytest.fixture
 def eg_competitivemapping_report() -> Path:
-    return Path("test_data/WTCHG_885333_73205296_1/52/competitivemapping_report.json")
+    return Path("test_data/WTCHG_885333_73205296_1/competitivemapping_report.json")
 
 
 @pytest.fixture
@@ -149,8 +149,23 @@ def eg_competitivemapping_report_contents(eg_competitivemapping_report) -> dict:
 
 
 @pytest.fixture
+def eg_duplicate_tb_competitivemapping_report() -> Path:
+    return Path(
+        "test_data/WTCHG_885333_73205296_1/duplicate_tb_competitivemapping_report.json"
+    )
+
+
+@pytest.fixture
+def eg_duplicate_tb_competitivemapping_report_contents(
+    eg_duplicate_tb_competitivemapping_report,
+) -> dict:
+    with open(eg_duplicate_tb_competitivemapping_report, "r") as file:
+        return json.load(file)
+
+
+@pytest.fixture
 def eg_mykrobe_report() -> Path:
-    return Path("test_data/WTCHG_885333_73205296_1/52/mykrobe_report.json")
+    return Path("test_data/WTCHG_885333_73205296_1/mykrobe_report.json")
 
 
 @pytest.fixture
@@ -161,7 +176,7 @@ def eg_mykrobe_report_contents(eg_mykrobe_report) -> dict:
 
 @pytest.fixture
 def eg_gnomonicus_report() -> Path:
-    return Path("test_data/WTCHG_885333_73205296_1/52/tb/gnomonicus.json")
+    return Path("test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json")
 
 
 @pytest.fixture

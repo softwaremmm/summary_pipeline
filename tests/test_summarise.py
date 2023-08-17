@@ -1,6 +1,30 @@
 from pathlib import Path
+import pytest
 
 import summary.summarise as summarise
+
+
+def test_generate_sequencing_quality(eg_competitivemapping_report_contents) -> None:
+    expected_sq_output = {
+        "Mapped To": "AL123456.3",
+        "Num Reads": 3953437.0,
+        "Coverage": 98.6837,
+        "Mean Depth": 132.506,
+        "Mixed calls": 0,
+    }
+    sq_output = summarise.generate_sequencing_quality(
+        eg_competitivemapping_report_contents
+    )
+    assert sq_output == expected_sq_output
+
+
+def test_generate_sequencing_quality_error(
+    eg_duplicate_tb_competitivemapping_report_contents,
+) -> None:
+    with pytest.raises(ValueError):
+        summarise.generate_sequencing_quality(
+            eg_duplicate_tb_competitivemapping_report_contents
+        )
 
 
 def test_collate_reports_four(four_reports_args):
