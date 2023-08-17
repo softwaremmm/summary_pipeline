@@ -209,11 +209,15 @@ def generate_sequencing_quality(mappings: dict) -> dict:
         dict: Summary of sequencing quality.
     """
     # Much of this data is a repeat of data already in Myco Results
-    tb_mappings = list(filter(lambda mapping: "tuberculosis" in mapping["genome_name"], mappings))
-    if len(tb_mappings)>1:
-        raise ValueError("More than one mapping to Mycobacterium tuberculosis. Possible manifest problem.")
-    tb_mapping=tb_mappings[0]
-    
+    tb_mappings = list(
+        filter(lambda mapping: "tuberculosis" in mapping["genome_name"], mappings)
+    )
+    if len(tb_mappings) > 1:
+        raise ValueError(
+            "More than one mapping to Mycobacterium tuberculosis. Possible manifest problem."
+        )
+    tb_mapping = tb_mappings[0]
+
     seq_qual = {
         "Mapped To": tb_mapping.get("#rname"),
         "Num Reads": tb_mapping.get("numreads"),
@@ -223,7 +227,7 @@ def generate_sequencing_quality(mappings: dict) -> dict:
         # found in the gVCF which gives you an indication of sample quality
         "Mixed calls": 0,
     }
-    
+
     return seq_qual
 
 
