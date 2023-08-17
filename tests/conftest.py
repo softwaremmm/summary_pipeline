@@ -25,6 +25,7 @@ WTCHG_885333_73205296_1 = {
     "gatekeeper_report": "test_data/WTCHG_885333_73205296_1/gatekeeper_report.json",
     "competitivemapping_report": "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json",
     "mykrobe_report": "test_data/WTCHG_885333_73205296_1/mykrobe_report.json",
+    "clockwork_report": "test_data/WTCHG_885333_73205296_1/tb_clockwork_report.json",
     "gnomonicus": "test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json",
     "expected_output": "test_data/WTCHG_885333_73205296_1/main_report.json",
 }
@@ -64,19 +65,20 @@ def all_reports_set_individually_args(all_reports_set_individually) -> Arguments
 
 
 @pytest.fixture
-def four_reports() -> list:
+def five_reports() -> list:
     return [
         "--reports",
         "test_data/WTCHG_885333_73205296_1/gatekeeper_report.json",
         "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json",
         "test_data/WTCHG_885333_73205296_1/mykrobe_report.json",
+        "test_data/WTCHG_885333_73205296_1/tb_clockwork_report.json",
         "test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json",
     ]
 
 
 @pytest.fixture
-def four_reports_args(four_reports) -> Arguments:
-    return Arguments(four_reports)
+def five_reports_args(five_reports) -> Arguments:
+    return Arguments(five_reports)
 
 
 @pytest.fixture
@@ -173,6 +175,16 @@ def eg_mykrobe_report_contents(eg_mykrobe_report) -> dict:
     with open(eg_mykrobe_report, "r") as file:
         return json.load(file)
 
+
+@pytest.fixture
+def eg_clockwork_report() -> Path:
+    return Path("test_data/WTCHG_885333_73205296_1/tb_clockwork_report.json")
+
+
+@pytest.fixture
+def eg_clockwork_report_contents(eg_clockwork_report) -> dict:
+    with open(eg_clockwork_report, "r") as file:
+        return json.load(file)
 
 @pytest.fixture
 def eg_gnomonicus_report() -> Path:

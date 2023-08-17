@@ -4,7 +4,9 @@ import pytest
 import summary.summarise as summarise
 
 
-def test_generate_sequencing_quality(eg_competitivemapping_report_contents) -> None:
+def test_generate_sequencing_quality(
+    eg_competitivemapping_report_contents, eg_clockwork_report_contents
+) -> None:
     expected_sq_output = {
         "Mapped To": "AL123456.3",
         "Num Reads": 3953437.0,
@@ -13,21 +15,22 @@ def test_generate_sequencing_quality(eg_competitivemapping_report_contents) -> N
         "Mixed calls": 0,
     }
     sq_output = summarise.generate_sequencing_quality(
-        eg_competitivemapping_report_contents
+        eg_competitivemapping_report_contents, eg_clockwork_report_contents
     )
     assert sq_output == expected_sq_output
 
 
 def test_generate_sequencing_quality_error(
-    eg_duplicate_tb_competitivemapping_report_contents,
+    eg_duplicate_tb_competitivemapping_report_contents, eg_clockwork_report_contents
 ) -> None:
     with pytest.raises(ValueError):
         summarise.generate_sequencing_quality(
-            eg_duplicate_tb_competitivemapping_report_contents
+            eg_duplicate_tb_competitivemapping_report_contents,
+            eg_clockwork_report_contents,
         )
 
 
-def test_collate_reports_four(four_reports_args):
+def test_collate_reports_five(five_reports_args):
     expected_reports = {}
     expected_reports["gatekeeper"] = Path(
         "test_data/WTCHG_885333_73205296_1/gatekeeper_report.json"
@@ -38,11 +41,14 @@ def test_collate_reports_four(four_reports_args):
     expected_reports["mykrobe"] = Path(
         "test_data/WTCHG_885333_73205296_1/mykrobe_report.json"
     )
+    expected_reports["clockwork"] = Path(
+        "test_data/WTCHG_885333_73205296_1/tb_clockwork_report.json"
+    )
     expected_reports["gnomonicus"] = Path(
         "test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json"
     )
 
-    assert expected_reports == summarise.collate_reports(four_reports_args)
+    assert expected_reports == summarise.collate_reports(five_reports_args)
 
 
 def test_collate_reports_three(three_reports_args):

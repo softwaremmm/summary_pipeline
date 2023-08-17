@@ -199,7 +199,7 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
     return myco
 
 
-def generate_sequencing_quality(mappings: dict) -> dict:
+def generate_sequencing_quality(mappings: dict, clockwork: dict) -> dict:
     """Summarises sequencing quality.
 
     Args:
@@ -441,12 +441,15 @@ def create_summary(
     # and potentially also have resistance predictions returned
     # FIXME for now we can hard code much of this since there will only ever be one and it will always
     # be M. tuberculosis
-    if "mapping" in reports and "gnomonicus" in reports:
+    if "mapping" in reports and "clockwork" in reports and "gnomonicus" in reports:
+        clockwork_json = read_json_file(reports["clockwork"])
         gnom_json = read_json_file(reports["gnomonicus"])
         output["Genomes"] = []
         genome = {}
         genome["Name"] = "M. tuberculosis"
-        genome["Sequencing Quality"] = generate_sequencing_quality(mapping_json)
+        genome["Sequencing Quality"] = generate_sequencing_quality(
+            mapping_json, clockwork_json
+        )
         genome["Resistance Prediction"] = generate_resistance_prediction(gnom_json)
         output["Genomes"].append(genome)
     else:
@@ -506,6 +509,10 @@ def collate_reports(cli_args: Arguments) -> dict:
         logging.info(error)
     try:
         reports["mykrobe"] = cli_args.mykrobe
+    except AttributeError as error:
+        logging.info(error)
+    try:
+        reports["clockwork"] = cli_args.clockwork
     except AttributeError as error:
         logging.info(error)
     try:
