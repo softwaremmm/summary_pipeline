@@ -221,11 +221,9 @@ def generate_sequencing_quality(mappings: dict, clockwork: dict) -> dict:
     seq_qual = {
         "Mapped To": tb_mapping.get("#rname"),
         "Num Reads": tb_mapping.get("numreads"),
-        "Coverage": tb_mapping.get("coverage"),
+        "Coverage": clockwork["Sequencing Quality"]["Fixed coverage"],
         "Mean Depth": tb_mapping.get("meandepth"),
-        # FIXME: below is a placeholder for the number of mixed ("het") calls
-        # found in the gVCF which gives you an indication of sample quality
-        "Mixed calls": 0,
+        "Mixed calls": clockwork["Sequencing Quality"]["Mixed calls"],
     }
 
     return seq_qual
