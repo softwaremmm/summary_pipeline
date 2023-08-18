@@ -219,10 +219,10 @@ def generate_sequencing_quality(mappings: dict, clockwork: dict) -> dict:
     tb_mapping = tb_mappings[0]
 
     seq_qual = {
-        "Mapped To": tb_mapping.get("#rname"),
-        "Num Reads": tb_mapping.get("numreads"),
+        "Mapped To": tb_mapping["#rname"],
+        "Num Reads": tb_mapping["numreads"],
         "Coverage": clockwork["Sequencing Quality"]["Fixed coverage"],
-        "Mean Depth": tb_mapping.get("meandepth"),
+        "Mean Depth": tb_mapping["meandepth"],
         "Mixed calls": clockwork["Sequencing Quality"]["Mixed calls"],
     }
 
