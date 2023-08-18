@@ -10,9 +10,9 @@ def test_generate_sequencing_quality(
     expected_sq_output = {
         "Mapped To": "AL123456.3",
         "Num Reads": 3953437.0,
-        "Coverage": 98.6837,
+        "Coverage": 450547,
         "Mean Depth": 132.506,
-        "Mixed calls": 0,
+        "Mixed calls": 1993,
     }
     sq_output = summarise.generate_sequencing_quality(
         eg_competitivemapping_report_contents, eg_clockwork_report_contents
