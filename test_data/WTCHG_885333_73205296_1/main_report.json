@@ -46,9 +46,9 @@
             "Sequencing Quality": {
                 "Mapped To": "AL123456.3",
                 "Num Reads": 3953437.0,
-                "Coverage": 98.6837,
+                "Coverage": 450547,
                 "Mean Depth": 132.506,
-                "Mixed calls": 0
+                "Mixed calls": 1993
             },
             "Resistance Prediction": {
                 "Resistance Prediction Summary": {
