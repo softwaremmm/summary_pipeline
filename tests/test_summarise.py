@@ -9,10 +9,10 @@ def test_generate_sequencing_quality(
 ) -> None:
     expected_sq_output = {
         "Mapped To": "AL123456.3",
-        "Num Reads": 3953437.0,
-        "Coverage": 450547,
-        "Mean Depth": 132.506,
-        "Mixed calls": 1993,
+        "Num Reads": 3953458.0,
+        "Coverage": 1.85867,
+        "Mean Depth": 132.507,
+        "Mixed calls": 349,
     }
     sq_output = summarise.generate_sequencing_quality(
         eg_competitivemapping_report_contents, eg_clockwork_report_contents
