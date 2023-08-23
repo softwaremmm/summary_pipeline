@@ -42,7 +42,7 @@ def test_collate_reports_five(five_reports_args):
         "test_data/WTCHG_885333_73205296_1/mykrobe_report.json"
     )
     expected_reports["clockwork"] = Path(
-        "test_data/WTCHG_885333_73205296_1/tb_clockwork_report.json"
+        "test_data/WTCHG_885333_73205296_1/genome_creation_report.json"
     )
     expected_reports["gnomonicus"] = Path(
         "test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json"

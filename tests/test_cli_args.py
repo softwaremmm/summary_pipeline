@@ -31,7 +31,7 @@ def test_Argument_five_reports(five_reports: list):
         "test_data/WTCHG_885333_73205296_1/mykrobe_report.json"
     )
     assert cli_args.clockwork == Path(
-        "test_data/WTCHG_885333_73205296_1/tb_clockwork_report.json"
+        "test_data/WTCHG_885333_73205296_1/genome_creation_report.json"
     )
     assert cli_args.gnomonicus == Path(
         "test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json"
