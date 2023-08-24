@@ -16,8 +16,8 @@
         "Species": [
             {
                 "Name": "Mycobacterium tuberculosis H37Rv",
-                "Num Reads": 3953458,
-                "Coverage": 98.6811,
+                "Num Reads": 3953463,
+                "Coverage": 98.6802,
                 "Mean Depth": 132.507,
                 "Length": 4411532.0
             }
@@ -45,10 +45,10 @@
             "Name": "M. tuberculosis",
             "Sequencing Quality": {
                 "Mapped To": "AL123456.3",
-                "Num Reads": 3953458.0,
-                "Coverage": 1.85867,
+                "Num Reads": 3953463.0,
+                "Coverage": 98.132,
                 "Mean Depth": 132.507,
-                "Mixed calls": 349
+                "Mixed calls": 351
             },
             "Resistance Prediction": {
                 "Resistance Prediction Summary": {
