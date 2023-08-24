@@ -31,11 +31,11 @@ WTCHG_885333_73205296_1 = {
 }
 
 clade_animal_A3 = {
-    "gatekeeper_report": "test_data/animal_clade_A3/gatekeeper_report.json",
-    "competitivemapping_report": "test_data/animal_clade_A3/competitivemapping_report.json",
-    "mykrobe_report": "test_data/animal_clade_A3/mykrobe_report.json",
-    "clockwork_report": "test_data/animal_clade_A3/genome_creation_report.json",
-    "expected_output": "test_data/animal_clade_A3/main_report.json",
+    "gatekeeper_report": "test_data/clade_animal_A3/gatekeeper_report.json",
+    "competitivemapping_report": "test_data/clade_animal_A3/competitivemapping_report.json",
+    "mykrobe_report": "test_data/clade_animal_A3/mykrobe_report.json",
+    "clockwork_report": "test_data/clade_animal_A3/genome_creation_report.json",
+    "expected_output": "test_data/clade_animal_A3/main_report.json",
 }
 
 
