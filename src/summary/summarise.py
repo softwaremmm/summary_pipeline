@@ -199,7 +199,7 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
     return myco
 
 
-def generate_sequencing_quality(mappings: dict) -> dict:
+def generate_sequencing_quality(mappings: dict, clockwork: dict) -> dict:
     """Summarises sequencing quality.
 
     Args:
@@ -209,18 +209,23 @@ def generate_sequencing_quality(mappings: dict) -> dict:
         dict: Summary of sequencing quality.
     """
     # Much of this data is a repeat of data already in Myco Results
-    for mapping in mappings:
-        genome_name = mapping.get("genome_name").replace(" complete genome", "")
-        if "tuberculosis" in genome_name:
-            seq_qual = {
-                "Mapped To": mapping.get("#rname"),
-                "Num Reads": mapping.get("numreads"),
-                "Coverage": mapping.get("coverage"),
-                "Mean Depth": mapping.get("meandepth"),
-                # FIXME: below is a placeholder for the number of mixed ("het") calls
-                # found in the gVCF which gives you an indication of sample quality
-                "Mixed calls": 0,
-            }
+    tb_mappings = list(
+        filter(lambda mapping: "tuberculosis" in mapping["genome_name"], mappings)
+    )
+    if len(tb_mappings) > 1:
+        raise ValueError(
+            "More than one mapping to Mycobacterium tuberculosis. Possible manifest problem."
+        )
+    tb_mapping = tb_mappings[0]
+
+    seq_qual = {
+        "Mapped To": tb_mapping["#rname"],
+        "Num Reads": tb_mapping["numreads"],
+        "Coverage": clockwork["Sequencing Quality"]["Fixed coverage"],
+        "Mean Depth": tb_mapping["meandepth"],
+        "Mixed calls": clockwork["Sequencing Quality"]["Mixed calls"],
+    }
+
     return seq_qual
 
 
@@ -434,12 +439,15 @@ def create_summary(
     # and potentially also have resistance predictions returned
     # FIXME for now we can hard code much of this since there will only ever be one and it will always
     # be M. tuberculosis
-    if "mapping" in reports and "gnomonicus" in reports:
+    if "mapping" in reports and "clockwork" in reports and "gnomonicus" in reports:
+        clockwork_json = read_json_file(reports["clockwork"])
         gnom_json = read_json_file(reports["gnomonicus"])
         output["Genomes"] = []
         genome = {}
         genome["Name"] = "M. tuberculosis"
-        genome["Sequencing Quality"] = generate_sequencing_quality(mapping_json)
+        genome["Sequencing Quality"] = generate_sequencing_quality(
+            mapping_json, clockwork_json
+        )
         genome["Resistance Prediction"] = generate_resistance_prediction(gnom_json)
         output["Genomes"].append(genome)
     else:
@@ -499,6 +507,10 @@ def collate_reports(cli_args: Arguments) -> dict:
         logging.info(error)
     try:
         reports["mykrobe"] = cli_args.mykrobe
+    except AttributeError as error:
+        logging.info(error)
+    try:
+        reports["clockwork"] = cli_args.clockwork
     except AttributeError as error:
         logging.info(error)
     try:

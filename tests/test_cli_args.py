@@ -19,8 +19,8 @@ def test_Argument_individual_reports(all_reports_set_individually: list):
     )
 
 
-def test_Argument_four_reports(four_reports: list):
-    cli_args = Arguments(four_reports)
+def test_Argument_five_reports(five_reports: list):
+    cli_args = Arguments(five_reports)
     assert cli_args.gatekeeper == Path(
         "test_data/WTCHG_885333_73205296_1/gatekeeper_report.json"
     )
@@ -29,6 +29,9 @@ def test_Argument_four_reports(four_reports: list):
     )
     assert cli_args.mykrobe == Path(
         "test_data/WTCHG_885333_73205296_1/mykrobe_report.json"
+    )
+    assert cli_args.clockwork == Path(
+        "test_data/WTCHG_885333_73205296_1/genome_creation_report.json"
     )
     assert cli_args.gnomonicus == Path(
         "test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json"

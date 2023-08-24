@@ -3,49 +3,65 @@
         "#rname": "AL123456.3",
         "genome_name": "Mycobacterium tuberculosis H37Rv complete genome",
         "length": 4411532.0,
-        "coverage": 98.6837,
-        "numreads": 3953437.0,
-        "meandepth": 132.506
+        "coverage": 98.6802,
+        "numreads": 3953463.0,
+        "meandepth": 132.507
     },
     {
         "#rname": "AP022575.1",
         "genome_name": "Mycobacterium shinjukuense JCM 14233 DNA, complete genome",
         "length": 4504020.0,
-        "coverage": 0.470935,
-        "numreads": 1932.0,
-        "meandepth": 0.0594025
+        "coverage": 0.442005,
+        "numreads": 1883.0,
+        "meandepth": 0.0579702
     },
     {
         "#rname": "AP022581.1",
         "genome_name": "Mycobacterium lacus JCM 15657 DNA, complete genome",
         "length": 5092988.0,
-        "coverage": 0.0694288,
-        "numreads": 737.0,
-        "meandepth": 0.0173721
+        "coverage": 0.0578442,
+        "numreads": 722.0,
+        "meandepth": 0.0171455
     },
     {
         "#rname": "CP046600.1",
         "genome_name": "Mycobacterium spongiae strain FSD4b-SM chromosome, complete genome",
         "length": 5581157.0,
-        "coverage": 0.0354944,
-        "numreads": 66.0,
-        "meandepth": 0.00111339
+        "coverage": 0.0387733,
+        "numreads": 81.0,
+        "meandepth": 0.00143967
     },
     {
         "#rname": "LR130759.1",
         "genome_name": "Mycobacterium sp. DSM 104308 isolate 901379 genome assembly, chromosome: I",
         "length": 5607630.0,
-        "coverage": 0.0340607,
-        "numreads": 116.0,
-        "meandepth": 0.00256187
+        "coverage": 0.0379305,
+        "numreads": 150.0,
+        "meandepth": 0.0034009
+    },
+    {
+        "#rname": "AP022611.1",
+        "genome_name": "Mycolicibacterium madagascariense JCM 13574 plasmid pJCM13574 DNA, nearly complete genome",
+        "length": 228287.0,
+        "coverage": 0.0363577,
+        "numreads": 2.0,
+        "meandepth": 0.000363577
     },
     {
         "#rname": "CP006835.1",
         "genome_name": "Mycobacterium kansasii ATCC 12478, complete genome",
         "length": 6432277.0,
-        "coverage": 0.0322592,
-        "numreads": 270.0,
-        "meandepth": 0.00397138
+        "coverage": 0.0361458,
+        "numreads": 272.0,
+        "meandepth": 0.00401631
+    },
+    {
+        "#rname": "CP080999.1",
+        "genome_name": "Mycobacterium malmoense strain ATCC 29571 chromosome, complete genome",
+        "length": 5319859.0,
+        "coverage": 0.0312226,
+        "numreads": 114.0,
+        "meandepth": 0.00172448
     },
     {
         "#rname": "CP070974.1",
@@ -56,260 +72,228 @@
         "meandepth": 0.000309686
     },
     {
-        "#rname": "CP011883.2",
-        "genome_name": "Mycobacterium haemophilum DSM 44634 strain ATCC 29548, complete genome",
-        "length": 4235765.0,
-        "coverage": 0.0286607,
-        "numreads": 53.0,
-        "meandepth": 0.000994389
-    },
-    {
-        "#rname": "CP065047.1",
-        "genome_name": "Mycobacterium kubicae strain JCM 13573 chromosome, complete genome",
-        "length": 5958133.0,
-        "coverage": 0.0279786,
-        "numreads": 70.0,
-        "meandepth": 0.00144257
-    },
-    {
-        "#rname": "CP080999.1",
-        "genome_name": "Mycobacterium malmoense strain ATCC 29571 chromosome, complete genome",
-        "length": 5319859.0,
-        "coverage": 0.0242676,
-        "numreads": 111.0,
-        "meandepth": 0.00164534
+        "#rname": "AP022614.1",
+        "genome_name": "Mycobacterium parmense JCM 14742 DNA, nearly complete genome",
+        "length": 5952912.0,
+        "coverage": 0.024257,
+        "numreads": 24.0,
+        "meandepth": 0.000375111
     },
     {
         "#rname": "CP092430.2",
         "genome_name": "Mycolicibacter virginiensis strain DSM 100883 chromosome, complete genome",
         "length": 4980142.0,
-        "coverage": 0.0238949,
+        "coverage": 0.0222283,
         "numreads": 327.0,
-        "meandepth": 0.00550567
-    },
-    {
-        "#rname": "AP018410.1",
-        "genome_name": "Mycobacterium pseudoshottsii JCM 15466 DNA, complete genome",
-        "length": 6061597.0,
-        "coverage": 0.0212815,
-        "numreads": 66.0,
-        "meandepth": 0.000933582
-    },
-    {
-        "#rname": "AP022314.1",
-        "genome_name": "Mycobacterium xenopi JCM 15661T DNA, complete genome",
-        "length": 4917655.0,
-        "coverage": 0.0202129,
-        "numreads": 460.0,
-        "meandepth": 0.0104102
-    },
-    {
-        "#rname": "AP022611.1",
-        "genome_name": "Mycolicibacterium madagascariense JCM 13574 plasmid pJCM13574 DNA, nearly complete genome",
-        "length": 228287.0,
-        "coverage": 0.0201501,
-        "numreads": 2.0,
-        "meandepth": 0.000363577
-    },
-    {
-        "#rname": "CP023147.1",
-        "genome_name": "Mycobacterium marseillense strain FLAC0026 chromosome, complete genome",
-        "length": 5266037.0,
-        "coverage": 0.020072,
-        "numreads": 16.0,
-        "meandepth": 0.000371817
-    },
-    {
-        "#rname": "AP022582.1",
-        "genome_name": "Mycobacterium seoulense JCM 16018 DNA, complete genome",
-        "length": 5531300.0,
-        "coverage": 0.019706,
-        "numreads": 25.0,
-        "meandepth": 0.000638909
-    },
-    {
-        "#rname": "CP018019.1",
-        "genome_name": "Mycobacterium avium subsp. hominissuis strain OCU889s_P11_4s chromosome, complete genome",
-        "length": 5118245.0,
-        "coverage": 0.0194793,
-        "numreads": 43.0,
-        "meandepth": 0.000923754
-    },
-    {
-        "#rname": "CP085945.1",
-        "genome_name": "Mycobacterium intracellulare strain FDAARGOS_1564 chromosome, complete genome",
-        "length": 5621211.0,
-        "coverage": 0.018448,
-        "numreads": 24.0,
-        "meandepth": 0.000577811
-    },
-    {
-        "#rname": "AP022590.1",
-        "genome_name": "Mycobacterium mantenii JCM 18113 DNA, complete genome",
-        "length": 6185541.0,
-        "coverage": 0.0180421,
-        "numreads": 25.0,
-        "meandepth": 0.000481607
-    },
-    {
-        "#rname": "AP024251.1",
-        "genome_name": "Mycobacterium paraintracellulare M011 DNA, complete genome",
-        "length": 5332910.0,
-        "coverage": 0.016145,
-        "numreads": 20.0,
-        "meandepth": 0.000515853
+        "meandepth": 0.00550406
     },
     {
         "#rname": "NZ_AP022594.1",
         "genome_name": "Mycolicibacillus koreensis strain JCM 19956 chromosome, complete genome",
         "length": 4155701.0,
-        "coverage": 0.0156652,
-        "numreads": 316.0,
-        "meandepth": 0.00722044
+        "coverage": 0.0217292,
+        "numreads": 317.0,
+        "meandepth": 0.00728012
     },
     {
-        "#rname": "CP060018.1",
-        "genome_name": "Mycolicibacterium holsaticum DSM 44478 = JCM 12374 strain DSM 44478 chromosome, complete genome",
-        "length": 5623685.0,
-        "coverage": 0.015168,
-        "numreads": 17.0,
-        "meandepth": 0.000395648
+        "#rname": "CP011883.2",
+        "genome_name": "Mycobacterium haemophilum DSM 44634 strain ATCC 29548, complete genome",
+        "length": 4235765.0,
+        "coverage": 0.0212712,
+        "numreads": 51.0,
+        "meandepth": 0.000919787
+    },
+    {
+        "#rname": "AP022314.1",
+        "genome_name": "Mycobacterium xenopi JCM 15661T DNA, complete genome",
+        "length": 4917655.0,
+        "coverage": 0.0200705,
+        "numreads": 458.0,
+        "meandepth": 0.0103956
+    },
+    {
+        "#rname": "CP018019.1",
+        "genome_name": "Mycobacterium avium subsp. hominissuis strain OCU889s_P11_4s chromosome, complete genome",
+        "length": 5118245.0,
+        "coverage": 0.0200069,
+        "numreads": 41.0,
+        "meandepth": 0.000754946
+    },
+    {
+        "#rname": "AP018410.1",
+        "genome_name": "Mycobacterium pseudoshottsii JCM 15466 DNA, complete genome",
+        "length": 6061597.0,
+        "coverage": 0.0198463,
+        "numreads": 66.0,
+        "meandepth": 0.000881286
     },
     {
         "#rname": "AP022583.1",
         "genome_name": "Mycobacterium noviomagense JCM 16367 DNA, complete genome",
         "length": 4779798.0,
-        "coverage": 0.013306,
-        "numreads": 6.0,
-        "meandepth": 0.000187037
+        "coverage": 0.0193941,
+        "numreads": 10.0,
+        "meandepth": 0.000315913
     },
     {
-        "#rname": "AP022573.1",
-        "genome_name": "Mycobacterium saskatchewanense JCM 13016 DNA, complete genome",
-        "length": 6008916.0,
-        "coverage": 0.0129308,
-        "numreads": 24.0,
-        "meandepth": 0.000435852
+        "#rname": "CP085945.1",
+        "genome_name": "Mycobacterium intracellulare strain FDAARGOS_1564 chromosome, complete genome",
+        "length": 5621211.0,
+        "coverage": 0.0180744,
+        "numreads": 20.0,
+        "meandepth": 0.000481213
     },
     {
-        "#rname": "CP003347.1",
-        "genome_name": "Mycobacterium intracellulare subsp. yongonense 05-1390 chromosome, complete genome",
-        "length": 5521023.0,
-        "coverage": 0.0126607,
-        "numreads": 15.0,
-        "meandepth": 0.000361708
+        "#rname": "CP023147.1",
+        "genome_name": "Mycobacterium marseillense strain FLAC0026 chromosome, complete genome",
+        "length": 5266037.0,
+        "coverage": 0.0173755,
+        "numreads": 17.0,
+        "meandepth": 0.000436761
     },
     {
-        "#rname": "AP022579.1",
-        "genome_name": "Mycolicibacterium boenickei JCM 15653 DNA, complete genome",
-        "length": 6563937.0,
-        "coverage": 0.0121269,
-        "numreads": 8.0,
-        "meandepth": 0.000160422
-    },
-    {
-        "#rname": "CP015278.1",
-        "genome_name": "Mycobacterium intracellulare subsp. chimaera strain DSM 44623 chromosome, complete genome",
-        "length": 5865644.0,
-        "coverage": 0.011985,
-        "numreads": 13.0,
-        "meandepth": 0.000301587
-    },
-    {
-        "#rname": "AP022598.1",
-        "genome_name": "Mycolicibacterium parafortuitum JCM 6367 DNA, nearly complete genome",
-        "length": 6044196.0,
-        "coverage": 0.0119123,
-        "numreads": 7.0,
-        "meandepth": 0.000158168
-    },
-    {
-        "#rname": "AP022565.1",
-        "genome_name": "Mycolicibacterium alvei JCM 12272 DNA, complete genome",
-        "length": 5712683.0,
-        "coverage": 0.0111506,
-        "numreads": 5.0,
-        "meandepth": 0.000132162
-    },
-    {
-        "#rname": "CP081673.1",
-        "genome_name": "Mycolicibacterium farcinogenes strain BKK/CU-MFGFA-001 chromosome, complete genome",
-        "length": 6344228.0,
-        "coverage": 0.010151,
-        "numreads": 6.0,
-        "meandepth": 0.000142807
-    },
-    {
-        "#rname": "AP024310.1",
-        "genome_name": "Mycobacterium heckeshornense JMUB5695 DNA, complete genome",
-        "length": 4865109.0,
-        "coverage": 0.00992784,
-        "numreads": 4.0,
-        "meandepth": 0.000115516
-    },
-    {
-        "#rname": "AP022615.1",
-        "genome_name": "Mycobacterium heidelbergense JCM 14842 DNA, nearly complete genome",
-        "length": 5050576.0,
-        "coverage": 0.00988006,
-        "numreads": 7.0,
-        "meandepth": 0.000136816
-    },
-    {
-        "#rname": "CP020821.1",
-        "genome_name": "Mycobacterium colombiense CECT 3035, complete genome",
-        "length": 5581643.0,
-        "coverage": 0.00962082,
-        "numreads": 14.0,
-        "meandepth": 0.000319798
-    },
-    {
-        "#rname": "AP022613.1",
-        "genome_name": "Mycobacterium conspicuum JCM 14738 DNA, nearly complete genome",
-        "length": 6237139.0,
-        "coverage": 0.00881815,
-        "numreads": 14.0,
-        "meandepth": 9.69996e-05
+        "#rname": "AP024251.1",
+        "genome_name": "Mycobacterium paraintracellulare M011 DNA, complete genome",
+        "length": 5332910.0,
+        "coverage": 0.0172889,
+        "numreads": 17.0,
+        "meandepth": 0.000430534
     },
     {
         "#rname": "CP083405.1",
         "genome_name": "Mycobacterium lepromatosis strain FJ924 chromosome, complete genome",
         "length": 3271694.0,
-        "coverage": 0.00840543,
-        "numreads": 2.0,
-        "meandepth": 8.40543e-05
-    },
-    {
-        "#rname": "AP022560.1",
-        "genome_name": "Mycolicibacterium moriokaense JCM 6375 DNA, complete genome",
-        "length": 6225779.0,
-        "coverage": 0.00815962,
+        "coverage": 0.016169,
         "numreads": 4.0,
-        "meandepth": 9.7016e-05
+        "meandepth": 0.000184614
     },
     {
-        "#rname": "CP092364.2",
-        "genome_name": "Mycolicibacterium goodii strain ATCC 700504 chromosome, complete genome",
-        "length": 6741306.0,
-        "coverage": 0.0076098,
-        "numreads": 4.0,
-        "meandepth": 8.95969e-05
+        "#rname": "AP022573.1",
+        "genome_name": "Mycobacterium saskatchewanense JCM 13016 DNA, complete genome",
+        "length": 6008916.0,
+        "coverage": 0.015244,
+        "numreads": 25.0,
+        "meandepth": 0.000492934
     },
     {
-        "#rname": "CP092488.2",
-        "genome_name": "Mycobacterium paraterrae strain DSM 45127 chromosome, complete genome",
-        "length": 5522624.0,
-        "coverage": 0.0071705,
-        "numreads": 3.0,
-        "meandepth": 7.1705e-05
+        "#rname": "AP022582.1",
+        "genome_name": "Mycobacterium seoulense JCM 16018 DNA, complete genome",
+        "length": 5531300.0,
+        "coverage": 0.0145716,
+        "numreads": 16.0,
+        "meandepth": 0.000421601
+    },
+    {
+        "#rname": "CP065047.1",
+        "genome_name": "Mycobacterium kubicae strain JCM 13573 chromosome, complete genome",
+        "length": 5958133.0,
+        "coverage": 0.0144508,
+        "numreads": 67.0,
+        "meandepth": 0.00137476
+    },
+    {
+        "#rname": "CP060018.1",
+        "genome_name": "Mycolicibacterium holsaticum DSM 44478 = JCM 12374 strain DSM 44478 chromosome, complete genome",
+        "length": 5623685.0,
+        "coverage": 0.0143678,
+        "numreads": 10.0,
+        "meandepth": 0.000186177
+    },
+    {
+        "#rname": "CP003347.1",
+        "genome_name": "Mycobacterium intracellulare subsp. yongonense 05-1390 chromosome, complete genome",
+        "length": 5521023.0,
+        "coverage": 0.0134577,
+        "numreads": 12.0,
+        "meandepth": 0.0003282
+    },
+    {
+        "#rname": "AP022590.1",
+        "genome_name": "Mycobacterium mantenii JCM 18113 DNA, complete genome",
+        "length": 6185541.0,
+        "coverage": 0.0130789,
+        "numreads": 21.0,
+        "meandepth": 0.000342735
+    },
+    {
+        "#rname": "CP081000.1",
+        "genome_name": "Mycolicibacterium senegalense strain ATCC 35796 chromosome, complete genome",
+        "length": 6086722.0,
+        "coverage": 0.0116319,
+        "numreads": 7.0,
+        "meandepth": 0.000128805
+    },
+    {
+        "#rname": "AP022579.1",
+        "genome_name": "Mycolicibacterium boenickei JCM 15653 DNA, complete genome",
+        "length": 6563937.0,
+        "coverage": 0.0115937,
+        "numreads": 6.0,
+        "meandepth": 0.000138027
+    },
+    {
+        "#rname": "CP015278.1",
+        "genome_name": "Mycobacterium intracellulare subsp. chimaera strain DSM 44623 chromosome, complete genome",
+        "length": 5865644.0,
+        "coverage": 0.011252,
+        "numreads": 20.0,
+        "meandepth": 0.000462183
+    },
+    {
+        "#rname": "AP022586.1",
+        "genome_name": "Mycolicibacterium litorale JCM 17423 DNA, complete genome",
+        "length": 5579510.0,
+        "coverage": 0.0112196,
+        "numreads": 8.0,
+        "meandepth": 0.000206291
+    },
+    {
+        "#rname": "AP022598.1",
+        "genome_name": "Mycolicibacterium parafortuitum JCM 6367 DNA, nearly complete genome",
+        "length": 6044196.0,
+        "coverage": 0.0108203,
+        "numreads": 5.0,
+        "meandepth": 0.000108203
+    },
+    {
+        "#rname": "AP022612.1",
+        "genome_name": "Mycolicibacterium confluentis JCM 13671 DNA, nearly complete genome",
+        "length": 5876557.0,
+        "coverage": 0.0106525,
+        "numreads": 9.0,
+        "meandepth": 0.000225132
+    },
+    {
+        "#rname": "CP020821.1",
+        "genome_name": "Mycobacterium colombiense CECT 3035, complete genome",
+        "length": 5581643.0,
+        "coverage": 0.00945958,
+        "numreads": 7.0,
+        "meandepth": 0.00012344
     },
     {
         "#rname": "AP022591.1",
         "genome_name": "Mycolicibacterium celeriflavum JCM 18439 DNA, complete genome",
         "length": 5024249.0,
-        "coverage": 0.00676718,
-        "numreads": 4.0,
-        "meandepth": 0.000120217
+        "coverage": 0.00935463,
+        "numreads": 6.0,
+        "meandepth": 0.000180325
+    },
+    {
+        "#rname": "AP018164.1",
+        "genome_name": "Mycobacterium shigaense DNA, complete genome, strain: JCM 32072T",
+        "length": 5232660.0,
+        "coverage": 0.0092496,
+        "numreads": 6.0,
+        "meandepth": 0.000143522
+    },
+    {
+        "#rname": "AP022613.1",
+        "genome_name": "Mycobacterium conspicuum JCM 14738 DNA, nearly complete genome",
+        "length": 6237139.0,
+        "coverage": 0.00771187,
+        "numreads": 12.0,
+        "meandepth": 8.59368e-05
     },
     {
         "#rname": "AP022618.1",
@@ -320,196 +304,204 @@
         "meandepth": 6.59814e-05
     },
     {
-        "#rname": "LR134355.1",
-        "genome_name": "Mycolicibacterium chitae strain NCTC10485 genome assembly, chromosome: 1",
-        "length": 5461769.0,
-        "coverage": 0.00609693,
-        "numreads": 3.0,
-        "meandepth": 6.09693e-05
-    },
-    {
-        "#rname": "AP018164.1",
-        "genome_name": "Mycobacterium shigaense DNA, complete genome, strain: JCM 32072T",
-        "length": 5232660.0,
-        "coverage": 0.00577144,
+        "#rname": "AP022603.1",
+        "genome_name": "Mycolicibacterium fallax JCM 6405 DNA, nearly complete genome",
+        "length": 4156821.0,
+        "coverage": 0.00639912,
         "numreads": 2.0,
-        "meandepth": 5.77144e-05
+        "meandepth": 6.39912e-05
     },
     {
         "#rname": "NZ_CP059165.1",
         "genome_name": "Mycobacterium vicinigordonae strain 24 chromosome, complete genome",
         "length": 6266765.0,
-        "coverage": 0.00540949,
-        "numreads": 54.0,
-        "meandepth": 0.000743765
+        "coverage": 0.00625522,
+        "numreads": 55.0,
+        "meandepth": 0.000767062
+    },
+    {
+        "#rname": "AP024310.1",
+        "genome_name": "Mycobacterium heckeshornense JMUB5695 DNA, complete genome",
+        "length": 4865109.0,
+        "coverage": 0.00620747,
+        "numreads": 2.0,
+        "meandepth": 6.20747e-05
     },
     {
         "#rname": "CP104302.1",
         "genome_name": "Mycolicibacterium brumae strain ATCC 51384 chromosome, complete genome",
         "length": 3988920.0,
-        "coverage": 0.00521444,
-        "numreads": 2.0,
-        "meandepth": 5.21444e-05
+        "coverage": 0.00606681,
+        "numreads": 3.0,
+        "meandepth": 6.06681e-05
     },
     {
-        "#rname": "AP022563.1",
-        "genome_name": "Mycolicibacterium duvalii JCM 6396 DNA, complete genome",
-        "length": 5657388.0,
-        "coverage": 0.00521442,
+        "#rname": "LR134355.1",
+        "genome_name": "Mycolicibacterium chitae strain NCTC10485 genome assembly, chromosome: 1",
+        "length": 5461769.0,
+        "coverage": 0.00552934,
+        "numreads": 2.0,
+        "meandepth": 5.52934e-05
+    },
+    {
+        "#rname": "CP092488.2",
+        "genome_name": "Mycobacterium paraterrae strain DSM 45127 chromosome, complete genome",
+        "length": 5522624.0,
+        "coverage": 0.00530545,
         "numreads": 3.0,
-        "meandepth": 5.88611e-05
+        "meandepth": 5.30545e-05
+    },
+    {
+        "#rname": "AP022599.1",
+        "genome_name": "Mycolicibacterium pulveris JCM 6370 DNA, nearly complete genome",
+        "length": 5484749.0,
+        "coverage": 0.00510506,
+        "numreads": 2.0,
+        "meandepth": 5.50618e-05
     },
     {
         "#rname": "AP022574.1",
         "genome_name": "Mycolicibacterium psychrotolerans JCM 13323 DNA, complete genome",
         "length": 5732362.0,
-        "coverage": 0.00514622,
+        "coverage": 0.00504155,
         "numreads": 3.0,
         "meandepth": 6.03591e-05
-    },
-    {
-        "#rname": "CP081000.1",
-        "genome_name": "Mycolicibacterium senegalense strain ATCC 35796 chromosome, complete genome",
-        "length": 6086722.0,
-        "coverage": 0.00499448,
-        "numreads": 7.0,
-        "meandepth": 9.6768e-05
-    },
-    {
-        "#rname": "AP022612.1",
-        "genome_name": "Mycolicibacterium confluentis JCM 13671 DNA, nearly complete genome",
-        "length": 5876557.0,
-        "coverage": 0.00476469,
-        "numreads": 2.0,
-        "meandepth": 5.13906e-05
-    },
-    {
-        "#rname": "AP022614.1",
-        "genome_name": "Mycobacterium parmense JCM 14742 DNA, nearly complete genome",
-        "length": 5952912.0,
-        "coverage": 0.00468678,
-        "numreads": 14.0,
-        "meandepth": 0.000150011
-    },
-    {
-        "#rname": "AP022595.1",
-        "genome_name": "Mycolicibacterium sarraceniae JCM 30395 DNA, complete genome",
-        "length": 4828255.0,
-        "coverage": 0.00451509,
-        "numreads": 4.0,
-        "meandepth": 5.19857e-05
     },
     {
         "#rname": "AP022620.1",
         "genome_name": "Mycolicibacterium anyangense JCM 30275 DNA, nearly complete genome",
         "length": 5696751.0,
-        "coverage": 0.00405494,
+        "coverage": 0.00491508,
         "numreads": 2.0,
         "meandepth": 5.30127e-05
     },
     {
-        "#rname": "CP070349.1",
-        "genome_name": "Mycolicibacterium septicum strain PDNC012 chromosome",
-        "length": 6515693.0,
-        "coverage": 0.00392898,
-        "numreads": 3.0,
-        "meandepth": 5.54047e-05
+        "#rname": "CP081673.1",
+        "genome_name": "Mycolicibacterium farcinogenes strain BKK/CU-MFGFA-001 chromosome, complete genome",
+        "length": 6344228.0,
+        "coverage": 0.00453956,
+        "numreads": 5.0,
+        "meandepth": 7.4556e-05
+    },
+    {
+        "#rname": "AP022615.1",
+        "genome_name": "Mycobacterium heidelbergense JCM 14842 DNA, nearly complete genome",
+        "length": 5050576.0,
+        "coverage": 0.00417774,
+        "numreads": 7.0,
+        "meandepth": 8.85048e-05
     },
     {
         "#rname": "CP054795.1",
         "genome_name": "Mycolicibacterium smegmatis strain FDAARGOS_679 chromosome",
         "length": 6993871.0,
-        "coverage": 0.00360315,
+        "coverage": 0.00358886,
         "numreads": 2.0,
         "meandepth": 4.31807e-05
-    },
-    {
-        "#rname": "AP022587.1",
-        "genome_name": "Mycobacterium stomatepiae JCM 17783 DNA, complete genome",
-        "length": 6210822.0,
-        "coverage": 0.0035261,
-        "numreads": 45.0,
-        "meandepth": 0.000769302
-    },
-    {
-        "#rname": "AP022609.1",
-        "genome_name": "Mycolicibacter hiberniae JCM 13571 DNA, nearly complete genome",
-        "length": 4396654.0,
-        "coverage": 0.00341169,
-        "numreads": 7.0,
-        "meandepth": 7.39198e-05
-    },
-    {
-        "#rname": "CP080997.1",
-        "genome_name": "Mycolicibacter heraklionensis strain JCM 30995 chromosome, complete genome",
-        "length": 5061737.0,
-        "coverage": 0.00302268,
-        "numreads": 3.0,
-        "meandepth": 3.02268e-05
-    },
-    {
-        "#rname": "CP031516.1",
-        "genome_name": "[Mycobacterium] chelonae subsp. gwanakae strain MOTT36W chromosome, complete genome",
-        "length": 5106636.0,
-        "coverage": 0.00272195,
-        "numreads": 2.0,
-        "meandepth": 2.72195e-05
-    },
-    {
-        "#rname": "AP022576.1",
-        "genome_name": "Mycobacterium florentinum JCM 14740 DNA, complete genome",
-        "length": 6219859.0,
-        "coverage": 0.0025081,
-        "numreads": 32.0,
-        "meandepth": 0.000268495
     },
     {
         "#rname": "LT629971.1",
         "genome_name": "Mycobacterium rutilum strain DSM 45405 genome assembly, chromosome: I",
         "length": 5987931.0,
-        "coverage": 0.00247164,
+        "coverage": 0.00349035,
         "numreads": 4.0,
-        "meandepth": 4.74287e-05
+        "meandepth": 4.75957e-05
+    },
+    {
+        "#rname": "CP014475.1",
+        "genome_name": "Mycolicibacterium phlei strain CCUG 21000 chromosome, complete genome",
+        "length": 5349645.0,
+        "coverage": 0.00317778,
+        "numreads": 2.0,
+        "meandepth": 3.17778e-05
+    },
+    {
+        "#rname": "AP022567.1",
+        "genome_name": "Mycolicibacterium mageritense JCM 12375 DNA, complete genome",
+        "length": 8006721.0,
+        "coverage": 0.00310989,
+        "numreads": 4.0,
+        "meandepth": 7.54366e-05
+    },
+    {
+        "#rname": "CP070973.1",
+        "genome_name": "Mycobacterium gordonae strain X7091 chromosome, complete genome",
+        "length": 7103222.0,
+        "coverage": 0.00292825,
+        "numreads": 6.0,
+        "meandepth": 3.57584e-05
+    },
+    {
+        "#rname": "LT906469.1",
+        "genome_name": "Mycobacterium terrae strain NCTC10856 genome assembly, chromosome: 1",
+        "length": 4532317.0,
+        "coverage": 0.00258146,
+        "numreads": 2.0,
+        "meandepth": 2.58146e-05
     },
     {
         "#rname": "AP022568.1",
         "genome_name": "Mycobacterium simiae JCM 12377 DNA, complete genome",
         "length": 5788994.0,
-        "coverage": 0.00240111,
+        "coverage": 0.00257385,
         "numreads": 2.0,
-        "meandepth": 2.40111e-05
+        "meandepth": 2.57385e-05
+    },
+    {
+        "#rname": "AP022587.1",
+        "genome_name": "Mycobacterium stomatepiae JCM 17783 DNA, complete genome",
+        "length": 6210822.0,
+        "coverage": 0.00249564,
+        "numreads": 43.0,
+        "meandepth": 0.000751108
+    },
+    {
+        "#rname": "AP022561.1",
+        "genome_name": "Mycolicibacterium aichiense JCM 6376 DNA, complete genome",
+        "length": 5925482.0,
+        "coverage": 0.00244706,
+        "numreads": 2.0,
+        "meandepth": 4.89412e-05
     },
     {
         "#rname": "CP025546.1",
         "genome_name": "Mycobacterium paragordonae strain 49061 chromosome, complete genome",
         "length": 6730319.0,
         "coverage": 0.00230301,
-        "numreads": 23.0,
-        "meandepth": 0.000112922
+        "numreads": 25.0,
+        "meandepth": 0.0001257
     },
     {
-        "#rname": "LR134353.1",
-        "genome_name": "Mycolicibacterium flavescens strain NCTC10271 genome assembly, chromosome: 1",
-        "length": 5395557.0,
-        "coverage": 0.00185338,
+        "#rname": "AP022595.1",
+        "genome_name": "Mycolicibacterium sarraceniae JCM 30395 DNA, complete genome",
+        "length": 4828255.0,
+        "coverage": 0.00213328,
+        "numreads": 3.0,
+        "meandepth": 2.81675e-05
+    },
+    {
+        "#rname": "AP022589.1",
+        "genome_name": "Mycolicibacter minnesotensis JCM 17932 DNA, complete genome",
+        "length": 4224047.0,
+        "coverage": 0.00213066,
+        "numreads": 4.0,
+        "meandepth": 4.30866e-05
+    },
+    {
+        "#rname": "CP080997.1",
+        "genome_name": "Mycolicibacter heraklionensis strain JCM 30995 chromosome, complete genome",
+        "length": 5061737.0,
+        "coverage": 0.00205463,
         "numreads": 2.0,
-        "meandepth": 1.85338e-05
+        "meandepth": 2.05463e-05
     },
     {
-        "#rname": "LT906469.1",
-        "genome_name": "Mycobacterium terrae strain NCTC10856 genome assembly, chromosome: 1",
-        "length": 4532317.0,
-        "coverage": 0.00180923,
-        "numreads": 2.0,
-        "meandepth": 1.80923e-05
-    },
-    {
-        "#rname": "CP070973.1",
-        "genome_name": "Mycobacterium gordonae strain X7091 chromosome, complete genome",
-        "length": 7103222.0,
-        "coverage": 0.00174569,
-        "numreads": 6.0,
-        "meandepth": 3.68847e-05
+        "#rname": "AP022576.1",
+        "genome_name": "Mycobacterium florentinum JCM 14740 DNA, complete genome",
+        "length": 6219859.0,
+        "coverage": 0.00196146,
+        "numreads": 33.0,
+        "meandepth": 0.000282643
     },
     {
         "#rname": "AP022617.1",
@@ -520,12 +512,20 @@
         "meandepth": 1.62185e-05
     },
     {
-        "#rname": "AP022569.1",
-        "genome_name": "Mycobacterium cookii JCM 12404 DNA, complete genome",
-        "length": 5318517.0,
-        "coverage": 0.00148538,
-        "numreads": 3.0,
-        "meandepth": 2.35028e-05
+        "#rname": "CP070349.1",
+        "genome_name": "Mycolicibacterium septicum strain PDNC012 chromosome",
+        "length": 6515693.0,
+        "coverage": 0.00161149,
+        "numreads": 2.0,
+        "meandepth": 3.22299e-05
+    },
+    {
+        "#rname": "CP000511.1",
+        "genome_name": "Mycobacterium vanbaalenii PYR-1, complete genome",
+        "length": 6491865.0,
+        "coverage": 0.00134014,
+        "numreads": 1.0,
+        "meandepth": 1.34014e-05
     },
     {
         "#rname": "CP029543.1",
@@ -536,28 +536,20 @@
         "meandepth": 1.22368e-05
     },
     {
-        "#rname": "AP022605.1",
-        "genome_name": "Mycolicibacterium doricum JCM 12405 DNA, nearly complete genome",
-        "length": 4029398.0,
-        "coverage": 0.00111679,
+        "#rname": "AP022562.1",
+        "genome_name": "Mycobacterium novum JCM 6391 DNA, complete genome",
+        "length": 4458926.0,
+        "coverage": 0.00121105,
         "numreads": 1.0,
-        "meandepth": 1.11679e-05
+        "meandepth": 1.21105e-05
     },
     {
-        "#rname": "AP022589.1",
-        "genome_name": "Mycolicibacter minnesotensis JCM 17932 DNA, complete genome",
-        "length": 4224047.0,
-        "coverage": 0.001089,
-        "numreads": 3.0,
-        "meandepth": 3.26701e-05
-    },
-    {
-        "#rname": "AP022567.1",
-        "genome_name": "Mycolicibacterium mageritense JCM 12375 DNA, complete genome",
-        "length": 8006721.0,
-        "coverage": 0.00106161,
-        "numreads": 2.0,
-        "meandepth": 2.12322e-05
+        "#rname": "CP031516.1",
+        "genome_name": "[Mycobacterium] chelonae subsp. gwanakae strain MOTT36W chromosome, complete genome",
+        "length": 5106636.0,
+        "coverage": 0.00101828,
+        "numreads": 1.0,
+        "meandepth": 1.01828e-05
     },
     {
         "#rname": "AP022610.1",
@@ -566,6 +558,38 @@
         "coverage": 0.00101539,
         "numreads": 1.0,
         "meandepth": 1.01539e-05
+    },
+    {
+        "#rname": "LR134353.1",
+        "genome_name": "Mycolicibacterium flavescens strain NCTC10271 genome assembly, chromosome: 1",
+        "length": 5395557.0,
+        "coverage": 0.000926688,
+        "numreads": 1.0,
+        "meandepth": 9.26688e-06
+    },
+    {
+        "#rname": "AP022569.1",
+        "genome_name": "Mycobacterium cookii JCM 12404 DNA, complete genome",
+        "length": 5318517.0,
+        "coverage": 0.000864903,
+        "numreads": 1.0,
+        "meandepth": 8.64903e-06
+    },
+    {
+        "#rname": "AP022609.1",
+        "genome_name": "Mycolicibacter hiberniae JCM 13571 DNA, nearly complete genome",
+        "length": 4396654.0,
+        "coverage": 0.00079606,
+        "numreads": 6.0,
+        "meandepth": 4.77636e-05
+    },
+    {
+        "#rname": "CP065373.2",
+        "genome_name": "Mycolicibacterium mengxianglii strain Z-34 chromosome, complete genome",
+        "length": 5962395.0,
+        "coverage": 0.00075473,
+        "numreads": 1.0,
+        "meandepth": 7.5473e-06
     },
     {
         "#rname": "AP022570.1",
@@ -580,16 +604,16 @@
         "genome_name": "Mycolicibacterium tokaiense JCM 6373 DNA, nearly complete genome",
         "length": 6328149.0,
         "coverage": 0.000711108,
-        "numreads": 6.0,
-        "meandepth": 4.01381e-05
+        "numreads": 5.0,
+        "meandepth": 3.36591e-05
     },
     {
-        "#rname": "AP022588.1",
-        "genome_name": "Mycolicibacterium sediminis JCM 17899 DNA, complete genome",
-        "length": 6250641.0,
-        "coverage": 0.000703928,
+        "#rname": "CP066218.1",
+        "genome_name": "Mycolicibacterium baixiangningiae strain LJ126 chromosome, complete genome",
+        "length": 6181092.0,
+        "coverage": 0.000533886,
         "numreads": 1.0,
-        "meandepth": 7.03928e-06
+        "meandepth": 5.33886e-06
     },
     {
         "#rname": "CP080333.1",
@@ -651,14 +675,6 @@
         "#rname": "CP025550.1",
         "genome_name": "Mycobacterium paragordonae strain 49061 plasmid unnamed4, complete sequence",
         "length": 17187.0,
-        "coverage": 0.0,
-        "numreads": 0.0,
-        "meandepth": 0.0
-    },
-    {
-        "#rname": "AP022562.1",
-        "genome_name": "Mycobacterium novum JCM 6391 DNA, complete genome",
-        "length": 4458926.0,
         "coverage": 0.0,
         "numreads": 0.0,
         "meandepth": 0.0
@@ -744,9 +760,9 @@
         "meandepth": 0.0
     },
     {
-        "#rname": "AP022586.1",
-        "genome_name": "Mycolicibacterium litorale JCM 17423 DNA, complete genome",
-        "length": 5579510.0,
+        "#rname": "AP022560.1",
+        "genome_name": "Mycolicibacterium moriokaense JCM 6375 DNA, complete genome",
+        "length": 6225779.0,
         "coverage": 0.0,
         "numreads": 0.0,
         "meandepth": 0.0
@@ -776,9 +792,9 @@
         "meandepth": 0.0
     },
     {
-        "#rname": "AP022561.1",
-        "genome_name": "Mycolicibacterium aichiense JCM 6376 DNA, complete genome",
-        "length": 5925482.0,
+        "#rname": "AP022565.1",
+        "genome_name": "Mycolicibacterium alvei JCM 12272 DNA, complete genome",
+        "length": 5712683.0,
         "coverage": 0.0,
         "numreads": 0.0,
         "meandepth": 0.0
@@ -803,14 +819,6 @@
         "#rname": "CP070380.1",
         "genome_name": "Mycolicibacterium austroafricanum strain MYC221 chromosome",
         "length": 6287627.0,
-        "coverage": 0.0,
-        "numreads": 0.0,
-        "meandepth": 0.0
-    },
-    {
-        "#rname": "CP066218.1",
-        "genome_name": "Mycolicibacterium baixiangningiae strain LJ126 chromosome, complete genome",
-        "length": 6181092.0,
         "coverage": 0.0,
         "numreads": 0.0,
         "meandepth": 0.0
@@ -856,9 +864,17 @@
         "meandepth": 0.0
     },
     {
-        "#rname": "AP022603.1",
-        "genome_name": "Mycolicibacterium fallax JCM 6405 DNA, nearly complete genome",
-        "length": 4156821.0,
+        "#rname": "AP022605.1",
+        "genome_name": "Mycolicibacterium doricum JCM 12405 DNA, nearly complete genome",
+        "length": 4029398.0,
+        "coverage": 0.0,
+        "numreads": 0.0,
+        "meandepth": 0.0
+    },
+    {
+        "#rname": "AP022563.1",
+        "genome_name": "Mycolicibacterium duvalii JCM 6396 DNA, complete genome",
+        "length": 5657388.0,
         "coverage": 0.0,
         "numreads": 0.0,
         "meandepth": 0.0
@@ -912,6 +928,14 @@
         "meandepth": 0.0
     },
     {
+        "#rname": "CP092364.2",
+        "genome_name": "Mycolicibacterium goodii strain ATCC 700504 chromosome, complete genome",
+        "length": 6741306.0,
+        "coverage": 0.0,
+        "numreads": 0.0,
+        "meandepth": 0.0
+    },
+    {
         "#rname": "LR026975.1",
         "genome_name": "Mycolicibacterium hassiacum DSM 44199 isolate Mhassiacum genome assembly, chromosome: 1",
         "length": 5269097.0,
@@ -923,14 +947,6 @@
         "#rname": "AP022596.1",
         "genome_name": "Mycolicibacterium helvum JCM 30396 DNA, complete genome",
         "length": 6400811.0,
-        "coverage": 0.0,
-        "numreads": 0.0,
-        "meandepth": 0.0
-    },
-    {
-        "#rname": "CP065373.2",
-        "genome_name": "Mycolicibacterium mengxianglii strain Z-34 chromosome, complete genome",
-        "length": 5962395.0,
         "coverage": 0.0,
         "numreads": 0.0,
         "meandepth": 0.0
@@ -960,14 +976,6 @@
         "meandepth": 0.0
     },
     {
-        "#rname": "CP014475.1",
-        "genome_name": "Mycolicibacterium phlei strain CCUG 21000 chromosome, complete genome",
-        "length": 5349645.0,
-        "coverage": 0.0,
-        "numreads": 0.0,
-        "meandepth": 0.0
-    },
-    {
         "#rname": "AP022616.1",
         "genome_name": "Mycolicibacterium phocaicum JCM 15301 DNA, nearly complete genome",
         "length": 5853197.0,
@@ -979,14 +987,6 @@
         "#rname": "AP022571.1",
         "genome_name": "Mycolicibacterium poriferae JCM 12603 plasmid pJCM12603 DNA, complete genome",
         "length": 216341.0,
-        "coverage": 0.0,
-        "numreads": 0.0,
-        "meandepth": 0.0
-    },
-    {
-        "#rname": "AP022599.1",
-        "genome_name": "Mycolicibacterium pulveris JCM 6370 DNA, nearly complete genome",
-        "length": 5484749.0,
         "coverage": 0.0,
         "numreads": 0.0,
         "meandepth": 0.0
@@ -1016,17 +1016,17 @@
         "meandepth": 0.0
     },
     {
-        "#rname": "LT906483.1",
-        "genome_name": "Mycobacterium thermoresistibile strain NCTC10409 genome assembly, chromosome: 1",
-        "length": 4950685.0,
+        "#rname": "AP022588.1",
+        "genome_name": "Mycolicibacterium sediminis JCM 17899 DNA, complete genome",
+        "length": 6250641.0,
         "coverage": 0.0,
         "numreads": 0.0,
         "meandepth": 0.0
     },
     {
-        "#rname": "CP000511.1",
-        "genome_name": "Mycobacterium vanbaalenii PYR-1, complete genome",
-        "length": 6491865.0,
+        "#rname": "LT906483.1",
+        "genome_name": "Mycobacterium thermoresistibile strain NCTC10409 genome assembly, chromosome: 1",
+        "length": 4950685.0,
         "coverage": 0.0,
         "numreads": 0.0,
         "meandepth": 0.0
