@@ -75,7 +75,7 @@ workflow {
             Path to gatekeeper report (`gatekeeper_report.json`).
             Path to competitive mapping report (`competitivemapping_report.json`).
             Path to mykrobe report (`mykrobe_report.json`).
-            Path to gnomonicus report (`gnomonicus.json`).
+            Path to gnomonicus report (`resistance_prediction_report.json`).
             '''
 
             .stripIndent()

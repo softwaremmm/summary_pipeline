@@ -26,7 +26,7 @@ WTCHG_885333_73205296_1 = {
     "competitivemapping_report": "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json",
     "mykrobe_report": "test_data/WTCHG_885333_73205296_1/mykrobe_report.json",
     "clockwork_report": "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
-    "gnomonicus": "test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json",
+    "gnomonicus": "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
     "expected_output": "test_data/WTCHG_885333_73205296_1/main_report.json",
 }
 
@@ -55,7 +55,7 @@ def all_reports_set_individually() -> list:
         "--clockwork",
         "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
         "--gnomonicus",
-        "test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json",
+        "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
     ]
 
 
@@ -72,7 +72,7 @@ def five_reports() -> list:
         "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json",
         "test_data/WTCHG_885333_73205296_1/mykrobe_report.json",
         "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
-        "test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json",
+        "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
     ]
 
 
@@ -114,7 +114,7 @@ def bad_report_combination() -> list:
     return [
         "--reports",
         "test_data/WTCHG_885333_73205296_1/gatekeeper_report.json",
-        "test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json",
+        "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
     ]
 
 
@@ -188,7 +188,7 @@ def eg_clockwork_report_contents(eg_clockwork_report) -> dict:
 
 @pytest.fixture
 def eg_gnomonicus_report() -> Path:
-    return Path("test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json")
+    return Path("test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json")
 
 
 @pytest.fixture

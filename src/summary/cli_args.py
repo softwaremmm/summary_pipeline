@@ -15,7 +15,7 @@ class ReportType(Enum):
     MAPPING = "competitivemapping_report.json"
     MYKROBE = "mykrobe_report.json"
     CLOCKWORK = "genome_creation_report.json"
-    GNOMONICUS = "gnomonicus.json"
+    GNOMONICUS = "resistance_prediction_report.json"
 
 
 class Arguments:  # pylint: disable=too-few-public-methods
@@ -48,7 +48,7 @@ class Arguments:  # pylint: disable=too-few-public-methods
             "--clockwork", dest="clockwork", help="Path to genome_creation_report.json file"
         )
         named_reports.add_argument(
-            "--gnomonicus", dest="gnomonicus", help="Path to gnomonicus.json file"
+            "--gnomonicus", dest="gnomonicus", help="Path to resistance_prediction_report.json file"
         )
         report_list = parser.add_argument_group(title="Path to report list")
         report_list.add_argument(

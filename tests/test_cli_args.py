@@ -15,7 +15,7 @@ def test_Argument_individual_reports(all_reports_set_individually: list):
         "test_data/WTCHG_885333_73205296_1/mykrobe_report.json"
     )
     assert cli_args.gnomonicus == Path(
-        "test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json"
+        "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json"
     )
 
 
@@ -34,7 +34,7 @@ def test_Argument_five_reports(five_reports: list):
         "test_data/WTCHG_885333_73205296_1/genome_creation_report.json"
     )
     assert cli_args.gnomonicus == Path(
-        "test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json"
+        "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json"
     )
 
 

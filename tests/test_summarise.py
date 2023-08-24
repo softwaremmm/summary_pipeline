@@ -45,7 +45,7 @@ def test_collate_reports_five(five_reports_args):
         "test_data/WTCHG_885333_73205296_1/genome_creation_report.json"
     )
     expected_reports["gnomonicus"] = Path(
-        "test_data/WTCHG_885333_73205296_1/tb/gnomonicus.json"
+        "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json"
     )
 
     assert expected_reports == summarise.collate_reports(five_reports_args)
