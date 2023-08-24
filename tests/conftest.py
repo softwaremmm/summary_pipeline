@@ -30,7 +30,7 @@ WTCHG_885333_73205296_1 = {
     "expected_output": "test_data/WTCHG_885333_73205296_1/main_report.json",
 }
 
-_792 = {
+clade_animal_A3 = {
     "gatekeeper_report": "test_data/792/gatekeeper_report.json",
     "competitivemapping_report": "test_data/792/competitivemapping_report.json",
     "mykrobe_report": "test_data/792/mykrobe_report.json",
@@ -45,7 +45,7 @@ _792 = {
         SRR2097047,
         NTM,
         WTCHG_885333_73205296_1,
-        _792,
+        clade_animal_A3,
     ]
 )
 def regression_test_set(request) -> dict:
