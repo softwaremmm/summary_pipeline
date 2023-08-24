@@ -175,7 +175,7 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
             myco["Lineage"].append(new_line)
 
             # if Mykrobe has returned one or more lineages we must be dealing with MTB
-            lineage_number = str(lineage_name.replace("lineage",""))
+            lineage_number = str(lineage_name.replace("lineage", ""))
             new_summary = {
                 "Name": "M. tuberculosis (Lineage " + lineage_number + ")",
                 "Coverage": float(coverage),
