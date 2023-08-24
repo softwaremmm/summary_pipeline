@@ -30,6 +30,14 @@ WTCHG_885333_73205296_1 = {
     "expected_output": "test_data/WTCHG_885333_73205296_1/main_report.json",
 }
 
+_792 = {
+    "gatekeeper_report": "test_data/792/gatekeeper_report.json",
+    "competitivemapping_report": "test_data/792/competitivemapping_report.json",
+    "mykrobe_report": "test_data/792/mykrobe_report.json",
+    "clockwork_report": "test_data/792/genome_creation_report.json",
+    "expected_output": "test_data/792/main_report.json",
+}
+
 
 @pytest.fixture(
     params=[
@@ -37,6 +45,7 @@ WTCHG_885333_73205296_1 = {
         SRR2097047,
         NTM,
         WTCHG_885333_73205296_1,
+        _792,
     ]
 )
 def regression_test_set(request) -> dict:
