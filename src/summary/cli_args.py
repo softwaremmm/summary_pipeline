@@ -13,7 +13,7 @@ class ReportType(Enum):
 
     GATEKEEPER = "speciation_report.json"
     MAPPING = "competitivemapping_report.json"
-    MYKROBE = "mykrobe_report.json"
+    MYKROBE = "subspecies_report.json"
     CLOCKWORK = "genome_creation_report.json"
     GNOMONICUS = "resistance_prediction_report.json"
 
@@ -42,7 +42,7 @@ class Arguments:  # pylint: disable=too-few-public-methods
             help="Path to competitivemapping_report.json file",
         )
         named_reports.add_argument(
-            "--mykrobe", dest="mykrobe", help="Path to mykrobe_report.json file"
+            "--mykrobe", dest="mykrobe", help="Path to subspecies_report.json file"
         )
         named_reports.add_argument(
             "--clockwork", dest="clockwork", help="Path to genome_creation_report.json file"

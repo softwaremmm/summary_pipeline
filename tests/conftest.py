@@ -17,14 +17,14 @@ SRR2097047 = {
 NTM = {
     "gatekeeper_report": "test_data/NTM/speciation_report.json",
     "competitivemapping_report": "test_data/NTM/competitivemapping_report.json",
-    "mykrobe_report": "test_data/NTM/mykrobe_report.json",
+    "mykrobe_report": "test_data/NTM/subspecies_report.json",
     "expected_output": "test_data/NTM/main_report.json",
 }
 
 WTCHG_885333_73205296_1 = {
     "gatekeeper_report": "test_data/WTCHG_885333_73205296_1/speciation_report.json",
     "competitivemapping_report": "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json",
-    "mykrobe_report": "test_data/WTCHG_885333_73205296_1/mykrobe_report.json",
+    "mykrobe_report": "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
     "clockwork_report": "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
     "gnomonicus": "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
     "expected_output": "test_data/WTCHG_885333_73205296_1/main_report.json",
@@ -33,7 +33,7 @@ WTCHG_885333_73205296_1 = {
 clade_animal_A3 = {
     "gatekeeper_report": "test_data/clade_animal_A3/speciation_report.json",
     "competitivemapping_report": "test_data/clade_animal_A3/competitivemapping_report.json",
-    "mykrobe_report": "test_data/clade_animal_A3/mykrobe_report.json",
+    "mykrobe_report": "test_data/clade_animal_A3/subspecies_report.json",
     "clockwork_report": "test_data/clade_animal_A3/genome_creation_report.json",
     "expected_output": "test_data/clade_animal_A3/main_report.json",
 }
@@ -60,7 +60,7 @@ def all_reports_set_individually() -> list:
         "--mapping",
         "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json",
         "--mykrobe",
-        "test_data/WTCHG_885333_73205296_1/mykrobe_report.json",
+        "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
         "--clockwork",
         "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
         "--gnomonicus",
@@ -79,7 +79,7 @@ def five_reports() -> list:
         "--reports",
         "test_data/WTCHG_885333_73205296_1/speciation_report.json",
         "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json",
-        "test_data/WTCHG_885333_73205296_1/mykrobe_report.json",
+        "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
         "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
         "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
     ]
@@ -96,7 +96,7 @@ def three_reports() -> list:
         "--reports",
         "test_data/WTCHG_885333_73205296_1/speciation_report.json",
         "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json",
-        "test_data/WTCHG_885333_73205296_1/mykrobe_report.json",
+        "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
     ]
 
 
@@ -176,7 +176,7 @@ def eg_duplicate_tb_competitivemapping_report_contents(
 
 @pytest.fixture
 def eg_mykrobe_report() -> Path:
-    return Path("test_data/WTCHG_885333_73205296_1/mykrobe_report.json")
+    return Path("test_data/WTCHG_885333_73205296_1/subspecies_report.json")
 
 
 @pytest.fixture

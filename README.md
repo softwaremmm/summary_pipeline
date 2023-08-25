@@ -20,17 +20,17 @@ conda activate summary_pipeline
 #### Specify individual report files
 
 ```{bash}
-summary_json --gatekeeper test_data/WTCHG_885333_73205296_1/speciation_report.json --mapping test_data/WTCHG_885333_73205296_1/competitivemapping_report.json --mykrobe test_data/WTCHG_885333_73205296_1/mykrobe_report.json --gnomonicus test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json
+summary_json --gatekeeper test_data/WTCHG_885333_73205296_1/speciation_report.json --mapping test_data/WTCHG_885333_73205296_1/competitivemapping_report.json --mykrobe test_data/WTCHG_885333_73205296_1/subspecies_report.json --gnomonicus test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json
 ```
 
 #### Pass report files as a list
 
 ```{bash}
-summary_json --reports test_data/WTCHG_885333_73205296_1/speciation_report.json test_data/WTCHG_885333_73205296_1/competitivemapping_report.json test_data/WTCHG_885333_73205296_1/mykrobe_report.json test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json
+summary_json --reports test_data/WTCHG_885333_73205296_1/speciation_report.json test_data/WTCHG_885333_73205296_1/competitivemapping_report.json test_data/WTCHG_885333_73205296_1/subspecies_report.json test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json
 ```
 
 ### NextFlow
 
 ```{bash}
-nextflow run . --reports ./test_data/WTCHG_885333_73205296_1/speciation_report.json,./test_data/WTCHG_885333_73205296_1/competitivemapping_report.json,./test_data/WTCHG_885333_73205296_1/mykrobe_report.json,./test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json
+nextflow run . --reports ./test_data/WTCHG_885333_73205296_1/speciation_report.json,./test_data/WTCHG_885333_73205296_1/competitivemapping_report.json,./test_data/WTCHG_885333_73205296_1/subspecies_report.json,./test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json
 ```
