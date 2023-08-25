@@ -36,7 +36,7 @@ def test_collate_reports_five(five_reports_args):
         "test_data/WTCHG_885333_73205296_1/speciation_report.json"
     )
     expected_reports["mapping"] = Path(
-        "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json"
+        "test_data/WTCHG_885333_73205296_1/species_comparison_report.json"
     )
     expected_reports["mykrobe"] = Path(
         "test_data/WTCHG_885333_73205296_1/subspecies_report.json"
@@ -57,7 +57,7 @@ def test_collate_reports_three(three_reports_args):
         "test_data/WTCHG_885333_73205296_1/speciation_report.json"
     )
     expected_reports["mapping"] = Path(
-        "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json"
+        "test_data/WTCHG_885333_73205296_1/species_comparison_report.json"
     )
     expected_reports["mykrobe"] = Path(
         "test_data/WTCHG_885333_73205296_1/subspecies_report.json"

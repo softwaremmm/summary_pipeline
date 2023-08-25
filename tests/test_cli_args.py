@@ -9,7 +9,7 @@ def test_Argument_individual_reports(all_reports_set_individually: list):
         "test_data/WTCHG_885333_73205296_1/speciation_report.json"
     )
     assert cli_args.mapping == Path(
-        "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json"
+        "test_data/WTCHG_885333_73205296_1/species_comparison_report.json"
     )
     assert cli_args.mykrobe == Path(
         "test_data/WTCHG_885333_73205296_1/subspecies_report.json"
@@ -25,7 +25,7 @@ def test_Argument_five_reports(five_reports: list):
         "test_data/WTCHG_885333_73205296_1/speciation_report.json"
     )
     assert cli_args.mapping == Path(
-        "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json"
+        "test_data/WTCHG_885333_73205296_1/species_comparison_report.json"
     )
     assert cli_args.mykrobe == Path(
         "test_data/WTCHG_885333_73205296_1/subspecies_report.json"
@@ -44,7 +44,7 @@ def test_Argument_three_reports(three_reports: list):
         "test_data/WTCHG_885333_73205296_1/speciation_report.json"
     )
     assert cli_args.mapping == Path(
-        "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json"
+        "test_data/WTCHG_885333_73205296_1/species_comparison_report.json"
     )
     assert cli_args.mykrobe == Path(
         "test_data/WTCHG_885333_73205296_1/subspecies_report.json"
