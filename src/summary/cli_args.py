@@ -11,7 +11,7 @@ class ReportType(Enum):
         Enum (_type_): Report type.
     """
 
-    GATEKEEPER = "gatekeeper_report.json"
+    GATEKEEPER = "speciation_report.json"
     MAPPING = "competitivemapping_report.json"
     MYKROBE = "mykrobe_report.json"
     CLOCKWORK = "genome_creation_report.json"
@@ -34,7 +34,7 @@ class Arguments:  # pylint: disable=too-few-public-methods
         named_reports.add_argument(
             "--gatekeeper",
             dest="gatekeeper",
-            help="Path to gatekeeper_report.json file",
+            help="Path to speciation_report.json file",
         )
         named_reports.add_argument(
             "--mapping",

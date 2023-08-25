@@ -72,7 +72,7 @@ workflow {
             Parameters:
             ------------------------------------------------------------------------
             --reports_list  List of paths to reports e.g.
-            Path to gatekeeper report (`gatekeeper_report.json`).
+            Path to gatekeeper report (`speciation_report.json`).
             Path to competitive mapping report (`competitivemapping_report.json`).
             Path to mykrobe report (`mykrobe_report.json`).
             Path to gnomonicus report (`resistance_prediction_report.json`).
