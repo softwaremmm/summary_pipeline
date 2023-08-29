@@ -33,13 +33,13 @@ def test_generate_sequencing_quality_error(
 def test_collate_reports_five(five_reports_args):
     expected_reports = {}
     expected_reports["gatekeeper"] = Path(
-        "test_data/WTCHG_885333_73205296_1/gatekeeper_report.json"
+        "test_data/WTCHG_885333_73205296_1/speciation_report.json"
     )
     expected_reports["mapping"] = Path(
-        "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json"
+        "test_data/WTCHG_885333_73205296_1/species_comparison_report.json"
     )
     expected_reports["mykrobe"] = Path(
-        "test_data/WTCHG_885333_73205296_1/mykrobe_report.json"
+        "test_data/WTCHG_885333_73205296_1/subspecies_report.json"
     )
     expected_reports["clockwork"] = Path(
         "test_data/WTCHG_885333_73205296_1/genome_creation_report.json"
@@ -54,13 +54,13 @@ def test_collate_reports_five(five_reports_args):
 def test_collate_reports_three(three_reports_args):
     expected_reports = {}
     expected_reports["gatekeeper"] = Path(
-        "test_data/WTCHG_885333_73205296_1/gatekeeper_report.json"
+        "test_data/WTCHG_885333_73205296_1/speciation_report.json"
     )
     expected_reports["mapping"] = Path(
-        "test_data/WTCHG_885333_73205296_1/competitivemapping_report.json"
+        "test_data/WTCHG_885333_73205296_1/species_comparison_report.json"
     )
     expected_reports["mykrobe"] = Path(
-        "test_data/WTCHG_885333_73205296_1/mykrobe_report.json"
+        "test_data/WTCHG_885333_73205296_1/subspecies_report.json"
     )
 
     assert expected_reports == summarise.collate_reports(three_reports_args)
@@ -69,7 +69,7 @@ def test_collate_reports_three(three_reports_args):
 def test_collate_reports_one(one_report_args):
     expected_reports = {}
     expected_reports["gatekeeper"] = Path(
-        "test_data/WTCHG_885333_73205296_1/gatekeeper_report.json"
+        "test_data/WTCHG_885333_73205296_1/speciation_report.json"
     )
 
     assert expected_reports == summarise.collate_reports(one_report_args)
