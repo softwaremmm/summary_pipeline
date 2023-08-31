@@ -8,9 +8,9 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "M. tuberculosis (Lineage 4.3.4.2)",
-                "Coverage": 100.0,
-                "Depth": 139.0
+                "Name": "Mycobacterium tuberculosis (Lineage 4.3.4.2)",
+                "Coverage": 99.462,
+                "Depth": 123
             }
         ],
         "Species": [
