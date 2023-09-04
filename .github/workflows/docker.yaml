@@ -27,7 +27,6 @@ jobs:
         with:
           file: Dockerfile
           tags: |
-            # lhr.ocir.io/lrbvkel2wjot/gpas/summary_pipeline:latest
             lhr.ocir.io/lrbvkel2wjot/gpas/summary_pipeline:1.1.5
           push: true
           no-cache: true

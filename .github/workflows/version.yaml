@@ -28,10 +28,10 @@ jobs:
         run: |
           cz check --rev-range origin/main..
 
-      # - name: Update changelog
-      #   if: github.ref == 'refs/heads/main'
-      #   run: echo "changelog=-ch " >>"${GITHUB_ENV}"
-      #
+      - name: Update changelog
+        if: github.ref == 'refs/heads/main'
+        run: echo "changelog=-ch " >>"${GITHUB_ENV}"
+
       - id: cz
         if: github.ref == 'refs/heads/main'
         name: Bump version
@@ -39,7 +39,7 @@ jobs:
           git config --local user.name 'github-actions[bot]'
           git config --local user.email 'github-actions[bot]@users.noreply.github.com'
 
-          cz bump --version-type semver --check-consistency # ${changelog}
+          cz bump --version-type semver --check-consistency ${changelog}
 
           echo "version=$(cz version --project)" >> ${GITHUB_OUTPUT}
 
