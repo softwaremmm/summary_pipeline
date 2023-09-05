@@ -20,13 +20,6 @@
                 "Coverage": 87.3094,
                 "Mean Depth": 33.9893,
                 "Length": 5621211.0
-            },
-            {
-                "Name": "Mycobacterium tuberculosis H37Rv",
-                "Num Reads": 383,
-                "Coverage": 0.4821,
-                "Mean Depth": 0.00961661,
-                "Length": 4411532.0
             }
         ],
         "Phylogenic Group": {

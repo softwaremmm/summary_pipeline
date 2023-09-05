@@ -108,14 +108,75 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         "Subspecies": {},
         "Lineage": [],
     }
-    # Competitive mapping
+
+    # if Mykrobe thinks there is any TB, make sure we call that
+    if 'phylo_group' in mykrobe_data:
+
+        if 'Mycobacterium_tuberculosis_complex' in mykrobe_data.get('phylo_group'):
+
+            # manually set the species name as we will append to it later
+            species_name = 'Mycobacterium tuberculosis'
+
+            # get coverage, depth
+            data = mykrobe_data.get('phylo_group')['Mycobacterium_tuberculosis_complex']
+            coverage = data['percent_coverage']
+            depth = data['median_depth']
+
+            # build name incorporating lineage(s)
+            if 'lineage' in mykrobe_data:
+                species_name+=' (Lineage '
+                lineages = mykrobe_data.get("lineage")
+                for lineage_name in lineages.get("lineage"):
+                    clean_lineage = lineage_name.replace('lineage', '')
+                    species_name+=clean_lineage+', '
+                species_name=species_name[:-2]
+                species_name+=')'
+
+            new_summary = {
+                "Name": species_name,
+                "Coverage": float(coverage),
+                "Depth": float(depth),
+            }
+            myco["Summary"].append(new_summary)
+
+    # ..or, if Mykrobe has detected any MAC, pick that up
+    elif 'sub_complex' in mykrobe_data:
+
+        if 'Mycobacterium_avium_complex' in mykrobe_data.get('sub_complex'):
+
+            # MAC is more complex; we take the species from the lowest level
+            # i.e. look for lineage first, then species
+            if 'lineage' in mykrobe_data:
+                data = mykrobe_data.get('lineage')
+                for i in data:
+                    species_name = i.replace('_', ' ')
+                    coverage = data[i].get('percent_coverage')
+                    depth = data[i].get('median_depth')
+            elif 'species' in mykrobe_data:
+                data = mykrobe_data.get('species')
+                for i in data:
+                    species_name = i.replace('_', ' ')
+                    coverage = data[i].get('percent_coverage')
+                    depth = data[i].get('median_depth')
+
+            new_summary = {
+                "Name": species_name,
+                "Coverage": float(coverage),
+                "Depth": float(depth),
+            }
+            myco["Summary"].append(new_summary)
+
+    # Now let's look at the result of the competitive mapping
     for mapping in mappings:
         genome_name = mapping.get("genome_name").replace(" complete genome", "")
         gen_reads = mapping.get("numreads")
         coverage = mapping.get("coverage")
         meandepth = mapping.get("meandepth")
         length = mapping.get("length")
-        if coverage > 80 or "tuberculosis" in genome_name:
+
+        # added min reads for MBTC of 1000 to reduce false positives
+        # filtered out plasmids from the competitive mapping manifest
+        if (("plasmid" not in genome_name) and coverage > 80) or ("tuberculosis" in genome_name and int(gen_reads) > 1000):
             new_species = {
                 "Name": genome_name,
                 "Num Reads": int(gen_reads),
@@ -124,7 +185,9 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
                 "Length": length,
             }
             myco["Species"].append(new_species)
-    # Mykrobe
+
+    # Now back to Mykrobe to fill in the other blocks
+    # (not displayed on portal so at present have left unchanged)
     phylo_group = mykrobe_data.get("phylo_group")
     if not len(phylo_group.keys()) == 1:
         raise ValueError(
@@ -151,37 +214,30 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
     )
     if "lineage" in mykrobe_data:
         lineages = mykrobe_data.get("lineage")
-        for lineage_name in lineages.get("lineage"):
-            calls = lineages.get("calls")
-            specific_line = calls.get(lineage_name)
-            # TODO: Needs review. Trying to be generic,
-            # should this come from the first item in the list???
-            # TODO: This section also needs better error handling
-            top_level = list(specific_line.keys())[0]
-            variant_level = specific_line.get(top_level)
-            variant_name = list(variant_level.keys())[0]
-            info_level = variant_level.get(variant_name)
-            # TODO: Chained getfields would be nicer...Or better generic handling of this
-            info = info_level.get("info")
-            cov = info.get("coverage")
-            ref = cov.get("reference")
-            coverage = ref.get("percent_coverage")
-            mediandepth = ref.get("median_depth")
-            new_line = {
-                "Name": lineage_name,
-                "Coverage": coverage,
-                "Median Depth": mediandepth,
-            }
-            myco["Lineage"].append(new_line)
+        if 'lineage' in lineages:
+            for lineage_name in lineages.get("lineage"):
+                calls = lineages.get("calls")
+                specific_line = calls.get(lineage_name)
+                # TODO: Needs review. Trying to be generic,
+                # should this come from the first item in the list???
+                # TODO: This section also needs better error handling
+                top_level = list(specific_line.keys())[0]
+                variant_level = specific_line.get(top_level)
+                variant_name = list(variant_level.keys())[0]
+                info_level = variant_level.get(variant_name)
+                # TODO: Chained getfields would be nicer...Or better generic handling of this
+                info = info_level.get("info")
+                cov = info.get("coverage")
+                ref = cov.get("reference")
+                coverage = ref.get("percent_coverage")
+                mediandepth = ref.get("median_depth")
+                new_line = {
+                    "Name": lineage_name,
+                    "Coverage": coverage,
+                    "Median Depth": mediandepth,
+                }
+                myco["Lineage"].append(new_line)
 
-            # if Mykrobe has returned one or more lineages we must be dealing with MTB
-            lineage_number = str(lineage_name.replace("lineage", ""))
-            new_summary = {
-                "Name": "M. tuberculosis (Lineage " + lineage_number + ")",
-                "Coverage": float(coverage),
-                "Depth": float(mediandepth),
-            }
-            myco["Summary"].append(new_summary)
     else:
         logging.info("No lineage information in mykrobe report.")
     # now iterate through the species detected by competitive mapping, ignoring MTB
@@ -427,9 +483,9 @@ def create_summary(
         output = "Pipeline failed to produce a summary (summary_pipeline could not find gatekeeper report)."
     if "mapping" in reports and "mykrobe" in reports:
         mapping_json = read_json_file(reports["mapping"])
-        mykrobe_json = read_json_file(reports["mykrobe"])
+        mykrobe_data = read_json_file(reports["mykrobe"])
         output["Mycobacterium Results"] = generate_mycobacterium_results(
-            mapping_json, mykrobe_json
+            mapping_json, mykrobe_data
         )
     else:
         output["Mycobacterium Results"] = {
