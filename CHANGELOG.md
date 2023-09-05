@@ -1,3 +1,9 @@
+## 1.1.7 (2023-09-05)
+
+### Fix
+
+- zero cov for TB and pick up MAC
+
 ## 1.1.6 (2023-09-04)
 
 ### Fix
