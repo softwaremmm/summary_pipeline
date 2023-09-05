@@ -1,14 +1,11 @@
 {
+    "Pipeline Outcome": "Insufficient mycobacterial reads.",
     "Organism Identification": {
         "Human Reads": null,
         "Unclassified Reads": 0,
         "Non-Mycobacterium Bacteria Reads": 0,
         "Mycobacterium Reads": 0
     },
-    "Mycobacterium Results": {
-        "Insufficient reads": "There were insufficient mycobacterial reads to carry out competitive mapping or lineage calling."
-    },
-    "Genomes": {
-        "Insufficient reads": "There were insufficient Mycobacterium tuberculosis reads to determine sequencing quality or predict antibiotic resistances."
-    }
+    "Mycobacterium Results": null,
+    "Genomes": null
 }
