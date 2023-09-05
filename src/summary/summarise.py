@@ -475,6 +475,7 @@ def create_summary(
     """
     output = {}
     if "gatekeeper" in reports:
+        output["Pipeline Outcome"] = "Insufficient mycobacterial reads."
         gatekeeper_json = read_json_file(reports["gatekeeper"])
         output["Organism Identification"] = generate_organism_identification(
             gatekeeper_json
@@ -482,20 +483,20 @@ def create_summary(
     else:
         output = "Pipeline failed to produce a summary (summary_pipeline could not find gatekeeper report)."
     if "mapping" in reports and "mykrobe" in reports:
+        output["Pipeline Outcome"] = "Insufficient TB reads."
         mapping_json = read_json_file(reports["mapping"])
         mykrobe_data = read_json_file(reports["mykrobe"])
         output["Mycobacterium Results"] = generate_mycobacterium_results(
             mapping_json, mykrobe_data
         )
     else:
-        output["Mycobacterium Results"] = {
-            "Insufficient reads": "There were insufficient mycobacterial reads to carry out competitive mapping or lineage calling.",
-        }
+        output["Mycobacterium Results"] = None
     # make this next block a list to cope with the future when other species are also mapped,
     # and potentially also have resistance predictions returned
     # FIXME for now we can hard code much of this since there will only ever be one and it will always
     # be M. tuberculosis
     if "mapping" in reports and "clockwork" in reports and "gnomonicus" in reports:
+        output["Pipeline Outcome"] = "Sufficient TB reads for analysis completion."
         clockwork_json = read_json_file(reports["clockwork"])
         gnom_json = read_json_file(reports["gnomonicus"])
         output["Genomes"] = []
@@ -507,9 +508,7 @@ def create_summary(
         genome["Resistance Prediction"] = generate_resistance_prediction(gnom_json)
         output["Genomes"].append(genome)
     else:
-        output["Genomes"] = {
-            "Insufficient reads": "There were insufficient Mycobacterium tuberculosis reads to determine sequencing quality or predict antibiotic resistances.",
-        }
+        output["Genomes"] = None
 
     return output
 
