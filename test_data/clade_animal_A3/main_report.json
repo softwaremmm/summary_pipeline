@@ -1,4 +1,5 @@
 {
+    "Pipeline Outcome": "Insufficient TB reads.",
     "Organism Identification": {
         "Human Reads": null,
         "Unclassified Reads": 206,
@@ -40,7 +41,5 @@
             }
         ]
     },
-    "Genomes": {
-        "Insufficient reads": "There were insufficient Mycobacterium tuberculosis reads to determine sequencing quality or predict antibiotic resistances."
-    }
+    "Genomes": null
 }
