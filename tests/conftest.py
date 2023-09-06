@@ -55,6 +55,8 @@ def regression_test_set(request) -> dict:
 @pytest.fixture
 def all_reports_set_individually() -> list:
     return [
+        "--versions",
+        "test_data/WTCHG_885333_73205296_1/pipeline_versions.txt",
         "--gatekeeper",
         "test_data/WTCHG_885333_73205296_1/speciation_report.json",
         "--mapping",
