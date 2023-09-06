@@ -1,3 +1,9 @@
+## 1.2.0 (2023-09-06)
+
+### Feat
+
+- Report pipeline outcome
+
 ## 1.1.7 (2023-09-05)
 
 ### Fix
