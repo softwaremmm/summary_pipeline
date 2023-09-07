@@ -10,6 +10,11 @@ covid = {
     "expected_output": "test_data/covid/main_report.json",
 }
 
+covid_no_meta = {
+    "gatekeeper_report": "test_data/covid_no_meta/speciation_report.json",
+    "expected_output": "test_data/covid_no_meta/main_report.json",
+}
+
 SRR2097047 = {
     "pipeline_versions": "test_data/SRR2097047/pipeline_versions.txt",
     "gatekeeper_report": "test_data/SRR2097047/speciation_report.json",
@@ -47,6 +52,7 @@ clade_animal_A3 = {
 @pytest.fixture(
     params=[
         covid,
+        covid_no_meta,
         SRR2097047,
         NTM,
         WTCHG_885333_73205296_1,

@@ -7,5 +7,10 @@
         "Mycobacterium Reads": 172
     },
     "Mycobacterium Results": null,
-    "Genomes": null
+    "Genomes": null,
+    "Metadata": {
+        "Software Versions": [
+            {"gpas-tb-workflow": "v0.0.55"}
+        ]
+    }
 }
