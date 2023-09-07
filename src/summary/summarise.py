@@ -110,27 +110,25 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
     }
 
     # if Mykrobe thinks there is any TB, make sure we call that
-    if 'phylo_group' in mykrobe_data:
-
-        if 'Mycobacterium_tuberculosis_complex' in mykrobe_data.get('phylo_group'):
-
+    if "phylo_group" in mykrobe_data:
+        if "Mycobacterium_tuberculosis_complex" in mykrobe_data.get("phylo_group"):
             # manually set the species name as we will append to it later
-            species_name = 'Mycobacterium tuberculosis'
+            species_name = "Mycobacterium tuberculosis"
 
             # get coverage, depth
-            data = mykrobe_data.get('phylo_group')['Mycobacterium_tuberculosis_complex']
-            coverage = data['percent_coverage']
-            depth = data['median_depth']
+            data = mykrobe_data.get("phylo_group")["Mycobacterium_tuberculosis_complex"]
+            coverage = data["percent_coverage"]
+            depth = data["median_depth"]
 
             # build name incorporating lineage(s)
-            if 'lineage' in mykrobe_data:
-                species_name+=' (Lineage '
+            if "lineage" in mykrobe_data:
+                species_name += " (Lineage "
                 lineages = mykrobe_data.get("lineage")
                 for lineage_name in lineages.get("lineage"):
-                    clean_lineage = lineage_name.replace('lineage', '')
-                    species_name+=clean_lineage+', '
-                species_name=species_name[:-2]
-                species_name+=')'
+                    clean_lineage = lineage_name.replace("lineage", "")
+                    species_name += clean_lineage + ", "
+                species_name = species_name[:-2]
+                species_name += ")"
 
             new_summary = {
                 "Name": species_name,
@@ -140,24 +138,22 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
             myco["Summary"].append(new_summary)
 
     # ..or, if Mykrobe has detected any MAC, pick that up
-    elif 'sub_complex' in mykrobe_data:
-
-        if 'Mycobacterium_avium_complex' in mykrobe_data.get('sub_complex'):
-
+    elif "sub_complex" in mykrobe_data:
+        if "Mycobacterium_avium_complex" in mykrobe_data.get("sub_complex"):
             # MAC is more complex; we take the species from the lowest level
             # i.e. look for lineage first, then species
-            if 'lineage' in mykrobe_data:
-                data = mykrobe_data.get('lineage')
+            if "lineage" in mykrobe_data:
+                data = mykrobe_data.get("lineage")
                 for i in data:
-                    species_name = i.replace('_', ' ')
-                    coverage = data[i].get('percent_coverage')
-                    depth = data[i].get('median_depth')
-            elif 'species' in mykrobe_data:
-                data = mykrobe_data.get('species')
+                    species_name = i.replace("_", " ")
+                    coverage = data[i].get("percent_coverage")
+                    depth = data[i].get("median_depth")
+            elif "species" in mykrobe_data:
+                data = mykrobe_data.get("species")
                 for i in data:
-                    species_name = i.replace('_', ' ')
-                    coverage = data[i].get('percent_coverage')
-                    depth = data[i].get('median_depth')
+                    species_name = i.replace("_", " ")
+                    coverage = data[i].get("percent_coverage")
+                    depth = data[i].get("median_depth")
 
             new_summary = {
                 "Name": species_name,
@@ -176,7 +172,9 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
 
         # added min reads for MBTC of 1000 to reduce false positives
         # filtered out plasmids from the competitive mapping manifest
-        if (("plasmid" not in genome_name) and coverage > 80) or ("tuberculosis" in genome_name and int(gen_reads) > 1000):
+        if (("plasmid" not in genome_name) and coverage > 80) or (
+            "tuberculosis" in genome_name and int(gen_reads) > 1000
+        ):
             new_species = {
                 "Name": genome_name,
                 "Num Reads": int(gen_reads),
@@ -214,7 +212,7 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
     )
     if "lineage" in mykrobe_data:
         lineages = mykrobe_data.get("lineage")
-        if 'lineage' in lineages:
+        if "lineage" in lineages:
             for lineage_name in lineages.get("lineage"):
                 calls = lineages.get("calls")
                 specific_line = calls.get(lineage_name)
