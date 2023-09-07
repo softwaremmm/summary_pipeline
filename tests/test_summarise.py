@@ -22,6 +22,11 @@ def test_read_pipeline_versions_file(eg_pipeline_versions) -> None:
     assert pipeline_versions_output == expected_output
 
 
+def test_read_pipeline_versions_file_error(bad_path) -> None:
+    with pytest.raises(FileNotFoundError):
+        summarise.read_pipeline_versions_file(bad_path)
+
+
 def test_generate_sequencing_quality(
     eg_competitivemapping_report_contents, eg_clockwork_report_contents
 ) -> None:

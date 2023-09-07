@@ -150,6 +150,10 @@ def bad_reports() -> list:
     return ["--bad", "bad"]
 
 @pytest.fixture
+def bad_path() -> Path:
+    return Path("does/not/exist")
+
+@pytest.fixture
 def eg_pipeline_versions() -> Path:
     return Path("test_data/WTCHG_885333_73205296_1/pipeline_versions.txt")
 
