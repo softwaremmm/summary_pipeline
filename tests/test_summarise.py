@@ -4,6 +4,24 @@ import pytest
 import summary.summarise as summarise
 
 
+def test_read_pipeline_versions_file(eg_pipeline_versions) -> None:
+    expected_output = {
+        "human-read-removal_pipeline": "v0.1.4",
+        "gatekeeper_pipeline": "v0.1.9",
+        "lineagecalling_pipeline": "v0.1.5",
+        "competitivemapping_pipeline": "v0.1.8",
+        "clockwork_pipeline": "v0.2.2",
+        "tb-predict-pipeline": "v0.3.0",
+        "fn5_pipeline": "v1.0.3",
+        "summary_pipeline": "1.1.7",
+        "gpas-tb-workflow": "v0.0.55",
+    }
+    pipeline_versions_output = summarise.read_pipeline_versions_file(
+        eg_pipeline_versions
+    )
+    assert pipeline_versions_output == expected_output
+
+
 def test_generate_sequencing_quality(
     eg_competitivemapping_report_contents, eg_clockwork_report_contents
 ) -> None:

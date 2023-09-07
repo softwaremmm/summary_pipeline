@@ -149,6 +149,10 @@ def no_reports() -> list:
 def bad_reports() -> list:
     return ["--bad", "bad"]
 
+@pytest.fixture
+def eg_pipeline_versions() -> Path:
+    return Path("test_data/WTCHG_885333_73205296_1/pipeline_versions.txt")
+
 
 @pytest.fixture
 def eg_gatekeeper_report() -> Path:
