@@ -507,6 +507,11 @@ def create_summary(
         output["Genomes"].append(genome)
     else:
         output["Genomes"] = None
+    if "versions" in reports:
+        versions = read_pipeline_versions_file(reports["versions"])
+        output["Metadata"] = {
+            "Software Versions": [{"gpas-tb-workflow": versions["gpas-tb-workflow"]}]
+        }
 
     return output
 
@@ -532,6 +537,31 @@ def read_json_file(path: Path) -> dict:
     return data
 
 
+def read_pipeline_versions_file(path: Path) -> dict:
+    """Loads and parses `pipeline_versions.txt` files which contain information
+    about which version of the pipeline was used to create the current outputs.
+
+
+    Args:
+        path (Path): Path to the `pipeline_versions.txt` file
+
+    Raises:
+        FileNotFoundError: File does not exist.
+
+    Returns:
+        dict: Information in the `pipeline_versions.txt` file represented as a dictionary.
+    """
+    if not os.path.isfile(path):
+        raise FileNotFoundError(
+            "File " + str(path) + " does not exist. Data could not be loaded"
+        )
+    with open(path, "r") as file:
+        data = file.read()
+    data_list = data.replace("\\n", " = ").split(" = ")
+    pipeline_versions = dict(zip(data_list[::2], data_list[1::2]))
+    return pipeline_versions
+
+
 def write_summary(output: dict, location: Path = Path("Mega.json")) -> None:
     """Write summary to JSON file.
 
@@ -553,6 +583,10 @@ def collate_reports(cli_args: Arguments) -> dict:
         dict: Pipeline reports.
     """
     reports = {}
+    try:
+        reports["versions"] = cli_args.versions
+    except AttributeError as error:
+        logging.info(error)
     reports["gatekeeper"] = cli_args.gatekeeper
     try:
         reports["mapping"] = cli_args.mapping
