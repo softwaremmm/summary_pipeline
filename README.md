@@ -26,7 +26,7 @@ summary_json --gatekeeper test_data/WTCHG_885333_73205296_1/speciation_report.js
 #### Pass report files as a list
 
 ```{bash}
-summary_json --reports test_data/WTCHG_885333_73205296_1/speciation_report.json test_data/WTCHG_885333_73205296_1/species_comparison_report.json test_data/WTCHG_885333_73205296_1/subspecies_report.json test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json
+summary_json --reports test_data/WTCHG_885333_73205296_1/pipeline_versions.txt test_data/WTCHG_885333_73205296_1/speciation_report.json test_data/WTCHG_885333_73205296_1/species_comparison_report.json test_data/WTCHG_885333_73205296_1/subspecies_report.json test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json test_data/WTCHG_885333_73205296_1/genome_creation_report.json
 ```
 
 ### NextFlow
