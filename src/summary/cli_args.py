@@ -51,10 +51,14 @@ class Arguments:  # pylint: disable=too-few-public-methods
             "--mykrobe", dest="mykrobe", help="Path to subspecies_report.json file"
         )
         named_reports.add_argument(
-            "--clockwork", dest="clockwork", help="Path to genome_creation_report.json file"
+            "--clockwork",
+            dest="clockwork",
+            help="Path to genome_creation_report.json file",
         )
         named_reports.add_argument(
-            "--gnomonicus", dest="gnomonicus", help="Path to resistance_prediction_report.json file"
+            "--gnomonicus",
+            dest="gnomonicus",
+            help="Path to resistance_prediction_report.json file",
         )
         report_list = parser.add_argument_group(title="Path to report list")
         report_list.add_argument(
