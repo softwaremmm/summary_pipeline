@@ -5,8 +5,9 @@ from summary import summarise
 
 def test_regression(regression_test_set: dict):
     test_reports = {}
+    if "pipeline_versions" in regression_test_set:
+        test_reports["versions"] = regression_test_set["pipeline_versions"]
     test_reports["gatekeeper"] = regression_test_set["gatekeeper_report"]
-
     if "competitivemapping_report" in regression_test_set:
         test_reports["mapping"] = regression_test_set["competitivemapping_report"]
     if "mykrobe_report" in regression_test_set:
