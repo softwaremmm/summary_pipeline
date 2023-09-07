@@ -37,8 +37,8 @@
     },
     "Genomes": null,
     "Metadata": {
-        "Software Versions": [
-            {"gpas-tb-workflow": "v0.0.55"}
-        ]
+        "Software Versions": {
+            "gpas-tb-workflow": "v0.0.55"
+        }
     }
 }

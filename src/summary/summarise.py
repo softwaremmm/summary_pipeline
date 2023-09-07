@@ -510,7 +510,7 @@ def create_summary(
     if "versions" in reports:
         versions = read_pipeline_versions_file(reports["versions"])
         output["Metadata"] = {
-            "Software Versions": [{"gpas-tb-workflow": versions["gpas-tb-workflow"]}]
+            "Software Versions": {"gpas-tb-workflow": versions["gpas-tb-workflow"]}
         }
 
     return output
