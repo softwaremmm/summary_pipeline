@@ -55,7 +55,7 @@
                 "Resistance Prediction Summary": {
                     "First-line treatment": {
                         "Isoniazid (INH)": "R",
-                        "Rifampicin (RIF)": "S",
+                        "Rifampicin (RIF)": "R",
                         "Pyrazinamide (PZA)": "U",
                         "Ethambutol (EMB)": "U"
                     },
@@ -125,6 +125,24 @@
                                     96
                                 ],
                                 "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
+                    },
+                    {
+                        "Drug Name": "RIF",
+                        "Mutations": [
+                            {
+                                "Gene": "rpoB",
+                                "Mutation": "del_1.0",
+                                "Position": null,
+                                "Coverage": [
+                                    null,
+                                    null
+                                ],
+                                "Ref": "",
+                                "Alt": "",
+                                "Prediction": "R",
                                 "Evidence": ""
                             }
                         ]

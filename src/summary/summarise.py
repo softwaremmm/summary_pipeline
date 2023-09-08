@@ -313,7 +313,12 @@ def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
         significant_variant = {}
         significant_variant["Gene"] = row.gene
         significant_variant["Mutation"] = row.mutation
-        significant_variant["Position"] = int(row.gene_position)
+        
+        if pandas.isnull(row.gene_position):
+            significant_variant["Position"] = None
+        else:
+            significant_variant["Position"] = int(row.gene_position)
+        
         if isinstance(row.ref, str):
             significant_variant["Ref"] = row.ref
         elif (
