@@ -18,6 +18,37 @@
   "data": {
     "variants": [
       {
+        "variant": "759807_del_cgccggccgaaaccgacaaaattatcgcggcgaacgggcccgtgggcaccgctcctctaagggctctcgttggtcgcatgaagtgctggaaggatgcatcttggcagattcccgccagagcaaaacagccgctagtcctagtccgagtcgcccgcaaagttcctcgaataactccgtacccggagcgccaaaccgggtctccttcgctaagctgcgcgaaccacttgaggttccgggactccttgacgtccagaccgattcgttcgagtggctgatcggttcgccgcgctggcgcgaatccgccgccgagcggggtgatgtcaacccagtgggtggcctggaagaggtgctctacgagctgtctccgatcgaggacttctccgggtcgatgtcgttgtcgttctctgaccctcgtttcgacgatgtcaaggcacccgtcgacgagtgcaaagacaaggacatgacgtacgcggctccactgttcgtcaccgccgagttcatcaacaacaacaccggtgagatcaagagtcagacggtgttcatgggtgacttcccgatgatgaccgagaagggcacgttcatcatcaacgggaccgagcgtgtggtggtcagccagctggtgcggtcgcccggggtgtacttcgacgagaccattgacaagtccaccgacaagacgctgcacagcgtcaaggtgatcccgagccgcggcgcgtggctcgagtttgacgtcgacaagcgcgacaccgtcggcgtgcgcatcgaccgcaaacgccggcaaccggtcaccgtgctgctcaaggcgctgggctggaccagcgagcagattgtcgagcggttcgggttctccgagatcatgcgatcgacgctggagaaggacaacaccgtcggcaccgacgaggcgctgttggacatctaccgcaagctgcgtccgggcgagcccccgaccaaagagtcagcgcagacgctgttggaaaacttgttcttcaaggagaagcgctacgacctggcccgcgtcggtcgctataaggtcaacaagaagctcgggctgcatgtcggcgagcccatcacgtcgtcgacgctgaccgaagaagacgtcgtggccaccatcgaatatctggtccgcttgcacgagggtcagaccacgatgaccgttccgggcggcgtcgaggtgccggtggaaaccgacgacatcgaccacttcggcaaccgccgcctgcgtacggtcggcgagctgatccaaaaccagatccgggtcggcatgtcgcggatggagcgggtggtccgggagcggatgaccacccaggacgtggaggcgatcacaccgcagacgttgatcaacatccggccggtggtcgccgcgatcaaggagttcttcggcaccagccagctgagccaattcatggaccagaacaacccgctgtcggggttgacccacaagcgccgactgtcggcgctggggcccggcggtctgtcacgtgagcgtgccgggctggaggtccgcgacgtgcacccgtcgcactacggccggatgtgcccgatcgaaacccctgaggggcccaacatcggtctgatcggctcgctgtcggtgtacgcgcgggtcaacccgttcgggttcatcgaaacgccgtaccgcaaggtggtcgacggcgtggttagcgacgagatcgtgtacctgaccgccgacgaggaggaccgccacgtggtggcacaggccaattcgccgatcgatgcggacggtcgcttcgtcgagccgcgcgtgctggtccgccgcaaggcgggcgaggtggagtacgtgccctcgtctgaggtggactacatggacgtctcgccccgccagatggtgtcggtggccaccgcgatgattcccttcctggagcacgacgacgccaaccgtgccctcatgggggcaaacatgcagcgccaggcggtgccgctggtccgtagcgaggccccgctggtgggcaccgggatggagctgcgcgcggcgatcgacgccggcgacgtcgtcgtcgccgaagaaagcggcgtcatcgaggaggtgtcggccgactacatcactgtgatgcacgacaacggcacccggcgtacctaccggatgcgcaagtttgcccggtccaaccacggcacttgcgccaaccagtgccccatcgtggacgcgggcgaccgagtcgaggccggtcaggtgatcgccgacggtccctgtactgacgacggcgagatggcgctgggcaagaacctgctggtggccatcatgccgtgggagggccacaactacgaggacgcgatcatcctgtccaaccgcctggtcgaagaggacgtgctcacctcgatccacatcgaggagcatgagatcgatgctcgcgacaccaagctgggtgcggaggagatcacccgcgacatcccgaacatctccgacgaggtgctcgccgacctggatgagcggggcatcgtgcgcatcggtgccgaggttcgcgacggggacatcctggtcggcaaggtcaccccgaagggtgagaccgagctgacgccggaggagcggctgctgcgtgccatcttcggtgagaaggcccgcgaggtgcgcgacacttcgctgaaggtgccgcacggcgaatccggcaaggtgatcggcattcgggtgttttcccgcgaggacgaggacgagttgccggccggtgtcaacgagctggtgcgtgtgtatgtggctcagaaacgcaagatctccgacggtgacaagctggccggccggcacggcaacaagggcgtgatcggcaagatcctgccggttgaggacatgccgttccttgccgacggcaccccggtggacattattttgaacacccacggcgtgccgcgacggatgaacatcggccagattttggagacccacctgggttggtgtgcccacagcggctggaaggtcgacgccgccaagggggttccggactgggccgccaggctgcccgacgaactgctcgaggcgcagccgaacgccattgtgtcgacgccggtgttcgacggcgcccaggaggccgagctgcagggcctgttgtcgtgcacgctgcccaaccgcgacggtgacgtgctggtcgacgccgacggcaaggccatgctcttcgacgggcgcagcggcgagccgttcccgtacccggtcacggttggctacatgtacatcatgaagctgcaccacctggtggacgacaagatccacgcccgctccaccgggccgtactcgatgatcacccagcagccgctgggcggtaaggcgcagttcggtggccagcggttcggggagatggagtgctgggccatgcaggcctacggtgctgcctacaccctgcaggagctgttgaccatcaagtccgatgacaccgtcggccgcgtcaaggtgtacgaggcgatcgtcaagggtgagaacatcccggagccgggcatccccgagtcgttcaaggtgctgctcaaagaactgcagtcgctgtgcctcaacgtcgaggtgctatcgagtgacggtgcggcgatcgaactgcgcgaaggtgaggacgaggacctggagcgggccgcggccaacctgggaatcaatctgtcccgcaacgaatccgcaagtgtcgaggatcttgcgtaa",
+        "nucleotide_index": 759807,
+        "gene_name": "rpoB",
+        "gene_position": 1,
+        "vcf_evidence": {
+          "GT": [
+            1,
+            1
+          ],
+          "DP": 138.0,
+          "ALLELE_DP": [
+            0.0,
+            138.0
+          ],
+          "FRS": 1.0,
+          "COV_TOTAL": 138,
+          "COV": [
+            0,
+            138
+          ],
+          "GT_CONF": 866.32,
+          "GT_CONF_PERCENTILE": 86.64,
+          "POS": 759807,
+          "REF": "cgccggccgaaaccgacaaaattatcgcggcgaacgggcccgtgggcaccgctcctctaagggctctcgttggtcgcatgaagtgctggaaggatgcatcttggcagattcccgccagagcaaaacagccgctagtcctagtccgagtcgcccgcaaagttcctcgaataactccgtacccggagcgccaaaccgggtctccttcgctaagctgcgcgaaccacttgaggttccgggactccttgacgtccagaccgattcgttcgagtggctgatcggttcgccgcgctggcgcgaatccgccgccgagcggggtgatgtcaacccagtgggtggcctggaagaggtgctctacgagctgtctccgatcgaggacttctccgggtcgatgtcgttgtcgttctctgaccctcgtttcgacgatgtcaaggcacccgtcgacgagtgcaaagacaaggacatgacgtacgcggctccactgttcgtcaccgccgagttcatcaacaacaacaccggtgagatcaagagtcagacggtgttcatgggtgacttcccgatgatgaccgagaagggcacgttcatcatcaacgggaccgagcgtgtggtggtcagccagctggtgcggtcgcccggggtgtacttcgacgagaccattgacaagtccaccgacaagacgctgcacagcgtcaaggtgatcccgagccgcggcgcgtggctcgagtttgacgtcgacaagcgcgacaccgtcggcgtgcgcatcgaccgcaaacgccggcaaccggtcaccgtgctgctcaaggcgctgggctggaccagcgagcagattgtcgagcggttcgggttctccgagatcatgcgatcgacgctggagaaggacaacaccgtcggcaccgacgaggcgctgttggacatctaccgcaagctgcgtccgggcgagcccccgaccaaagagtcagcgcagacgctgttggaaaacttgttcttcaaggagaagcgctacgacctggcccgcgtcggtcgctataaggtcaacaagaagctcgggctgcatgtcggcgagcccatcacgtcgtcgacgctgaccgaagaagacgtcgtggccaccatcgaatatctggtccgcttgcacgagggtcagaccacgatgaccgttccgggcggcgtcgaggtgccggtggaaaccgacgacatcgaccacttcggcaaccgccgcctgcgtacggtcggcgagctgatccaaaaccagatccgggtcggcatgtcgcggatggagcgggtggtccgggagcggatgaccacccaggacgtggaggcgatcacaccgcagacgttgatcaacatccggccggtggtcgccgcgatcaaggagttcttcggcaccagccagctgagccaattcatggaccagaacaacccgctgtcggggttgacccacaagcgccgactgtcggcgctggggcccggcggtctgtcacgtgagcgtgccgggctggaggtccgcgacgtgcacccgtcgcactacggccggatgtgcccgatcgaaacccctgaggggcccaacatcggtctgatcggctcgctgtcggtgtacgcgcgggtcaacccgttcgggttcatcgaaacgccgtaccgcaaggtggtcgacggcgtggttagcgacgagatcgtgtacctgaccgccgacgaggaggaccgccacgtggtggcacaggccaattcgccgatcgatgcggacggtcgcttcgtcgagccgcgcgtgctggtccgccgcaaggcgggcgaggtggagtacgtgccctcgtctgaggtggactacatggacgtctcgccccgccagatggtgtcggtggccaccgcgatgattcccttcctggagcacgacgacgccaaccgtgccctcatgggggcaaacatgcagcgccaggcggtgccgctggtccgtagcgaggccccgctggtgggcaccgggatggagctgcgcgcggcgatcgacgccggcgacgtcgtcgtcgccgaagaaagcggcgtcatcgaggaggtgtcggccgactacatcactgtgatgcacgacaacggcacccggcgtacctaccggatgcgcaagtttgcccggtccaaccacggcacttgcgccaaccagtgccccatcgtggacgcgggcgaccgagtcgaggccggtcaggtgatcgccgacggtccctgtactgacgacggcgagatggcgctgggcaagaacctgctggtggccatcatgccgtgggagggccacaactacgaggacgcgatcatcctgtccaaccgcctggtcgaagaggacgtgctcacctcgatccacatcgaggagcatgagatcgatgctcgcgacaccaagctgggtgcggaggagatcacccgcgacatcccgaacatctccgacgaggtgctcgccgacctggatgagcggggcatcgtgcgcatcggtgccgaggttcgcgacggggacatcctggtcggcaaggtcaccccgaagggtgagaccgagctgacgccggaggagcggctgctgcgtgccatcttcggtgagaaggcccgcgaggtgcgcgacacttcgctgaaggtgccgcacggcgaatccggcaaggtgatcggcattcgggtgttttcccgcgaggacgaggacgagttgccggccggtgtcaacgagctggtgcgtgtgtatgtggctcagaaacgcaagatctccgacggtgacaagctggccggccggcacggcaacaagggcgtgatcggcaagatcctgccggttgaggacatgccgttccttgccgacggcaccccggtggacattattttgaacacccacggcgtgccgcgacggatgaacatcggccagattttggagacccacctgggttggtgtgcccacagcggctggaaggtcgacgccgccaagggggttccggactgggccgccaggctgcccgacgaactgctcgaggcgcagccgaacgccattgtgtcgacgccggtgttcgacggcgcccaggaggccgagctgcagggcctgttgtcgtgcacgctgcccaaccgcgacggtgacgtgctggtcgacgccgacggcaaggccatgctcttcgacgggcgcagcggcgagccgttcccgtacccggtcacggttggctacatgtacatcatgaagctgcaccacctggtggacgacaagatccacgcccgctccaccgggccgtactcgatgatcacccagcagccgctgggcggtaaggcgcagttcggtggccagcggttcggggagatggagtgctgggccatgcaggcctacggtgctgcctacaccctgcaggagctgttgaccatcaagtccgatgacaccgtcggccgcgtcaaggtgtacgaggcgatcgtcaagggtgagaacatcccggagccgggcatccccgagtcgttcaaggtgctgctcaaagaactgcagtcgctgtgcctcaacgtcgaggtgctatcgagtgacggtgcggcgatcgaactgcgcgaaggtgaggacgaggacctggagcgggccgcggccaacctgggaatcaatctgtcccgcaacgaatccgcaagtgtcgaggatcttgcgtaa",
+          "ALTS": [
+            "c"
+          ]
+        },
+        "vcf_idx": 1
+      },
+      {
         "variant": "7362g>c",
         "nucleotide_index": 7362,
         "gene_name": "gyrA",
@@ -340,6 +371,11 @@
     ],
     "mutations": [
       {
+        "mutation": "del_1.0",
+        "gene": "rpoB",
+        "gene_position": null
+      },
+      {
         "mutation": "L16R",
         "gene": "gid",
         "gene_position": 16.0,
@@ -533,6 +569,17 @@
         {
           "phenotype": "U"
         }
+      ],
+      "RIF": [
+        {
+          "gene": "rpoB",
+          "mutation": "del_1.0",
+          "prediction": "R",
+          "evidence": {}
+        },
+        {
+          "phenotype": "R"
+        }
       ]
     },
     "antibiogram": {
@@ -543,7 +590,7 @@
       "CAP": "S",
       "EMB": "U",
       "PZA": "U",
-      "RIF": "S",
+      "RIF": "R",
       "LZD": "S",
       "DLM": "S",
       "AMI": "S",
