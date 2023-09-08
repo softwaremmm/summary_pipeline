@@ -1,3 +1,9 @@
+## 1.2.1 (2023-09-08)
+
+### Fix
+
+- Ensure that None values are not parsed to int incorrectly
+
 ## 1.2.0 (2023-09-06)
 
 ### Feat
