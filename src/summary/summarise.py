@@ -311,7 +311,12 @@ def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
 
     for idx, row in significant_variants_df.iterrows():
         significant_variant = {}
-        significant_variant["Gene"] = row.gene
+        
+        if pandas.isnull(row.gene):
+            significant_variant["Gene"] = None
+        else:
+            significant_variant["Gene"] = row.gene
+
         significant_variant["Mutation"] = row.mutation
         
         if pandas.isnull(row.gene_position):

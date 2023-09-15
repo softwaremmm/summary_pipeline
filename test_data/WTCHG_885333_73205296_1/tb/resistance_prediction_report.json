@@ -18,6 +18,38 @@
   "data": {
     "variants": [
       {
+        "variant": "1673766c>t",
+        "nucleotide_index": 1673766,
+        "gene_name": "fabG1",
+        "gene_position": 109,
+        "codon_idx": 2,
+        "vcf_evidence": {
+          "GT": [
+            1,
+            1
+          ],
+          "DP": 65.0,
+          "ALLELE_DP": [
+            0.0,
+            65.0
+          ],
+          "FRS": 1.0,
+          "COV_TOTAL": 65,
+          "COV": [
+            0,
+            65
+          ],
+          "GT_CONF": 427.81,
+          "GT_CONF_PERCENTILE": 44.7,
+          "POS": 1673766,
+          "REF": "c",
+          "ALTS": [
+            "t"
+          ]
+        },
+        "vcf_idx": 1
+      },
+      {
         "variant": "759807_del_cgccggccgaaaccgacaaaattatcgcggcgaacgggcccgtgggcaccgctcctctaagggctctcgttggtcgcatgaagtgctggaaggatgcatcttggcagattcccgccagagcaaaacagccgctagtcctagtccgagtcgcccgcaaagttcctcgaataactccgtacccggagcgccaaaccgggtctccttcgctaagctgcgcgaaccacttgaggttccgggactccttgacgtccagaccgattcgttcgagtggctgatcggttcgccgcgctggcgcgaatccgccgccgagcggggtgatgtcaacccagtgggtggcctggaagaggtgctctacgagctgtctccgatcgaggacttctccgggtcgatgtcgttgtcgttctctgaccctcgtttcgacgatgtcaaggcacccgtcgacgagtgcaaagacaaggacatgacgtacgcggctccactgttcgtcaccgccgagttcatcaacaacaacaccggtgagatcaagagtcagacggtgttcatgggtgacttcccgatgatgaccgagaagggcacgttcatcatcaacgggaccgagcgtgtggtggtcagccagctggtgcggtcgcccggggtgtacttcgacgagaccattgacaagtccaccgacaagacgctgcacagcgtcaaggtgatcccgagccgcggcgcgtggctcgagtttgacgtcgacaagcgcgacaccgtcggcgtgcgcatcgaccgcaaacgccggcaaccggtcaccgtgctgctcaaggcgctgggctggaccagcgagcagattgtcgagcggttcgggttctccgagatcatgcgatcgacgctggagaaggacaacaccgtcggcaccgacgaggcgctgttggacatctaccgcaagctgcgtccgggcgagcccccgaccaaagagtcagcgcagacgctgttggaaaacttgttcttcaaggagaagcgctacgacctggcccgcgtcggtcgctataaggtcaacaagaagctcgggctgcatgtcggcgagcccatcacgtcgtcgacgctgaccgaagaagacgtcgtggccaccatcgaatatctggtccgcttgcacgagggtcagaccacgatgaccgttccgggcggcgtcgaggtgccggtggaaaccgacgacatcgaccacttcggcaaccgccgcctgcgtacggtcggcgagctgatccaaaaccagatccgggtcggcatgtcgcggatggagcgggtggtccgggagcggatgaccacccaggacgtggaggcgatcacaccgcagacgttgatcaacatccggccggtggtcgccgcgatcaaggagttcttcggcaccagccagctgagccaattcatggaccagaacaacccgctgtcggggttgacccacaagcgccgactgtcggcgctggggcccggcggtctgtcacgtgagcgtgccgggctggaggtccgcgacgtgcacccgtcgcactacggccggatgtgcccgatcgaaacccctgaggggcccaacatcggtctgatcggctcgctgtcggtgtacgcgcgggtcaacccgttcgggttcatcgaaacgccgtaccgcaaggtggtcgacggcgtggttagcgacgagatcgtgtacctgaccgccgacgaggaggaccgccacgtggtggcacaggccaattcgccgatcgatgcggacggtcgcttcgtcgagccgcgcgtgctggtccgccgcaaggcgggcgaggtggagtacgtgccctcgtctgaggtggactacatggacgtctcgccccgccagatggtgtcggtggccaccgcgatgattcccttcctggagcacgacgacgccaaccgtgccctcatgggggcaaacatgcagcgccaggcggtgccgctggtccgtagcgaggccccgctggtgggcaccgggatggagctgcgcgcggcgatcgacgccggcgacgtcgtcgtcgccgaagaaagcggcgtcatcgaggaggtgtcggccgactacatcactgtgatgcacgacaacggcacccggcgtacctaccggatgcgcaagtttgcccggtccaaccacggcacttgcgccaaccagtgccccatcgtggacgcgggcgaccgagtcgaggccggtcaggtgatcgccgacggtccctgtactgacgacggcgagatggcgctgggcaagaacctgctggtggccatcatgccgtgggagggccacaactacgaggacgcgatcatcctgtccaaccgcctggtcgaagaggacgtgctcacctcgatccacatcgaggagcatgagatcgatgctcgcgacaccaagctgggtgcggaggagatcacccgcgacatcccgaacatctccgacgaggtgctcgccgacctggatgagcggggcatcgtgcgcatcggtgccgaggttcgcgacggggacatcctggtcggcaaggtcaccccgaagggtgagaccgagctgacgccggaggagcggctgctgcgtgccatcttcggtgagaaggcccgcgaggtgcgcgacacttcgctgaaggtgccgcacggcgaatccggcaaggtgatcggcattcgggtgttttcccgcgaggacgaggacgagttgccggccggtgtcaacgagctggtgcgtgtgtatgtggctcagaaacgcaagatctccgacggtgacaagctggccggccggcacggcaacaagggcgtgatcggcaagatcctgccggttgaggacatgccgttccttgccgacggcaccccggtggacattattttgaacacccacggcgtgccgcgacggatgaacatcggccagattttggagacccacctgggttggtgtgcccacagcggctggaaggtcgacgccgccaagggggttccggactgggccgccaggctgcccgacgaactgctcgaggcgcagccgaacgccattgtgtcgacgccggtgttcgacggcgcccaggaggccgagctgcagggcctgttgtcgtgcacgctgcccaaccgcgacggtgacgtgctggtcgacgccgacggcaaggccatgctcttcgacgggcgcagcggcgagccgttcccgtacccggtcacggttggctacatgtacatcatgaagctgcaccacctggtggacgacaagatccacgcccgctccaccgggccgtactcgatgatcacccagcagccgctgggcggtaaggcgcagttcggtggccagcggttcggggagatggagtgctgggccatgcaggcctacggtgctgcctacaccctgcaggagctgttgaccatcaagtccgatgacaccgtcggccgcgtcaaggtgtacgaggcgatcgtcaagggtgagaacatcccggagccgggcatccccgagtcgttcaaggtgctgctcaaagaactgcagtcgctgtgcctcaacgtcgaggtgctatcgagtgacggtgcggcgatcgaactgcgcgaaggtgaggacgaggacctggagcgggccgcggccaacctgggaatcaatctgtcccgcaacgaatccgcaagtgtcgaggatcttgcgtaa",
         "nucleotide_index": 759807,
         "gene_name": "rpoB",
@@ -454,6 +486,13 @@
         "gene_position": 24.0,
         "ref": "cgc",
         "alt": "zzz"
+      },
+      {
+        "mutation": "I109I",
+        "gene": "fabG1",
+        "gene_position": 109,
+        "ref": "atc",
+        "alt": "att"
       }
     ],
     "effects": {
@@ -479,6 +518,18 @@
           "gene": "katG",
           "mutation": "S315T",
           "prediction": "R",
+          "evidence": {}
+        },
+        {
+          "gene": "fabG1",
+          "mutation": "I109I",
+          "prediction": "S",
+          "evidence": {}
+        },
+        {
+          "gene": null,
+          "mutation": "fabG1@I109I&fabG1@c327t",
+          "prediction": "U",
           "evidence": {}
         },
         {

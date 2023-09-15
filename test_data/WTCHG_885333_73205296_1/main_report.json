@@ -108,6 +108,19 @@
                                 ],
                                 "Prediction": "R",
                                 "Evidence": ""
+                            },
+                            {
+                                "Gene": null,
+                                "Mutation": "fabG1@I109I&fabG1@c327t",
+                                "Position": null,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    null,
+                                    null
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
                             }
                         ]
                     },
