@@ -12,7 +12,7 @@ params.help = ''
 process summary_json {
     cpus 1
     memory '0.5 GB'
-    container 'lhr.ocir.io/lrbvkel2wjot/gpas/summary_pipeline:1.2.2'
+    container 'lhr.ocir.io/lrbvkel2wjot/gpas/summary_pipeline:1.3.0'
 
   input:
     path reports

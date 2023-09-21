@@ -1,3 +1,14 @@
+## 1.3.0 (2023-09-21)
+
+### Feat
+
+- Include version info in report
+- Update cli to support pipeline version info
+
+### Fix
+
+- Remove redundant list
+
 ## 1.2.2 (2023-09-15)
 
 ### Fix
