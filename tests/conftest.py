@@ -5,16 +5,24 @@ from pathlib import Path
 from summary.cli_args import Arguments
 
 covid = {
+    "pipeline_versions": "test_data/covid/pipeline_versions.txt",
     "gatekeeper_report": "test_data/covid/speciation_report.json",
     "expected_output": "test_data/covid/main_report.json",
 }
 
+covid_no_meta = {
+    "gatekeeper_report": "test_data/covid_no_meta/speciation_report.json",
+    "expected_output": "test_data/covid_no_meta/main_report.json",
+}
+
 SRR2097047 = {
+    "pipeline_versions": "test_data/SRR2097047/pipeline_versions.txt",
     "gatekeeper_report": "test_data/SRR2097047/speciation_report.json",
     "expected_output": "test_data/SRR2097047/main_report.json",
 }
 
 NTM = {
+    "pipeline_versions": "test_data/NTM/pipeline_versions.txt",
     "gatekeeper_report": "test_data/NTM/speciation_report.json",
     "competitivemapping_report": "test_data/NTM/species_comparison_report.json",
     "mykrobe_report": "test_data/NTM/subspecies_report.json",
@@ -22,6 +30,7 @@ NTM = {
 }
 
 WTCHG_885333_73205296_1 = {
+    "pipeline_versions": "test_data/WTCHG_885333_73205296_1/pipeline_versions.txt",
     "gatekeeper_report": "test_data/WTCHG_885333_73205296_1/speciation_report.json",
     "competitivemapping_report": "test_data/WTCHG_885333_73205296_1/species_comparison_report.json",
     "mykrobe_report": "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
@@ -31,6 +40,7 @@ WTCHG_885333_73205296_1 = {
 }
 
 clade_animal_A3 = {
+    "pipeline_versions": "test_data/clade_animal_A3/pipeline_versions.txt",
     "gatekeeper_report": "test_data/clade_animal_A3/speciation_report.json",
     "competitivemapping_report": "test_data/clade_animal_A3/species_comparison_report.json",
     "mykrobe_report": "test_data/clade_animal_A3/subspecies_report.json",
@@ -42,6 +52,7 @@ clade_animal_A3 = {
 @pytest.fixture(
     params=[
         covid,
+        covid_no_meta,
         SRR2097047,
         NTM,
         WTCHG_885333_73205296_1,
@@ -55,6 +66,8 @@ def regression_test_set(request) -> dict:
 @pytest.fixture
 def all_reports_set_individually() -> list:
     return [
+        "--versions",
+        "test_data/WTCHG_885333_73205296_1/pipeline_versions.txt",
         "--gatekeeper",
         "test_data/WTCHG_885333_73205296_1/speciation_report.json",
         "--mapping",
@@ -135,6 +148,14 @@ def no_reports() -> list:
 @pytest.fixture
 def bad_reports() -> list:
     return ["--bad", "bad"]
+
+@pytest.fixture
+def bad_path() -> Path:
+    return Path("does/not/exist")
+
+@pytest.fixture
+def eg_pipeline_versions() -> Path:
+    return Path("test_data/WTCHG_885333_73205296_1/pipeline_versions.txt")
 
 
 @pytest.fixture

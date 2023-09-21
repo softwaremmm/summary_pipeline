@@ -11,6 +11,7 @@ class ReportType(Enum):
         Enum (_type_): Report type.
     """
 
+    VERSIONS = "pipeline_versions.txt"
     GATEKEEPER = "speciation_report.json"
     MAPPING = "species_comparison_report.json"
     MYKROBE = "subspecies_report.json"
@@ -32,6 +33,11 @@ class Arguments:  # pylint: disable=too-few-public-methods
         )
         named_reports = parser.add_argument_group(title="Paths to individual reports")
         named_reports.add_argument(
+            "--versions",
+            dest="versions",
+            help="Path to pipeline_versions.txt file",
+        )
+        named_reports.add_argument(
             "--gatekeeper",
             dest="gatekeeper",
             help="Path to speciation_report.json file",
@@ -45,10 +51,14 @@ class Arguments:  # pylint: disable=too-few-public-methods
             "--mykrobe", dest="mykrobe", help="Path to subspecies_report.json file"
         )
         named_reports.add_argument(
-            "--clockwork", dest="clockwork", help="Path to genome_creation_report.json file"
+            "--clockwork",
+            dest="clockwork",
+            help="Path to genome_creation_report.json file",
         )
         named_reports.add_argument(
-            "--gnomonicus", dest="gnomonicus", help="Path to resistance_prediction_report.json file"
+            "--gnomonicus",
+            dest="gnomonicus",
+            help="Path to resistance_prediction_report.json file",
         )
         report_list = parser.add_argument_group(title="Path to report list")
         report_list.add_argument(
@@ -67,6 +77,11 @@ class Arguments:  # pylint: disable=too-few-public-methods
         args = parser.parse_args(argv)
 
         if args.reports:
+            try:
+                self.versions = self._get_report(args.reports, ReportType.VERSIONS)
+            except ValueError as error:
+                logging.info(error)
+            # There must always be a gatekeeper report
             self.gatekeeper = self._get_report(args.reports, ReportType.GATEKEEPER)
             try:
                 self.mapping = self._get_report(args.reports, ReportType.MAPPING)
@@ -85,6 +100,7 @@ class Arguments:  # pylint: disable=too-few-public-methods
             except ValueError as error:
                 logging.info(error)
         else:
+            self.versions = Path(args.versions)
             self.gatekeeper = Path(args.gatekeeper)
             self.mapping = Path(args.mapping)
             self.mykrobe = Path(args.mykrobe)
