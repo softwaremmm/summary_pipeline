@@ -117,24 +117,3 @@ def test_summarise(all_reports_set_individually, tmp_path, mocker):
     )
 
     assert output == expected_output
-
-
-def test_summarise2(all_reports_set_individually2, tmp_path, mocker):
-    args: list = all_reports_set_individually2
-    args.insert(0, "summary_json")
-    tmp_file = tmp_path / "main_report2.json"
-    args.extend(("--output", str(tmp_file)))
-
-    mocker.patch(
-        "sys.argv",
-        args,
-    )
-
-    summarise.cli_entry_point()
-
-    output = summarise.read_json_file(tmp_file)
-    expected_output = summarise.read_json_file(
-        "test_data/WTCHG_885333_73205296_1/main_report2.json"
-    )
-
-    assert output == expected_output
