@@ -1,3 +1,9 @@
+## 1.3.1 (2023-09-25)
+
+### Fix
+
+- ensure functionality if no variants
+
 ## 1.3.0 (2023-09-21)
 
 ### Feat
