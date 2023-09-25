@@ -1,0 +1,86 @@
+{
+    "Pipeline Outcome": "Sufficient TB reads for analysis completion.",
+    "Organism Identification": {
+        "Human Reads": null,
+        "Unclassified Reads": 67,
+        "Non-Mycobacterium Bacteria Reads": 652,
+        "Mycobacterium Reads": 1977558
+    },
+    "Mycobacterium Results": {
+        "Summary": [
+            {
+                "Name": "Mycobacterium tuberculosis (Lineage 4.3.4.2)",
+                "Coverage": 99.462,
+                "Depth": 123
+            }
+        ],
+        "Species": [
+            {
+                "Name": "Mycobacterium tuberculosis H37Rv",
+                "Num Reads": 3953463,
+                "Coverage": 98.6802,
+                "Mean Depth": 132.507,
+                "Length": 4411532.0
+            }
+        ],
+        "Phylogenic Group": {
+            "Name": "Mycobacterium_tuberculosis_complex",
+            "Coverage": 99.462,
+            "Median Depth": 123
+        },
+        "Subspecies": {
+            "Name": "Mycobacterium_tuberculosis",
+            "Coverage": 97.738,
+            "Median Depth": 105
+        },
+        "Lineage": [
+            {
+                "Name": "lineage4.3.4.2",
+                "Coverage": 100,
+                "Median Depth": 139
+            }
+        ]
+    },
+    "Genomes": [
+        {
+            "Name": "M. tuberculosis",
+            "Sequencing Quality": {
+                "Mapped To": "AL123456.3",
+                "Num Reads": 3953463.0,
+                "Coverage": 98.132,
+                "Mean Depth": 132.507,
+                "Mixed calls": 351
+            },
+            "Resistance Prediction": {
+                "Resistance Prediction Summary": {
+                    "First-line treatment": {
+                        "Isoniazid (INH)": "S",
+                        "Rifampicin (RIF)": "S",
+                        "Pyrazinamide (PZA)": "S",
+                        "Ethambutol (EMB)": "S"
+                    },
+                    "Second-line treatment": {
+                        "Moxifloxacin (MXF)": "S",
+                        "Levofloxacin (LEV)": "S",
+                        "Linezolid (LZD)": "S",
+                        "Bedaquiline (BDQ)": "-"
+                    },
+                    "Reserve treatment": {
+                        "Amikacin (AMI)": "S",
+                        "Kanamycin (KAN)": "S",
+                        "Streptomycin (STM)": "S",
+                        "Capreomycin (CAP)": "S",
+                        "Ethionamide (ETH)": "S",
+                        "Delamanid (DLM)": "S"
+                    }
+                },
+                "Resistance Prediction Detail": []
+            }
+        }
+    ],
+    "Metadata": {
+        "Software Versions": {
+            "gpas-tb-workflow": "v0.0.55"
+        }
+    }
+}

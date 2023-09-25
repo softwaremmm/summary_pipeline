@@ -396,6 +396,12 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
     """
     amr = {"Resistance Prediction Summary": {}, "Resistance Prediction Detail": []}
     data = gnomonicus_data.get("data")
+
+    #There's 2 main situations here:
+    #1. Populated everything - a sample had >=1 variant within a resistance gene
+    #2. Limited fields populated - a sample had 0 variants within resistance genes
+    #In both, the antibiogram is populated
+
     # let's put the drugs in alphabetical order
     raw_antibiogram = dict(sorted((data.get("antibiogram")).items()))
     # add BDQ as a placeholder as it will be in e.g. version 2 of the WHO catalogue when it arrives
@@ -414,58 +420,65 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
 
     amr["Resistance Prediction Summary"] = antibiogram
 
-    # retrieve the effects block and build our base pandas DataFrame
-    effects = data.get("effects")
-    effects_list = []
-    for drug_name in effects:
-        for effect_mutation in effects[drug_name]:
-            if "phenotype" not in effect_mutation:
-                effect_mutation["drug"] = drug_name
-                effects_list.append(effect_mutation)
-    effects_df = pandas.DataFrame(effects_list)
-    effects_df.set_index(["gene", "mutation"], inplace=True)
+    #Check if we have situtation 1 or 2
+    if len(data.get("effects")) == 0:
+        #Situation 2 - no variants
+        amr["Resistance Prediction Detail"] = []
+    else:
+        #Situation 1 - variants
 
-    # retrieve the mutations block and build another pandas DataFrame
-    mutations_list = data.get("mutations")
-    mutations_df = pandas.DataFrame(mutations_list)
-    mutations_df.set_index(["gene", "mutation"], inplace=True)
+        # retrieve the effects block and build our base pandas DataFrame
+        effects = data.get("effects")
+        effects_list = []
+        for drug_name in effects:
+            for effect_mutation in effects[drug_name]:
+                if "phenotype" not in effect_mutation:
+                    effect_mutation["drug"] = drug_name
+                    effects_list.append(effect_mutation)
+        effects_df = pandas.DataFrame(effects_list)
+        effects_df.set_index(["gene", "mutation"], inplace=True)
 
-    # now left-join mutations to effects so we can get the a few extra columns
-    # note that this can be many:1 since a single mutation can affect multiple drugs
-    effects_muts_df = effects_df.join(mutations_df[["ref", "alt", "gene_position"]])
-    effects_muts_df.reset_index(inplace=True)
-    effects_muts_df.set_index(["gene", "gene_position"], inplace=True)
+        # retrieve the mutations block and build another pandas DataFrame
+        mutations_list = data.get("mutations")
+        mutations_df = pandas.DataFrame(mutations_list)
+        mutations_df.set_index(["gene", "mutation"], inplace=True)
 
-    # finally, retrieve the variants block and build the final DataFrame
-    variants = data.get("variants")
-    variants_df = pandas.DataFrame(variants)
-    variants_df.rename(columns={"gene_name": "gene"}, inplace=True)
-    variants_df.set_index(["gene", "gene_position"], inplace=True)
+        # now left-join mutations to effects so we can get the a few extra columns
+        # note that this can be many:1 since a single mutation can affect multiple drugs
+        effects_muts_df = effects_df.join(mutations_df[["ref", "alt", "gene_position"]])
+        effects_muts_df.reset_index(inplace=True)
+        effects_muts_df.set_index(["gene", "gene_position"], inplace=True)
 
-    # now left-join to variants so we can get at the INFO field held
-    #  in vcf_evidence as this contains COV
-    # note this can be 1:many since a single mutation can be made up
-    #  of multiple variants (e.g. multiple SNPs, minor alleles etc)
-    effects_muts_vars_df = effects_muts_df.join(
-        variants_df[["vcf_evidence", "vcf_idx"]]
-    )
-    effects_muts_vars_df.reset_index(inplace=True)
-    effects_muts_vars_df.set_index(["drug", "gene", "mutation"], inplace=True)
+        # finally, retrieve the variants block and build the final DataFrame
+        variants = data.get("variants")
+        variants_df = pandas.DataFrame(variants)
+        variants_df.rename(columns={"gene_name": "gene"}, inplace=True)
+        variants_df.set_index(["gene", "gene_position"], inplace=True)
 
-    # use the pandas helper function defined elsewhere to extract COV from the vcf_evidence field
-    effects_muts_vars_df[["coverage_ref", "coverage_alt"]] = effects_muts_vars_df.apply(
-        unpack_COV_from_info, axis=1
-    )
-    effects_muts_vars_df.drop(columns=["vcf_evidence", "vcf_idx"], inplace=True)
+        # now left-join to variants so we can get at the INFO field held
+        #  in vcf_evidence as this contains COV
+        # note this can be 1:many since a single mutation can be made up
+        #  of multiple variants (e.g. multiple SNPs, minor alleles etc)
+        effects_muts_vars_df = effects_muts_df.join(
+            variants_df[["vcf_evidence", "vcf_idx"]]
+        )
+        effects_muts_vars_df.reset_index(inplace=True)
+        effects_muts_vars_df.set_index(["drug", "gene", "mutation"], inplace=True)
 
-    # ignore mutations that have no effect
-    effects_muts_vars_df = effects_muts_vars_df[effects_muts_vars_df.prediction != "S"]
+        # use the pandas helper function defined elsewhere to extract COV from the vcf_evidence field
+        effects_muts_vars_df[["coverage_ref", "coverage_alt"]] = effects_muts_vars_df.apply(
+            unpack_COV_from_info, axis=1
+        )
+        effects_muts_vars_df.drop(columns=["vcf_evidence", "vcf_idx"], inplace=True)
 
-    # now we have a DataFrame with all the fields and so can construct the dict payload
-    effects_muts_vars_df.reset_index(inplace=True)
-    effects_muts_vars_df.set_index("drug", inplace=True)
-    payload = construct_payload(effects_muts_vars_df)
-    amr["Resistance Prediction Detail"] = payload
+        # ignore mutations that have no effect
+        effects_muts_vars_df = effects_muts_vars_df[effects_muts_vars_df.prediction != "S"]
+
+        # now we have a DataFrame with all the fields and so can construct the dict payload
+        effects_muts_vars_df.reset_index(inplace=True)
+        effects_muts_vars_df.set_index("drug", inplace=True)
+        payload = construct_payload(effects_muts_vars_df)
+        amr["Resistance Prediction Detail"] = payload
 
     return amr
 

@@ -1,0 +1,38 @@
+{
+    "meta": {
+      "status": "success",
+      "workflow_name": "gnomonicus",
+      "workflow_version": "2.1.2",
+      "workflow_task": "resistance_prediction",
+      "guid": "final",
+      "UTC-datetime-completed": "2023-09-23T03:18:54.602239",
+      "time_taken_s": 51.71746492385864,
+      "reference": "NC_000962",
+      "catalogue_file": "NC_000962.3_WHO-UCN-GTB-PCI-2021.7_v1.0_GARC1_RUS.csv",
+      "reference_file": "NC_000962.3.gbk",
+      "vcf_file": "final.vcf",
+      "catalogue_type": "RUS",
+      "catalogue_name": "WHO-UCN-GTB-PCI-2021.7",
+      "catalogue_version": 1.0
+    },
+    "data": {
+      "variants": [],
+      "mutations": [],
+      "effects": {},
+      "antibiogram": {
+        "RIF": "S",
+        "INH": "S",
+        "EMB": "S",
+        "PZA": "S",
+        "LEV": "S",
+        "MXF": "S",
+        "LZD": "S",
+        "DLM": "S",
+        "AMI": "S",
+        "STM": "S",
+        "ETH": "S",
+        "KAN": "S",
+        "CAP": "S"
+      }
+    }
+  }
