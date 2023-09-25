@@ -1,0 +1,26 @@
+{
+    "Pipeline Outcome": "Insufficient TB reads.",
+    "Organism Identification": {
+        "Human Reads": null,
+        "Unclassified Reads": 187885,
+        "Non-Mycobacterium Bacteria Reads": 76031,
+        "Mycobacterium Reads": 524911
+    },
+    "Mycobacterium Results": {
+        "Summary": [],
+        "Species": [],
+        "Phylogenic Group": {
+            "Name": "Non_tuberculosis_mycobacterium_complex",
+            "Coverage": 48.074,
+            "Median Depth": 28
+        },
+        "Subspecies": {},
+        "Lineage": []
+    },
+    "Genomes": null,
+    "Metadata": {
+        "Software Versions": {
+            "gpas-tb-workflow": "v0.0.55"
+        }
+    }
+}
