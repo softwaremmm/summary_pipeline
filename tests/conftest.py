@@ -79,12 +79,31 @@ def all_reports_set_individually() -> list:
         "--gnomonicus",
         "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
     ]
+@pytest.fixture
+def all_reports_set_individually2() -> list:
+    return [
+        "--versions",
+        "test_data/WTCHG_885333_73205296_1/pipeline_versions.txt",
+        "--gatekeeper",
+        "test_data/WTCHG_885333_73205296_1/speciation_report.json",
+        "--mapping",
+        "test_data/WTCHG_885333_73205296_1/species_comparison_report.json",
+        "--mykrobe",
+        "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
+        "--clockwork",
+        "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
+        "--gnomonicus",
+        "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report2.json",
+    ]
 
 
 @pytest.fixture
 def all_reports_set_individually_args(all_reports_set_individually) -> Arguments:
     return Arguments(all_reports_set_individually)
 
+@pytest.fixture
+def all_reports_set_individually_args2(all_reports_set_individually2) -> Arguments:
+    return Arguments(all_reports_set_individually2)
 
 @pytest.fixture
 def five_reports() -> list:
