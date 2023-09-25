@@ -1,3 +1,9 @@
+## 1.3.2 (2023-09-25)
+
+### Fix
+
+- Handle mykrobe output with no species
+
 ## 1.3.1 (2023-09-25)
 
 ### Fix
