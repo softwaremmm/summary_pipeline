@@ -199,17 +199,18 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         myco["Phylogenic Group"]["Name"]
     ].get("median_depth")
     subspecies = mykrobe_data.get("species")  # Why is species assigned to subspecies?
-    if not len(subspecies.keys()) == 1:
-        raise ValueError(
-            "Require only 1 species group. Found " + str(len(subspecies.keys()))
+    if subspecies is not None:
+        if not len(subspecies.keys()) == 1:
+            raise ValueError(
+                "Require only 1 species group. Found " + str(len(subspecies.keys()))
+            )
+        myco["Subspecies"]["Name"] = list(subspecies.keys())[0]
+        myco["Subspecies"]["Coverage"] = subspecies[myco["Subspecies"]["Name"]].get(
+            "percent_coverage"
         )
-    myco["Subspecies"]["Name"] = list(subspecies.keys())[0]
-    myco["Subspecies"]["Coverage"] = subspecies[myco["Subspecies"]["Name"]].get(
-        "percent_coverage"
-    )
-    myco["Subspecies"]["Median Depth"] = subspecies[myco["Subspecies"]["Name"]].get(
-        "median_depth"
-    )
+        myco["Subspecies"]["Median Depth"] = subspecies[myco["Subspecies"]["Name"]].get(
+            "median_depth"
+        )
     if "lineage" in mykrobe_data:
         lineages = mykrobe_data.get("lineage")
         if "lineage" in lineages:
