@@ -185,6 +185,14 @@
     "Metadata": {
         "Software Versions": {
             "gpas-tb-workflow": "v0.0.55"
+        },
+        "Reference Data Files": {
+            "manifest": "target_101_new.fasta", 
+            "ref_files": "Ref_prepare", 
+            "tb_ref_genome": "NC_000962.3.gbk", 
+            "tb_amr_cat": "NC_000962.3_WHO-UCN-GTB-PCI-2021.7_v1.0_GARC1_RUS.csv", 
+            "tb_minor_alleles": "minor_alleles.txt", 
+            "human_genome_dir": "human-genome"
         }
     }
 }

@@ -39,7 +39,7 @@ NTM_no_mykrobe_species = {
 
 WTCHG_885333_73205296_1 = {
     "pipeline_versions": "test_data/WTCHG_885333_73205296_1/pipeline_versions.txt",
-    "knowledge": "test_data/NTM/knowledge.json",
+    "knowledge": "test_data/WTCHG_885333_73205296_1/knowledge.json",
     "gatekeeper_report": "test_data/WTCHG_885333_73205296_1/speciation_report.json",
     "competitivemapping_report": "test_data/WTCHG_885333_73205296_1/species_comparison_report.json",
     "mykrobe_report": "test_data/WTCHG_885333_73205296_1/subspecies_report.json",

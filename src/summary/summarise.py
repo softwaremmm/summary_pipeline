@@ -532,12 +532,17 @@ def create_summary(
         genome["Resistance Prediction"] = generate_resistance_prediction(gnom_json)
         output["Genomes"].append(genome)
     else:
-        output["Genomes"] = None
+        output["Genomes"] = None  #
+    if "versions" in reports or "knowledge" in reports:
+        output["Metadata"] = {}
     if "versions" in reports:
         versions = read_pipeline_versions_file(reports["versions"])
-        output["Metadata"] = {
-            "Software Versions": {"gpas-tb-workflow": versions["gpas-tb-workflow"]}
+        output["Metadata"]["Software Versions"] = {
+            "gpas-tb-workflow": versions["gpas-tb-workflow"]
         }
+    if "knowledge" in reports:
+        knowledge = read_json_file(reports["knowledge"])
+        output["Metadata"]["Reference Data Files"] = knowledge
 
     return output
 
@@ -611,6 +616,10 @@ def collate_reports(cli_args: Arguments) -> dict:
     reports = {}
     try:
         reports["versions"] = cli_args.versions
+    except AttributeError as error:
+        logging.info(error)
+    try:
+        reports["knowledge"] = cli_args.knowledge
     except AttributeError as error:
         logging.info(error)
     reports["gatekeeper"] = cli_args.gatekeeper
