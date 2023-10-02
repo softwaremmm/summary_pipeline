@@ -12,6 +12,7 @@ class ReportType(Enum):
     """
 
     VERSIONS = "pipeline_versions.txt"
+    KNOWLEDGE = "knowledge.json"
     GATEKEEPER = "speciation_report.json"
     MAPPING = "species_comparison_report.json"
     MYKROBE = "subspecies_report.json"
@@ -36,6 +37,11 @@ class Arguments:  # pylint: disable=too-few-public-methods
             "--versions",
             dest="versions",
             help="Path to pipeline_versions.txt file",
+        )
+        named_reports.add_argument(
+            "--knowledge",
+            dest="knowledge",
+            help="Path to knowledge.json file",
         )
         named_reports.add_argument(
             "--gatekeeper",
@@ -81,6 +87,10 @@ class Arguments:  # pylint: disable=too-few-public-methods
                 self.versions = self._get_report(args.reports, ReportType.VERSIONS)
             except ValueError as error:
                 logging.info(error)
+            try:
+                self.versions = self._get_report(args.reports, ReportType.KNOWLEDGE)
+            except ValueError as error:
+                logging.info(error)
             # There must always be a gatekeeper report
             self.gatekeeper = self._get_report(args.reports, ReportType.GATEKEEPER)
             try:
@@ -101,6 +111,7 @@ class Arguments:  # pylint: disable=too-few-public-methods
                 logging.info(error)
         else:
             self.versions = Path(args.versions)
+            self.knowledge = Path(args.knowledge)
             self.gatekeeper = Path(args.gatekeeper)
             self.mapping = Path(args.mapping)
             self.mykrobe = Path(args.mykrobe)
