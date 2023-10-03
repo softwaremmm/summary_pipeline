@@ -1,3 +1,10 @@
+## 1.4.0 (2023-10-03)
+
+### Feat
+
+- Include reference filenames in main report
+- CLI args for knowledge
+
 ## 1.3.2 (2023-09-25)
 
 ### Fix
