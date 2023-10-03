@@ -310,19 +310,19 @@ def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
 
     for idx, row in significant_variants_df.iterrows():
         significant_variant = {}
-        
+
         if pandas.isnull(row.gene):
             significant_variant["Gene"] = None
         else:
             significant_variant["Gene"] = row.gene
 
         significant_variant["Mutation"] = row.mutation
-        
+
         if pandas.isnull(row.gene_position):
             significant_variant["Position"] = None
         else:
             significant_variant["Position"] = int(row.gene_position)
-        
+
         if isinstance(row.ref, str):
             significant_variant["Ref"] = row.ref
         elif (
@@ -398,10 +398,10 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
     amr = {"Resistance Prediction Summary": {}, "Resistance Prediction Detail": []}
     data = gnomonicus_data.get("data")
 
-    #There's 2 main situations here:
-    #1. Populated everything - a sample had >=1 variant within a resistance gene
-    #2. Limited fields populated - a sample had 0 variants within resistance genes
-    #In both, the antibiogram is populated
+    # There's 2 main situations here:
+    # 1. Populated everything - a sample had >=1 variant within a resistance gene
+    # 2. Limited fields populated - a sample had 0 variants within resistance genes
+    # In both, the antibiogram is populated
 
     # let's put the drugs in alphabetical order
     raw_antibiogram = dict(sorted((data.get("antibiogram")).items()))
@@ -421,12 +421,12 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
 
     amr["Resistance Prediction Summary"] = antibiogram
 
-    #Check if we have situtation 1 or 2
+    # Check if we have situtation 1 or 2
     if len(data.get("effects")) == 0:
-        #Situation 2 - no variants
+        # Situation 2 - no variants
         amr["Resistance Prediction Detail"] = []
     else:
-        #Situation 1 - variants
+        # Situation 1 - variants
 
         # retrieve the effects block and build our base pandas DataFrame
         effects = data.get("effects")
@@ -467,13 +467,15 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
         effects_muts_vars_df.set_index(["drug", "gene", "mutation"], inplace=True)
 
         # use the pandas helper function defined elsewhere to extract COV from the vcf_evidence field
-        effects_muts_vars_df[["coverage_ref", "coverage_alt"]] = effects_muts_vars_df.apply(
-            unpack_COV_from_info, axis=1
-        )
+        effects_muts_vars_df[
+            ["coverage_ref", "coverage_alt"]
+        ] = effects_muts_vars_df.apply(unpack_COV_from_info, axis=1)
         effects_muts_vars_df.drop(columns=["vcf_evidence", "vcf_idx"], inplace=True)
 
         # ignore mutations that have no effect
-        effects_muts_vars_df = effects_muts_vars_df[effects_muts_vars_df.prediction != "S"]
+        effects_muts_vars_df = effects_muts_vars_df[
+            effects_muts_vars_df.prediction != "S"
+        ]
 
         # now we have a DataFrame with all the fields and so can construct the dict payload
         effects_muts_vars_df.reset_index(inplace=True)
@@ -530,12 +532,17 @@ def create_summary(
         genome["Resistance Prediction"] = generate_resistance_prediction(gnom_json)
         output["Genomes"].append(genome)
     else:
-        output["Genomes"] = None
+        output["Genomes"] = None  #
+    if "versions" in reports or "knowledge" in reports:
+        output["Metadata"] = {}
     if "versions" in reports:
         versions = read_pipeline_versions_file(reports["versions"])
-        output["Metadata"] = {
-            "Software Versions": {"gpas-tb-workflow": versions["gpas-tb-workflow"]}
+        output["Metadata"]["Software Versions"] = {
+            "gpas-tb-workflow": versions["gpas-tb-workflow"]
         }
+    if "knowledge" in reports:
+        knowledge = read_json_file(reports["knowledge"])
+        output["Metadata"]["Reference Data Files"] = knowledge
 
     return output
 
@@ -609,6 +616,10 @@ def collate_reports(cli_args: Arguments) -> dict:
     reports = {}
     try:
         reports["versions"] = cli_args.versions
+    except AttributeError as error:
+        logging.info(error)
+    try:
+        reports["knowledge"] = cli_args.knowledge
     except AttributeError as error:
         logging.info(error)
     reports["gatekeeper"] = cli_args.gatekeeper
