@@ -19,6 +19,31 @@ def test_Argument_individual_reports(all_reports_set_individually: list):
     )
 
 
+def test_Argument_all_reports(all_reports: list):
+    cli_args = Arguments(all_reports)
+    assert cli_args.versions == Path(
+        "test_data/WTCHG_885333_73205296_1/pipeline_versions.txt"
+    )
+    assert cli_args.knowledge == Path(
+        "test_data/WTCHG_885333_73205296_1/knowledge.json"
+    )
+    assert cli_args.gatekeeper == Path(
+        "test_data/WTCHG_885333_73205296_1/speciation_report.json"
+    )
+    assert cli_args.mapping == Path(
+        "test_data/WTCHG_885333_73205296_1/species_comparison_report.json"
+    )
+    assert cli_args.mykrobe == Path(
+        "test_data/WTCHG_885333_73205296_1/subspecies_report.json"
+    )
+    assert cli_args.clockwork == Path(
+        "test_data/WTCHG_885333_73205296_1/genome_creation_report.json"
+    )
+    assert cli_args.gnomonicus == Path(
+        "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json"
+    )
+
+
 def test_Argument_five_reports(five_reports: list):
     cli_args = Arguments(five_reports)
     assert cli_args.gatekeeper == Path(
