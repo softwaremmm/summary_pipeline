@@ -1,3 +1,9 @@
+## 1.4.1 (2023-10-05)
+
+### Fix
+
+- Correctly assign knowledge
+
 ## 1.4.0 (2023-10-03)
 
 ### Feat
