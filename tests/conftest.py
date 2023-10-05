@@ -108,6 +108,26 @@ def all_reports_set_individually() -> list:
 def all_reports_set_individually_args(all_reports_set_individually) -> Arguments:
     return Arguments(all_reports_set_individually)
 
+
+@pytest.fixture
+def all_reports() -> list:
+    return [
+        "--reports",
+        "test_data/WTCHG_885333_73205296_1/pipeline_versions.txt",
+        "test_data/WTCHG_885333_73205296_1/knowledge.json",
+        "test_data/WTCHG_885333_73205296_1/speciation_report.json",
+        "test_data/WTCHG_885333_73205296_1/species_comparison_report.json",
+        "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
+        "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
+        "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
+    ]
+
+
+@pytest.fixture
+def all_reports_args(all_reports) -> Arguments:
+    return Arguments(all_reports)
+
+
 @pytest.fixture
 def five_reports() -> list:
     return [
@@ -154,6 +174,19 @@ def one_report_args(one_report) -> Arguments:
 
 
 @pytest.fixture
+def one_report() -> list:
+    return [
+        "--reports",
+        "test_data/WTCHG_885333_73205296_1/speciation_report.json",
+    ]
+
+
+@pytest.fixture
+def one_report_args(one_report) -> Arguments:
+    return Arguments(one_report)
+
+
+@pytest.fixture
 def bad_report_combination() -> list:
     return [
         "--reports",
@@ -171,9 +204,11 @@ def no_reports() -> list:
 def bad_reports() -> list:
     return ["--bad", "bad"]
 
+
 @pytest.fixture
 def bad_path() -> Path:
     return Path("does/not/exist")
+
 
 @pytest.fixture
 def eg_pipeline_versions() -> Path:
@@ -238,9 +273,12 @@ def eg_clockwork_report_contents(eg_clockwork_report) -> dict:
     with open(eg_clockwork_report, "r") as file:
         return json.load(file)
 
+
 @pytest.fixture
 def eg_gnomonicus_report() -> Path:
-    return Path("test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json")
+    return Path(
+        "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json"
+    )
 
 
 @pytest.fixture

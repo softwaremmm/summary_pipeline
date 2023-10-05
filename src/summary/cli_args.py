@@ -88,7 +88,7 @@ class Arguments:  # pylint: disable=too-few-public-methods
             except ValueError as error:
                 logging.info(error)
             try:
-                self.versions = self._get_report(args.reports, ReportType.KNOWLEDGE)
+                self.knowledge = self._get_report(args.reports, ReportType.KNOWLEDGE)
             except ValueError as error:
                 logging.info(error)
             # There must always be a gatekeeper report
