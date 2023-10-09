@@ -29,14 +29,6 @@ NTM = {
     "expected_output": "test_data/NTM/main_report.json",
 }
 
-NTM_no_mykrobe_species = {
-    "pipeline_versions": "test_data/NTM_no_mykrobe_species/pipeline_versions.txt",
-    "gatekeeper_report": "test_data/NTM_no_mykrobe_species/speciation_report.json",
-    "competitivemapping_report": "test_data/NTM_no_mykrobe_species/species_comparison_report.json",
-    "mykrobe_report": "test_data/NTM_no_mykrobe_species/subspecies_report.json",
-    "expected_output": "test_data/NTM_no_mykrobe_species/main_report.json",
-}
-
 WTCHG_885333_73205296_1 = {
     "pipeline_versions": "test_data/WTCHG_885333_73205296_1/pipeline_versions.txt",
     "knowledge": "test_data/WTCHG_885333_73205296_1/knowledge.json",
@@ -74,7 +66,6 @@ WTCHG_885333_73205296_2 = {
         covid_no_meta,
         SRR2097047,
         NTM,
-        NTM_no_mykrobe_species,
         WTCHG_885333_73205296_1,
         WTCHG_885333_73205296_2,
         clade_animal_A3,
