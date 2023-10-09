@@ -94,10 +94,6 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         mappings (dict): Output from Competitive Mapping.
         mykrobe_data (dict): Output from Mykrobe.
 
-    Raises:
-        ValueError: Multiple phylo groups.
-        ValueError: Multiple species groups.
-
     Returns:
         dict: Summary of Competitive Mapping and Mykrobe outputs.
     """
@@ -109,104 +105,63 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         "Lineage": [],
     }
 
-    # if Mykrobe thinks there is any TB, make sure we call that
-    if "phylo_group" in mykrobe_data:
-        if "Mycobacterium_tuberculosis_complex" in mykrobe_data.get("phylo_group"):
-            # manually set the species name as we will append to it later
-            species_name = "Mycobacterium tuberculosis"
+    # Species (competitive mapping)
+    mappings_sorted = pandas.DataFrame.from_dict(mappings).sort_values(
+        by=["coverage"], ascending=False
+    )
+    tophit = mappings_sorted.head(1).to_dict(orient="records")[0]
+    myco["Species"] = [
+        {
+            "Name": tophit["genome_name"],
+            "Num Reads": int(tophit["numreads"]),
+            "Coverage": tophit["coverage"],
+            "Mean Depth": tophit["meandepth"],
+            "Length": tophit["length"],
+        }
+    ]
 
-            # get coverage, depth
-            data = mykrobe_data.get("phylo_group")["Mycobacterium_tuberculosis_complex"]
-            coverage = data["percent_coverage"]
-            depth = data["median_depth"]
-
-            # build name incorporating lineage(s)
-            if "lineage" in mykrobe_data:
-                species_name += " (Lineage "
-                lineages = mykrobe_data.get("lineage")
-                for lineage_name in lineages.get("lineage"):
-                    clean_lineage = lineage_name.replace("lineage", "")
-                    species_name += clean_lineage + ", "
-                species_name = species_name[:-2]
-                species_name += ")"
-
-            new_summary = {
-                "Name": species_name,
-                "Coverage": float(coverage),
-                "Depth": float(depth),
-            }
-            myco["Summary"].append(new_summary)
-
-    # ..or, if Mykrobe has detected any MAC, pick that up
-    elif "sub_complex" in mykrobe_data:
-        if "Mycobacterium_avium_complex" in mykrobe_data.get("sub_complex"):
-            # MAC is more complex; we take the species from the lowest level
-            # i.e. look for lineage first, then species
-            if "lineage" in mykrobe_data:
-                data = mykrobe_data.get("lineage")
-                for i in data:
-                    species_name = i.replace("_", " ")
-                    coverage = data[i].get("percent_coverage")
-                    depth = data[i].get("median_depth")
-            elif "species" in mykrobe_data:
-                data = mykrobe_data.get("species")
-                for i in data:
-                    species_name = i.replace("_", " ")
-                    coverage = data[i].get("percent_coverage")
-                    depth = data[i].get("median_depth")
-
-            new_summary = {
-                "Name": species_name,
-                "Coverage": float(coverage),
-                "Depth": float(depth),
-            }
-            myco["Summary"].append(new_summary)
-
-    # Now let's look at the result of the competitive mapping
-    for mapping in mappings:
-        genome_name = mapping.get("genome_name").replace(" complete genome", "")
-        gen_reads = mapping.get("numreads")
-        coverage = mapping.get("coverage")
-        meandepth = mapping.get("meandepth")
-        length = mapping.get("length")
-
-        # added min reads for MBTC of 1000 to reduce false positives
-        # filtered out plasmids from the competitive mapping manifest
-        if (("plasmid" not in genome_name) and coverage > 80) or (
-            "tuberculosis" in genome_name and int(gen_reads) > 1000
-        ):
-            new_species = {
-                "Name": genome_name,
-                "Num Reads": int(gen_reads),
-                "Coverage": coverage,
-                "Mean Depth": meandepth,
-                "Length": length,
-            }
-            myco["Species"].append(new_species)
-
-    # Now back to Mykrobe to fill in the other blocks
-    # (not displayed on portal so at present have left unchanged)
+    # Phylogenetic Group (mykrobe)
     myco["Phylogenic Group"] = process_phylo_group(mykrobe_data.get("phylo_group"))
 
+    # "Subspecies" (mykrobe)
     if "species" in mykrobe_data:
         myco["Subspecies"] = process_subspecies(
             mykrobe_data.get("species")
         )  # Why is species assigned to subspecies?
 
+    # Lineage (mykrobe)
     if "lineage" in mykrobe_data:
         myco["Lineage"] = process_lineages(mykrobe_data.get("lineage"))
 
-    # now iterate through the species detected by competitive mapping, ignoring MTB
-    # on the assumption that is has been picked up by Mykrobe
-    for detected_species in myco["Species"]:
-        # skip over MTB
-        if "tuberculosis" not in detected_species["Name"]:
-            new_summary = {
-                "Name": detected_species["Name"],
-                "Coverage": float(detected_species["Coverage"]),
-                "Depth": float(detected_species["Mean Depth"]),
-            }
-            myco["Summary"].append(new_summary)
+    # Summary
+    tophit_name = tophit["genome_name"]
+    if tophit_name in [
+        "M.intracellulare_chimaera",
+        "M.avium_hominissuis",
+        "M.paraintracellulare",
+        "M.intracellulare",
+        "M.lepraemurium",
+        "M.tuberculosis",
+        "M.abscessus",
+    ]:
+        # USE MYKROBE
+
+        # Append lineage information from mykrobe to species name
+        # from competitive mapping
+        tophit_name = tophit_name + " (" + myco["Lineage"][0]["Name"] + ")"
+        tophit_name = tophit_name.replace("lineage", "Lineage ")
+
+        # Get coverage and depth from mykrobe
+        tophit_coverage = myco["Phylogenic Group"]["Coverage"]
+        tophit_depth = myco["Phylogenic Group"]["Median Depth"]
+
+    myco["Summary"] = [
+        {
+            "Name": tophit_name,
+            "Coverage": tophit_coverage,
+            "Depth": tophit_depth,
+        }
+    ]
 
     return myco
 
@@ -314,7 +269,7 @@ def generate_sequencing_quality(mappings: dict, clockwork: dict) -> dict:
     )
     if len(tb_mappings) > 1:
         raise ValueError(
-            "More than one mapping to Mycobacterium tuberculosis. Possible manifest problem."
+            "More than one mapping to M.tuberculosis. Possible manifest problem."
         )
     tb_mapping = tb_mappings[0]
 
