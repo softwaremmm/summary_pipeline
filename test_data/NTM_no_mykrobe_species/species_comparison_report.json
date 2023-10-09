@@ -574,7 +574,7 @@
         "meandepth": 0.0135437
     },
     {
-        "genome_name": "Mycobacterium intracellulare strain FDAARGOS_1564 chromosome, complete genome",
+        "genome_name": "M.intracellulare",
         "length": 5621211.0,
         "coverage": 0.444104,
         "numreads": 706.0,

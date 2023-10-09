@@ -9,7 +9,7 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "M.tuberculosis (Lineage clade_animal_A3)",
+                "Name": "M.tuberculosis (clade_animal_A3)",
                 "Coverage": 99.416,
                 "Depth": 73
             }

@@ -9,14 +9,14 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "Mycobacterium intracellulare strain FDAARGOS_1564 chromosome,",
+                "Name": "M.intracellulare",
                 "Coverage": 87.3094,
                 "Depth": 33.9893
             }
         ],
         "Species": [
             {
-                "Name": "Mycobacterium intracellulare strain FDAARGOS_1564 chromosome,",
+                "Name": "M.intracellulare",
                 "Num Reads": 1447752,
                 "Coverage": 87.3094,
                 "Mean Depth": 33.9893,

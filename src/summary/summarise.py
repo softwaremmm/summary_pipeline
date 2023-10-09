@@ -154,6 +154,11 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         # Get coverage and depth from mykrobe
         tophit_coverage = myco["Phylogenic Group"]["Coverage"]
         tophit_depth = myco["Phylogenic Group"]["Median Depth"]
+    else:
+        # USE COMPETITIVE MAPPING
+
+        tophit_coverage = myco["Species"][0]["Coverage"]
+        tophit_depth = myco["Species"][0]["Mean Depth"]
 
     myco["Summary"] = [
         {
