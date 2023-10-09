@@ -329,7 +329,7 @@
         "meandepth": 0.0433344
     },
     {
-        "genome_name": "Mycobacterium tuberculosis H37Rv complete genome",
+        "genome_name": "M.tuberculosis",
         "length": 4411532.0,
         "coverage": 0.80888,
         "numreads": 852.0,
