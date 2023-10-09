@@ -31,7 +31,7 @@ def test_generate_sequencing_quality(
     eg_competitivemapping_report_contents, eg_clockwork_report_contents
 ) -> None:
     expected_sq_output = {
-        "Mapped To": "AL123456.3",
+        "Mapped To": "Mycobacterium tuberculosis H37Rv complete genome",
         "Num Reads": 3953463.0,
         "Coverage": 98.132,
         "Mean Depth": 132.507,
