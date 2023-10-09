@@ -186,18 +186,8 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
 
     # Now back to Mykrobe to fill in the other blocks
     # (not displayed on portal so at present have left unchanged)
-    phylo_group = mykrobe_data.get("phylo_group")
-    if not len(phylo_group.keys()) == 1:
-        raise ValueError(
-            "Require only 1 phylo group. Found " + str(len(phylo_group.keys()))
-        )
-    myco["Phylogenic Group"]["Name"] = list(phylo_group.keys())[0]
-    myco["Phylogenic Group"]["Coverage"] = phylo_group[
-        myco["Phylogenic Group"]["Name"]
-    ].get("percent_coverage")
-    myco["Phylogenic Group"]["Median Depth"] = phylo_group[
-        myco["Phylogenic Group"]["Name"]
-    ].get("median_depth")
+    myco["Phylogenic Group"] = process_phylo_group(mykrobe_data.get("phylo_group"))
+
     subspecies = mykrobe_data.get("species")  # Why is species assigned to subspecies?
     if subspecies is not None:
         if not len(subspecies.keys()) == 1:
@@ -252,6 +242,32 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
             myco["Summary"].append(new_summary)
 
     return myco
+
+
+def process_phylo_group(phylo_group: dict) -> dict:
+    """Restructure phylogenetic group information from mykrobe
+
+    Args:
+        phylo_group (dict): Phylogenetic group information from mykrobe
+
+    Raises:
+        ValueError: Thrown if multiple phyogenetic groups are found
+
+    Returns:
+        dict: Restructured phylogenetic information
+    """
+    phylo = {}
+    if not len(phylo_group.keys()) == 1:
+        raise ValueError(
+            "Require only 1 phylo group. Found " + str(len(phylo_group.keys()))
+        )
+    phylo["Name"] = list(phylo_group.keys())[0]
+    phylo["Coverage"] = phylo_group[phylo["Name"]].get(
+        "percent_coverage"
+    )
+    phylo["Median Depth"] = phylo_group[phylo["Name"]].get("median_depth")
+
+    return phylo
 
 
 def generate_sequencing_quality(mappings: dict, clockwork: dict) -> dict:
