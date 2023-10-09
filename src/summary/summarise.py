@@ -147,9 +147,10 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         # USE MYKROBE
 
         # Append lineage information from mykrobe to species name
-        # from competitive mapping
-        tophit_name = tophit_name + " (" + myco["Lineage"][0]["Name"] + ")"
-        tophit_name = tophit_name.replace("lineage", "Lineage ")
+        # from competitive mapping, if available
+        if len(myco["Lineage"]) != 0:
+            tophit_name = tophit_name + " (" + myco["Lineage"][0]["Name"] + ")"
+            tophit_name = tophit_name.replace("lineage", "Lineage ")
 
         # Get coverage and depth from mykrobe
         tophit_coverage = myco["Phylogenic Group"]["Coverage"]
