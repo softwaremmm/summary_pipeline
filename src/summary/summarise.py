@@ -188,19 +188,10 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
     # (not displayed on portal so at present have left unchanged)
     myco["Phylogenic Group"] = process_phylo_group(mykrobe_data.get("phylo_group"))
 
-    subspecies = mykrobe_data.get("species")  # Why is species assigned to subspecies?
-    if subspecies is not None:
-        if not len(subspecies.keys()) == 1:
-            raise ValueError(
-                "Require only 1 species group. Found " + str(len(subspecies.keys()))
-            )
-        myco["Subspecies"]["Name"] = list(subspecies.keys())[0]
-        myco["Subspecies"]["Coverage"] = subspecies[myco["Subspecies"]["Name"]].get(
-            "percent_coverage"
-        )
-        myco["Subspecies"]["Median Depth"] = subspecies[myco["Subspecies"]["Name"]].get(
-            "median_depth"
-        )
+    if "species" in mykrobe_data:
+        myco["Subspecies"] = process_subspecies(
+            mykrobe_data.get("species")
+        )  # Why is species assigned to subspecies?
 
     if "lineage" in mykrobe_data:
         myco["Lineage"] = process_lineages(mykrobe_data.get("lineage"))
@@ -242,6 +233,30 @@ def process_phylo_group(phylo_group: dict) -> dict:
     phylo["Median Depth"] = phylo_group[phylo["Name"]].get("median_depth")
 
     return phylo
+
+
+def process_subspecies(species: dict) -> dict:
+    """Restructure species information from mykrobe
+
+    Args:
+        species (dict): Species information from mykrobe
+
+    Raises:
+        ValueError: Throws an error if mykrobe returns more than one species
+
+    Returns:
+        dict: Restructured species information
+    """
+    subspecies = {}
+    if not len(species.keys()) == 1:
+        raise ValueError(
+            "Require only 1 species group. Found " + str(len(species.keys()))
+        )
+    subspecies["Name"] = list(species.keys())[0]
+    subspecies["Coverage"] = species[subspecies["Name"]].get("percent_coverage")
+    subspecies["Median Depth"] = species[subspecies["Name"]].get("median_depth")
+
+    return subspecies
 
 
 def process_lineages(lineages: dict) -> list[dict]:
