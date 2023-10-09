@@ -201,34 +201,10 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         myco["Subspecies"]["Median Depth"] = subspecies[myco["Subspecies"]["Name"]].get(
             "median_depth"
         )
-    if "lineage" in mykrobe_data:
-        lineages = mykrobe_data.get("lineage")
-        if "lineage" in lineages:
-            for lineage_name in lineages.get("lineage"):
-                calls = lineages.get("calls")
-                specific_line = calls.get(lineage_name)
-                # TODO: Needs review. Trying to be generic,
-                # should this come from the first item in the list???
-                # TODO: This section also needs better error handling
-                top_level = list(specific_line.keys())[0]
-                variant_level = specific_line.get(top_level)
-                variant_name = list(variant_level.keys())[0]
-                info_level = variant_level.get(variant_name)
-                # TODO: Chained getfields would be nicer...Or better generic handling of this
-                info = info_level.get("info")
-                cov = info.get("coverage")
-                ref = cov.get("reference")
-                coverage = ref.get("percent_coverage")
-                mediandepth = ref.get("median_depth")
-                new_line = {
-                    "Name": lineage_name,
-                    "Coverage": coverage,
-                    "Median Depth": mediandepth,
-                }
-                myco["Lineage"].append(new_line)
 
-    else:
-        logging.info("No lineage information in mykrobe report.")
+    if "lineage" in mykrobe_data:
+        myco["Lineage"] = process_lineages(mykrobe_data.get("lineage"))
+
     # now iterate through the species detected by competitive mapping, ignoring MTB
     # on the assumption that is has been picked up by Mykrobe
     for detected_species in myco["Species"]:
@@ -262,12 +238,50 @@ def process_phylo_group(phylo_group: dict) -> dict:
             "Require only 1 phylo group. Found " + str(len(phylo_group.keys()))
         )
     phylo["Name"] = list(phylo_group.keys())[0]
-    phylo["Coverage"] = phylo_group[phylo["Name"]].get(
-        "percent_coverage"
-    )
+    phylo["Coverage"] = phylo_group[phylo["Name"]].get("percent_coverage")
     phylo["Median Depth"] = phylo_group[phylo["Name"]].get("median_depth")
 
     return phylo
+
+
+def process_lineages(lineages: dict) -> list[dict]:
+    """Summarise mykrobe lineages output
+
+    Args:
+        lineages (dict): Lineages information from mykrobe
+
+    Returns:
+        list[dict]: List of lineage summaries
+    """
+    lineage_summary = []
+    if "lineage" in lineages:
+        for lineage_name in lineages.get("lineage"):
+            calls = lineages.get("calls")
+            specific_line = calls.get(lineage_name)
+            # TODO: Needs review. Trying to be generic,
+            # should this come from the first item in the list???
+            # TODO: This section also needs better error handling
+            top_level = list(specific_line.keys())[0]
+            variant_level = specific_line.get(top_level)
+            variant_name = list(variant_level.keys())[0]
+            info_level = variant_level.get(variant_name)
+            # TODO: Chained getfields would be nicer...Or better generic handling of this
+            info = info_level.get("info")
+            cov = info.get("coverage")
+            ref = cov.get("reference")
+            coverage = ref.get("percent_coverage")
+            mediandepth = ref.get("median_depth")
+            new_line = {
+                "Name": lineage_name,
+                "Coverage": coverage,
+                "Median Depth": mediandepth,
+            }
+            lineage_summary.append(new_line)
+
+    else:
+        logging.info("No lineage information in mykrobe report.")
+
+    return lineage_summary
 
 
 def generate_sequencing_quality(mappings: dict, clockwork: dict) -> dict:
