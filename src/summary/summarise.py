@@ -153,8 +153,8 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
             tophit_name = tophit_name.replace("lineage", "Lineage ")
 
         # Get coverage and depth from mykrobe
-        tophit_coverage = myco["Phylogenic Group"]["Coverage"]
-        tophit_depth = myco["Phylogenic Group"]["Median Depth"]
+        tophit_coverage = myco["Subspecies"]["Coverage"]
+        tophit_depth = myco["Subspecies"]["Median Depth"]
     else:
         # USE COMPETITIVE MAPPING
 
