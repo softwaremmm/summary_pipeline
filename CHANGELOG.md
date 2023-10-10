@@ -1,3 +1,9 @@
+## 1.5.0 (2023-10-10)
+
+### Feat
+
+- Use genome_name, not #rname for "mapped to"
+
 ## 1.4.1 (2023-10-05)
 
 ### Fix
