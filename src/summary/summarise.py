@@ -274,7 +274,7 @@ def generate_sequencing_quality(mappings: dict, clockwork: dict) -> dict:
     tb_mapping = tb_mappings[0]
 
     seq_qual = {
-        "Mapped To": tb_mapping["#rname"],
+        "Mapped To": tb_mapping["genome_name"],
         "Num Reads": tb_mapping["numreads"],
         "Coverage": clockwork["Sequencing Quality"]["Fixed coverage"],
         "Mean Depth": tb_mapping["meandepth"],
