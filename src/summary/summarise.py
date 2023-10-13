@@ -155,6 +155,12 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         # Get coverage and depth from mykrobe
         tophit_coverage = myco["Subspecies"]["Coverage"]
         tophit_depth = myco["Subspecies"]["Median Depth"]
+    elif myco["Species"][0]["Coverage"] < 40:
+        # USE MYKROBE
+
+        # Get coverage and depth from mykrobe
+        tophit_coverage = myco["Subspecies"]["Coverage"]
+        tophit_depth = myco["Subspecies"]["Median Depth"]
     else:
         # USE COMPETITIVE MAPPING
 
