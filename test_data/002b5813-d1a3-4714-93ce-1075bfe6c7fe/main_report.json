@@ -1,0 +1,39 @@
+{
+    "Pipeline Outcome": "Insufficient TB reads.",
+    "Organism Identification": {
+        "Human Reads": null,
+        "Unclassified Reads": 9974,
+        "Non-Mycobacterium Bacteria Reads": 1470,
+        "Mycobacterium Reads": 1862046
+    },
+    "Mycobacterium Results": {
+        "Summary": [
+            {
+                "Name": "M.malmoense",
+                "Coverage": 98.1481,
+                "Depth": 45.9673
+            }
+        ],
+        "Species": [
+            {
+                "Name": "M.malmoense",
+                "Num Reads": 1829356,
+                "Coverage": 98.1481,
+                "Mean Depth": 45.9673,
+                "Length": 5319859.0
+            }
+        ],
+        "Phylogenic Group": {
+            "Name": "Non_tuberculosis_mycobacterium_complex",
+            "Coverage": 97.112,
+            "Median Depth": 39
+        },
+        "Subspecies": {
+            "Name": "Mycobacterium_malmoense",
+            "Coverage": 97.112,
+            "Median Depth": 39
+        },
+        "Lineage": []
+    },
+    "Genomes": null
+}
