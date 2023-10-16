@@ -21,6 +21,10 @@ summary_json = "summary.summarise:cli_entry_point"
 release = [
     "commitizen"
 ]
+dev = [
+    "pytest>=7.0",
+    "pytest-mock",
+]
 
 [tool.commitizen]
 name = "cz_conventional_commits"
