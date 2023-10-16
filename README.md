@@ -20,13 +20,13 @@ conda activate summary_pipeline
 #### Specify individual report files
 
 ```{bash}
-summary_json --gatekeeper test_data/WTCHG_885333_73205296_1/speciation_report.json --mapping test_data/WTCHG_885333_73205296_1/species_comparison_report.json --mykrobe test_data/WTCHG_885333_73205296_1/subspecies_report.json --gnomonicus test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json
+summary_json --gatekeeper test_data/WTCHG_885333_73205296_1/speciation_report.json --mapping test_data/WTCHG_885333_73205296_1/species_comparison_report.json --mykrobe test_data/WTCHG_885333_73205296_1/subspecies_report.json --gnomonicus test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json --knowledge test_data/WTCHG_885333_73205296_1/knowledge.json --versions test_data/WTCHG_885333_73205296_1/pipeline_versions.txt --clockwork test_data/WTCHG_885333_73205296_1/genome_creation_report.json
 ```
 
 #### Pass report files as a list
 
 ```{bash}
-summary_json --reports test_data/WTCHG_885333_73205296_1/pipeline_versions.txt test_data/WTCHG_885333_73205296_1/speciation_report.json test_data/WTCHG_885333_73205296_1/species_comparison_report.json test_data/WTCHG_885333_73205296_1/subspecies_report.json test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json test_data/WTCHG_885333_73205296_1/genome_creation_report.json
+summary_json --reports test_data/WTCHG_885333_73205296_1/pipeline_versions.txt test_data/WTCHG_885333_73205296_1/speciation_report.json test_data/WTCHG_885333_73205296_1/species_comparison_report.json test_data/WTCHG_885333_73205296_1/subspecies_report.json test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json test_data/WTCHG_885333_73205296_1/genome_creation_report.json test_data/WTCHG_885333_73205296_1/knowledge.json
 ```
 
 ### NextFlow
