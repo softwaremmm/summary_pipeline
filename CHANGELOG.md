@@ -1,3 +1,16 @@
+## 1.6.0 (2023-10-17)
+
+### Feat
+
+- Logic for sub 40 CM coverage
+- Allow no lineage
+- Use competitive mapping, if not mykrobe
+- Update speciation logic for TB
+
+### Fix
+
+- Use subspecies coverage for mykrobe
+
 ## 1.5.0 (2023-10-10)
 
 ### Feat
