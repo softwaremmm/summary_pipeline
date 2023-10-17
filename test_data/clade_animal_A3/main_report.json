@@ -9,14 +9,14 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "Mycobacterium tuberculosis (Lineage clade_animal_A3)",
-                "Coverage": 99.416,
-                "Depth": 73
+                "Name": "M.tuberculosis (clade_animal_A3)",
+                "Coverage": 58.031,
+                "Depth": 48
             }
         ],
         "Species": [
             {
-                "Name": "Mycobacterium tuberculosis H37Rv",
+                "Name": "M.tuberculosis",
                 "Num Reads": 2673026,
                 "Coverage": 98.8637,
                 "Mean Depth": 81.321,

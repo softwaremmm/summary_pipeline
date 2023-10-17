@@ -1,0 +1,22 @@
+{
+  "phylo_group": {
+    "Non_tuberculosis_mycobacterium_complex": {
+      "percent_coverage": 97.112,
+      "median_depth": 39,
+      "inferred_from_child": true
+    }
+  },
+  "sub_complex": {
+    "subNon_tuberculosis_mycobacterium_complex": {
+      "percent_coverage": 97.112,
+      "median_depth": 39,
+      "inferred_from_child": true
+    }
+  },
+  "species": {
+    "Mycobacterium_malmoense": {
+      "percent_coverage": 97.112,
+      "median_depth": 39
+    }
+  }
+}
