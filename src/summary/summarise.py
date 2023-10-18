@@ -119,22 +119,39 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
             "Length": tophit["length"],
         }
     ]
+    tophit_name = tophit["genome_name"]
 
-    # Phylogenetic Group (mykrobe)
-    myco["Phylogenic Group"] = process_phylo_group(mykrobe_data.get("phylo_group"))
+    if mykrobe_data == {}:
+        # If mykrobe doesn't return a species,
+        # USE COMPETITIVE MAPPING
 
-    # "Subspecies" (mykrobe)
-    if "species" in mykrobe_data:
-        myco["Subspecies"] = process_subspecies(
-            mykrobe_data.get("species")
-        )  # Why is species assigned to subspecies?
+        tophit_coverage = myco["Species"][0]["Coverage"]
+        tophit_depth = myco["Species"][0]["Mean Depth"]
 
-    # Lineage (mykrobe)
-    if "lineage" in mykrobe_data:
-        myco["Lineage"] = process_lineages(mykrobe_data.get("lineage"))
+        myco["Summary"] = [
+            {
+                "Name": tophit_name,
+                "Coverage": tophit_coverage,
+                "Depth": tophit_depth,
+            }
+        ]
+
+        return myco
+    else:
+        # Phylogenetic Group (mykrobe)
+        myco["Phylogenic Group"] = process_phylo_group(mykrobe_data.get("phylo_group"))
+
+        # "Subspecies" (mykrobe)
+        if "species" in mykrobe_data:
+            myco["Subspecies"] = process_subspecies(
+                mykrobe_data.get("species")
+            )  # Why is species assigned to subspecies?
+
+        # Lineage (mykrobe)
+        if "lineage" in mykrobe_data:
+            myco["Lineage"] = process_lineages(mykrobe_data.get("lineage"))
 
     # Summary
-    tophit_name = tophit["genome_name"]
     if tophit_name in [
         "M.intracellulare_chimaera",
         "M.avium_hominissuis",

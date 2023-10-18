@@ -65,6 +65,13 @@ WTCHG_885333_73205296_2 = {
     "expected_output": "test_data/WTCHG_885333_73205296_1/main_report2.json",
 }
 
+NO_MYKROBE = {
+    "gatekeeper_report": "test_data/no_mykrobe/speciation_report.json",
+    "competitivemapping_report": "test_data/no_mykrobe/species_comparison_report.json",
+    "mykrobe_report": "test_data/no_mykrobe/subspecies_report.json",
+    "expected_output": "test_data/no_mykrobe/main_report.json",
+}
+
 
 @pytest.fixture(
     params=[
@@ -76,6 +83,7 @@ WTCHG_885333_73205296_2 = {
         WTCHG_885333_73205296_1,
         WTCHG_885333_73205296_2,
         clade_animal_A3,
+        NO_MYKROBE,
     ]
 )
 def regression_test_set(request) -> dict:
