@@ -1,3 +1,9 @@
+## 1.6.1 (2023-10-18)
+
+### Fix
+
+- Handle empty mykrobe phylo/species/lineage output
+
 ## 1.6.0 (2023-10-17)
 
 ### Feat
