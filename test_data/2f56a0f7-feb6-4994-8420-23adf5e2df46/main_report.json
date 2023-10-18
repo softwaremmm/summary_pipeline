@@ -10,11 +10,13 @@
         "Summary": [
             {
                 "Name": "M.abscessus",
+                "Num Reads": 92865,
                 "Coverage": 71.839,
                 "Depth": 3
             },
             {
                 "Name": "M.tuberculosis",
+                "Num Reads": 608,
                 "Coverage": 1.35089,
                 "Depth": 0.0166817
             }
