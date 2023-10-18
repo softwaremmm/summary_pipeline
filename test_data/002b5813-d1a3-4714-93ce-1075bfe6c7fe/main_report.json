@@ -23,11 +23,11 @@
                 "Length": 5319859.0
             },
             {
-                "genome_name": "M.tuberculosis",
-                "length": 4411532.0,
-                "coverage": 0.838008,
-                "numreads": 582.0,
-                "meandepth": 0.0148735
+                "Name": "M.tuberculosis",
+                "Num Reads": 582,
+                "Coverage": 0.838008,
+                "Mean Depth": 0.0148735,
+                "Length": 4411532.0
             }
         ],
         "Phylogenic Group": {
