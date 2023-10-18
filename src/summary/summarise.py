@@ -110,6 +110,7 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         by=["coverage"], ascending=False
     )
     tophit = mappings_sorted.head(1).to_dict(orient="records")[0]
+
     myco["Species"] = [
         {
             "Name": tophit["genome_name"],
@@ -119,6 +120,20 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
             "Length": tophit["length"],
         }
     ]
+
+    tb_row = mappings_sorted[mappings_sorted["genome_name"] == "M.tuberculosis"]
+    if tb_row.empty is False:
+        tb = tb_row.to_dict(orient="records")[0]
+        if tb != tophit:
+            myco["Species"].append(
+                {
+                    "Name": tb["genome_name"],
+                    "Num Reads": int(tb["numreads"]),
+                    "Coverage": tb["coverage"],
+                    "Mean Depth": tb["meandepth"],
+                    "Length": tb["length"],
+                }
+            )
 
     # Phylogenetic Group (mykrobe)
     myco["Phylogenic Group"] = process_phylo_group(mykrobe_data.get("phylo_group"))
