@@ -21,6 +21,13 @@
                 "Coverage": 98.1481,
                 "Mean Depth": 45.9673,
                 "Length": 5319859.0
+            },
+            {
+                "genome_name": "M.tuberculosis",
+                "length": 4411532.0,
+                "coverage": 0.838008,
+                "numreads": 582.0,
+                "meandepth": 0.0148735
             }
         ],
         "Phylogenic Group": {
