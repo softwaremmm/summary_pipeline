@@ -12,6 +12,11 @@
                 "Name": "M.malmoense",
                 "Coverage": 98.1481,
                 "Depth": 45.9673
+            },
+            {
+                "Name": "M.tuberculosis",
+                "Coverage": 0.838008,
+                "Depth": 0.0148735
             }
         ],
         "Species": [

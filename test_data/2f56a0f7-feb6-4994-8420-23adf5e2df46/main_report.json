@@ -12,6 +12,11 @@
                 "Name": "M.abscessus",
                 "Coverage": 71.839,
                 "Depth": 3
+            },
+            {
+                "Name": "M.tuberculosis",
+                "Coverage": 1.35089,
+                "Depth": 0.0166817
             }
         ],
         "Species": [
