@@ -54,4 +54,5 @@ Descriptions of test data.
 | [test_data/covid] | Covid |
 | [test_data/covid_no_meta] | Covid but without a pipeline versions file |
 | [test_data/SRR2097047] | Bacteria, but not mycobacteria |
+| [test_data/no_mykrobe] | NTM for which `mykrobe` does not generate phylogenic data |
 | [test_data/WTCHG_885333_73205296_1] | _M. tuberculosis_ |
