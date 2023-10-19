@@ -53,6 +53,8 @@ Descriptions of test data.
 | [test_data/clade_animal_A3] | _M. tuberculosis_ with lineage not specified as a number |
 | [test_data/covid] | Covid |
 | [test_data/covid_no_meta] | Covid but without a pipeline versions file |
+| [test_data/mix_ntm_win] | A mykrobe mixed result with an NTM as the main species |
+| [test_data/mix_tb_win] | A mykrobe mixed result with _M. tuberculosis_ as the main species |
 | [test_data/SRR2097047] | Bacteria, but not mycobacteria |
 | [test_data/no_mykrobe] | NTM for which `mykrobe` does not generate phylogenic data |
 | [test_data/WTCHG_885333_73205296_1] | _M. tuberculosis_ |
