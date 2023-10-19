@@ -72,6 +72,22 @@ NO_MYKROBE = {
     "expected_output": "test_data/no_mykrobe/main_report.json",
 }
 
+MIX_NTM_WIN = {
+    "gatekeeper_report": "test_data/mix_ntm_win/speciation_report.json",
+    "competitivemapping_report": "test_data/mix_ntm_win/species_comparison_report.json",
+    "mykrobe_report": "test_data/mix_ntm_win/subspecies_report.json",
+    "expected_output": "test_data/mix_ntm_win/main_report.json",
+}
+
+MIX_TB_WIN = {
+    "gatekeeper_report": "test_data/mix_tb_win/speciation_report.json",
+    "competitivemapping_report": "test_data/mix_tb_win/species_comparison_report.json",
+    "mykrobe_report": "test_data/mix_tb_win/subspecies_report.json",
+    "clockwork_report": "test_data/mix_tb_win/genome_creation_report.json",
+    "gnomonicus": "test_data/mix_tb_win/tb/resistance_prediction_report.json",
+    "expected_output": "test_data/mix_tb_win/main_report.json",
+}
+
 
 @pytest.fixture(
     params=[
@@ -84,6 +100,8 @@ NO_MYKROBE = {
         WTCHG_885333_73205296_2,
         clade_animal_A3,
         NO_MYKROBE,
+        MIX_NTM_WIN,
+        MIX_TB_WIN,
     ],
     ids=[
         "covid",
@@ -95,6 +113,8 @@ NO_MYKROBE = {
         "WTCHG_885333_73205296_2",
         "clade_animal_A3",
         "NO_MYKROBE",
+        MIX_NTM_WIN,
+        MIX_TB_WIN,
     ],
 )
 def regression_test_set(request) -> dict:
