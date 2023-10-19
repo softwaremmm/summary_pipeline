@@ -1,3 +1,13 @@
+## 1.7.0 (2023-10-19)
+
+### Feat
+
+- Always include TB in species list (if present)
+
+### Fix
+
+- Also include TB in summary
+
 ## 1.6.1 (2023-10-18)
 
 ### Fix

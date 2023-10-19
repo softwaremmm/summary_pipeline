@@ -27,7 +27,7 @@ jobs:
         with:
           file: Dockerfile
           tags: |
-            lhr.ocir.io/lrbvkel2wjot/gpas/summary_pipeline:1.6.1
+            lhr.ocir.io/lrbvkel2wjot/gpas/summary_pipeline:1.7.0
           push: true
           no-cache: true
       - name: Docker digest
