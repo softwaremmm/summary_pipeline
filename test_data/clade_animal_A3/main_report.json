@@ -10,6 +10,7 @@
         "Summary": [
             {
                 "Name": "M.tuberculosis (clade_animal_A3)",
+                "Num Reads": 2673026,
                 "Coverage": 58.031,
                 "Depth": 48
             }

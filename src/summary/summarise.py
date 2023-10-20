@@ -188,6 +188,7 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
     myco["Summary"] = [
         {
             "Name": tophit_name,
+            "Num Reads": int(tophit["numreads"]),
             "Coverage": tophit_coverage,
             "Depth": tophit_depth,
         }
@@ -210,6 +211,7 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
             myco["Summary"].append(
                 {
                     "Name": tb["genome_name"],
+                    "Num Reads": int(tb["numreads"]),
                     "Coverage": tb["coverage"],
                     "Depth": tb["meandepth"],
                 }

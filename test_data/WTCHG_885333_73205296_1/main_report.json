@@ -10,6 +10,7 @@
         "Summary": [
             {
                 "Name": "M.tuberculosis (Lineage 4.3.4.2)",
+                "Num Reads": 3953463,
                 "Coverage": 97.738,
                 "Depth": 105
             }
