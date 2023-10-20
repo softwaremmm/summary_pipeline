@@ -1,3 +1,9 @@
+## 1.8.0 (2023-10-20)
+
+### Feat
+
+- Num Reads in species summary
+
 ## 1.7.0 (2023-10-19)
 
 ### Feat
