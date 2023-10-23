@@ -84,7 +84,18 @@ NO_MYKROBE = {
         WTCHG_885333_73205296_2,
         clade_animal_A3,
         NO_MYKROBE,
-    ]
+    ],
+    ids=[
+        "covid",
+        "covid_no_meta",
+        "SRR2097047",
+        "ABSCESSUS",
+        "MALOMENSE",
+        "WTCHG_885333_73205296_1",
+        "WTCHG_885333_73205296_2",
+        "clade_animal_A3",
+        "NO_MYKROBE",
+    ],
 )
 def regression_test_set(request) -> dict:
     return request.param

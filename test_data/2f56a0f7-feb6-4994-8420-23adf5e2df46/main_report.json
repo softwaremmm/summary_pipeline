@@ -9,9 +9,9 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "M.abscessus",
+                "Name": "Mycobacterium_abscessus_subsp._abscessus",
                 "Num Reads": 92865,
-                "Coverage": 71.839,
+                "Coverage": 64.768,
                 "Depth": 3
             },
             {
@@ -47,7 +47,13 @@
             "Coverage": 71.839,
             "Median Depth": 3
         },
-        "Lineage": []
+        "Lineage": [
+            {
+                "Name": "Mycobacterium_abscessus_subsp._abscessus",
+                "Coverage": 64.768,
+                "Median Depth": 3
+            }
+        ]
     },
     "Genomes": null
 }
