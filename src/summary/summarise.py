@@ -162,7 +162,7 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
             tophit_name = tophit_name + " (" + myco["Lineage"][0]["Name"] + ")"
             tophit_name = tophit_name.replace("lineage", "Lineage ")
 
-        # Get coverage and depth from mykrobe
+        # Get coverage and depth from mykrobe species (here called subspecies)
         tophit_coverage = myco["Subspecies"]["Coverage"]
         tophit_depth = myco["Subspecies"]["Median Depth"]
     elif tophit_name in [
@@ -178,7 +178,7 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         # Use lineage name as species name
         tophit_name = myco["Lineage"][0]["Name"]
 
-        # Get coverage and depth from mykrobe
+        # Get coverage and depth from mykrobe lineage
         tophit_coverage = myco["Lineage"][0]["Coverage"]
         tophit_depth = myco["Lineage"][0]["Median Depth"]
     elif myco["Species"][0]["Coverage"] < 40:
