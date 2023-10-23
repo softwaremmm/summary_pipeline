@@ -153,16 +153,8 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
             myco["Lineage"] = process_lineages(mykrobe_data.get("lineage"))
 
     # Summary
-    if tophit_name in [
-        "M.intracellulare_chimaera",
-        "M.avium_hominissuis",
-        "M.paraintracellulare",
-        "M.intracellulare",
-        "M.lepraemurium",
-        "M.tuberculosis",
-        "M.abscessus",
-    ]:
-        # USE MYKROBE
+    if tophit_name == "M.tuberculosis":
+        # USE MYKROBE lineage and species information
 
         # Append lineage information from mykrobe to species name
         # from competitive mapping, if available
@@ -173,6 +165,22 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         # Get coverage and depth from mykrobe
         tophit_coverage = myco["Subspecies"]["Coverage"]
         tophit_depth = myco["Subspecies"]["Median Depth"]
+    elif tophit_name in [
+        "M.intracellulare_chimaera",
+        "M.avium_hominissuis",
+        "M.paraintracellulare",
+        "M.intracellulare",
+        "M.lepraemurium",
+        "M.abscessus",
+    ]:
+        # USE MYKROBE
+
+        # Use lineage name as species name
+        tophit_name = myco["Lineage"][0]["Name"]
+
+        # Get coverage and depth from mykrobe
+        tophit_coverage = myco["Lineage"][0]["Coverage"]
+        tophit_depth = myco["Lineage"][0]["Median Depth"]
     elif myco["Species"][0]["Coverage"] < 40:
         # USE MYKROBE
 
@@ -303,7 +311,14 @@ def process_lineages(lineages: dict) -> list[dict]:
             lineage_summary.append(new_line)
 
     else:
-        logging.info("No lineage information in mykrobe report.")
+        for lineage_name in lineages:
+            print(lineage_name)
+            new_line = {
+                "Name": lineage_name,
+                "Coverage": lineages[lineage_name]["percent_coverage"],
+                "Median Depth": lineages[lineage_name]["median_depth"],
+            }
+            lineage_summary.append(new_line)
 
     return lineage_summary
 
