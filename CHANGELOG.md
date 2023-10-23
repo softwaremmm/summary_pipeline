@@ -1,3 +1,9 @@
+## 1.8.1 (2023-10-23)
+
+### Fix
+
+- Use lineage information for NTMs
+
 ## 1.8.0 (2023-10-20)
 
 ### Feat
