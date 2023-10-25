@@ -113,8 +113,8 @@ MIX_TB_WIN = {
         "WTCHG_885333_73205296_2",
         "clade_animal_A3",
         "NO_MYKROBE",
-        MIX_NTM_WIN,
-        MIX_TB_WIN,
+        "MIX_NTM_WIN",
+        "MIX_TB_WIN",
     ],
 )
 def regression_test_set(request) -> dict:
