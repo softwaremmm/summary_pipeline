@@ -163,8 +163,16 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
             tophit_name = tophit_name.replace("lineage", "Lineage ")
 
         # Get coverage and depth from mykrobe species (here called subspecies)
-        tophit_coverage = myco["Subspecies"][0]["Coverage"]
-        tophit_depth = myco["Subspecies"][0]["Median Depth"]
+        tophit_coverage = next(
+            item
+            for item in myco["Subspecies"]
+            if item["Name"] == "Mycobacterium_tuberculosis"
+        )["Coverage"]
+        tophit_depth = next(
+            item
+            for item in myco["Subspecies"]
+            if item["Name"] == "Mycobacterium_tuberculosis"
+        )["Median Depth"]
     elif tophit_name in [
         "M.intracellulare_chimaera",
         "M.avium_hominissuis",
@@ -229,6 +237,7 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
 
 
 def process_phylo_group(phylo_group: dict) -> list[dict]:
+def process_phylo_group(phylo_group: dict) -> list[dict]:
     """Restructure phylogenetic group information from mykrobe
 
     Args:
@@ -239,17 +248,18 @@ def process_phylo_group(phylo_group: dict) -> list[dict]:
 
     Returns:
         list[dict]: Restructured phylogenetic information
+        list[dict]: Restructured phylogenetic information
     """
-    phylo = {}
-    if not len(phylo_group.keys()) == 1:
-        raise ValueError(
-            "Require only 1 phylo group. Found " + str(len(phylo_group.keys()))
-        )
-    phylo["Name"] = list(phylo_group.keys())[0]
-    phylo["Coverage"] = phylo_group[phylo["Name"]].get("percent_coverage")
-    phylo["Median Depth"] = phylo_group[phylo["Name"]].get("median_depth")
+    phylos = []
+    for group in phylo_group:
+        phylo = {
+            "Name": group,
+            "Coverage": phylo_group[group].get("percent_coverage"),
+            "Median Depth": phylo_group[group].get("median_depth"),
+        }
+        phylos.append(phylo)
 
-    return [phylo]
+    return phylos
 
 
 def process_subspecies(species: dict) -> list[dict]:
@@ -264,14 +274,15 @@ def process_subspecies(species: dict) -> list[dict]:
     Returns:
         list[dict]: Restructured species information
     """
-    subspecies = {}
-    if not len(species.keys()) == 1:
-        raise ValueError(
-            "Require only 1 species group. Found " + str(len(species.keys()))
-        )
-    subspecies["Name"] = list(species.keys())[0]
-    subspecies["Coverage"] = species[subspecies["Name"]].get("percent_coverage")
-    subspecies["Median Depth"] = species[subspecies["Name"]].get("median_depth")
+
+    subspecies = []
+    for specie in species:
+        specie = {
+            "Name": specie,
+            "Coverage": species[specie].get("percent_coverage"),
+            "Median Depth": species[specie].get("median_depth"),
+        }
+        subspecies.append(specie)
 
     return [subspecies]
 
