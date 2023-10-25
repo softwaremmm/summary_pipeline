@@ -37,16 +37,20 @@
                 "Length": 4411532.0
             }
         ],
-        "Phylogenic Group": {
-            "Name": "Non_tuberculosis_mycobacterium_complex",
-            "Coverage": 71.839,
-            "Median Depth": 3
-        },
-        "Subspecies": {
-            "Name": "Mycobacterium_abscessus",
-            "Coverage": 71.839,
-            "Median Depth": 3
-        },
+        "Phylogenic Group": [
+            {
+                "Name": "Non_tuberculosis_mycobacterium_complex",
+                "Coverage": 71.839,
+                "Median Depth": 3
+            }
+        ],
+        "Subspecies": [
+            {
+                "Name": "Mycobacterium_abscessus",
+                "Coverage": 71.839,
+                "Median Depth": 3
+            }
+        ],
         "Lineage": [
             {
                 "Name": "Mycobacterium_abscessus_subsp._abscessus",

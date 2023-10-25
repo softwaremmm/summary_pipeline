@@ -37,16 +37,20 @@
                 "Length": 4411532.0
             }
         ],
-        "Phylogenic Group": {
-            "Name": "Non_tuberculosis_mycobacterium_complex",
-            "Coverage": 97.112,
-            "Median Depth": 39
-        },
-        "Subspecies": {
-            "Name": "Mycobacterium_malmoense",
-            "Coverage": 97.112,
-            "Median Depth": 39
-        },
+        "Phylogenic Group": [
+            {
+                "Name": "Non_tuberculosis_mycobacterium_complex",
+                "Coverage": 97.112,
+                "Median Depth": 39
+            }
+        ],
+        "Subspecies": [
+            {
+                "Name": "Mycobacterium_malmoense",
+                "Coverage": 97.112,
+                "Median Depth": 39
+            }
+        ],
         "Lineage": []
     },
     "Genomes": null
