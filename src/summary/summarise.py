@@ -102,8 +102,8 @@ def generate_mycobacterium_results(
     myco = {
         "Summary": [],
         "Species": [],
-        "Phylogenic Group": {},
-        "Subspecies": {},
+        "Phylogenic Group": [],
+        "Subspecies": [],
         "Lineage": [],
     }
 
@@ -155,6 +155,8 @@ def generate_mycobacterium_results(
         if "lineage" in mykrobe_data:
             myco["Lineage"] = process_lineages(mykrobe_data.get("lineage"))
 
+    mixed_pop = len(myco["Phylogenic Group"]) == 2
+
     # Summary
     if tophit_name == "M.tuberculosis":
         # USE MYKROBE lineage and species information
@@ -162,12 +164,20 @@ def generate_mycobacterium_results(
         # Append lineage information from mykrobe to species name
         # from competitive mapping, if available
         if len(myco["Lineage"]) != 0:
-            tophit_name = tophit_name + " (" + myco["Lineage"][0]["Name"] + ")"
-            tophit_name = tophit_name.replace("lineage", "Lineage ")
+            summary_name = tophit_name + " (" + myco["Lineage"][0]["Name"] + ")"
+            summary_name = summary_name.replace("lineage", "Lineage ")
 
         # Get coverage and depth from mykrobe species (here called subspecies)
-        tophit_coverage = myco["Subspecies"][0]["Coverage"]
-        tophit_depth = myco["Subspecies"][0]["Median Depth"]
+        tb_index = next(
+            (
+                i
+                for i, pgroup in enumerate(myco["Phylogenic Group"])
+                if pgroup["Name"] == "Mycobacterium_tuberculosis_complex"
+            ),
+            None,
+        )
+        tophit_coverage = myco["Subspecies"][tb_index]["Coverage"]
+        tophit_depth = myco["Subspecies"][tb_index]["Median Depth"]
 
     elif tophit_name in [
         "M.intracellulare_chimaera",
@@ -178,15 +188,23 @@ def generate_mycobacterium_results(
         "M.abscessus",
     ]:
         # USE MYKROBE
+        if mixed_pop:
+            # Use competitive mapping
+            summary_name = tophit_name
 
-        # Use lineage name as species name
-        tophit_name = myco["Lineage"][0]["Name"]
+            tophit_coverage = myco["Species"][0]["Coverage"]
+            tophit_depth = myco["Species"][0]["Mean Depth"]
+        else:
+            # Use lineage name as species name
+            summary_name = myco["Lineage"][0]["Name"]
 
-        # Get coverage and depth from mykrobe lineage
-        tophit_coverage = myco["Lineage"][0]["Coverage"]
-        tophit_depth = myco["Lineage"][0]["Median Depth"]
+            # Get coverage and depth from mykrobe lineage
+            tophit_coverage = myco["Lineage"][0]["Coverage"]
+            tophit_depth = myco["Lineage"][0]["Median Depth"]
     elif myco["Species"][0]["Coverage"] < 40:
         # USE MYKROBE
+
+        summary_name = tophit_name
 
         # Get coverage and depth from mykrobe
         tophit_coverage = myco["Subspecies"][0]["Coverage"]
@@ -194,12 +212,14 @@ def generate_mycobacterium_results(
     else:
         # USE COMPETITIVE MAPPING
 
+        summary_name = tophit_name
+
         tophit_coverage = myco["Species"][0]["Coverage"]
         tophit_depth = myco["Species"][0]["Mean Depth"]
 
     myco["Summary"] = [
         {
-            "Name": tophit_name,
+            "Name": summary_name,
             "Num Reads": int(tophit["numreads"]),
             "Coverage": tophit_coverage,
             "Depth": tophit_depth,
@@ -228,6 +248,17 @@ def generate_mycobacterium_results(
                     "Depth": tb["meandepth"],
                 }
             )
+
+    if tophit_name == "M.tuberculosis" and mixed_pop:
+        second_hit = mappings_sorted.head(2).to_dict(orient="records")[1]
+        myco["Summary"].append(
+            {
+                "Name": second_hit["genome_name"],
+                "Num Reads": int(second_hit["numreads"]),
+                "Coverage": second_hit["coverage"],
+                "Depth": second_hit["meandepth"],
+            }
+        )
 
     return myco
 
