@@ -87,7 +87,9 @@ def generate_organism_identification(gatekeeper_data: dict) -> dict:
     return organism
 
 
-def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
+def generate_mycobacterium_results(
+    mappings: dict, mykrobe_data: dict, name_mapping: pandas.DataFrame
+) -> dict:
     """Summarises Competitive Mapping and Mykrobe outputs.
 
     Args:
@@ -236,6 +238,10 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
     return myco
 
 
+def lookup_comap_name(mykrobe_name: str, name_mapping: pandas.DataFrame) -> str:
+    return "Bob"
+
+
 def process_phylo_group(phylo_group: dict) -> list[dict]:
     """Restructure phylogenetic group information from mykrobe
 
@@ -282,7 +288,7 @@ def process_subspecies(species: dict) -> list[dict]:
         }
         subspecies.append(specie)
 
-    return [subspecies]
+    return subspecies
 
 
 def process_lineages(lineages: dict) -> list[dict]:
@@ -575,6 +581,10 @@ def create_summary(
     Returns:
         dict: Summary GPAS pipeline output.
     """
+
+    if "name_mapping" not in reports:
+        raise FileNotFoundError("Name mapping file not found, cannot assign species.")
+
     output = {}
     if "gatekeeper" in reports:
         output["Pipeline Outcome"] = "Insufficient mycobacterial reads."
@@ -588,8 +598,9 @@ def create_summary(
         output["Pipeline Outcome"] = "Insufficient TB reads."
         mapping_json = read_json_file(reports["mapping"])
         mykrobe_data = read_json_file(reports["mykrobe"])
+        name_mapping = pandas.read_csv(reports["name_mapping"])
         output["Mycobacterium Results"] = generate_mycobacterium_results(
-            mapping_json, mykrobe_data
+            mapping_json, mykrobe_data, name_mapping
         )
     else:
         output["Mycobacterium Results"] = None
@@ -715,6 +726,10 @@ def collate_reports(cli_args: Arguments) -> dict:
         logging.info(error)
     try:
         reports["gnomonicus"] = cli_args.gnomonicus
+    except AttributeError as error:
+        logging.info(error)
+    try:
+        reports["name_mapping"] = cli_args.name_mapping
     except AttributeError as error:
         logging.info(error)
     return reports

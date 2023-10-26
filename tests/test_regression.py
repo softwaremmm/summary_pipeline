@@ -18,6 +18,8 @@ def test_regression(regression_test_set: dict):
         test_reports["clockwork"] = regression_test_set["clockwork_report"]
     if "gnomonicus" in regression_test_set:
         test_reports["gnomonicus"] = regression_test_set["gnomonicus"]
+    if "name_mapping" in regression_test_set:
+        test_reports["name_mapping"] = regression_test_set["name_mapping"]
 
     summary = summarise.create_summary(test_reports)
 
