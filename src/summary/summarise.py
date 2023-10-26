@@ -134,6 +134,7 @@ def generate_mycobacterium_results(
         myco["Summary"] = [
             {
                 "Name": tophit_name,
+                "Num Reads": int(tophit["numreads"]),
                 "Coverage": tophit_coverage,
                 "Depth": tophit_depth,
             }
