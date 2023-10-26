@@ -163,8 +163,8 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
             tophit_name = tophit_name.replace("lineage", "Lineage ")
 
         # Get coverage and depth from mykrobe species (here called subspecies)
-        tophit_coverage = myco["Subspecies"]["Coverage"]
-        tophit_depth = myco["Subspecies"]["Median Depth"]
+        tophit_coverage = myco["Subspecies"][0]["Coverage"]
+        tophit_depth = myco["Subspecies"][0]["Median Depth"]
     elif tophit_name in [
         "M.intracellulare_chimaera",
         "M.avium_hominissuis",
@@ -185,8 +185,8 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         # USE MYKROBE
 
         # Get coverage and depth from mykrobe
-        tophit_coverage = myco["Subspecies"]["Coverage"]
-        tophit_depth = myco["Subspecies"]["Median Depth"]
+        tophit_coverage = myco["Subspecies"][0]["Coverage"]
+        tophit_depth = myco["Subspecies"][0]["Median Depth"]
     else:
         # USE COMPETITIVE MAPPING
 
@@ -228,7 +228,7 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
     return myco
 
 
-def process_phylo_group(phylo_group: dict) -> dict:
+def process_phylo_group(phylo_group: dict) -> list[dict]:
     """Restructure phylogenetic group information from mykrobe
 
     Args:
@@ -238,7 +238,7 @@ def process_phylo_group(phylo_group: dict) -> dict:
         ValueError: Thrown if multiple phyogenetic groups are found
 
     Returns:
-        dict: Restructured phylogenetic information
+        list[dict]: Restructured phylogenetic information
     """
     phylo = {}
     if not len(phylo_group.keys()) == 1:
@@ -249,10 +249,10 @@ def process_phylo_group(phylo_group: dict) -> dict:
     phylo["Coverage"] = phylo_group[phylo["Name"]].get("percent_coverage")
     phylo["Median Depth"] = phylo_group[phylo["Name"]].get("median_depth")
 
-    return phylo
+    return [phylo]
 
 
-def process_subspecies(species: dict) -> dict:
+def process_subspecies(species: dict) -> list[dict]:
     """Restructure species information from mykrobe
 
     Args:
@@ -262,7 +262,7 @@ def process_subspecies(species: dict) -> dict:
         ValueError: Throws an error if mykrobe returns more than one species
 
     Returns:
-        dict: Restructured species information
+        list[dict]: Restructured species information
     """
     subspecies = {}
     if not len(species.keys()) == 1:
@@ -273,7 +273,7 @@ def process_subspecies(species: dict) -> dict:
     subspecies["Coverage"] = species[subspecies["Name"]].get("percent_coverage")
     subspecies["Median Depth"] = species[subspecies["Name"]].get("median_depth")
 
-    return subspecies
+    return [subspecies]
 
 
 def process_lineages(lineages: dict) -> list[dict]:
