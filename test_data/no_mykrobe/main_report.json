@@ -1,0 +1,31 @@
+{
+    "Pipeline Outcome": "Insufficient TB reads.",
+    "Organism Identification": {
+        "Human Reads": null,
+        "Unclassified Reads": 375770,
+        "Non-Mycobacterium Bacteria Reads": 152062,
+        "Mycobacterium Reads": 1049822
+    },
+    "Mycobacterium Results": {
+        "Summary": [
+            {
+                "Name": "M.komanii",
+                "Coverage": 63.2765020326,
+                "Depth": 8.6599462091
+            }
+        ],
+        "Species": [
+            {
+                "Name": "M.komanii",
+                "Num Reads": 377667,
+                "Coverage": 63.2765020326,
+                "Mean Depth": 8.6599462091,
+                "Length": 5378970.0
+            }
+        ],
+        "Phylogenic Group": {},
+        "Subspecies": {},
+        "Lineage": []
+    },
+    "Genomes": null
+}

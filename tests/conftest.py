@@ -21,20 +21,18 @@ SRR2097047 = {
     "expected_output": "test_data/SRR2097047/main_report.json",
 }
 
-NTM = {
-    "pipeline_versions": "test_data/NTM/pipeline_versions.txt",
-    "gatekeeper_report": "test_data/NTM/speciation_report.json",
-    "competitivemapping_report": "test_data/NTM/species_comparison_report.json",
-    "mykrobe_report": "test_data/NTM/subspecies_report.json",
-    "expected_output": "test_data/NTM/main_report.json",
+ABSCESSUS = {
+    "gatekeeper_report": "test_data/002b5813-d1a3-4714-93ce-1075bfe6c7fe/speciation_report.json",
+    "competitivemapping_report": "test_data/002b5813-d1a3-4714-93ce-1075bfe6c7fe/species_comparison_report.json",
+    "mykrobe_report": "test_data/002b5813-d1a3-4714-93ce-1075bfe6c7fe/subspecies_report.json",
+    "expected_output": "test_data/002b5813-d1a3-4714-93ce-1075bfe6c7fe/main_report.json",
 }
 
-NTM_no_mykrobe_species = {
-    "pipeline_versions": "test_data/NTM_no_mykrobe_species/pipeline_versions.txt",
-    "gatekeeper_report": "test_data/NTM_no_mykrobe_species/speciation_report.json",
-    "competitivemapping_report": "test_data/NTM_no_mykrobe_species/species_comparison_report.json",
-    "mykrobe_report": "test_data/NTM_no_mykrobe_species/subspecies_report.json",
-    "expected_output": "test_data/NTM_no_mykrobe_species/main_report.json",
+MALOMENSE = {
+    "gatekeeper_report": "test_data/2f56a0f7-feb6-4994-8420-23adf5e2df46/speciation_report.json",
+    "competitivemapping_report": "test_data/2f56a0f7-feb6-4994-8420-23adf5e2df46/species_comparison_report.json",
+    "mykrobe_report": "test_data/2f56a0f7-feb6-4994-8420-23adf5e2df46/subspecies_report.json",
+    "expected_output": "test_data/2f56a0f7-feb6-4994-8420-23adf5e2df46/main_report.json",
 }
 
 WTCHG_885333_73205296_1 = {
@@ -67,18 +65,37 @@ WTCHG_885333_73205296_2 = {
     "expected_output": "test_data/WTCHG_885333_73205296_1/main_report2.json",
 }
 
+NO_MYKROBE = {
+    "gatekeeper_report": "test_data/no_mykrobe/speciation_report.json",
+    "competitivemapping_report": "test_data/no_mykrobe/species_comparison_report.json",
+    "mykrobe_report": "test_data/no_mykrobe/subspecies_report.json",
+    "expected_output": "test_data/no_mykrobe/main_report.json",
+}
+
 
 @pytest.fixture(
     params=[
         covid,
         covid_no_meta,
         SRR2097047,
-        NTM,
-        NTM_no_mykrobe_species,
+        ABSCESSUS,
+        MALOMENSE,
         WTCHG_885333_73205296_1,
         WTCHG_885333_73205296_2,
         clade_animal_A3,
-    ]
+        NO_MYKROBE,
+    ],
+    ids=[
+        "covid",
+        "covid_no_meta",
+        "SRR2097047",
+        "ABSCESSUS",
+        "MALOMENSE",
+        "WTCHG_885333_73205296_1",
+        "WTCHG_885333_73205296_2",
+        "clade_animal_A3",
+        "NO_MYKROBE",
+    ],
 )
 def regression_test_set(request) -> dict:
     return request.param

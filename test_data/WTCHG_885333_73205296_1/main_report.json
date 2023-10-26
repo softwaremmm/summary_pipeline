@@ -9,14 +9,15 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "Mycobacterium tuberculosis (Lineage 4.3.4.2)",
-                "Coverage": 99.462,
-                "Depth": 123
+                "Name": "M.tuberculosis (Lineage 4.3.4.2)",
+                "Num Reads": 3953463,
+                "Coverage": 97.738,
+                "Depth": 105
             }
         ],
         "Species": [
             {
-                "Name": "Mycobacterium tuberculosis H37Rv",
+                "Name": "M.tuberculosis",
                 "Num Reads": 3953463,
                 "Coverage": 98.6802,
                 "Mean Depth": 132.507,
@@ -45,7 +46,7 @@
         {
             "Name": "M. tuberculosis",
             "Sequencing Quality": {
-                "Mapped To": "Mycobacterium tuberculosis H37Rv complete genome",
+                "Mapped To": "M.tuberculosis",
                 "Num Reads": 3953463.0,
                 "Coverage": 98.132,
                 "Mean Depth": 132.507,

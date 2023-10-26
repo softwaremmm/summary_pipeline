@@ -12,7 +12,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 requires-python = "~=3.11"
-version = "1.5.0"
+version = "1.8.1"
 
 [project.scripts]
 summary_json = "summary.summarise:cli_entry_point"
@@ -20,6 +20,10 @@ summary_json = "summary.summarise:cli_entry_point"
 [project.optional-dependencies]
 release = [
     "commitizen"
+]
+dev = [
+    "pytest>=7.0",
+    "pytest-mock",
 ]
 
 [tool.commitizen]

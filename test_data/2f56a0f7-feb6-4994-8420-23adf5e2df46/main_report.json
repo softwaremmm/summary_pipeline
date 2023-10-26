@@ -1,0 +1,59 @@
+{
+    "Pipeline Outcome": "Insufficient TB reads.",
+    "Organism Identification": {
+        "Human Reads": null,
+        "Unclassified Reads": 242028,
+        "Non-Mycobacterium Bacteria Reads": 81394,
+        "Mycobacterium Reads": 1898264
+    },
+    "Mycobacterium Results": {
+        "Summary": [
+            {
+                "Name": "Mycobacterium_abscessus_subsp._abscessus",
+                "Num Reads": 92865,
+                "Coverage": 64.768,
+                "Depth": 3
+            },
+            {
+                "Name": "M.tuberculosis",
+                "Num Reads": 608,
+                "Coverage": 1.35089,
+                "Depth": 0.0166817
+            }
+        ],
+        "Species": [
+            {
+                "Name": "M.abscessus",
+                "Num Reads": 92865,
+                "Coverage": 76.639,
+                "Mean Depth": 2.44258,
+                "Length": 5067172.0
+            },
+            {
+                "Name": "M.tuberculosis",
+                "Num Reads": 608,
+                "Coverage": 1.35089,
+                "Mean Depth": 0.0166817,
+                "Length": 4411532.0
+            }
+        ],
+        "Phylogenic Group": {
+            "Name": "Non_tuberculosis_mycobacterium_complex",
+            "Coverage": 71.839,
+            "Median Depth": 3
+        },
+        "Subspecies": {
+            "Name": "Mycobacterium_abscessus",
+            "Coverage": 71.839,
+            "Median Depth": 3
+        },
+        "Lineage": [
+            {
+                "Name": "Mycobacterium_abscessus_subsp._abscessus",
+                "Coverage": 64.768,
+                "Median Depth": 3
+            }
+        ]
+    },
+    "Genomes": null
+}

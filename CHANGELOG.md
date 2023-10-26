@@ -1,3 +1,44 @@
+## 1.8.1 (2023-10-23)
+
+### Fix
+
+- Use lineage information for NTMs
+
+## 1.8.0 (2023-10-20)
+
+### Feat
+
+- Num Reads in species summary
+
+## 1.7.0 (2023-10-19)
+
+### Feat
+
+- Always include TB in species list (if present)
+
+### Fix
+
+- Also include TB in summary
+
+## 1.6.1 (2023-10-18)
+
+### Fix
+
+- Handle empty mykrobe phylo/species/lineage output
+
+## 1.6.0 (2023-10-17)
+
+### Feat
+
+- Logic for sub 40 CM coverage
+- Allow no lineage
+- Use competitive mapping, if not mykrobe
+- Update speciation logic for TB
+
+### Fix
+
+- Use subspecies coverage for mykrobe
+
 ## 1.5.0 (2023-10-10)
 
 ### Feat
