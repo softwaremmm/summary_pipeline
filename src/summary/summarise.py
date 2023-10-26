@@ -237,7 +237,6 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
 
 
 def process_phylo_group(phylo_group: dict) -> list[dict]:
-def process_phylo_group(phylo_group: dict) -> list[dict]:
     """Restructure phylogenetic group information from mykrobe
 
     Args:
