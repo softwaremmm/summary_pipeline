@@ -249,6 +249,8 @@ def generate_mycobacterium_results(
                 }
             )
 
+    # Include 1st runner up in a mixed population
+    # with TB winner
     if tophit_name == "M.tuberculosis" and mixed_pop:
         second_hit = mappings_sorted.head(2).to_dict(orient="records")[1]
         myco["Summary"].append(
