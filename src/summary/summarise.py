@@ -247,7 +247,6 @@ def process_phylo_group(phylo_group: dict) -> list[dict]:
 
     Returns:
         list[dict]: Restructured phylogenetic information
-        list[dict]: Restructured phylogenetic information
     """
     phylos = []
     for group in phylo_group:
