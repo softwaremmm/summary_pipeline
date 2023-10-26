@@ -13,6 +13,12 @@
                 "Num Reads": 1250832,
                 "Coverage": 95.927,
                 "Depth": 14
+            },
+            {
+                "Name": "Mycobacterium_avium",
+                "Num Reads": 581035,
+                "Coverage": 95.927,
+                "Median Depth": 14
             }
         ],
         "Species": [
@@ -22,7 +28,14 @@
                 "Coverage": 99.0892,
                 "Mean Depth": 37.8527,
                 "Length": 4411532.0
-            }
+            },
+            {
+                "Name": "M.avium_hominissuis",
+                "Num Reads": 581035.0,
+                "Coverage": 91.2336,
+                "Mean Depth": 14.9584,
+                "Length": 5118245.0
+            },
         ],
         "Phylogenic Group": [
             {

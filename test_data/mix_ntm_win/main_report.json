@@ -9,10 +9,10 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "lineage4.1.2",
+                "Name": "M.avium_hominissuis",
                 "Num Reads": 89007,
-                "Coverage": 100,
-                "Depth": 1
+                "Coverage": 78.271,
+                "Depth": 3
             },
             {
                 "Name": "M.tuberculosis",

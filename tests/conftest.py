@@ -52,13 +52,13 @@ WTCHG_885333_73205296_1 = {
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
-clade_animal_A3 = {
-    "pipeline_versions": "test_data/clade_animal_A3/pipeline_versions.txt",
-    "gatekeeper_report": "test_data/clade_animal_A3/speciation_report.json",
-    "competitivemapping_report": "test_data/clade_animal_A3/species_comparison_report.json",
-    "mykrobe_report": "test_data/clade_animal_A3/subspecies_report.json",
-    "clockwork_report": "test_data/clade_animal_A3/genome_creation_report.json",
-    "expected_output": "test_data/clade_animal_A3/main_report.json",
+BCG = {
+    "pipeline_versions": "test_data/BCG/pipeline_versions.txt",
+    "gatekeeper_report": "test_data/BCG/speciation_report.json",
+    "competitivemapping_report": "test_data/BCG/species_comparison_report.json",
+    "mykrobe_report": "test_data/BCG/subspecies_report.json",
+    "clockwork_report": "test_data/BCG/genome_creation_report.json",
+    "expected_output": "test_data/BCG/main_report.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
@@ -109,7 +109,7 @@ MIX_TB_WIN = {
         MALOMENSE,
         WTCHG_885333_73205296_1,
         WTCHG_885333_73205296_2,
-        clade_animal_A3,
+        BCG,
         NO_MYKROBE,
         MIX_NTM_WIN,
         MIX_TB_WIN,
@@ -122,7 +122,7 @@ MIX_TB_WIN = {
         "MALOMENSE",
         "WTCHG_885333_73205296_1",
         "WTCHG_885333_73205296_2",
-        "clade_animal_A3",
+        "BCG",
         "NO_MYKROBE",
         "MIX_NTM_WIN",
         "MIX_TB_WIN",

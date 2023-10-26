@@ -1,0 +1,294 @@
+{
+    "Pipeline Outcome": "Sufficient TB reads for analysis completion.",
+    "Organism Identification": {
+        "Human Reads": null,
+        "Unclassified Reads": 18,
+        "Non-Mycobacterium Bacteria Reads": 724,
+        "Mycobacterium Reads": 867732
+    },
+    "Mycobacterium Results": {
+        "Summary": [
+            {
+                "Name": "M.tuberculosis (Lineage Bovis.BCG)",
+                "Num Reads": 848988,
+                "Coverage": 60.773,
+                "Depth": 27
+            }
+        ],
+        "Species": [
+            {
+                "Name": "M.tuberculosis",
+                "Num Reads": 848988,
+                "Coverage": 93.0073,
+                "Mean Depth": 26.9736,
+                "Length": 4411532.0
+            }
+        ],
+        "Phylogenic Group": [
+            {
+                "Name": "Mycobacterium_tuberculosis_complex",
+                "Coverage": 94.402,
+                "Median Depth": 26
+            }
+        ],
+        "Subspecies": [
+            {
+                "Name": "Mycobacterium_bovis",
+                "Coverage": 60.773,
+                "Median Depth": 27
+            }
+        ],
+        "Lineage": [
+            {
+                "Name": "lineageBovis.BCG",
+                "Coverage": 0,
+                "Median Depth": 0
+            }
+        ]
+    },
+    "Genomes": [
+        {
+            "Name": "M. tuberculosis",
+            "Sequencing Quality": {
+                "Mapped To": "M.tuberculosis",
+                "Num Reads": 848988.0,
+                "Coverage": 86.7234,
+                "Mean Depth": 26.9736,
+                "Mixed calls": 95
+            },
+            "Resistance Prediction": {
+                "Resistance Prediction Summary": {
+                    "First-line treatment": {
+                        "Isoniazid (INH)": "F",
+                        "Rifampicin (RIF)": "S",
+                        "Pyrazinamide (PZA)": "R",
+                        "Ethambutol (EMB)": "S"
+                    },
+                    "Second-line treatment": {
+                        "Moxifloxacin (MXF)": "U",
+                        "Levofloxacin (LEV)": "S",
+                        "Linezolid (LZD)": "S",
+                        "Bedaquiline (BDQ)": "-"
+                    },
+                    "Reserve treatment": {
+                        "Amikacin (AMI)": "S",
+                        "Kanamycin (KAN)": "S",
+                        "Streptomycin (STM)": "F",
+                        "Capreomycin (CAP)": "F",
+                        "Ethionamide (ETH)": "S",
+                        "Delamanid (DLM)": "S"
+                    }
+                },
+                "Resistance Prediction Detail": [
+                    {
+                        "Drug Name": "CAP",
+                        "Mutations": [
+                            {
+                                "Gene": "tlyA",
+                                "Mutation": "G232X",
+                                "Position": null,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    null,
+                                    null
+                                ],
+                                "Prediction": "F",
+                                "Evidence": {
+                                    "FASTA called": "N"
+                                }
+                            },
+                            {
+                                "Gene": "tlyA",
+                                "Mutation": "G66X",
+                                "Position": null,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    null,
+                                    null
+                                ],
+                                "Prediction": "F",
+                                "Evidence": {
+                                    "FASTA called": "N"
+                                }
+                            },
+                            {
+                                "Gene": "tlyA",
+                                "Mutation": "L74X",
+                                "Position": null,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    null,
+                                    null
+                                ],
+                                "Prediction": "F",
+                                "Evidence": {
+                                    "FASTA called": "N"
+                                }
+                            },
+                            {
+                                "Gene": "tlyA",
+                                "Mutation": "N236X",
+                                "Position": null,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    null,
+                                    null
+                                ],
+                                "Prediction": "F",
+                                "Evidence": {
+                                    "FASTA called": "N"
+                                }
+                            },
+                            {
+                                "Gene": "tlyA",
+                                "Mutation": "Q117X",
+                                "Position": null,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    null,
+                                    null
+                                ],
+                                "Prediction": "F",
+                                "Evidence": {
+                                    "FASTA called": "N"
+                                }
+                            },
+                            {
+                                "Gene": "tlyA",
+                                "Mutation": "Q22X",
+                                "Position": null,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    null,
+                                    null
+                                ],
+                                "Prediction": "F",
+                                "Evidence": {
+                                    "FASTA called": "N"
+                                }
+                            },
+                            {
+                                "Gene": "tlyA",
+                                "Mutation": "R18X",
+                                "Position": null,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    null,
+                                    null
+                                ],
+                                "Prediction": "F",
+                                "Evidence": {
+                                    "FASTA called": "N"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "Drug Name": "INH",
+                        "Mutations": [
+                            {
+                                "Gene": "katG",
+                                "Mutation": "Q127X",
+                                "Position": null,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    null,
+                                    null
+                                ],
+                                "Prediction": "F",
+                                "Evidence": {
+                                    "FASTA called": "N"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "Drug Name": "MXF",
+                        "Mutations": [
+                            {
+                                "Gene": "gyrB",
+                                "Mutation": "A403S",
+                                "Position": 403,
+                                "Ref": "gcg",
+                                "Alt": "tcg",
+                                "Coverage": [
+                                    0,
+                                    47
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
+                    },
+                    {
+                        "Drug Name": "PZA",
+                        "Mutations": [
+                            {
+                                "Gene": "pncA",
+                                "Mutation": "H57D",
+                                "Position": 57,
+                                "Ref": "cac",
+                                "Alt": "gac",
+                                "Coverage": [
+                                    0,
+                                    32
+                                ],
+                                "Prediction": "R",
+                                "Evidence": {
+                                    "Present_SOLO_R": 153,
+                                    "Present_SOLO_SR": 156,
+                                    "Present_S": 3,
+                                    "Absent_S": 13570,
+                                    "Present_R": 157,
+                                    "Absent_R": 2172
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "Drug Name": "STM",
+                        "Mutations": [
+                            {
+                                "Gene": "rrs",
+                                "Mutation": "g877x",
+                                "Position": null,
+                                "Ref": "g",
+                                "Alt": "x",
+                                "Coverage": [
+                                    null,
+                                    null
+                                ],
+                                "Prediction": "F",
+                                "Evidence": {
+                                    "FASTA called": "N"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "Metadata": {
+        "Software Versions": {
+            "gpas-tb-workflow": "v0.0.119"
+        },
+        "Reference Data Files": {
+            "manifest": "manifest_20231001",
+            "species_list": "species_list_manifest_20231001.csv",
+            "ref_files": "Ref_prepare",
+            "tb_ref_genome": "NC_000962.3.gbk",
+            "tb_amr_cat": "NC_000962.3_WHO-UCN-GTB-PCI-2021.7_v1.0_GARC1_RFUS.csv",
+            "tb_minor_alleles": "minor_alleles.txt",
+            "human_genome_dir": "human-genome"
+        }
+    }
+}
