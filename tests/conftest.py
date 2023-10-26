@@ -58,6 +58,7 @@ BCG = {
     "competitivemapping_report": "test_data/BCG/species_comparison_report.json",
     "mykrobe_report": "test_data/BCG/subspecies_report.json",
     "clockwork_report": "test_data/BCG/genome_creation_report.json",
+    "gnomonicus": "test_data/BCG/tb/resistance_prediction_report.json",
     "expected_output": "test_data/BCG/main_report.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
 }

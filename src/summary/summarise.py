@@ -165,16 +165,9 @@ def generate_mycobacterium_results(
             tophit_name = tophit_name.replace("lineage", "Lineage ")
 
         # Get coverage and depth from mykrobe species (here called subspecies)
-        tophit_coverage = next(
-            item
-            for item in myco["Subspecies"]
-            if item["Name"] == "Mycobacterium_tuberculosis"
-        )["Coverage"]
-        tophit_depth = next(
-            item
-            for item in myco["Subspecies"]
-            if item["Name"] == "Mycobacterium_tuberculosis"
-        )["Median Depth"]
+        tophit_coverage = myco["Subspecies"][0]["Coverage"]
+        tophit_depth = myco["Subspecies"][0]["Median Depth"]
+
     elif tophit_name in [
         "M.intracellulare_chimaera",
         "M.avium_hominissuis",
