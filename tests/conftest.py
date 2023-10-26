@@ -138,6 +138,8 @@ def all_reports_set_individually() -> list:
         "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
         "--gnomonicus",
         "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
+        "--name_mapping",
+        "test_data/reference/name_mapping.csv"
     ]
 
 
@@ -157,6 +159,7 @@ def all_reports() -> list:
         "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
         "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
         "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
+        "test_data/reference/name_mapping.csv",
     ]
 
 

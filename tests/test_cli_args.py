@@ -42,6 +42,9 @@ def test_Argument_all_reports(all_reports: list):
     assert cli_args.gnomonicus == Path(
         "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json"
     )
+    assert cli_args.name_mapping == Path(
+        "test_data/reference/name_mapping.csv"
+    )
 
 
 def test_Argument_five_reports(five_reports: list):
