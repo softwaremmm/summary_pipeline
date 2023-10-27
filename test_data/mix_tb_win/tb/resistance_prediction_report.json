@@ -1,0 +1,356 @@
+{
+  "meta": {
+    "status": "success",
+    "workflow_name": "gnomonicus",
+    "workflow_version": "2.2.0",
+    "workflow_task": "resistance_prediction",
+    "guid": "final",
+    "UTC-datetime-completed": "2023-10-17T18:56:49.886271",
+    "time_taken_s": 176.25544929504395,
+    "reference": "NC_000962",
+    "catalogue_file": "NC_000962.3_WHO-UCN-GTB-PCI-2021.7_v1.0_GARC1_RFUS.csv",
+    "reference_file": "NC_000962.3.gbk",
+    "vcf_file": "final.vcf",
+    "catalogue_type": "RFUS",
+    "catalogue_name": "WHO-UCN-GTB-PCI-2021.7",
+    "catalogue_version": 1.0
+  },
+  "data": {
+    "variants": [
+      {
+        "variant": "7362g>c",
+        "nucleotide_index": 7362,
+        "gene_name": "gyrA",
+        "gene_position": 21,
+        "codon_idx": 0,
+        "vcf_evidence": {
+          "GT": [
+            1,
+            1
+          ],
+          "DP": 30.0,
+          "ALLELE_DP": [
+            0.0,
+            30.0
+          ],
+          "FRS": 1.0,
+          "COV_TOTAL": 30,
+          "COV": [
+            0,
+            30
+          ],
+          "GT_CONF": 196.11,
+          "GT_CONF_PERCENTILE": 55.1,
+          "POS": 7362,
+          "REF": "g",
+          "ALTS": [
+            "c"
+          ]
+        },
+        "vcf_idx": 1
+      },
+      {
+        "variant": "7585g>c",
+        "nucleotide_index": 7585,
+        "gene_name": "gyrA",
+        "gene_position": 95,
+        "codon_idx": 1,
+        "vcf_evidence": {
+          "GT": [
+            1,
+            1
+          ],
+          "DP": 46.0,
+          "ALLELE_DP": [
+            0.0,
+            46.0
+          ],
+          "FRS": 1.0,
+          "COV_TOTAL": 46,
+          "COV": [
+            0,
+            46
+          ],
+          "GT_CONF": 294.94,
+          "GT_CONF_PERCENTILE": 79.81,
+          "POS": 7585,
+          "REF": "g",
+          "ALTS": [
+            "c"
+          ]
+        },
+        "vcf_idx": 1
+      },
+      {
+        "variant": "9304g>a",
+        "nucleotide_index": 9304,
+        "gene_name": "gyrA",
+        "gene_position": 668,
+        "codon_idx": 1,
+        "vcf_evidence": {
+          "GT": [
+            1,
+            1
+          ],
+          "DP": 32.0,
+          "ALLELE_DP": [
+            0.0,
+            32.0
+          ],
+          "FRS": 1.0,
+          "COV_TOTAL": 32,
+          "COV": [
+            0,
+            32
+          ],
+          "GT_CONF": 208.48,
+          "GT_CONF_PERCENTILE": 58.98,
+          "POS": 9304,
+          "REF": "g",
+          "ALTS": [
+            "a"
+          ]
+        },
+        "vcf_idx": 1
+      },
+      {
+        "variant": "760115c>t",
+        "nucleotide_index": 760115,
+        "gene_name": "rpoB",
+        "gene_position": 103,
+        "codon_idx": 2,
+        "vcf_evidence": {
+          "GT": [
+            1,
+            1
+          ],
+          "DP": 18.0,
+          "ALLELE_DP": [
+            0.0,
+            18.0
+          ],
+          "FRS": 1.0,
+          "COV_TOTAL": 18,
+          "COV": [
+            0,
+            18
+          ],
+          "GT_CONF": 121.7,
+          "GT_CONF_PERCENTILE": 28.66,
+          "POS": 760115,
+          "REF": "c",
+          "ALTS": [
+            "t"
+          ]
+        },
+        "vcf_idx": 1
+      },
+      {
+        "variant": "1917972a>g",
+        "nucleotide_index": 1917972,
+        "gene_name": "tlyA",
+        "gene_position": 11,
+        "codon_idx": 2,
+        "vcf_evidence": {
+          "GT": [
+            1,
+            1
+          ],
+          "DP": 12.0,
+          "ALLELE_DP": [
+            0.0,
+            12.0
+          ],
+          "FRS": 1.0,
+          "COV_TOTAL": 12,
+          "COV": [
+            0,
+            12
+          ],
+          "GT_CONF": 84.28,
+          "GT_CONF_PERCENTILE": 14.74,
+          "POS": 1917972,
+          "REF": "a",
+          "ALTS": [
+            "g"
+          ]
+        },
+        "vcf_idx": 1
+      }
+    ],
+    "mutations": [
+      {
+        "mutation": "E21Q",
+        "gene": "gyrA",
+        "gene_position": 21,
+        "ref": "gag",
+        "alt": "cag"
+      },
+      {
+        "mutation": "S95T",
+        "gene": "gyrA",
+        "gene_position": 95,
+        "ref": "agc",
+        "alt": "acc"
+      },
+      {
+        "mutation": "G668D",
+        "gene": "gyrA",
+        "gene_position": 668,
+        "ref": "ggc",
+        "alt": "gac"
+      },
+      {
+        "mutation": "L11L",
+        "gene": "tlyA",
+        "gene_position": 11,
+        "ref": "cta",
+        "alt": "ctg"
+      },
+      {
+        "mutation": "a33g",
+        "gene": "tlyA",
+        "gene_position": 33
+      },
+      {
+        "mutation": "D103D",
+        "gene": "rpoB",
+        "gene_position": 103,
+        "ref": "gac",
+        "alt": "gat"
+      },
+      {
+        "mutation": "c309t",
+        "gene": "rpoB",
+        "gene_position": 309
+      }
+    ],
+    "effects": {
+      "LEV": [
+        {
+          "gene": "gyrA",
+          "mutation": "E21Q",
+          "prediction": "S",
+          "evidence": {
+            "Present_SOLO_R": 11,
+            "Present_SOLO_SR": 580,
+            "Present_S": 8282,
+            "Absent_S": 4,
+            "Present_R": 2019,
+            "Absent_R": 0
+          }
+        },
+        {
+          "gene": "gyrA",
+          "mutation": "S95T",
+          "prediction": "S",
+          "evidence": {
+            "Present_SOLO_R": 0,
+            "Present_SOLO_SR": 1,
+            "Present_S": 7698,
+            "Absent_S": 588,
+            "Present_R": 1929,
+            "Absent_R": 90
+          }
+        },
+        {
+          "gene": "gyrA",
+          "mutation": "G668D",
+          "prediction": "S",
+          "evidence": {
+            "Present_SOLO_R": 0,
+            "Present_SOLO_SR": 0,
+            "Present_S": 7701,
+            "Absent_S": 585,
+            "Present_R": 1932,
+            "Absent_R": 87
+          }
+        },
+        {
+          "phenotype": "S"
+        }
+      ],
+      "MXF": [
+        {
+          "gene": "gyrA",
+          "mutation": "E21Q",
+          "prediction": "S",
+          "evidence": {
+            "Present_SOLO_R": 7,
+            "Present_SOLO_SR": 337,
+            "Present_S": 5807,
+            "Absent_S": 3,
+            "Present_R": 1094,
+            "Absent_R": 0
+          }
+        },
+        {
+          "gene": "gyrA",
+          "mutation": "S95T",
+          "prediction": "S",
+          "evidence": {
+            "Present_SOLO_R": 0,
+            "Present_SOLO_SR": 0,
+            "Present_S": 5439,
+            "Absent_S": 371,
+            "Present_R": 1045,
+            "Absent_R": 49
+          }
+        },
+        {
+          "gene": "gyrA",
+          "mutation": "G668D",
+          "prediction": "S",
+          "evidence": {
+            "Present_SOLO_R": 0,
+            "Present_SOLO_SR": 0,
+            "Present_S": 5445,
+            "Absent_S": 365,
+            "Present_R": 1045,
+            "Absent_R": 49
+          }
+        },
+        {
+          "phenotype": "S"
+        }
+      ],
+      "CAP": [
+        {
+          "gene": "tlyA",
+          "mutation": "L11L",
+          "prediction": "S",
+          "evidence": {}
+        },
+        {
+          "phenotype": "S"
+        }
+      ],
+      "RIF": [
+        {
+          "gene": "rpoB",
+          "mutation": "D103D",
+          "prediction": "S",
+          "evidence": {}
+        },
+        {
+          "phenotype": "S"
+        }
+      ]
+    },
+    "antibiogram": {
+      "LEV": "S",
+      "MXF": "S",
+      "CAP": "S",
+      "RIF": "S",
+      "INH": "S",
+      "EMB": "S",
+      "PZA": "S",
+      "LZD": "S",
+      "DLM": "S",
+      "AMI": "S",
+      "STM": "S",
+      "ETH": "S",
+      "KAN": "S"
+    }
+  }
+}

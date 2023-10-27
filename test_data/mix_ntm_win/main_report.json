@@ -1,0 +1,78 @@
+{
+    "Pipeline Outcome": "Insufficient TB reads.",
+    "Organism Identification": {
+        "Human Reads": null,
+        "Unclassified Reads": 14076,
+        "Non-Mycobacterium Bacteria Reads": 581646,
+        "Mycobacterium Reads": 189388
+    },
+    "Mycobacterium Results": {
+        "Summary": [
+            {
+                "Name": "M.avium_hominissuis",
+                "Num Reads": 89007,
+                "Coverage": 75.9888,
+                "Depth": 2.34133
+            },
+            {
+                "Name": "M.tuberculosis",
+                "Num Reads": 41055,
+                "Coverage": 63.0743,
+                "Depth": 1.29548
+            }
+        ],
+        "Species": [
+            {
+                "Name": "M.avium_hominissuis",
+                "Num Reads": 89007,
+                "Coverage": 75.9888,
+                "Mean Depth": 2.34133,
+                "Length": 5118245.0
+            },
+            {
+                "Name": "M.tuberculosis",
+                "Num Reads": 41055,
+                "Coverage": 63.0743,
+                "Mean Depth": 1.29548,
+                "Length": 4411532.0
+            }
+        ],
+        "Phylogenic Group": [
+            {
+                "Name": "Non_tuberculosis_mycobacterium_complex",
+                "Coverage": 78.271,
+                "Median Depth": 3
+            },
+            {
+                "Name": "Mycobacterium_tuberculosis_complex",
+                "Coverage": 51.892,
+                "Median Depth": 2
+            }
+        ],
+        "Subspecies": [
+            {
+                "Name": "Mycobacterium_avium",
+                "Coverage": 78.271,
+                "Median Depth": 3
+            },
+            {
+                "Name": "Mycobacterium_tuberculosis",
+                "Coverage": 46.519,
+                "Median Depth": 2
+            }
+        ],
+        "Lineage": [
+            {
+                "Name": "lineage4.1.2",
+                "Coverage": 100,
+                "Median Depth": 1
+            },
+            {
+                "Name": "lineage4.10",
+                "Coverage": 100,
+                "Median Depth": 1
+            }
+        ]
+    },
+    "Genomes": null
+}

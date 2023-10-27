@@ -8,17 +8,20 @@ covid = {
     "pipeline_versions": "test_data/covid/pipeline_versions.txt",
     "gatekeeper_report": "test_data/covid/speciation_report.json",
     "expected_output": "test_data/covid/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
 covid_no_meta = {
     "gatekeeper_report": "test_data/covid_no_meta/speciation_report.json",
     "expected_output": "test_data/covid_no_meta/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
 SRR2097047 = {
     "pipeline_versions": "test_data/SRR2097047/pipeline_versions.txt",
     "gatekeeper_report": "test_data/SRR2097047/speciation_report.json",
     "expected_output": "test_data/SRR2097047/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
 ABSCESSUS = {
@@ -26,6 +29,7 @@ ABSCESSUS = {
     "competitivemapping_report": "test_data/002b5813-d1a3-4714-93ce-1075bfe6c7fe/species_comparison_report.json",
     "mykrobe_report": "test_data/002b5813-d1a3-4714-93ce-1075bfe6c7fe/subspecies_report.json",
     "expected_output": "test_data/002b5813-d1a3-4714-93ce-1075bfe6c7fe/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
 MALOMENSE = {
@@ -33,6 +37,7 @@ MALOMENSE = {
     "competitivemapping_report": "test_data/2f56a0f7-feb6-4994-8420-23adf5e2df46/species_comparison_report.json",
     "mykrobe_report": "test_data/2f56a0f7-feb6-4994-8420-23adf5e2df46/subspecies_report.json",
     "expected_output": "test_data/2f56a0f7-feb6-4994-8420-23adf5e2df46/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
 WTCHG_885333_73205296_1 = {
@@ -44,15 +49,18 @@ WTCHG_885333_73205296_1 = {
     "clockwork_report": "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
     "gnomonicus": "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
     "expected_output": "test_data/WTCHG_885333_73205296_1/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
-clade_animal_A3 = {
-    "pipeline_versions": "test_data/clade_animal_A3/pipeline_versions.txt",
-    "gatekeeper_report": "test_data/clade_animal_A3/speciation_report.json",
-    "competitivemapping_report": "test_data/clade_animal_A3/species_comparison_report.json",
-    "mykrobe_report": "test_data/clade_animal_A3/subspecies_report.json",
-    "clockwork_report": "test_data/clade_animal_A3/genome_creation_report.json",
-    "expected_output": "test_data/clade_animal_A3/main_report.json",
+BCG = {
+    "pipeline_versions": "test_data/BCG/pipeline_versions.txt",
+    "gatekeeper_report": "test_data/BCG/speciation_report.json",
+    "competitivemapping_report": "test_data/BCG/species_comparison_report.json",
+    "mykrobe_report": "test_data/BCG/subspecies_report.json",
+    "clockwork_report": "test_data/BCG/genome_creation_report.json",
+    "gnomonicus": "test_data/BCG/tb/resistance_prediction_report.json",
+    "expected_output": "test_data/BCG/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
 WTCHG_885333_73205296_2 = {
@@ -63,6 +71,7 @@ WTCHG_885333_73205296_2 = {
     "clockwork_report": "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
     "gnomonicus": "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report2.json",
     "expected_output": "test_data/WTCHG_885333_73205296_1/main_report2.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
 NO_MYKROBE = {
@@ -70,6 +79,25 @@ NO_MYKROBE = {
     "competitivemapping_report": "test_data/no_mykrobe/species_comparison_report.json",
     "mykrobe_report": "test_data/no_mykrobe/subspecies_report.json",
     "expected_output": "test_data/no_mykrobe/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
+}
+
+MIX_NTM_WIN = {
+    "gatekeeper_report": "test_data/mix_ntm_win/speciation_report.json",
+    "competitivemapping_report": "test_data/mix_ntm_win/species_comparison_report.json",
+    "mykrobe_report": "test_data/mix_ntm_win/subspecies_report.json",
+    "expected_output": "test_data/mix_ntm_win/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
+}
+
+MIX_TB_WIN = {
+    "gatekeeper_report": "test_data/mix_tb_win/speciation_report.json",
+    "competitivemapping_report": "test_data/mix_tb_win/species_comparison_report.json",
+    "mykrobe_report": "test_data/mix_tb_win/subspecies_report.json",
+    "clockwork_report": "test_data/mix_tb_win/genome_creation_report.json",
+    "gnomonicus": "test_data/mix_tb_win/tb/resistance_prediction_report.json",
+    "expected_output": "test_data/mix_tb_win/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
 
@@ -82,8 +110,10 @@ NO_MYKROBE = {
         MALOMENSE,
         WTCHG_885333_73205296_1,
         WTCHG_885333_73205296_2,
-        clade_animal_A3,
+        BCG,
         NO_MYKROBE,
+        MIX_NTM_WIN,
+        MIX_TB_WIN,
     ],
     ids=[
         "covid",
@@ -93,8 +123,10 @@ NO_MYKROBE = {
         "MALOMENSE",
         "WTCHG_885333_73205296_1",
         "WTCHG_885333_73205296_2",
-        "clade_animal_A3",
+        "BCG",
         "NO_MYKROBE",
+        "MIX_NTM_WIN",
+        "MIX_TB_WIN",
     ],
 )
 def regression_test_set(request) -> dict:
@@ -118,6 +150,8 @@ def all_reports_set_individually() -> list:
         "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
         "--gnomonicus",
         "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
+        "--name_mapping",
+        "test_data/reference/name_mapping.csv",
     ]
 
 
@@ -137,6 +171,7 @@ def all_reports() -> list:
         "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
         "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
         "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
+        "test_data/reference/name_mapping.csv",
     ]
 
 
