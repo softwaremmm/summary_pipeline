@@ -87,9 +87,7 @@ def generate_organism_identification(gatekeeper_data: dict) -> dict:
     return organism
 
 
-def generate_mycobacterium_results(
-    mappings: dict, mykrobe_data: dict, name_mapping: pandas.DataFrame
-) -> dict:
+def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
     """Summarises Competitive Mapping and Mykrobe outputs.
 
     Args:
@@ -263,10 +261,6 @@ def generate_mycobacterium_results(
         )
 
     return myco
-
-
-def lookup_comap_name(mykrobe_name: str, name_mapping: pandas.DataFrame) -> str:
-    return "Bob"
 
 
 def process_phylo_group(phylo_group: dict) -> list[dict]:
@@ -609,9 +603,6 @@ def create_summary(
         dict: Summary GPAS pipeline output.
     """
 
-    if "name_mapping" not in reports:
-        raise FileNotFoundError("Name mapping file not found, cannot assign species.")
-
     output = {}
     if "gatekeeper" in reports:
         output["Pipeline Outcome"] = "Insufficient mycobacterial reads."
@@ -625,9 +616,8 @@ def create_summary(
         output["Pipeline Outcome"] = "Insufficient TB reads."
         mapping_json = read_json_file(reports["mapping"])
         mykrobe_data = read_json_file(reports["mykrobe"])
-        name_mapping = pandas.read_csv(reports["name_mapping"])
         output["Mycobacterium Results"] = generate_mycobacterium_results(
-            mapping_json, mykrobe_data, name_mapping
+            mapping_json, mykrobe_data
         )
     else:
         output["Mycobacterium Results"] = None
