@@ -153,7 +153,12 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         if "lineage" in mykrobe_data:
             myco["Lineage"] = process_lineages(mykrobe_data.get("lineage"))
 
-    mixed_pop = len(myco["Phylogenic Group"]) == 2
+    if len(myco["Phylogenic Group"]) == 2:
+        mixed_pop = True
+    elif len(myco["Phylogenic Group"]) > 2:
+        raise ValueError("Mixed population with more than two phylo groups.")
+    else:
+        mixed_pop = False
 
     # Summary
     if tophit_name == "M.tuberculosis":
