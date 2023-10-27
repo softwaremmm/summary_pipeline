@@ -20,8 +20,10 @@ conda activate summary_pipeline
 #### Specify individual report files
 
 ```{bash}
-summary_json --gatekeeper test_data/WTCHG_885333_73205296_1/speciation_report.json --mapping test_data/WTCHG_885333_73205296_1/species_comparison_report.json --mykrobe test_data/WTCHG_885333_73205296_1/subspecies_report.json --gnomonicus test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json --knowledge test_data/WTCHG_885333_73205296_1/knowledge.json --versions test_data/WTCHG_885333_73205296_1/pipeline_versions.txt --clockwork test_data/WTCHG_885333_73205296_1/genome_creation_report.json
+summary_json --gatekeeper test_data/WTCHG_885333_73205296_1/speciation_report.json --mapping test_data/WTCHG_885333_73205296_1/species_comparison_report.json --mykrobe test_data/WTCHG_885333_73205296_1/subspecies_report.json --gnomonicus test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json --knowledge test_data/WTCHG_885333_73205296_1/knowledge.json --versions test_data/WTCHG_885333_73205296_1/pipeline_versions.txt --clockwork test_data/WTCHG_885333_73205296_1/genome_creation_report.json --name_mapping test_data/reference/name_mapping.csv
 ```
+
+All arguments are mandatory. This functionality is not used by the NextFlow pipeline and may be removed in future.
 
 #### Pass report files as a list
 
