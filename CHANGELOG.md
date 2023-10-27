@@ -1,3 +1,21 @@
+## 1.10.0 (2023-10-27)
+
+### Feat
+
+- Handles mixed pops
+- Support name mapping file in CLI
+- Treat phylo and mykrobe species as lists
+
+### Fix
+
+- Throw error with >2 speices in mix
+- Remove name mapping, not currently needed
+- Return reads when no mykrobe data
+- Handle BCG
+- Handle most cases
+- Merge glitch
+- Merge glitch
+
 ## 1.9.0 (2023-10-27)
 
 ### Feat
