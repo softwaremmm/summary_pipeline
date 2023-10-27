@@ -1,3 +1,9 @@
+## 1.9.0 (2023-10-27)
+
+### Feat
+
+- Handle phylo and "subspecies" as lists
+
 ## 1.8.1 (2023-10-23)
 
 ### Fix
