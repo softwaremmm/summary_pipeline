@@ -24,16 +24,20 @@
                 "Length": 4411532.0
             }
         ],
-        "Phylogenic Group": {
-            "Name": "Mycobacterium_tuberculosis_complex",
-            "Coverage": 99.462,
-            "Median Depth": 123
-        },
-        "Subspecies": {
-            "Name": "Mycobacterium_tuberculosis",
-            "Coverage": 97.738,
-            "Median Depth": 105
-        },
+        "Phylogenic Group": [
+            {
+                "Name": "Mycobacterium_tuberculosis_complex",
+                "Coverage": 99.462,
+                "Median Depth": 123
+            }
+        ],
+        "Subspecies": [
+            {
+                "Name": "Mycobacterium_tuberculosis",
+                "Coverage": 97.738,
+                "Median Depth": 105
+            }
+        ],
         "Lineage": [
             {
                 "Name": "lineage4.3.4.2",
