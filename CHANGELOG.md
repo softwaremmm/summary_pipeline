@@ -1,3 +1,14 @@
+## 1.10.1 (2023-10-30)
+
+### Fix
+
+- mean to median as approproriate
+- Updating for changes to summary json format
+- Updating following PR
+- Updating reads origin
+- correcting typo and adding resistance prediction coverage definition.
+- Adding glossary to README.md for terminology in main_report.json and showing where used in the portal.
+
 ## 1.10.0 (2023-10-27)
 
 ### Feat
