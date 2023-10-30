@@ -10,6 +10,7 @@
         "Summary": [
             {
                 "Name": "M.komanii",
+                "Num Reads": 377667,
                 "Coverage": 63.2765020326,
                 "Depth": 8.6599462091
             }
@@ -23,8 +24,8 @@
                 "Length": 5378970.0
             }
         ],
-        "Phylogenic Group": {},
-        "Subspecies": {},
+        "Phylogenic Group": [],
+        "Subspecies": [],
         "Lineage": []
     },
     "Genomes": null

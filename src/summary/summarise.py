@@ -100,8 +100,8 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
     myco = {
         "Summary": [],
         "Species": [],
-        "Phylogenic Group": {},
-        "Subspecies": {},
+        "Phylogenic Group": [],
+        "Subspecies": [],
         "Lineage": [],
     }
 
@@ -132,6 +132,7 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         myco["Summary"] = [
             {
                 "Name": tophit_name,
+                "Num Reads": int(tophit["numreads"]),
                 "Coverage": tophit_coverage,
                 "Depth": tophit_depth,
             }
@@ -152,6 +153,13 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         if "lineage" in mykrobe_data:
             myco["Lineage"] = process_lineages(mykrobe_data.get("lineage"))
 
+    if len(myco["Phylogenic Group"]) == 2:
+        mixed_pop = True
+    elif len(myco["Phylogenic Group"]) > 2:
+        raise ValueError("Mixed population with more than two phylo groups.")
+    else:
+        mixed_pop = False
+
     # Summary
     if tophit_name == "M.tuberculosis":
         # USE MYKROBE lineage and species information
@@ -159,12 +167,21 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         # Append lineage information from mykrobe to species name
         # from competitive mapping, if available
         if len(myco["Lineage"]) != 0:
-            tophit_name = tophit_name + " (" + myco["Lineage"][0]["Name"] + ")"
-            tophit_name = tophit_name.replace("lineage", "Lineage ")
+            summary_name = tophit_name + " (" + myco["Lineage"][0]["Name"] + ")"
+            summary_name = summary_name.replace("lineage", "Lineage ")
 
         # Get coverage and depth from mykrobe species (here called subspecies)
-        tophit_coverage = myco["Subspecies"]["Coverage"]
-        tophit_depth = myco["Subspecies"]["Median Depth"]
+        tb_index = next(
+            (
+                i
+                for i, pgroup in enumerate(myco["Phylogenic Group"])
+                if pgroup["Name"] == "Mycobacterium_tuberculosis_complex"
+            ),
+            None,
+        )
+        tophit_coverage = myco["Subspecies"][tb_index]["Coverage"]
+        tophit_depth = myco["Subspecies"][tb_index]["Median Depth"]
+
     elif tophit_name in [
         "M.intracellulare_chimaera",
         "M.avium_hominissuis",
@@ -174,28 +191,38 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         "M.abscessus",
     ]:
         # USE MYKROBE
+        if mixed_pop:
+            # Use competitive mapping
+            summary_name = tophit_name
 
-        # Use lineage name as species name
-        tophit_name = myco["Lineage"][0]["Name"]
+            tophit_coverage = myco["Species"][0]["Coverage"]
+            tophit_depth = myco["Species"][0]["Mean Depth"]
+        else:
+            # Use lineage name as species name
+            summary_name = myco["Lineage"][0]["Name"]
 
-        # Get coverage and depth from mykrobe lineage
-        tophit_coverage = myco["Lineage"][0]["Coverage"]
-        tophit_depth = myco["Lineage"][0]["Median Depth"]
+            # Get coverage and depth from mykrobe lineage
+            tophit_coverage = myco["Lineage"][0]["Coverage"]
+            tophit_depth = myco["Lineage"][0]["Median Depth"]
     elif myco["Species"][0]["Coverage"] < 40:
         # USE MYKROBE
 
+        summary_name = tophit_name
+
         # Get coverage and depth from mykrobe
-        tophit_coverage = myco["Subspecies"]["Coverage"]
-        tophit_depth = myco["Subspecies"]["Median Depth"]
+        tophit_coverage = myco["Subspecies"][0]["Coverage"]
+        tophit_depth = myco["Subspecies"][0]["Median Depth"]
     else:
         # USE COMPETITIVE MAPPING
+
+        summary_name = tophit_name
 
         tophit_coverage = myco["Species"][0]["Coverage"]
         tophit_depth = myco["Species"][0]["Mean Depth"]
 
     myco["Summary"] = [
         {
-            "Name": tophit_name,
+            "Name": summary_name,
             "Num Reads": int(tophit["numreads"]),
             "Coverage": tophit_coverage,
             "Depth": tophit_depth,
@@ -225,10 +252,23 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
                 }
             )
 
+    # Include 1st runner up in a mixed population
+    # with TB winner
+    if tophit_name == "M.tuberculosis" and mixed_pop:
+        second_hit = mappings_sorted.head(2).to_dict(orient="records")[1]
+        myco["Summary"].append(
+            {
+                "Name": second_hit["genome_name"],
+                "Num Reads": int(second_hit["numreads"]),
+                "Coverage": second_hit["coverage"],
+                "Depth": second_hit["meandepth"],
+            }
+        )
+
     return myco
 
 
-def process_phylo_group(phylo_group: dict) -> dict:
+def process_phylo_group(phylo_group: dict) -> list[dict]:
     """Restructure phylogenetic group information from mykrobe
 
     Args:
@@ -238,21 +278,21 @@ def process_phylo_group(phylo_group: dict) -> dict:
         ValueError: Thrown if multiple phyogenetic groups are found
 
     Returns:
-        dict: Restructured phylogenetic information
+        list[dict]: Restructured phylogenetic information
     """
-    phylo = {}
-    if not len(phylo_group.keys()) == 1:
-        raise ValueError(
-            "Require only 1 phylo group. Found " + str(len(phylo_group.keys()))
-        )
-    phylo["Name"] = list(phylo_group.keys())[0]
-    phylo["Coverage"] = phylo_group[phylo["Name"]].get("percent_coverage")
-    phylo["Median Depth"] = phylo_group[phylo["Name"]].get("median_depth")
+    phylos = []
+    for group in phylo_group:
+        phylo = {
+            "Name": group,
+            "Coverage": phylo_group[group].get("percent_coverage"),
+            "Median Depth": phylo_group[group].get("median_depth"),
+        }
+        phylos.append(phylo)
 
-    return phylo
+    return phylos
 
 
-def process_subspecies(species: dict) -> dict:
+def process_subspecies(species: dict) -> list[dict]:
     """Restructure species information from mykrobe
 
     Args:
@@ -262,16 +302,17 @@ def process_subspecies(species: dict) -> dict:
         ValueError: Throws an error if mykrobe returns more than one species
 
     Returns:
-        dict: Restructured species information
+        list[dict]: Restructured species information
     """
-    subspecies = {}
-    if not len(species.keys()) == 1:
-        raise ValueError(
-            "Require only 1 species group. Found " + str(len(species.keys()))
-        )
-    subspecies["Name"] = list(species.keys())[0]
-    subspecies["Coverage"] = species[subspecies["Name"]].get("percent_coverage")
-    subspecies["Median Depth"] = species[subspecies["Name"]].get("median_depth")
+
+    subspecies = []
+    for specie in species:
+        specie = {
+            "Name": specie,
+            "Coverage": species[specie].get("percent_coverage"),
+            "Median Depth": species[specie].get("median_depth"),
+        }
+        subspecies.append(specie)
 
     return subspecies
 
@@ -566,6 +607,7 @@ def create_summary(
     Returns:
         dict: Summary GPAS pipeline output.
     """
+
     output = {}
     if "gatekeeper" in reports:
         output["Pipeline Outcome"] = "Insufficient mycobacterial reads."
@@ -706,6 +748,10 @@ def collate_reports(cli_args: Arguments) -> dict:
         logging.info(error)
     try:
         reports["gnomonicus"] = cli_args.gnomonicus
+    except AttributeError as error:
+        logging.info(error)
+    try:
+        reports["name_mapping"] = cli_args.name_mapping
     except AttributeError as error:
         logging.info(error)
     return reports

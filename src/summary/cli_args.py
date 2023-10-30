@@ -18,6 +18,7 @@ class ReportType(Enum):
     MYKROBE = "subspecies_report.json"
     CLOCKWORK = "genome_creation_report.json"
     GNOMONICUS = "resistance_prediction_report.json"
+    NAME_MAPPING = "name_mapping.csv"
 
 
 class Arguments:  # pylint: disable=too-few-public-methods
@@ -66,6 +67,11 @@ class Arguments:  # pylint: disable=too-few-public-methods
             dest="gnomonicus",
             help="Path to resistance_prediction_report.json file",
         )
+        named_reports.add_argument(
+            "--name_mapping",
+            dest="name_mapping",
+            help="Path to name_mapping.csv file",
+        )
         report_list = parser.add_argument_group(title="Path to report list")
         report_list.add_argument(
             "--reports",
@@ -109,6 +115,10 @@ class Arguments:  # pylint: disable=too-few-public-methods
                 self.gnomonicus = self._get_report(args.reports, ReportType.GNOMONICUS)
             except ValueError as error:
                 logging.info(error)
+            try:
+                self.name_mapping = self._get_report(args.reports, ReportType.NAME_MAPPING)
+            except ValueError as error:
+                logging.info(error)
         else:
             self.versions = Path(args.versions)
             self.knowledge = Path(args.knowledge)
@@ -117,6 +127,7 @@ class Arguments:  # pylint: disable=too-few-public-methods
             self.mykrobe = Path(args.mykrobe)
             self.clockwork = Path(args.clockwork)
             self.gnomonicus = Path(args.gnomonicus)
+            self.name_mapping = Path(args.name_mapping)
         self.output = Path(args.output)
 
     def _get_report(self, reports_list: list, report_type: ReportType) -> Path:
