@@ -1,0 +1,652 @@
+{
+  "meta": {
+    "status": "success",
+    "workflow_name": "gnomonicus",
+    "workflow_version": "2.1.1",
+    "workflow_task": "resistance_prediction",
+    "guid": "final",
+    "UTC-datetime-completed": "2023-08-23T14:59:26.635248",
+    "time_taken_s": 166.46295309066772,
+    "reference": "NC_000962",
+    "catalogue_file": "NC_000962.3_WHO-UCN-GTB-PCI-2021.7_v1.0_GARC1_RUS.csv",
+    "reference_file": "NC_000962.3.gbk",
+    "vcf_file": "final.vcf",
+    "catalogue_type": "RUS",
+    "catalogue_name": "WHO-UCN-GTB-PCI-2021.7",
+    "catalogue_version": 1.0
+  },
+  "data": {
+    "variants": [
+      {
+        "variant": "1673766c>t",
+        "nucleotide_index": 1673766,
+        "gene_name": "fabG1",
+        "gene_position": 109,
+        "codon_idx": 2,
+        "vcf_evidence": {
+          "GT": [
+            1,
+            1
+          ],
+          "DP": 65.0,
+          "ALLELE_DP": [
+            0.0,
+            65.0
+          ],
+          "FRS": 1.0,
+          "COV_TOTAL": 65,
+          "COV": [
+            0,
+            65
+          ],
+          "GT_CONF": 427.81,
+          "GT_CONF_PERCENTILE": 44.7,
+          "POS": 1673766,
+          "REF": "c",
+          "ALTS": [
+            "t"
+          ]
+        },
+        "vcf_idx": 1
+      },
+      {
+        "variant": "759807_del_cgccggccgaaaccgacaaaattatcgcggcgaacgggcccgtgggcaccgctcctctaagggctctcgttggtcgcatgaagtgctggaaggatgcatcttggcagattcccgccagagcaaaacagccgctagtcctagtccgagtcgcccgcaaagttcctcgaataactccgtacccggagcgccaaaccgggtctccttcgctaagctgcgcgaaccacttgaggttccgggactccttgacgtccagaccgattcgttcgagtggctgatcggttcgccgcgctggcgcgaatccgccgccgagcggggtgatgtcaacccagtgggtggcctggaagaggtgctctacgagctgtctccgatcgaggacttctccgggtcgatgtcgttgtcgttctctgaccctcgtttcgacgatgtcaaggcacccgtcgacgagtgcaaagacaaggacatgacgtacgcggctccactgttcgtcaccgccgagttcatcaacaacaacaccggtgagatcaagagtcagacggtgttcatgggtgacttcccgatgatgaccgagaagggcacgttcatcatcaacgggaccgagcgtgtggtggtcagccagctggtgcggtcgcccggggtgtacttcgacgagaccattgacaagtccaccgacaagacgctgcacagcgtcaaggtgatcccgagccgcggcgcgtggctcgagtttgacgtcgacaagcgcgacaccgtcggcgtgcgcatcgaccgcaaacgccggcaaccggtcaccgtgctgctcaaggcgctgggctggaccagcgagcagattgtcgagcggttcgggttctccgagatcatgcgatcgacgctggagaaggacaacaccgtcggcaccgacgaggcgctgttggacatctaccgcaagctgcgtccgggcgagcccccgaccaaagagtcagcgcagacgctgttggaaaacttgttcttcaaggagaagcgctacgacctggcccgcgtcggtcgctataaggtcaacaagaagctcgggctgcatgtcggcgagcccatcacgtcgtcgacgctgaccgaagaagacgtcgtggccaccatcgaatatctggtccgcttgcacgagggtcagaccacgatgaccgttccgggcggcgtcgaggtgccggtggaaaccgacgacatcgaccacttcggcaaccgccgcctgcgtacggtcggcgagctgatccaaaaccagatccgggtcggcatgtcgcggatggagcgggtggtccgggagcggatgaccacccaggacgtggaggcgatcacaccgcagacgttgatcaacatccggccggtggtcgccgcgatcaaggagttcttcggcaccagccagctgagccaattcatggaccagaacaacccgctgtcggggttgacccacaagcgccgactgtcggcgctggggcccggcggtctgtcacgtgagcgtgccgggctggaggtccgcgacgtgcacccgtcgcactacggccggatgtgcccgatcgaaacccctgaggggcccaacatcggtctgatcggctcgctgtcggtgtacgcgcgggtcaacccgttcgggttcatcgaaacgccgtaccgcaaggtggtcgacggcgtggttagcgacgagatcgtgtacctgaccgccgacgaggaggaccgccacgtggtggcacaggccaattcgccgatcgatgcggacggtcgcttcgtcgagccgcgcgtgctggtccgccgcaaggcgggcgaggtggagtacgtgccctcgtctgaggtggactacatggacgtctcgccccgccagatggtgtcggtggccaccgcgatgattcccttcctggagcacgacgacgccaaccgtgccctcatgggggcaaacatgcagcgccaggcggtgccgctggtccgtagcgaggccccgctggtgggcaccgggatggagctgcgcgcggcgatcgacgccggcgacgtcgtcgtcgccgaagaaagcggcgtcatcgaggaggtgtcggccgactacatcactgtgatgcacgacaacggcacccggcgtacctaccggatgcgcaagtttgcccggtccaaccacggcacttgcgccaaccagtgccccatcgtggacgcgggcgaccgagtcgaggccggtcaggtgatcgccgacggtccctgtactgacgacggcgagatggcgctgggcaagaacctgctggtggccatcatgccgtgggagggccacaactacgaggacgcgatcatcctgtccaaccgcctggtcgaagaggacgtgctcacctcgatccacatcgaggagcatgagatcgatgctcgcgacaccaagctgggtgcggaggagatcacccgcgacatcccgaacatctccgacgaggtgctcgccgacctggatgagcggggcatcgtgcgcatcggtgccgaggttcgcgacggggacatcctggtcggcaaggtcaccccgaagggtgagaccgagctgacgccggaggagcggctgctgcgtgccatcttcggtgagaaggcccgcgaggtgcgcgacacttcgctgaaggtgccgcacggcgaatccggcaaggtgatcggcattcgggtgttttcccgcgaggacgaggacgagttgccggccggtgtcaacgagctggtgcgtgtgtatgtggctcagaaacgcaagatctccgacggtgacaagctggccggccggcacggcaacaagggcgtgatcggcaagatcctgccggttgaggacatgccgttccttgccgacggcaccccggtggacattattttgaacacccacggcgtgccgcgacggatgaacatcggccagattttggagacccacctgggttggtgtgcccacagcggctggaaggtcgacgccgccaagggggttccggactgggccgccaggctgcccgacgaactgctcgaggcgcagccgaacgccattgtgtcgacgccggtgttcgacggcgcccaggaggccgagctgcagggcctgttgtcgtgcacgctgcccaaccgcgacggtgacgtgctggtcgacgccgacggcaaggccatgctcttcgacgggcgcagcggcgagccgttcccgtacccggtcacggttggctacatgtacatcatgaagctgcaccacctggtggacgacaagatccacgcccgctccaccgggccgtactcgatgatcacccagcagccgctgggcggtaaggcgcagttcggtggccagcggttcggggagatggagtgctgggccatgcaggcctacggtgctgcctacaccctgcaggagctgttgaccatcaagtccgatgacaccgtcggccgcgtcaaggtgtacgaggcgatcgtcaagggtgagaacatcccggagccgggcatccccgagtcgttcaaggtgctgctcaaagaactgcagtcgctgtgcctcaacgtcgaggtgctatcgagtgacggtgcggcgatcgaactgcgcgaaggtgaggacgaggacctggagcgggccgcggccaacctgggaatcaatctgtcccgcaacgaatccgcaagtgtcgaggatcttgcgtaa",
+        "nucleotide_index": 759807,
+        "gene_name": "rpoB",
+        "gene_position": 1,
+        "vcf_evidence": {
+          "GT": [
+            1,
+            1
+          ],
+          "DP": 138.0,
+          "ALLELE_DP": [
+            0.0,
+            138.0
+          ],
+          "FRS": 1.0,
+          "COV_TOTAL": 138,
+          "COV": [
+            0,
+            138
+          ],
+          "GT_CONF": 866.32,
+          "GT_CONF_PERCENTILE": 86.64,
+          "POS": 759807,
+          "REF": "cgccggccgaaaccgacaaaattatcgcggcgaacgggcccgtgggcaccgctcctctaagggctctcgttggtcgcatgaagtgctggaaggatgcatcttggcagattcccgccagagcaaaacagccgctagtcctagtccgagtcgcccgcaaagttcctcgaataactccgtacccggagcgccaaaccgggtctccttcgctaagctgcgcgaaccacttgaggttccgggactccttgacgtccagaccgattcgttcgagtggctgatcggttcgccgcgctggcgcgaatccgccgccgagcggggtgatgtcaacccagtgggtggcctggaagaggtgctctacgagctgtctccgatcgaggacttctccgggtcgatgtcgttgtcgttctctgaccctcgtttcgacgatgtcaaggcacccgtcgacgagtgcaaagacaaggacatgacgtacgcggctccactgttcgtcaccgccgagttcatcaacaacaacaccggtgagatcaagagtcagacggtgttcatgggtgacttcccgatgatgaccgagaagggcacgttcatcatcaacgggaccgagcgtgtggtggtcagccagctggtgcggtcgcccggggtgtacttcgacgagaccattgacaagtccaccgacaagacgctgcacagcgtcaaggtgatcccgagccgcggcgcgtggctcgagtttgacgtcgacaagcgcgacaccgtcggcgtgcgcatcgaccgcaaacgccggcaaccggtcaccgtgctgctcaaggcgctgggctggaccagcgagcagattgtcgagcggttcgggttctccgagatcatgcgatcgacgctggagaaggacaacaccgtcggcaccgacgaggcgctgttggacatctaccgcaagctgcgtccgggcgagcccccgaccaaagagtcagcgcagacgctgttggaaaacttgttcttcaaggagaagcgctacgacctggcccgcgtcggtcgctataaggtcaacaagaagctcgggctgcatgtcggcgagcccatcacgtcgtcgacgctgaccgaagaagacgtcgtggccaccatcgaatatctggtccgcttgcacgagggtcagaccacgatgaccgttccgggcggcgtcgaggtgccggtggaaaccgacgacatcgaccacttcggcaaccgccgcctgcgtacggtcggcgagctgatccaaaaccagatccgggtcggcatgtcgcggatggagcgggtggtccgggagcggatgaccacccaggacgtggaggcgatcacaccgcagacgttgatcaacatccggccggtggtcgccgcgatcaaggagttcttcggcaccagccagctgagccaattcatggaccagaacaacccgctgtcggggttgacccacaagcgccgactgtcggcgctggggcccggcggtctgtcacgtgagcgtgccgggctggaggtccgcgacgtgcacccgtcgcactacggccggatgtgcccgatcgaaacccctgaggggcccaacatcggtctgatcggctcgctgtcggtgtacgcgcgggtcaacccgttcgggttcatcgaaacgccgtaccgcaaggtggtcgacggcgtggttagcgacgagatcgtgtacctgaccgccgacgaggaggaccgccacgtggtggcacaggccaattcgccgatcgatgcggacggtcgcttcgtcgagccgcgcgtgctggtccgccgcaaggcgggcgaggtggagtacgtgccctcgtctgaggtggactacatggacgtctcgccccgccagatggtgtcggtggccaccgcgatgattcccttcctggagcacgacgacgccaaccgtgccctcatgggggcaaacatgcagcgccaggcggtgccgctggtccgtagcgaggccccgctggtgggcaccgggatggagctgcgcgcggcgatcgacgccggcgacgtcgtcgtcgccgaagaaagcggcgtcatcgaggaggtgtcggccgactacatcactgtgatgcacgacaacggcacccggcgtacctaccggatgcgcaagtttgcccggtccaaccacggcacttgcgccaaccagtgccccatcgtggacgcgggcgaccgagtcgaggccggtcaggtgatcgccgacggtccctgtactgacgacggcgagatggcgctgggcaagaacctgctggtggccatcatgccgtgggagggccacaactacgaggacgcgatcatcctgtccaaccgcctggtcgaagaggacgtgctcacctcgatccacatcgaggagcatgagatcgatgctcgcgacaccaagctgggtgcggaggagatcacccgcgacatcccgaacatctccgacgaggtgctcgccgacctggatgagcggggcatcgtgcgcatcggtgccgaggttcgcgacggggacatcctggtcggcaaggtcaccccgaagggtgagaccgagctgacgccggaggagcggctgctgcgtgccatcttcggtgagaaggcccgcgaggtgcgcgacacttcgctgaaggtgccgcacggcgaatccggcaaggtgatcggcattcgggtgttttcccgcgaggacgaggacgagttgccggccggtgtcaacgagctggtgcgtgtgtatgtggctcagaaacgcaagatctccgacggtgacaagctggccggccggcacggcaacaagggcgtgatcggcaagatcctgccggttgaggacatgccgttccttgccgacggcaccccggtggacattattttgaacacccacggcgtgccgcgacggatgaacatcggccagattttggagacccacctgggttggtgtgcccacagcggctggaaggtcgacgccgccaagggggttccggactgggccgccaggctgcccgacgaactgctcgaggcgcagccgaacgccattgtgtcgacgccggtgttcgacggcgcccaggaggccgagctgcagggcctgttgtcgtgcacgctgcccaaccgcgacggtgacgtgctggtcgacgccgacggcaaggccatgctcttcgacgggcgcagcggcgagccgttcccgtacccggtcacggttggctacatgtacatcatgaagctgcaccacctggtggacgacaagatccacgcccgctccaccgggccgtactcgatgatcacccagcagccgctgggcggtaaggcgcagttcggtggccagcggttcggggagatggagtgctgggccatgcaggcctacggtgctgcctacaccctgcaggagctgttgaccatcaagtccgatgacaccgtcggccgcgtcaaggtgtacgaggcgatcgtcaagggtgagaacatcccggagccgggcatccccgagtcgttcaaggtgctgctcaaagaactgcagtcgctgtgcctcaacgtcgaggtgctatcgagtgacggtgcggcgatcgaactgcgcgaaggtgaggacgaggacctggagcgggccgcggccaacctgggaatcaatctgtcccgcaacgaatccgcaagtgtcgaggatcttgcgtaa",
+          "ALTS": [
+            "c"
+          ]
+        },
+        "vcf_idx": 1
+      },
+      {
+        "variant": "7362g>c",
+        "nucleotide_index": 7362,
+        "gene_name": "gyrA",
+        "gene_position": 21,
+        "codon_idx": 0,
+        "vcf_evidence": {
+          "GT": [
+            1,
+            1
+          ],
+          "DP": 138.0,
+          "ALLELE_DP": [
+            0.0,
+            138.0
+          ],
+          "FRS": 1.0,
+          "COV_TOTAL": 138,
+          "COV": [
+            0,
+            138
+          ],
+          "GT_CONF": 866.32,
+          "GT_CONF_PERCENTILE": 86.64,
+          "POS": 7362,
+          "REF": "g",
+          "ALTS": [
+            "c"
+          ]
+        },
+        "vcf_idx": 1
+      },
+      {
+        "variant": "7585g>c",
+        "nucleotide_index": 7585,
+        "gene_name": "gyrA",
+        "gene_position": 95,
+        "codon_idx": 1,
+        "vcf_evidence": {
+          "GT": [
+            1,
+            1
+          ],
+          "DP": 109.0,
+          "ALLELE_DP": [
+            0.0,
+            109.0
+          ],
+          "FRS": 1.0,
+          "COV_TOTAL": 109,
+          "COV": [
+            0,
+            109
+          ],
+          "GT_CONF": 686.6,
+          "GT_CONF_PERCENTILE": 77.36,
+          "POS": 7585,
+          "REF": "g",
+          "ALTS": [
+            "c"
+          ]
+        },
+        "vcf_idx": 1
+      },
+      {
+        "variant": "9304g>a",
+        "nucleotide_index": 9304,
+        "gene_name": "gyrA",
+        "gene_position": 668,
+        "codon_idx": 1,
+        "vcf_evidence": {
+          "GT": [
+            1,
+            1
+          ],
+          "DP": 102.0,
+          "ALLELE_DP": [
+            0.0,
+            102.0
+          ],
+          "FRS": 1.0,
+          "COV_TOTAL": 102,
+          "COV": [
+            0,
+            102
+          ],
+          "GT_CONF": 643.21,
+          "GT_CONF_PERCENTILE": 74.13,
+          "POS": 9304,
+          "REF": "g",
+          "ALTS": [
+            "a"
+          ]
+        },
+        "vcf_idx": 1
+      },
+      {
+        "variant": "1917972a>g",
+        "nucleotide_index": 1917972,
+        "gene_name": "tlyA",
+        "gene_position": 11,
+        "codon_idx": 2,
+        "vcf_evidence": {
+          "GT": [
+            1,
+            1
+          ],
+          "DP": 65.0,
+          "ALLELE_DP": [
+            0.0,
+            65.0
+          ],
+          "FRS": 1.0,
+          "COV_TOTAL": 65,
+          "COV": [
+            0,
+            65
+          ],
+          "GT_CONF": 413.77,
+          "GT_CONF_PERCENTILE": 50.35,
+          "POS": 1917972,
+          "REF": "a",
+          "ALTS": [
+            "g"
+          ]
+        },
+        "vcf_idx": 1
+      },
+      {
+        "variant": "2155168c>g",
+        "nucleotide_index": 2155168,
+        "gene_name": "katG",
+        "gene_position": 315,
+        "codon_idx": 1,
+        "vcf_evidence": {
+          "GT": [
+            1,
+            1
+          ],
+          "DP": 104.0,
+          "ALLELE_DP": [
+            0.0,
+            104.0
+          ],
+          "FRS": 1.0,
+          "COV_TOTAL": 104,
+          "COV": [
+            0,
+            104
+          ],
+          "GT_CONF": 655.61,
+          "GT_CONF_PERCENTILE": 75.08,
+          "POS": 2155168,
+          "REF": "c",
+          "ALTS": [
+            "g"
+          ]
+        },
+        "vcf_idx": 1
+      },
+      {
+        "variant": "2288944t>c",
+        "nucleotide_index": 2288944,
+        "gene_name": "pncA",
+        "gene_position": 100,
+        "codon_idx": 0,
+        "vcf_evidence": {
+          "GT": [
+            1,
+            1
+          ],
+          "DP": 96.0,
+          "ALLELE_DP": [
+            0.0,
+            96.0
+          ],
+          "FRS": 1.0,
+          "COV_TOTAL": 96,
+          "COV": [
+            0,
+            96
+          ],
+          "GT_CONF": 606.01,
+          "GT_CONF_PERCENTILE": 70.98,
+          "POS": 2288944,
+          "REF": "t",
+          "ALTS": [
+            "c"
+          ]
+        },
+        "vcf_idx": 1
+      },
+      {
+        "variant": "4248736g>t",
+        "nucleotide_index": 4248736,
+        "gene_name": "embB",
+        "gene_position": 741,
+        "codon_idx": 2,
+        "vcf_evidence": {
+          "GT": [
+            1,
+            1
+          ],
+          "DP": 78.0,
+          "ALLELE_DP": [
+            0.0,
+            78.0
+          ],
+          "FRS": 1.0,
+          "COV_TOTAL": 78,
+          "COV": [
+            0,
+            78
+          ],
+          "GT_CONF": 494.4,
+          "GT_CONF_PERCENTILE": 59.97,
+          "POS": 4248736,
+          "REF": "g",
+          "ALTS": [
+            "t"
+          ]
+        },
+        "vcf_idx": 1
+      },
+      {
+        "variant": "4408054a>c",
+        "nucleotide_index": 4408054,
+        "gene_name": "gid",
+        "gene_position": 50,
+        "codon_idx": 1,
+        "vcf_evidence": {
+          "GT": [
+            1,
+            1
+          ],
+          "DP": 85.0,
+          "ALLELE_DP": [
+            0.0,
+            85.0
+          ],
+          "FRS": 1.0,
+          "COV_TOTAL": 85,
+          "COV": [
+            0,
+            85
+          ],
+          "GT_CONF": 537.81,
+          "GT_CONF_PERCENTILE": 64.76,
+          "POS": 4408054,
+          "REF": "a",
+          "ALTS": [
+            "c"
+          ]
+        },
+        "vcf_idx": 1
+      },
+      {
+        "variant": "4408156a>c",
+        "nucleotide_index": 4408156,
+        "gene_name": "gid",
+        "gene_position": 16,
+        "codon_idx": 1,
+        "vcf_evidence": {
+          "GT": [
+            1,
+            1
+          ],
+          "DP": 96.0,
+          "ALLELE_DP": [
+            0.0,
+            96.0
+          ],
+          "FRS": 1.0,
+          "COV_TOTAL": 96,
+          "COV": [
+            0,
+            96
+          ],
+          "GT_CONF": 606.01,
+          "GT_CONF_PERCENTILE": 70.98,
+          "POS": 4408156,
+          "REF": "a",
+          "ALTS": [
+            "c"
+          ]
+        },
+        "vcf_idx": 1
+      },
+      {
+        "variant": "4246584g>c:0.45",
+        "nucleotide_index": 4246584,
+        "gene_name": "embB",
+        "gene_position": 24,
+        "codon_idx": 2,
+        "vcf_evidence": {
+          "GT": [
+            0,
+            0
+          ],
+          "DP": 11.0,
+          "ALLELE_DP": [
+            11.0,
+            9.0
+          ],
+          "FRS": 0.55,
+          "COV_TOTAL": 20,
+          "COV": [
+            11,
+            9
+          ],
+          "GT_CONF": 12.56,
+          "GT_CONF_PERCENTILE": 0.21,
+          "POS": 4246584,
+          "REF": "g",
+          "ALTS": [
+            "c"
+          ]
+        },
+        "vcf_idx": 1
+      }
+    ],
+    "mutations": [
+      {
+        "mutation": "del_1.0",
+        "gene": "rpoB",
+        "gene_position": null
+      },
+      {
+        "mutation": "L16R",
+        "gene": "gid",
+        "gene_position": 16.0,
+        "ref": "ctt",
+        "alt": "cgt"
+      },
+      {
+        "mutation": "L50R",
+        "gene": "gid",
+        "gene_position": 50.0,
+        "ref": "ctg",
+        "alt": "cgg"
+      },
+      {
+        "mutation": "S315T",
+        "gene": "katG",
+        "gene_position": 315.0,
+        "ref": "agc",
+        "alt": "acc"
+      },
+      {
+        "mutation": "E21Q",
+        "gene": "gyrA",
+        "gene_position": 21.0,
+        "ref": "gag",
+        "alt": "cag"
+      },
+      {
+        "mutation": "S95T",
+        "gene": "gyrA",
+        "gene_position": 95.0,
+        "ref": "agc",
+        "alt": "acc"
+      },
+      {
+        "mutation": "G668D",
+        "gene": "gyrA",
+        "gene_position": 668.0,
+        "ref": "ggc",
+        "alt": "gac"
+      },
+      {
+        "mutation": "L11L",
+        "gene": "tlyA",
+        "gene_position": 11.0,
+        "ref": "cta",
+        "alt": "ctg"
+      },
+      {
+        "mutation": "a33g",
+        "gene": "tlyA",
+        "gene_position": 33.0
+      },
+      {
+        "mutation": "R741R",
+        "gene": "embB",
+        "gene_position": 741.0,
+        "ref": "cgg",
+        "alt": "cgt"
+      },
+      {
+        "mutation": "g2223t",
+        "gene": "embB",
+        "gene_position": 2223.0
+      },
+      {
+        "mutation": "T100A",
+        "gene": "pncA",
+        "gene_position": 100.0,
+        "ref": "acc",
+        "alt": "gcc"
+      },
+      {
+        "mutation": "R24P:0.45",
+        "gene": "embB",
+        "gene_position": 24.0,
+        "ref": "cgc",
+        "alt": "zzz"
+      },
+      {
+        "mutation": "I109I",
+        "gene": "fabG1",
+        "gene_position": 109,
+        "ref": "atc",
+        "alt": "att"
+      }
+    ],
+    "effects": {
+      "STM": [
+        {
+          "gene": "gid",
+          "mutation": "L16R",
+          "prediction": "S",
+          "evidence": {}
+        },
+        {
+          "gene": "gid",
+          "mutation": "L50R",
+          "prediction": "U",
+          "evidence": {}
+        },
+        {
+          "phenotype": "U"
+        }
+      ],
+      "INH": [
+        {
+          "gene": "katG",
+          "mutation": "S315T",
+          "prediction": "R",
+          "evidence": {}
+        },
+        {
+          "gene": "fabG1",
+          "mutation": "I109I",
+          "prediction": "S",
+          "evidence": {}
+        },
+        {
+          "gene": null,
+          "mutation": "fabG1@I109I&fabG1@c327t",
+          "prediction": "U",
+          "evidence": {}
+        },
+        {
+          "phenotype": "R"
+        }
+      ],
+      "LEV": [
+        {
+          "gene": "gyrA",
+          "mutation": "E21Q",
+          "prediction": "S",
+          "evidence": {}
+        },
+        {
+          "gene": "gyrA",
+          "mutation": "S95T",
+          "prediction": "S",
+          "evidence": {}
+        },
+        {
+          "gene": "gyrA",
+          "mutation": "G668D",
+          "prediction": "S",
+          "evidence": {}
+        },
+        {
+          "phenotype": "S"
+        }
+      ],
+      "MXF": [
+        {
+          "gene": "gyrA",
+          "mutation": "E21Q",
+          "prediction": "S",
+          "evidence": {}
+        },
+        {
+          "gene": "gyrA",
+          "mutation": "S95T",
+          "prediction": "S",
+          "evidence": {}
+        },
+        {
+          "gene": "gyrA",
+          "mutation": "G668D",
+          "prediction": "S",
+          "evidence": {}
+        },
+        {
+          "phenotype": "S"
+        }
+      ],
+      "CAP": [
+        {
+          "gene": "tlyA",
+          "mutation": "L11L",
+          "prediction": "S",
+          "evidence": {}
+        },
+        {
+          "phenotype": "S"
+        }
+      ],
+      "EMB": [
+        {
+          "gene": "embB",
+          "mutation": "R741R",
+          "prediction": "S",
+          "evidence": {}
+        },
+        {
+          "gene": "embB",
+          "mutation": "R24P:0.45",
+          "prediction": "U",
+          "evidence": {}
+        },
+        {
+          "phenotype": "U"
+        }
+      ],
+      "PZA": [
+        {
+          "gene": "pncA",
+          "mutation": "T100A",
+          "prediction": "U",
+          "evidence": {}
+        },
+        {
+          "phenotype": "U"
+        }
+      ],
+      "RIF": [
+        {
+          "gene": "rpoB",
+          "mutation": "del_1.0",
+          "prediction": "R",
+          "evidence": {}
+        },
+        {
+          "phenotype": "R"
+        }
+      ]
+    },
+    "antibiogram": {
+      "STM": "U",
+      "INH": "R",
+      "LEV": "S",
+      "MXF": "S",
+      "CAP": "S",
+      "EMB": "U",
+      "PZA": "U",
+      "RIF": "R",
+      "LZD": "S",
+      "DLM": "S",
+      "AMI": "S",
+      "ETH": "S",
+      "KAN": "S"
+    }
+  }
+}

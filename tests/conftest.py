@@ -100,6 +100,18 @@ MIX_TB_WIN = {
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
+NO_LINEAGE_TB = {
+    "pipeline_versions": "test_data/no_lineage_tb/pipeline_versions.txt",
+    "gatekeeper_report": "test_data/no_lineage_tb/speciation_report.json",
+    "knowledge": "test_data/no_lineage_tb/knowledge.json",
+    "competitivemapping_report": "test_data/no_lineage_tb/species_comparison_report.json",
+    "mykrobe_report": "test_data/no_lineage_tb/subspecies_report.json",
+    "clockwork_report": "test_data/no_lineage_tb/genome_creation_report.json",
+    "gnomonicus": "test_data/no_lineage_tb/tb/resistance_prediction_report.json",
+    "expected_output": "test_data/no_lineage_tb/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
+}
+
 
 @pytest.fixture(
     params=[
@@ -114,6 +126,7 @@ MIX_TB_WIN = {
         NO_MYKROBE,
         MIX_NTM_WIN,
         MIX_TB_WIN,
+        NO_LINEAGE_TB,
     ],
     ids=[
         "covid",
@@ -127,6 +140,7 @@ MIX_TB_WIN = {
         "NO_MYKROBE",
         "MIX_NTM_WIN",
         "MIX_TB_WIN",
+        "NO_LINEAGE_TB",
     ],
 )
 def regression_test_set(request) -> dict:
