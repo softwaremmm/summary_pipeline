@@ -169,6 +169,9 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         if len(myco["Lineage"]) != 0:
             summary_name = tophit_name + " (" + myco["Lineage"][0]["Name"] + ")"
             summary_name = summary_name.replace("lineage", "Lineage ")
+        else:
+            # Default to just top hit if no lineage name exists
+            summary_name = tophit_name
 
         # Get coverage and depth from mykrobe species (here called subspecies)
         tb_index = next(
