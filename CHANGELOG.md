@@ -1,3 +1,9 @@
+## 1.11.1 (2023-10-31)
+
+### Fix
+
+- ensure `summary_name` is always populated
+
 ## 1.11.0 (2023-10-31)
 
 ### Feat
