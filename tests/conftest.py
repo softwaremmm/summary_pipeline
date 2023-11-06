@@ -112,6 +112,14 @@ NO_LINEAGE_TB = {
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
+CLASH = {
+    "gatekeeper_report": "test_data/clash/speciation_report.json",
+    "competitivemapping_report": "test_data/clash/species_comparison_report.json",
+    "mykrobe_report": "test_data/clash/subspecies_report.json",
+    "expected_output": "test_data/clash/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
+}
+
 
 @pytest.fixture(
     params=[
@@ -127,13 +135,14 @@ NO_LINEAGE_TB = {
         MIX_NTM_WIN,
         MIX_TB_WIN,
         NO_LINEAGE_TB,
+        CLASH,
     ],
     ids=[
         "covid",
         "covid_no_meta",
         "SRR2097047",
         "MALOMENSE",
-        "ABSCESSUS",        
+        "ABSCESSUS",
         "WTCHG_885333_73205296_1",
         "WTCHG_885333_73205296_2",
         "BCG",
@@ -141,6 +150,7 @@ NO_LINEAGE_TB = {
         "MIX_NTM_WIN",
         "MIX_TB_WIN",
         "NO_LINEAGE_TB",
+        "CLASH",
     ],
 )
 def regression_test_set(request) -> dict:
@@ -219,7 +229,7 @@ def three_reports() -> list:
         "test_data/WTCHG_885333_73205296_1/speciation_report.json",
         "test_data/WTCHG_885333_73205296_1/species_comparison_report.json",
         "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
-        "test_data/reference/name_mapping.csv",        
+        "test_data/reference/name_mapping.csv",
     ]
 
 

@@ -190,14 +190,22 @@ def generate_mycobacterium_results(
         tophit_coverage = myco["Subspecies"][tb_index]["Coverage"]
         tophit_depth = myco["Subspecies"][tb_index]["Median Depth"]
 
-    elif tophit_name in [
-        "M.intracellulare_chimaera",
-        "M.avium_hominissuis",
-        "M.paraintracellulare",
-        "M.intracellulare",
-        "M.lepraemurium",
-        "M.abscessus",
-    ]:
+    elif (
+        tophit_name
+        in [
+            "M.intracellulare_chimaera",
+            "M.avium_hominissuis",
+            "M.paraintracellulare",
+            "M.intracellulare",
+            "M.lepraemurium",
+            "M.abscessus",
+        ]
+        and "lineage" not in myco["Lineage"][0]["Name"]
+        # mykrobe uses lineage to contain subspecies information
+        # for non-TB mycobacteria (NTM) and to contain lineage for TB.
+        # This is a basic check to make sure TB data is not linked
+        # to an NTM in error.
+    ):
         # USE MYKROBE
         if mixed_pop:
             # Use competitive mapping
@@ -214,7 +222,14 @@ def generate_mycobacterium_results(
             # Get coverage and depth from mykrobe lineage
             tophit_coverage = myco["Lineage"][0]["Coverage"]
             tophit_depth = myco["Lineage"][0]["Median Depth"]
-    elif myco["Species"][0]["Coverage"] < 40:
+    elif (
+        myco["Species"][0]["Coverage"] < 40
+        and "lineage" not in myco["Lineage"][0]["Name"]
+        # mykrobe uses lineage to contain subspecies information
+        # for non-TB mycobacteria (NTM) and to contain lineage for TB.
+        # This is a basic check to make sure TB data is not linked
+        # to an NTM in error.
+    ):
         # USE MYKROBE
 
         summary_name = organism_name(tophit_name, name_mapping)

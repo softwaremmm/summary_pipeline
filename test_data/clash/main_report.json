@@ -1,0 +1,63 @@
+{
+    "Pipeline Outcome": "Insufficient TB reads.",
+    "Organism Identification": {
+        "Human Reads": null,
+        "Unclassified Reads": 145012,
+        "Non-Mycobacterium Bacteria Reads": 298724,
+        "Mycobacterium Reads": 2210342
+    },
+    "Mycobacterium Results": {
+        "Summary": [
+            {
+                "Name": "M.paraintracellulare",
+                "Num Reads": 344263,
+                "Coverage": 72.4745,
+                "Depth": 8.68896
+            },
+            {
+                "Name": "M.tuberculosis (Unknown)",
+                "Num Reads": 13804,
+                "Coverage": 24.4624,
+                "Depth": 0.391212
+            }
+        ],
+        "Species": [
+            {
+                "Name": "M.paraintracellulare",
+                "Num Reads": 344263,
+                "Coverage": 72.4745,
+                "Mean Depth": 8.68896,
+                "Length": 5332910.0
+            },
+            {
+                "Name": "M.tuberculosis (Unknown)",
+                "Num Reads": 13804,
+                "Coverage": 24.4624,
+                "Mean Depth": 0.391212,
+                "Length": 4411532.0
+            }
+        ],
+        "Phylogenic Group": [
+            {
+                "Name": "Mycobacterium_tuberculosis_complex",
+                "Coverage": 15.523,
+                "Median Depth": 2
+            }
+        ],
+        "Subspecies": [
+            {
+                "Name": "Mycobacterium_tuberculosis",
+                "Coverage": 15.523,
+                "Median Depth": 2
+            }
+        ],
+        "Lineage": [
+            {
+                "Name": "lineage4",
+                "Coverage": 0,
+                "Median Depth": 0
+            }
+        ]
+    },
+    "Genomes": null
+}
