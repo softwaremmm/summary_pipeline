@@ -9,7 +9,7 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "M.tuberculosis (Lineage 4.3.4.2)",
+                "Name": "M.tuberculosis (lineage4.3.4.2)",
                 "Num Reads": 3953463,
                 "Coverage": 97.738,
                 "Depth": 105
@@ -154,12 +154,12 @@
                                 "Gene": "rpoB",
                                 "Mutation": "del_1.0",
                                 "Position": null,
+                                "Ref": "",
+                                "Alt": "",
                                 "Coverage": [
                                     null,
                                     null
                                 ],
-                                "Ref": "",
-                                "Alt": "",
                                 "Prediction": "R",
                                 "Evidence": ""
                             }

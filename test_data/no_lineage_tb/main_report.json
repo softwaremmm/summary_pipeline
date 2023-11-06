@@ -9,7 +9,7 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "M.tuberculosis",
+                "Name": "M.tuberculosis (Unknown)",
                 "Num Reads": 3953463,
                 "Coverage": 14.468,
                 "Depth": 2
@@ -148,12 +148,12 @@
                                 "Gene": "rpoB",
                                 "Mutation": "del_1.0",
                                 "Position": null,
+                                "Ref": "",
+                                "Alt": "",
                                 "Coverage": [
                                     null,
                                     null
                                 ],
-                                "Ref": "",
-                                "Alt": "",
                                 "Prediction": "R",
                                 "Evidence": ""
                             }

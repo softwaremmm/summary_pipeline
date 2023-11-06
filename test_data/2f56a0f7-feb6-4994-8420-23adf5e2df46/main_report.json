@@ -9,13 +9,13 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "Mycobacterium_abscessus_subsp._abscessus",
+                "Name": "M.abscessus_abscessus",
                 "Num Reads": 92865,
                 "Coverage": 64.768,
                 "Depth": 3
             },
             {
-                "Name": "M.tuberculosis",
+                "Name": "M.tuberculosis (Unknown)",
                 "Num Reads": 608,
                 "Coverage": 1.35089,
                 "Depth": 0.0166817
@@ -30,7 +30,7 @@
                 "Length": 5067172.0
             },
             {
-                "Name": "M.tuberculosis",
+                "Name": "M.tuberculosis (Unknown)",
                 "Num Reads": 608,
                 "Coverage": 1.35089,
                 "Mean Depth": 0.0166817,

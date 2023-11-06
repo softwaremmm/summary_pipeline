@@ -87,7 +87,9 @@ def generate_organism_identification(gatekeeper_data: dict) -> dict:
     return organism
 
 
-def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
+def generate_mycobacterium_results(
+    mappings: dict, mykrobe_data: dict, name_mapping: pandas.DataFrame
+) -> dict:
     """Summarises Competitive Mapping and Mykrobe outputs.
 
     Args:
@@ -129,9 +131,11 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         tophit_coverage = myco["Species"][0]["Coverage"]
         tophit_depth = myco["Species"][0]["Mean Depth"]
 
+        summary_name = organism_name(tophit_name, name_mapping)
+
         myco["Summary"] = [
             {
-                "Name": tophit_name,
+                "Name": summary_name,
                 "Num Reads": int(tophit["numreads"]),
                 "Coverage": tophit_coverage,
                 "Depth": tophit_depth,
@@ -167,11 +171,12 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         # Append lineage information from mykrobe to species name
         # from competitive mapping, if available
         if len(myco["Lineage"]) != 0:
-            summary_name = tophit_name + " (" + myco["Lineage"][0]["Name"] + ")"
-            summary_name = summary_name.replace("lineage", "Lineage ")
+            summary_name = organism_name(
+                tophit_name, name_mapping, myco["Lineage"][0]["Name"]
+            )
         else:
             # Default to just top hit if no lineage name exists
-            summary_name = tophit_name
+            summary_name = organism_name(tophit_name, name_mapping)
 
         # Get coverage and depth from mykrobe species (here called subspecies)
         tb_index = next(
@@ -196,13 +201,15 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         # USE MYKROBE
         if mixed_pop:
             # Use competitive mapping
-            summary_name = tophit_name
+            summary_name = organism_name(tophit_name, name_mapping)
 
             tophit_coverage = myco["Species"][0]["Coverage"]
             tophit_depth = myco["Species"][0]["Mean Depth"]
         else:
             # Use lineage name as species name
-            summary_name = myco["Lineage"][0]["Name"]
+            summary_name = organism_name(
+                tophit_name, name_mapping, myco["Lineage"][0]["Name"]
+            )
 
             # Get coverage and depth from mykrobe lineage
             tophit_coverage = myco["Lineage"][0]["Coverage"]
@@ -210,7 +217,7 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
     elif myco["Species"][0]["Coverage"] < 40:
         # USE MYKROBE
 
-        summary_name = tophit_name
+        summary_name = organism_name(tophit_name, name_mapping)
 
         # Get coverage and depth from mykrobe
         tophit_coverage = myco["Subspecies"][0]["Coverage"]
@@ -218,7 +225,7 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
     else:
         # USE COMPETITIVE MAPPING
 
-        summary_name = tophit_name
+        summary_name = organism_name(tophit_name, name_mapping)
 
         tophit_coverage = myco["Species"][0]["Coverage"]
         tophit_depth = myco["Species"][0]["Mean Depth"]
@@ -239,7 +246,7 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         if tb != tophit:
             myco["Species"].append(
                 {
-                    "Name": tb["genome_name"],
+                    "Name": organism_name(tb["genome_name"], name_mapping),
                     "Num Reads": int(tb["numreads"]),
                     "Coverage": tb["coverage"],
                     "Mean Depth": tb["meandepth"],
@@ -248,7 +255,7 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
             )
             myco["Summary"].append(
                 {
-                    "Name": tb["genome_name"],
+                    "Name": organism_name(tb["genome_name"], name_mapping),
                     "Num Reads": int(tb["numreads"]),
                     "Coverage": tb["coverage"],
                     "Depth": tb["meandepth"],
@@ -261,7 +268,7 @@ def generate_mycobacterium_results(mappings: dict, mykrobe_data: dict) -> dict:
         second_hit = mappings_sorted.head(2).to_dict(orient="records")[1]
         myco["Summary"].append(
             {
-                "Name": second_hit["genome_name"],
+                "Name": organism_name(second_hit["genome_name"], name_mapping),
                 "Num Reads": int(second_hit["numreads"]),
                 "Coverage": second_hit["coverage"],
                 "Depth": second_hit["meandepth"],
@@ -365,6 +372,30 @@ def process_lineages(lineages: dict) -> list[dict]:
             lineage_summary.append(new_line)
 
     return lineage_summary
+
+
+def organism_name(
+    cm_name: str, mapping: pandas.DataFrame, lineage: str = "Unknown"
+) -> str:
+    """Determine the name to report for the organism.
+
+    Args:
+        cm_name (str): Name from Competitive Mapping.
+        mapping (pandas.DataFrame): Reference data mapping Competitive Mapping
+        and mykrobe outputs to reportable name.
+        lineage (str, optional): Lineage from mykrobe. Defaults to "Unknown".
+
+    Returns:
+        str: Reportable name for the organism.
+    """
+    name_df = mapping[(mapping.reference == cm_name) & (mapping.LINEAGE == lineage)]
+    if name_df.empty:
+        # This means the name we're seeking isn't in the lookup table
+        name = cm_name
+    else:
+        name = name_df.REPORT.item()
+
+    return name
 
 
 def generate_sequencing_quality(mappings: dict, clockwork: dict) -> dict:
@@ -624,8 +655,9 @@ def create_summary(
         output["Pipeline Outcome"] = "Insufficient TB reads."
         mapping_json = read_json_file(reports["mapping"])
         mykrobe_data = read_json_file(reports["mykrobe"])
+        name_mapping = pandas.read_csv(reports["name_mapping"])
         output["Mycobacterium Results"] = generate_mycobacterium_results(
-            mapping_json, mykrobe_data
+            mapping_json, mykrobe_data, name_mapping
         )
     else:
         output["Mycobacterium Results"] = None
