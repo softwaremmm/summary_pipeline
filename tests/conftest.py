@@ -203,6 +203,7 @@ def five_reports() -> list:
         "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
         "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
         "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
+        "test_data/reference/name_mapping.csv",
     ]
 
 
@@ -218,6 +219,7 @@ def three_reports() -> list:
         "test_data/WTCHG_885333_73205296_1/speciation_report.json",
         "test_data/WTCHG_885333_73205296_1/species_comparison_report.json",
         "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
+        "test_data/reference/name_mapping.csv",        
     ]
 
 
@@ -231,19 +233,7 @@ def one_report() -> list:
     return [
         "--reports",
         "test_data/WTCHG_885333_73205296_1/speciation_report.json",
-    ]
-
-
-@pytest.fixture
-def one_report_args(one_report) -> Arguments:
-    return Arguments(one_report)
-
-
-@pytest.fixture
-def one_report() -> list:
-    return [
-        "--reports",
-        "test_data/WTCHG_885333_73205296_1/speciation_report.json",
+        "test_data/reference/name_mapping.csv",
     ]
 
 
