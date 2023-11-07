@@ -19,9 +19,6 @@ Number of reads mapped (Reads) is always sourced from competitive mapping.
 The way in which the Summary Pipeline assigns species, subspecies and lineage can be summarised by a graph. 
 
 ```mermaid
----
-title: Determination of Main Species
----
 graph TD;
     MYKROBE_RETURN{{Has mykrobe returned any information?}}
 
@@ -64,6 +61,7 @@ graph TD;
     LOW_COV--Noo-->ALL_CM
 
 ```
+_Determination of what species information to report_
 
 The name returned is determined by using the species name from Competitive Mapping and the lineage name from mykrobe (if available). Where no combination of Competitive Mapping and lineage name can be found in the reference table ([example reference table](test_data/reference/name_mapping.csv)), the Competitive Mapping name is used.
 
