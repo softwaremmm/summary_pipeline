@@ -25,7 +25,7 @@ graph TD;
     ALL_CM[Use name from competitive mapping.
     Use coverage and mean depth from competitive mapping.]
 
-    TOPHIT_TB{{Is top hit <it>M.tuberculosis</it>?}}
+    TOPHIT_TB{{Is top hit M.tuberculosis?}}
 
     MYKROBE_SPECIES[Lookup name.
     Use coverage and median depth from mykrobe *species*.]
