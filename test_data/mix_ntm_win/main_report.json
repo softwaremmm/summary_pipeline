@@ -15,7 +15,7 @@
                 "Depth": 2.34133
             },
             {
-                "Name": "M.tuberculosis",
+                "Name": "M.tuberculosis (Unknown)",
                 "Num Reads": 41055,
                 "Coverage": 63.0743,
                 "Depth": 1.29548
@@ -30,7 +30,7 @@
                 "Length": 5118245.0
             },
             {
-                "Name": "M.tuberculosis",
+                "Name": "M.tuberculosis (Unknown)",
                 "Num Reads": 41055,
                 "Coverage": 63.0743,
                 "Mean Depth": 1.29548,

@@ -9,7 +9,7 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "M.tuberculosis (Lineage Bovis.BCG)",
+                "Name": "M.tuberculosis_bovis(BCG)",
                 "Num Reads": 848988,
                 "Coverage": 60.773,
                 "Depth": 27

@@ -70,6 +70,7 @@ def test_collate_reports_five(five_reports_args):
     expected_reports["gnomonicus"] = Path(
         "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json"
     )
+    expected_reports["name_mapping"] = Path("test_data/reference/name_mapping.csv")
 
     assert expected_reports == summarise.collate_reports(five_reports_args)
 
@@ -85,6 +86,7 @@ def test_collate_reports_three(three_reports_args):
     expected_reports["mykrobe"] = Path(
         "test_data/WTCHG_885333_73205296_1/subspecies_report.json"
     )
+    expected_reports["name_mapping"] = Path("test_data/reference/name_mapping.csv")
 
     assert expected_reports == summarise.collate_reports(three_reports_args)
 
@@ -94,6 +96,7 @@ def test_collate_reports_one(one_report_args):
     expected_reports["gatekeeper"] = Path(
         "test_data/WTCHG_885333_73205296_1/speciation_report.json"
     )
+    expected_reports["name_mapping"] = Path("test_data/reference/name_mapping.csv")
 
     assert expected_reports == summarise.collate_reports(one_report_args)
 

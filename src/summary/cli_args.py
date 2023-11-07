@@ -115,10 +115,7 @@ class Arguments:  # pylint: disable=too-few-public-methods
                 self.gnomonicus = self._get_report(args.reports, ReportType.GNOMONICUS)
             except ValueError as error:
                 logging.info(error)
-            try:
-                self.name_mapping = self._get_report(args.reports, ReportType.NAME_MAPPING)
-            except ValueError as error:
-                logging.info(error)
+            self.name_mapping = self._get_report(args.reports, ReportType.NAME_MAPPING)
         else:
             self.versions = Path(args.versions)
             self.knowledge = Path(args.knowledge)
