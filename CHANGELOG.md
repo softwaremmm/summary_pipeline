@@ -1,3 +1,10 @@
+## 1.12.0 (2023-11-07)
+
+### Feat
+
+- Use lookup table for species naming
+- Name mapping a mandatory input
+
 ## 1.11.1 (2023-10-31)
 
 ### Fix
