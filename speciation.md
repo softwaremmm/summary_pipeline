@@ -22,7 +22,7 @@ The way in which the Summary Pipeline assigns species, subspecies and lineage ca
 ---
 title: Determination of Main Species
 ---
-graph TD
+graph TD;
     MYKROBE_RETURN{{Has mykrobe returned any information?}}
 
     ALL_CM[Use name from competitive mapping.
