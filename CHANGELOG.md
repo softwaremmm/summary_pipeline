@@ -1,3 +1,9 @@
+## 1.12.2 (2023-11-08)
+
+### Fix
+
+- Include TB when no mykrobe results returned
+
 ## 1.12.1 (2023-11-08)
 
 ### Fix
