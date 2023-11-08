@@ -1,0 +1,57 @@
+{
+    "Pipeline Outcome": "Insufficient TB reads.",
+    "Organism Identification": {
+        "Human Reads": null,
+        "Unclassified Reads": 149712,
+        "Non-Mycobacterium Bacteria Reads": 44256,
+        "Mycobacterium Reads": 723814
+    },
+    "Mycobacterium Results": {
+        "Summary": [
+            {
+                "Name": "M.gordonae",
+                "Num Reads": 252921,
+                "Coverage": 54.1159,
+                "Depth": 4.90154
+            },
+            {
+                "Name": "M.tuberculosis (Unknown)",
+                "Num Reads": 1012,
+                "Coverage": 1.07076,
+                "Depth": 0.0204344
+            }
+        ],
+        "Species": [
+            {
+                "Name": "M.gordonae",
+                "Num Reads": 252921,
+                "Coverage": 54.1159,
+                "Mean Depth": 4.90154,
+                "Length": 7103222.0
+            },
+            {
+                "Name": "M.tuberculosis (Unknown)",
+                "Num Reads": 1012,
+                "Coverage": 1.07076,
+                "Mean Depth": 0.0204344,
+                "Length": 4411532.0
+            }
+        ],
+        "Phylogenic Group": [
+            {
+                "Name": "Non_tuberculosis_mycobacterium_complex",
+                "Coverage": 99.412,
+                "Median Depth": 14
+            }
+        ],
+        "Subspecies": [
+            {
+                "Name": "Mycobacterium_gordonae",
+                "Coverage": 99.412,
+                "Median Depth": 14
+            }
+        ],
+        "Lineage": []
+    },
+    "Genomes": null
+}

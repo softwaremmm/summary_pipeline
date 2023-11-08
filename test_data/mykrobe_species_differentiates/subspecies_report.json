@@ -1,0 +1,22 @@
+{
+  "phylo_group": {
+    "Non_tuberculosis_mycobacterium_complex": {
+      "percent_coverage": 99.412,
+      "median_depth": 14,
+      "inferred_from_child": true
+    }
+  },
+  "sub_complex": {
+    "subNon_tuberculosis_mycobacterium_complex": {
+      "percent_coverage": 99.412,
+      "median_depth": 14,
+      "inferred_from_child": true
+    }
+  },
+  "species": {
+    "Mycobacterium_gordonae": {
+      "percent_coverage": 99.412,
+      "median_depth": 14
+    }
+  }
+}

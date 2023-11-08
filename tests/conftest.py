@@ -112,6 +112,14 @@ NO_LINEAGE_TB = {
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
+MYKROBE_SPECIES_DIFFERENTIATES = {
+    "gatekeeper_report": "test_data/mykrobe_species_differentiates/speciation_report.json",
+    "competitivemapping_report": "test_data/mykrobe_species_differentiates/species_comparison_report.json",
+    "mykrobe_report": "test_data/mykrobe_species_differentiates/subspecies_report.json",
+    "expected_output": "test_data/mykrobe_species_differentiates/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
+}
+
 
 @pytest.fixture(
     params=[
@@ -127,6 +135,7 @@ NO_LINEAGE_TB = {
         MIX_NTM_WIN,
         MIX_TB_WIN,
         NO_LINEAGE_TB,
+        MYKROBE_SPECIES_DIFFERENTIATES
     ],
     ids=[
         "covid",
@@ -141,6 +150,7 @@ NO_LINEAGE_TB = {
         "MIX_NTM_WIN",
         "MIX_TB_WIN",
         "NO_LINEAGE_TB",
+        "mykrobe_species_differentiates"
     ],
 )
 def regression_test_set(request) -> dict:
