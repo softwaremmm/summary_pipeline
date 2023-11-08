@@ -20,15 +20,15 @@ The way in which the Summary Pipeline assigns species, subspecies and lineage ca
 
 ```mermaid
 graph TD;
-    MYKROBE_RETURN{{Has mykrobe returned any information?}}
+    MYKROBE_RETURN{{Has mykrobe returned any information?}};
 
     ALL_CM[Use name from competitive mapping.
-    Use coverage and mean depth from competitive mapping.]
+    Use coverage and mean depth from competitive mapping.];
 
-    TOPHIT_TB{{Is top hit M.tuberculosis?}}
+    TOPHIT_TB{{Is top hit M.tuberculosis?}};
 
     MYKROBE_SPECIES[Lookup name.
-    Use coverage and median depth from mykrobe *species*.]
+    Use coverage and median depth from mykrobe *species*.];
 
     TOPHIT_SPECIAL_NTM{{Is top hit in this list:
     M.intracellulare_chimaera,
@@ -36,29 +36,29 @@ graph TD;
     M.paraintracellulare,
     M.intracellulare,
     M.lepraemurium,
-    M.abscessus?}}
+    M.abscessus?}};
 
     MIXED{{Is there a mixed population?
-    Mixed populations are defined as runs where myrkobe returns two phylo groups.}}
+    Mixed populations are defined as runs where myrkobe returns two phylo groups.}};
 
     PROCESS_SPECIAL_NTM_UNMIXED[Lookup name.
-    Use coverage and median depth from mykrobe *lineage*.]
+    Use coverage and median depth from mykrobe *lineage*.];
 
-    LOW_COV{{Is coverage by competitive mapping less than 40%?}}
+    LOW_COV{{Is coverage by competitive mapping less than 40%?}};
 
-    MYKROBE_RETURN--Yes-->TOPHIT_TB
-    MYKROBE_RETURN--Noo-->ALL_CM
+    MYKROBE_RETURN--Yes-->TOPHIT_TB;
+    MYKROBE_RETURN--Noo-->ALL_CM;
 
-    TOPHIT_TB--Yes-->MYKROBE_SPECIES
-    TOPHIT_TB--Noo-->TOPHIT_SPECIAL_NTM
+    TOPHIT_TB--Yes-->MYKROBE_SPECIES;
+    TOPHIT_TB--Noo-->TOPHIT_SPECIAL_NTM;
 
-    TOPHIT_SPECIAL_NTM--Yes-->MIXED
-    MIXED--Yes-->ALL_CM
-    MIXED--Noo-->PROCESS_SPECIAL_NTM_UNMIXED
-    TOPHIT_SPECIAL_NTM--Noo-->LOW_COV
+    TOPHIT_SPECIAL_NTM--Yes-->MIXED;
+    MIXED--Yes-->ALL_CM;
+    MIXED--Noo-->PROCESS_SPECIAL_NTM_UNMIXED;
+    TOPHIT_SPECIAL_NTM--Noo-->LOW_COV;
 
-    LOW_COV--Yes-->MYKROBE_SPECIES
-    LOW_COV--Noo-->ALL_CM
+    LOW_COV--Yes-->MYKROBE_SPECIES;
+    LOW_COV--Noo-->ALL_CM;
 
 ```
 _Determination of what species information to report_
