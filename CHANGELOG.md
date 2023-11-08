@@ -1,3 +1,9 @@
+## 1.12.1 (2023-11-08)
+
+### Fix
+
+- Handle alternate mykrobe species
+
 ## 1.12.0 (2023-11-07)
 
 ### Feat
