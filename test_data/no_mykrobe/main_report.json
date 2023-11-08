@@ -13,6 +13,12 @@
                 "Num Reads": 377667,
                 "Coverage": 63.2765020326,
                 "Depth": 8.6599462091
+            },
+            {
+                "Name": "M.tuberculosis (Unknown)",
+                "Num Reads": 494,
+                "Coverage": 0.666231,
+                "Depth": 0.0103273
             }
         ],
         "Species": [
@@ -22,6 +28,13 @@
                 "Coverage": 63.2765020326,
                 "Mean Depth": 8.6599462091,
                 "Length": 5378970.0
+            },
+            {
+                "Name": "M.tuberculosis (Unknown)",
+                "Num Reads": 494,
+                "Coverage": 0.666231,
+                "Mean Depth": 0.0103273,
+                "Length": 4411532.0
             }
         ],
         "Phylogenic Group": [],
