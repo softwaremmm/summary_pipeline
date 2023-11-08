@@ -22,6 +22,8 @@ The way in which the Summary Pipeline assigns species, subspecies and lineage ca
 graph TD;
     MYKROBE_RETURN{{Has mykrobe returned any information?}};
 
+    ALL_CM[Use name from competitive mapping.
+    Use coverage and mean depth from competitive mapping.];
 ```
 _Determination of what species information to report_
 
