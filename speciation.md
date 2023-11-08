@@ -90,7 +90,7 @@ graph TD;
 
     MIXED{{Is there a mixed population?<br/>Mixed populations are defined as runs where myrkobe returns two phylo groups.}};
 
-    PROCESS_SPECIAL_NTM_UNMIXED[Lookup name.<br/>Use coverage and median depth from mykrobe *lineage*.];
+    PROCESS_SPECIAL_NTM_UNMIXED[Lookup name.<br/>Use coverage and median depth from mykrobe *species*.];
 
     LOW_COV{{Is coverage by competitive mapping less than 40%?}};
 
