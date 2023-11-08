@@ -58,7 +58,7 @@ Part of the Summary Pipeline works on genetic information that has already been 
     },
 ```
 
-Some of the information appears in the "Mycobacterial species identified" section of the user interface:
+Some of the information appears in the "Mycobacterial species identified" section of the user interface e.g.
 
 ![M.tuberculosis](docs/mycobacterial_species_identified.png)
 
