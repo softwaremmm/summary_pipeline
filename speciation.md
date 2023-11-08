@@ -1,6 +1,64 @@
 # Determination of mycobacterial species, subspecies and lineage by the Summary Pipeline 
 
-Part of the Summary Pipeline works on genetic information that has already been assigned to the genus mycobacteriaceae. If the species is Mycobacterium tuberculosis then a lineage may also be assigned. Other species may be assigned a subspecies. This information appears in the "Mycobacterial species identified" section of the user interface:
+Part of the Summary Pipeline works on genetic information that has already been assigned to the genus mycobacteriaceae. If the species is Mycobacterium tuberculosis then a lineage may also be assigned. Other species may be assigned a subspecies. This information forms part of the "Mycobacterium Results" section of the `main_report.json` file output by this repository e.g.
+
+```json
+"Mycobacterium Results": {
+        "Summary": [
+            {
+                "Name": "M.abscessus_abscessus",
+                "Num Reads": 92865,
+                "Coverage": 64.768,
+                "Depth": 3
+            },
+            {
+                "Name": "M.tuberculosis (Unknown)",
+                "Num Reads": 608,
+                "Coverage": 1.35089,
+                "Depth": 0.0166817
+            }
+        ],
+        "Species": [
+            {
+                "Name": "M.abscessus",
+                "Num Reads": 92865,
+                "Coverage": 76.639,
+                "Mean Depth": 2.44258,
+                "Length": 5067172.0
+            },
+            {
+                "Name": "M.tuberculosis (Unknown)",
+                "Num Reads": 608,
+                "Coverage": 1.35089,
+                "Mean Depth": 0.0166817,
+                "Length": 4411532.0
+            }
+        ],
+        "Phylogenic Group": [
+            {
+                "Name": "Non_tuberculosis_mycobacterium_complex",
+                "Coverage": 71.839,
+                "Median Depth": 3
+            }
+        ],
+        "Subspecies": [
+            {
+                "Name": "Mycobacterium_abscessus",
+                "Coverage": 71.839,
+                "Median Depth": 3
+            }
+        ],
+        "Lineage": [
+            {
+                "Name": "Mycobacterium_abscessus_subsp._abscessus",
+                "Coverage": 64.768,
+                "Median Depth": 3
+            }
+        ]
+    },
+```
+
+Some of the information appears in the "Mycobacterial species identified" section of the user interface:
 
 ![M.tuberculosis](docs/mycobacterial_species_identified.png)
 
