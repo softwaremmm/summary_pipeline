@@ -37,18 +37,18 @@ graph TD;
     LOW_COV{{Is coverage by competitive mapping less than 40%?}};
 
     MYKROBE_RETURN--Yes-->TOPHIT_TB;
-    MYKROBE_RETURN--Noo-->ALL_CM;
+    MYKROBE_RETURN--No-->ALL_CM;
 
     TOPHIT_TB--Yes-->MYKROBE_SPECIES;
-    TOPHIT_TB--Noo-->TOPHIT_SPECIAL_NTM;
+    TOPHIT_TB--No-->TOPHIT_SPECIAL_NTM;
 
     TOPHIT_SPECIAL_NTM--Yes-->MIXED;
     MIXED--Yes-->ALL_CM;
-    MIXED--Noo-->PROCESS_SPECIAL_NTM_UNMIXED;
-    TOPHIT_SPECIAL_NTM--Noo-->LOW_COV;
+    MIXED--No-->PROCESS_SPECIAL_NTM_UNMIXED;
+    TOPHIT_SPECIAL_NTM--No-->LOW_COV;
 
     LOW_COV--Yes-->MYKROBE_SPECIES;
-    LOW_COV--Noo-->ALL_CM;
+    LOW_COV--No-->ALL_CM;
 
 ```
 _Determination of what species information to report_
