@@ -142,7 +142,8 @@ def generate_mycobacterium_results(
             }
         ]
 
-        return myco
+        mixed_pop = False
+
     else:
         # Phylogenetic Group (mykrobe)
         myco["Phylogenic Group"] = process_phylo_group(mykrobe_data.get("phylo_group"))
@@ -157,87 +158,87 @@ def generate_mycobacterium_results(
         if "lineage" in mykrobe_data:
             myco["Lineage"] = process_lineages(mykrobe_data.get("lineage"))
 
-    if len(myco["Phylogenic Group"]) == 2:
-        mixed_pop = True
-    elif len(myco["Phylogenic Group"]) > 2:
-        raise ValueError("Mixed population with more than two phylo groups.")
-    else:
-        mixed_pop = False
-
-    # Summary
-    if tophit_name == "M.tuberculosis":
-        # USE MYKROBE lineage and species information
-
-        # Append lineage information from mykrobe to species name
-        # from competitive mapping, if available
-        if len(myco["Lineage"]) != 0:
-            summary_name = organism_name(
-                tophit_name, name_mapping, myco["Lineage"][0]["Name"]
-            )
+        if len(myco["Phylogenic Group"]) == 2:
+            mixed_pop = True
+        elif len(myco["Phylogenic Group"]) > 2:
+            raise ValueError("Mixed population with more than two phylo groups.")
         else:
-            # Default to just top hit if no lineage name exists
+            mixed_pop = False
+
+        # Summary
+        if tophit_name == "M.tuberculosis":
+            # USE MYKROBE lineage and species information
+
+            # Append lineage information from mykrobe to species name
+            # from competitive mapping, if available
+            if len(myco["Lineage"]) != 0:
+                summary_name = organism_name(
+                    tophit_name, name_mapping, myco["Lineage"][0]["Name"]
+                )
+            else:
+                # Default to just top hit if no lineage name exists
+                summary_name = organism_name(tophit_name, name_mapping)
+
+            # Get coverage and depth from mykrobe species (here called subspecies)
+            tb_index = next(
+                (
+                    i
+                    for i, pgroup in enumerate(myco["Phylogenic Group"])
+                    if pgroup["Name"] == "Mycobacterium_tuberculosis_complex"
+                ),
+                None,
+            )
+            tophit_coverage = myco["Subspecies"][tb_index]["Coverage"]
+            tophit_depth = myco["Subspecies"][tb_index]["Median Depth"]
+
+        elif tophit_name in [
+            "M.intracellulare_chimaera",
+            "M.avium_hominissuis",
+            "M.paraintracellulare",
+            "M.intracellulare",
+            "M.lepraemurium",
+            "M.abscessus",
+        ]:
+            # USE MYKROBE
+            if mixed_pop:
+                # Use competitive mapping
+                summary_name = organism_name(tophit_name, name_mapping)
+
+                tophit_coverage = myco["Species"][0]["Coverage"]
+                tophit_depth = myco["Species"][0]["Mean Depth"]
+            else:
+                # Use lineage name as species name
+                summary_name = organism_name(
+                    tophit_name, name_mapping, myco["Lineage"][0]["Name"]
+                )
+
+                # Get coverage and depth from mykrobe lineage
+                tophit_coverage = myco["Lineage"][0]["Coverage"]
+                tophit_depth = myco["Lineage"][0]["Median Depth"]
+        elif myco["Species"][0]["Coverage"] < 40:
+            # USE MYKROBE
+
             summary_name = organism_name(tophit_name, name_mapping)
 
-        # Get coverage and depth from mykrobe species (here called subspecies)
-        tb_index = next(
-            (
-                i
-                for i, pgroup in enumerate(myco["Phylogenic Group"])
-                if pgroup["Name"] == "Mycobacterium_tuberculosis_complex"
-            ),
-            None,
-        )
-        tophit_coverage = myco["Subspecies"][tb_index]["Coverage"]
-        tophit_depth = myco["Subspecies"][tb_index]["Median Depth"]
+            # Get coverage and depth from mykrobe
+            tophit_coverage = myco["Subspecies"][0]["Coverage"]
+            tophit_depth = myco["Subspecies"][0]["Median Depth"]
+        else:
+            # USE COMPETITIVE MAPPING
 
-    elif tophit_name in [
-        "M.intracellulare_chimaera",
-        "M.avium_hominissuis",
-        "M.paraintracellulare",
-        "M.intracellulare",
-        "M.lepraemurium",
-        "M.abscessus",
-    ]:
-        # USE MYKROBE
-        if mixed_pop:
-            # Use competitive mapping
             summary_name = organism_name(tophit_name, name_mapping)
 
             tophit_coverage = myco["Species"][0]["Coverage"]
             tophit_depth = myco["Species"][0]["Mean Depth"]
-        else:
-            # Use lineage name as species name
-            summary_name = organism_name(
-                tophit_name, name_mapping, myco["Lineage"][0]["Name"]
-            )
 
-            # Get coverage and depth from mykrobe lineage
-            tophit_coverage = myco["Lineage"][0]["Coverage"]
-            tophit_depth = myco["Lineage"][0]["Median Depth"]
-    elif myco["Species"][0]["Coverage"] < 40:
-        # USE MYKROBE
-
-        summary_name = organism_name(tophit_name, name_mapping)
-
-        # Get coverage and depth from mykrobe
-        tophit_coverage = myco["Subspecies"][0]["Coverage"]
-        tophit_depth = myco["Subspecies"][0]["Median Depth"]
-    else:
-        # USE COMPETITIVE MAPPING
-
-        summary_name = organism_name(tophit_name, name_mapping)
-
-        tophit_coverage = myco["Species"][0]["Coverage"]
-        tophit_depth = myco["Species"][0]["Mean Depth"]
-
-    myco["Summary"] = [
-        {
-            "Name": summary_name,
-            "Num Reads": int(tophit["numreads"]),
-            "Coverage": tophit_coverage,
-            "Depth": tophit_depth,
-        }
-    ]
+        myco["Summary"] = [
+            {
+                "Name": summary_name,
+                "Num Reads": int(tophit["numreads"]),
+                "Coverage": tophit_coverage,
+                "Depth": tophit_depth,
+            }
+        ]
 
     # Always include TB, if present
     tb_row = mappings_sorted[mappings_sorted["genome_name"] == "M.tuberculosis"]
@@ -396,7 +397,7 @@ def organism_name(
         # Multiple names identical names are returned where mykrobe
         # indentifies an alternate species associated with a single species
         # in competitive mapping e.g. "Mycobacterium_algericum" or
-        # "Mycobacterium_algericum_A" are both associated with 
+        # "Mycobacterium_algericum_A" are both associated with
         # "M.algericus". We ignore this information from mykrobe.
         name = pandas.unique(name_df.REPORT).item()
         # If more than one unique name is returned, it will cause an
