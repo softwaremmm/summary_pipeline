@@ -393,7 +393,14 @@ def organism_name(
         # This means the name we're seeking isn't in the lookup table
         name = cm_name
     else:
-        name = name_df.REPORT.item()
+        # Multiple names identical names are returned where mykrobe
+        # indentifies an alternate species associated with a single species
+        # in competitive mapping e.g. "Mycobacterium_algericum" or
+        # "Mycobacterium_algericum_A" are both associated with 
+        # "M.algericus". We ignore this information from mykrobe.
+        name = pandas.unique(name_df.REPORT).item()
+        # If more than one unique name is returned, it will cause an
+        # error.
 
     return name
 
