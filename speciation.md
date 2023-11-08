@@ -12,9 +12,9 @@ _Mycobacterium fortuitum_ subspecies _fortuitum_
 
 Two sources of information are used to inform the speciation decision [Competitive Mapping](https://github.com/GlobalPathogenAnalysisService/competitivemapping_pipeline) and [mykrobe](https://github.com/GlobalPathogenAnalysisService/lineagecalling_pipeline). These each output a JSON file which is analysed by the code in this repository to determine species information.  
 
-Competitive mapping outputs a list of species, which can be ordered by "coverage" (the proportion of a reference genome to which reads in the sample "map" i.e. are very similar to) to give a "top hit" species. However, competitive mapping does not provide information on lineage or subspecies. This information can in some cases be obtained from mykrobe, which reports subspecies, phylogenic group and lineage. 
+Competitive Mapping outputs a list of species, which can be ordered by "coverage" (the proportion of a reference genome to which reads in the sample "map" i.e. are very similar to) to give a "top hit" species. However, Competitive Mapping does not provide information on lineage or subspecies. This information can in some cases be obtained from mykrobe, which reports subspecies, phylogenic group and lineage. 
 
-Number of reads mapped (Reads) is always sourced from competitive mapping.
+Number of reads mapped (Reads) is always sourced from Competitive Mapping.
 
 The way in which the Summary Pipeline assigns species, subspecies and lineage can be summarised by a graph. 
 
@@ -22,7 +22,7 @@ The way in which the Summary Pipeline assigns species, subspecies and lineage ca
 graph TD;
     MYKROBE_RETURN{{Has mykrobe returned any information?}};
 
-    ALL_CM[Use name from competitive mapping.<br/>Use coverage and mean depth from competitive mapping.];
+    ALL_CM[Use name from Competitive Mapping.<br/>Use coverage and mean depth from Competitive Mapping.];
 
     TOPHIT_TB{{Is top hit M.tuberculosis?}};
 
@@ -57,3 +57,4 @@ The name returned is determined by using the species name from Competitive Mappi
 
 ## Additional steps for mixed populations
 
+If _M. tuberculosis_ is not the "Main Species", _M. tuberculosis_ data from Competitive Mapping is appended to summary and species information, if any reads at all were mapped. If _M. tuberculosis_ is the "Main Species" in a mixed population, the information from the second hit from Competitive Mapping is appended to the summary information.
