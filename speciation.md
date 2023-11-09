@@ -1,6 +1,6 @@
 # Determination of mycobacterial species, subspecies and lineage by the Summary Pipeline 
 
-Part of the Summary Pipeline works on genetic information that has already been assigned to the genus mycobacteriaceae. If the species is Mycobacterium tuberculosis then a lineage may also be assigned. Other species may be assigned a subspecies. This information forms part of the "Mycobacterium Results" section of the `main_report.json` file output by this repository e.g.
+Part of the Summary Pipeline works on genetic information that has already been assigned to the genus _mycobacteriaceae_. If the species is _Mycobacterium tuberculosis_ then a lineage may also be assigned. Species may be assigned a subspecies. This information forms part of the "Mycobacterium Results" section of the `main_report.json` file output by this repository e.g.
 
 ```json
 "Mycobacterium Results": {
@@ -68,13 +68,11 @@ _Mycobacterium tuberculosis_ (Lineage 3)
 
 _Mycobacterium fortuitum_ subspecies _fortuitum_
 
-Two sources of information are used to inform the speciation decision [Competitive Mapping](https://github.com/GlobalPathogenAnalysisService/competitivemapping_pipeline) and [mykrobe](https://github.com/GlobalPathogenAnalysisService/lineagecalling_pipeline). These each output a JSON file which is analysed by the code in this repository to determine species information.  
+Two sources of information are used to inform the speciation decision: [Competitive Mapping](https://github.com/GlobalPathogenAnalysisService/competitivemapping_pipeline) and [mykrobe](https://github.com/GlobalPathogenAnalysisService/lineagecalling_pipeline). These each output a JSON file which is analysed by the code in this repository to determine species information.  
 
 Competitive Mapping outputs a list of species, which can be ordered by "coverage" (the proportion of a reference genome to which reads in the sample "map" i.e. are very similar to) to give a "top hit" species. However, Competitive Mapping does not provide information on lineage or subspecies. This information can in some cases be obtained from mykrobe, which reports subspecies, phylogenic group and lineage. 
 
-Number of reads mapped (Reads) is always sourced from Competitive Mapping.
-
-The way in which the Summary Pipeline assigns species, subspecies and lineage can be summarised by a graph. 
+The way in which the Summary Pipeline assigns species, subspecies and lineage, and where additional data (coverage and depth) are derived from, can be summarised by a graph. Number of reads mapped (Reads) is always sourced from Competitive Mapping.
 
 ```mermaid
 graph TD;
@@ -90,7 +88,7 @@ graph TD;
 
     MIXED{{Is there a mixed population?<br/>Mixed populations are defined as runs where myrkobe returns two phylo groups.}};
 
-    PROCESS_SPECIAL_NTM_UNMIXED[Lookup name.<br/>Use coverage and median depth from mykrobe *species*.];
+    PROCESS_SPECIAL_NTM_UNMIXED[Lookup name.<br/>Use coverage and median depth from mykrobe *lineage*.];
 
     LOW_COV{{Is coverage by competitive mapping less than 40%?}};
 
