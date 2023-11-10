@@ -171,9 +171,13 @@ def generate_mycobacterium_results(
 
             # Append lineage information from mykrobe to species name
             # from competitive mapping, if available
-            if len(myco["Lineage"]) != 0:
+            if len(myco["Lineage"]) == 1:
                 summary_name = organism_name(
                     tophit_name, name_mapping, myco["Lineage"][0]["Name"]
+                )
+            elif len(myco["Lineage"]) == 2:
+                summary_name = organism_name(
+                    tophit_name, name_mapping, myco["Lineage"][0]["Name"], True
                 )
             else:
                 # Default to just top hit if no lineage name exists
@@ -376,7 +380,10 @@ def process_lineages(lineages: dict) -> list[dict]:
 
 
 def organism_name(
-    cm_name: str, mapping: pandas.DataFrame, lineage: str = "Unknown"
+    cm_name: str,
+    mapping: pandas.DataFrame,
+    lineage: str = "Unknown",
+    mixed_tb_lineage: bool = False,
 ) -> str:
     """Determine the name to report for the organism.
 
@@ -389,6 +396,13 @@ def organism_name(
     Returns:
         str: Reportable name for the organism.
     """
+    # This is a special case of more than one TB linage
+    # we may wish to report both lineages in future, but
+    # for now we simply report the run as "mixed".
+    if cm_name=="M.tuberculosis" and mixed_tb_lineage==True:
+        return "M.tuberculosis (mixed lineage)"
+    # Lookup name by Compatitive Mapping name and mykrobe
+    # lineage.
     name_df = mapping[(mapping.reference == cm_name) & (mapping.LINEAGE == lineage)]
     if name_df.empty:
         # This means the name we're seeking isn't in the lookup table
