@@ -120,6 +120,16 @@ MYKROBE_SPECIES_DIFFERENTIATES = {
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
+MIXED_TB_LINEAGE = {
+    "gatekeeper_report": "test_data/mixed_tb_lineage/speciation_report.json",
+    "competitivemapping_report": "test_data/mixed_tb_lineage/species_comparison_report.json",
+    "mykrobe_report": "test_data/mixed_tb_lineage/subspecies_report.json",
+    "clockwork_report": "test_data/mixed_tb_lineage/genome_creation_report.json",
+    "gnomonicus": "test_data/mixed_tb_lineage/tb/resistance_prediction_report.json",
+    "expected_output": "test_data/mixed_tb_lineage/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
+}
+
 
 @pytest.fixture(
     params=[
@@ -135,14 +145,15 @@ MYKROBE_SPECIES_DIFFERENTIATES = {
         MIX_NTM_WIN,
         MIX_TB_WIN,
         NO_LINEAGE_TB,
-        MYKROBE_SPECIES_DIFFERENTIATES
+        MYKROBE_SPECIES_DIFFERENTIATES,
+        MIXED_TB_LINEAGE,
     ],
     ids=[
         "covid",
         "covid_no_meta",
         "SRR2097047",
         "MALOMENSE",
-        "ABSCESSUS",        
+        "ABSCESSUS",
         "WTCHG_885333_73205296_1",
         "WTCHG_885333_73205296_2",
         "BCG",
@@ -150,7 +161,8 @@ MYKROBE_SPECIES_DIFFERENTIATES = {
         "MIX_NTM_WIN",
         "MIX_TB_WIN",
         "NO_LINEAGE_TB",
-        "mykrobe_species_differentiates"
+        "mykrobe_species_differentiates",
+        "mixed_tb_lineage",
     ],
 )
 def regression_test_set(request) -> dict:
@@ -229,7 +241,7 @@ def three_reports() -> list:
         "test_data/WTCHG_885333_73205296_1/speciation_report.json",
         "test_data/WTCHG_885333_73205296_1/species_comparison_report.json",
         "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
-        "test_data/reference/name_mapping.csv",        
+        "test_data/reference/name_mapping.csv",
     ]
 
 
