@@ -1,3 +1,9 @@
+## 1.12.3 (2023-11-15)
+
+### Fix
+
+- Report mixed lineages as such
+
 ## 1.12.2 (2023-11-08)
 
 ### Fix
