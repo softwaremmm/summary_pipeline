@@ -285,9 +285,6 @@ def process_phylo_group(phylo_group: dict) -> list[dict]:
     Args:
         phylo_group (dict): Phylogenetic group information from mykrobe
 
-    Raises:
-        ValueError: Thrown if multiple phyogenetic groups are found
-
     Returns:
         list[dict]: Restructured phylogenetic information
     """
@@ -308,9 +305,6 @@ def process_subspecies(species: dict) -> list[dict]:
 
     Args:
         species (dict): Species information from mykrobe
-
-    Raises:
-        ValueError: Throws an error if mykrobe returns more than one species
 
     Returns:
         list[dict]: Restructured species information
