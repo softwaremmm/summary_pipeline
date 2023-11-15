@@ -1,13 +1,13 @@
 """Summay JSON output from GPAS"""
 
 
-import logging
 import json
+import logging
 import os
-from pathlib import Path
 import sys
-import pandas
+from pathlib import Path
 
+import pandas
 from summary.cli_args import Arguments
 
 logging.basicConfig(
@@ -392,6 +392,7 @@ def organism_name(
         mapping (pandas.DataFrame): Reference data mapping Competitive Mapping
         and mykrobe outputs to reportable name.
         lineage (str, optional): Lineage from mykrobe. Defaults to "Unknown".
+        mixed_tb_lineage (bool, optional): True if mykrobe reports multiple lineages. Defaults to False
 
     Returns:
         str: Reportable name for the organism.
