@@ -1,0 +1,96 @@
+{
+    "Pipeline Outcome": "Sufficient TB reads for analysis completion.",
+    "Organism Identification": {
+        "Human Reads": null,
+        "Unclassified Reads": 54,
+        "Non-Mycobacterium Bacteria Reads": 76,
+        "Mycobacterium Reads": 533432
+    },
+    "Mycobacterium Results": {
+        "Summary": [
+            {
+                "Name": "M.tuberculosis (mixed lineage)",
+                "Num Reads": 526186,
+                "Coverage": 97.983,
+                "Depth": 6
+            }
+        ],
+        "Species": [
+            {
+                "Name": "M.tuberculosis",
+                "Num Reads": 526186,
+                "Coverage": 99.8744,
+                "Mean Depth": 17.1875,
+                "Length": 4411532.0
+            }
+        ],
+        "Phylogenic Group": [
+            {
+                "Name": "Mycobacterium_tuberculosis_complex",
+                "Coverage": 100,
+                "Median Depth": 15
+            }
+        ],
+        "Subspecies": [
+            {
+                "Name": "Mycobacterium_bovis",
+                "Coverage": 97.983,
+                "Median Depth": 6
+            },
+            {
+                "Name": "Mycobacterium_tuberculosis",
+                "Coverage": 99.492,
+                "Median Depth": 11
+            }
+        ],
+        "Lineage": [
+            {
+                "Name": "lineage4.10",
+                "Coverage": 100,
+                "Median Depth": 10
+            },
+            {
+                "Name": "lineageBovis",
+                "Coverage": 100,
+                "Median Depth": 16
+            }
+        ]
+    },
+    "Genomes": [
+        {
+            "Name": "M. tuberculosis",
+            "Sequencing Quality": {
+                "Mapped To": "M.tuberculosis",
+                "Num Reads": 526186.0,
+                "Coverage": 98.0374,
+                "Mean Depth": 17.1875,
+                "Mixed calls": 1354
+            },
+            "Resistance Prediction": {
+                "Resistance Prediction Summary": {
+                    "First-line treatment": {
+                        "Isoniazid (INH)": "S",
+                        "Rifampicin (RIF)": "S",
+                        "Pyrazinamide (PZA)": "S",
+                        "Ethambutol (EMB)": "S"
+                    },
+                    "Second-line treatment": {
+                        "Moxifloxacin (MXF)": "S",
+                        "Levofloxacin (LEV)": "S",
+                        "Linezolid (LZD)": "S",
+                        "Bedaquiline (BDQ)": "-"
+                    },
+                    "Reserve treatment": {
+                        "Amikacin (AMI)": "S",
+                        "Kanamycin (KAN)": "S",
+                        "Streptomycin (STM)": "S",
+                        "Capreomycin (CAP)": "S",
+                        "Ethionamide (ETH)": "S",
+                        "Delamanid (DLM)": "S"
+                    }
+                },
+                "Resistance Prediction Detail": []
+            }
+        }
+    ]
+}
