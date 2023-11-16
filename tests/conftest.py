@@ -1,7 +1,7 @@
 import json
-import pytest
 from pathlib import Path
 
+import pytest
 from summary.cli_args import Arguments
 
 covid = {
@@ -25,18 +25,18 @@ SRR2097047 = {
 }
 
 ABSCESSUS = {
-    "gatekeeper_report": "test_data/002b5813-d1a3-4714-93ce-1075bfe6c7fe/speciation_report.json",
-    "competitivemapping_report": "test_data/002b5813-d1a3-4714-93ce-1075bfe6c7fe/species_comparison_report.json",
-    "mykrobe_report": "test_data/002b5813-d1a3-4714-93ce-1075bfe6c7fe/subspecies_report.json",
-    "expected_output": "test_data/002b5813-d1a3-4714-93ce-1075bfe6c7fe/main_report.json",
+    "gatekeeper_report": "test_data/malmoense_over_40pc/speciation_report.json",
+    "competitivemapping_report": "test_data/malmoense_over_40pc/species_comparison_report.json",
+    "mykrobe_report": "test_data/malmoense_over_40pc/subspecies_report.json",
+    "expected_output": "test_data/malmoense_over_40pc/main_report.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
 MALOMENSE = {
-    "gatekeeper_report": "test_data/2f56a0f7-feb6-4994-8420-23adf5e2df46/speciation_report.json",
-    "competitivemapping_report": "test_data/2f56a0f7-feb6-4994-8420-23adf5e2df46/species_comparison_report.json",
-    "mykrobe_report": "test_data/2f56a0f7-feb6-4994-8420-23adf5e2df46/subspecies_report.json",
-    "expected_output": "test_data/2f56a0f7-feb6-4994-8420-23adf5e2df46/main_report.json",
+    "gatekeeper_report": "test_data/abscessus_over_40pc/speciation_report.json",
+    "competitivemapping_report": "test_data/abscessus_over_40pc/species_comparison_report.json",
+    "mykrobe_report": "test_data/abscessus_over_40pc/subspecies_report.json",
+    "expected_output": "test_data/abscessus_over_40pc/main_report.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 

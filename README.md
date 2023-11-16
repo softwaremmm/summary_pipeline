@@ -47,8 +47,8 @@ Descriptions of test data.
 | Test Data Directory | Description |
 | --- | --- |
 | ToDo | _????_, less than 40% coverage by competitive mapping |
-| [test_data/002b5813-d1a3-4714-93ce-1075bfe6c7fe] | _M. abscessus_, more than 40% coverage by competitive mapping |
-| [test_data/2f56a0f7-feb6-4994-8420-23adf5e2df46] | _M. malmoense_, more than 40% coverage by competitive mapping | 
+| [test_data/abscessus_over_40pc] | _M. abscessus_, more than 40% coverage by competitive mapping |
+| [test_data/malmoense_over_40pc] | _M. malmoense_, more than 40% coverage by competitive mapping |
 | [test_data/clade_animal_A3] | _M. tuberculosis_ with lineage not specified as a number |
 | [test_data/covid] | Covid |
 | [test_data/covid_no_meta] | Covid but without a pipeline versions file |
