@@ -24,7 +24,7 @@ SRR2097047 = {
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
-ABSCESSUS = {
+MALOMENSE = {
     "gatekeeper_report": "test_data/malmoense_over_40pc/speciation_report.json",
     "competitivemapping_report": "test_data/malmoense_over_40pc/species_comparison_report.json",
     "mykrobe_report": "test_data/malmoense_over_40pc/subspecies_report.json",
@@ -32,7 +32,7 @@ ABSCESSUS = {
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
-MALOMENSE = {
+ABSCESSUS = {
     "gatekeeper_report": "test_data/abscessus_over_40pc/speciation_report.json",
     "competitivemapping_report": "test_data/abscessus_over_40pc/species_comparison_report.json",
     "mykrobe_report": "test_data/abscessus_over_40pc/subspecies_report.json",
@@ -152,8 +152,8 @@ MIXED_TB_LINEAGE = {
         "covid",
         "covid_no_meta",
         "SRR2097047",
-        "MALOMENSE",
         "ABSCESSUS",
+        "MALOMENSE",
         "WTCHG_885333_73205296_1",
         "WTCHG_885333_73205296_2",
         "BCG",
