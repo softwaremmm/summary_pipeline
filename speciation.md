@@ -74,7 +74,7 @@ Competitive Mapping outputs a list of species, which can be ordered by "coverage
 
 The way in which the Summary Pipeline assigns species, subspecies and lineage, and where additional data (coverage and depth) are derived from, can be summarised by a graph. Number of reads mapped (Reads) is always sourced from Competitive Mapping.
 
-```mermaid
+```{.mermaid width=1600}
 graph TD;
     MYKROBE_RETURN{{Has mykrobe returned any information?}};
 
@@ -114,3 +114,7 @@ The name returned is determined by using the species name from Competitive Mappi
 ## Additional steps for mixed populations
 
 If _M. tuberculosis_ is not the "Main Species", _M. tuberculosis_ data from Competitive Mapping is appended to summary and species information, if any reads at all were mapped. If _M. tuberculosis_ is the "Main Species" in a mixed population, the information from the second hit from Competitive Mapping is appended to the summary information.
+
+## Additional steps for mixed lineages
+
+If more than one lineage of _M. tuberculosis_ is is returned, then species is reported as `M.tuberculosis (mixed lineage)`.
