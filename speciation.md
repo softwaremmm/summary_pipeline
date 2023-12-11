@@ -74,7 +74,7 @@ Competitive Mapping outputs a list of species, which can be ordered by "coverage
 
 The way in which the Summary Pipeline assigns species, subspecies and lineage, and where additional data (coverage and depth) are derived from, can be summarised by a graph. Number of reads mapped (Reads) is always sourced from Competitive Mapping.
 
-```{.mermaid width=1600}
+```mermaid
 graph TD;
     MYKROBE_RETURN{{Has mykrobe returned any information?}};
 
