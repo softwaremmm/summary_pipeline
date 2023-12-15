@@ -5,8 +5,8 @@ from summary import summarise
 
 def test_regression(regression_test_set: dict):
     test_reports = {}
-    if "pipeline_versions" in regression_test_set:
-        test_reports["versions"] = regression_test_set["pipeline_versions"]
+    if "PIPELINE_BUILD" in regression_test_set:
+        test_reports["versions"] = regression_test_set["PIPELINE_BUILD"]
     if "knowledge" in regression_test_set:
         test_reports["knowledge"] = regression_test_set["knowledge"]
     test_reports["gatekeeper"] = regression_test_set["gatekeeper_report"]

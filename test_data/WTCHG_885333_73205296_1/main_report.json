@@ -188,9 +188,7 @@
         }
     ],
     "Metadata": {
-        "Software Versions": {
-            "gpas-tb-workflow": "v0.0.55"
-        },
+        "Pipeline build": "v0.0.55",
         "Reference Data Files": {
             "manifest": "target_101_new.fasta",
             "ref_files": "Ref_prepare",

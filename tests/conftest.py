@@ -5,7 +5,7 @@ from pathlib import Path
 from summary.cli_args import Arguments
 
 covid = {
-    "pipeline_versions": "test_data/covid/pipeline_versions.txt",
+    "PIPELINE_BUILD": "test_data/covid/PIPELINE_BUILD",
     "gatekeeper_report": "test_data/covid/speciation_report.json",
     "expected_output": "test_data/covid/main_report.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
@@ -18,7 +18,7 @@ covid_no_meta = {
 }
 
 SRR2097047 = {
-    "pipeline_versions": "test_data/SRR2097047/pipeline_versions.txt",
+    "PIPELINE_BUILD": "test_data/SRR2097047/PIPELINE_BUILD",
     "gatekeeper_report": "test_data/SRR2097047/speciation_report.json",
     "expected_output": "test_data/SRR2097047/main_report.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
@@ -41,7 +41,7 @@ MALOMENSE = {
 }
 
 WTCHG_885333_73205296_1 = {
-    "pipeline_versions": "test_data/WTCHG_885333_73205296_1/pipeline_versions.txt",
+    "PIPELINE_BUILD": "test_data/WTCHG_885333_73205296_1/PIPELINE_BUILD",
     "knowledge": "test_data/WTCHG_885333_73205296_1/knowledge.json",
     "gatekeeper_report": "test_data/WTCHG_885333_73205296_1/speciation_report.json",
     "competitivemapping_report": "test_data/WTCHG_885333_73205296_1/species_comparison_report.json",
@@ -53,7 +53,7 @@ WTCHG_885333_73205296_1 = {
 }
 
 BCG = {
-    "pipeline_versions": "test_data/BCG/pipeline_versions.txt",
+    "PIPELINE_BUILD": "test_data/BCG/PIPELINE_BUILD",
     "gatekeeper_report": "test_data/BCG/speciation_report.json",
     "competitivemapping_report": "test_data/BCG/species_comparison_report.json",
     "mykrobe_report": "test_data/BCG/subspecies_report.json",
@@ -64,7 +64,7 @@ BCG = {
 }
 
 WTCHG_885333_73205296_2 = {
-    "pipeline_versions": "test_data/WTCHG_885333_73205296_1/pipeline_versions.txt",
+    "PIPELINE_BUILD": "test_data/WTCHG_885333_73205296_1/PIPELINE_BUILD",
     "gatekeeper_report": "test_data/WTCHG_885333_73205296_1/speciation_report.json",
     "competitivemapping_report": "test_data/WTCHG_885333_73205296_1/species_comparison_report.json",
     "mykrobe_report": "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
@@ -101,7 +101,7 @@ MIX_TB_WIN = {
 }
 
 NO_LINEAGE_TB = {
-    "pipeline_versions": "test_data/no_lineage_tb/pipeline_versions.txt",
+    "PIPELINE_BUILD": "test_data/no_lineage_tb/PIPELINE_BUILD",
     "gatekeeper_report": "test_data/no_lineage_tb/speciation_report.json",
     "knowledge": "test_data/no_lineage_tb/knowledge.json",
     "competitivemapping_report": "test_data/no_lineage_tb/species_comparison_report.json",
@@ -173,7 +173,7 @@ def regression_test_set(request) -> dict:
 def all_reports_set_individually() -> list:
     return [
         "--versions",
-        "test_data/WTCHG_885333_73205296_1/pipeline_versions.txt",
+        "test_data/WTCHG_885333_73205296_1/PIPELINE_BUILD",
         "--knowledge",
         "test_data/WTCHG_885333_73205296_1/knowledge.json",
         "--gatekeeper",
@@ -200,7 +200,7 @@ def all_reports_set_individually_args(all_reports_set_individually) -> Arguments
 def all_reports() -> list:
     return [
         "--reports",
-        "test_data/WTCHG_885333_73205296_1/pipeline_versions.txt",
+        "test_data/WTCHG_885333_73205296_1/PIPELINE_BUILD",
         "test_data/WTCHG_885333_73205296_1/knowledge.json",
         "test_data/WTCHG_885333_73205296_1/speciation_report.json",
         "test_data/WTCHG_885333_73205296_1/species_comparison_report.json",
@@ -289,8 +289,8 @@ def bad_path() -> Path:
 
 
 @pytest.fixture
-def eg_pipeline_versions() -> Path:
-    return Path("test_data/WTCHG_885333_73205296_1/pipeline_versions.txt")
+def eg_PIPELINE_BUILD() -> Path:
+    return Path("test_data/WTCHG_885333_73205296_1/PIPELINE_BUILD")
 
 
 @pytest.fixture

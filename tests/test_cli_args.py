@@ -22,7 +22,7 @@ def test_Argument_individual_reports(all_reports_set_individually: list):
 def test_Argument_all_reports(all_reports: list):
     cli_args = Arguments(all_reports)
     assert cli_args.versions == Path(
-        "test_data/WTCHG_885333_73205296_1/pipeline_versions.txt"
+        "test_data/WTCHG_885333_73205296_1/PIPELINE_BUILD"
     )
     assert cli_args.knowledge == Path(
         "test_data/WTCHG_885333_73205296_1/knowledge.json"
