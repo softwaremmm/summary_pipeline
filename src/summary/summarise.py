@@ -705,10 +705,8 @@ def create_summary(
     if "versions" in reports or "knowledge" in reports:
         output["Metadata"] = {}
     if "versions" in reports:
-        versions = read_pipeline_versions_file(reports["versions"])
-        output["Metadata"]["Software Versions"] = {
-            "gpas-tb-workflow": versions["gpas-tb-workflow"]
-        }
+        pipeline_build = read_pipeline_build(reports["versions"])
+        output["Metadata"]["Pipeline build"] = pipeline_build
     if "knowledge" in reports:
         knowledge = read_json_file(reports["knowledge"])
         output["Metadata"]["Reference Data Files"] = knowledge
@@ -736,30 +734,21 @@ def read_json_file(path: Path) -> dict:
         data = json.load(file)
     return data
 
-
-def read_pipeline_versions_file(path: Path) -> dict:
-    """Loads and parses `pipeline_versions.txt` files which contain information
-    about which version of the pipeline was used to create the current outputs.
-
+def read_pipeline_build(path: Path) -> str:
+    """Read the pipeline build file to find the pipeline build tag
 
     Args:
-        path (Path): Path to the `pipeline_versions.txt` file
-
-    Raises:
-        FileNotFoundError: File does not exist.
+        path (Path): Path to the `PIPELINE_BUILD` file
 
     Returns:
-        dict: Information in the `pipeline_versions.txt` file represented as a dictionary.
+        str: Poller release tag which built this pipeline
     """
     if not os.path.isfile(path):
         raise FileNotFoundError(
             "File " + str(path) + " does not exist. Data could not be loaded"
         )
     with open(path, "r") as file:
-        data = file.read()
-    data_list = data.replace("\\n", " = ").split(" = ")
-    pipeline_versions = dict(zip(data_list[::2], data_list[1::2]))
-    return pipeline_versions
+        return file.read()
 
 
 def write_summary(output: dict, location: Path = Path("Mega.json")) -> None:

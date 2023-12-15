@@ -11,7 +11,7 @@ class ReportType(Enum):
         Enum (_type_): Report type.
     """
 
-    VERSIONS = "pipeline_versions.txt"
+    VERSIONS = "PIPELINE_BUILD"
     KNOWLEDGE = "knowledge.json"
     GATEKEEPER = "speciation_report.json"
     MAPPING = "species_comparison_report.json"
@@ -37,7 +37,7 @@ class Arguments:  # pylint: disable=too-few-public-methods
         named_reports.add_argument(
             "--versions",
             dest="versions",
-            help="Path to pipeline_versions.txt file",
+            help="Path to PIPELINE_BUILD file",
         )
         named_reports.add_argument(
             "--knowledge",
