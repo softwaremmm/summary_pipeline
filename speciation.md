@@ -8,7 +8,7 @@ Part of the Summary Pipeline works on genetic information that has already been 
             {
                 "Name": "M.abscessus_abscessus",
                 "Num Reads": 92865,
-                "Coverage": 64.768,
+                "Coverage": 76.639,
                 "Depth": 3
             },
             {
