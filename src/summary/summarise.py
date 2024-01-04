@@ -374,7 +374,7 @@ def organism_name(
     # This is a special case of more than one TB linage
     # we may wish to report both lineages in future, but
     # for now we simply report the run as "mixed".
-    if cm_name=="M.tuberculosis" and mixed_tb_lineage==True:
+    if cm_name == "M.tuberculosis" and mixed_tb_lineage == True:
         return "M.tuberculosis (mixed lineage)"
     # Lookup name by Compatitive Mapping name and mykrobe
     # lineage.
@@ -707,6 +707,7 @@ def read_json_file(path: Path) -> dict:
     with open(path, "r") as file:
         data = json.load(file)
     return data
+
 
 def read_pipeline_build(path: Path) -> str:
     """Read the pipeline build file to find the pipeline build tag
