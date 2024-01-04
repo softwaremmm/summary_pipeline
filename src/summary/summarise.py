@@ -128,7 +128,6 @@ def generate_mycobacterium_results(
         # If mykrobe doesn't return a species,
         # USE COMPETITIVE MAPPING
 
-        tophit_coverage = myco["Species"][0]["Coverage"]
         tophit_depth = myco["Species"][0]["Mean Depth"]
 
         summary_name = organism_name(tophit_name, name_mapping)
@@ -137,7 +136,7 @@ def generate_mycobacterium_results(
             {
                 "Name": summary_name,
                 "Num Reads": int(tophit["numreads"]),
-                "Coverage": tophit_coverage,
+                "Coverage": myco["Species"][0]["Coverage"],
                 "Depth": tophit_depth,
             }
         ]
@@ -183,7 +182,7 @@ def generate_mycobacterium_results(
                 # Default to just top hit if no lineage name exists
                 summary_name = organism_name(tophit_name, name_mapping)
 
-            # Get coverage and depth from mykrobe species (here called subspecies)
+            # Get depth from mykrobe species (here called subspecies)
             tb_index = next(
                 (
                     i
@@ -192,7 +191,6 @@ def generate_mycobacterium_results(
                 ),
                 None,
             )
-            tophit_coverage = myco["Subspecies"][tb_index]["Coverage"]
             tophit_depth = myco["Subspecies"][tb_index]["Median Depth"]
 
         elif tophit_name in [
@@ -208,7 +206,6 @@ def generate_mycobacterium_results(
                 # Use competitive mapping
                 summary_name = organism_name(tophit_name, name_mapping)
 
-                tophit_coverage = myco["Species"][0]["Coverage"]
                 tophit_depth = myco["Species"][0]["Mean Depth"]
             else:
                 # Use lineage name as species name
@@ -216,30 +213,27 @@ def generate_mycobacterium_results(
                     tophit_name, name_mapping, myco["Lineage"][0]["Name"]
                 )
 
-                # Get coverage and depth from mykrobe lineage
-                tophit_coverage = myco["Lineage"][0]["Coverage"]
+                # Get depth from mykrobe lineage
                 tophit_depth = myco["Lineage"][0]["Median Depth"]
         elif myco["Species"][0]["Coverage"] < 40:
             # USE MYKROBE
 
             summary_name = organism_name(tophit_name, name_mapping)
 
-            # Get coverage and depth from mykrobe
-            tophit_coverage = myco["Subspecies"][0]["Coverage"]
+            # Get depth from mykrobe
             tophit_depth = myco["Subspecies"][0]["Median Depth"]
         else:
             # USE COMPETITIVE MAPPING
 
             summary_name = organism_name(tophit_name, name_mapping)
 
-            tophit_coverage = myco["Species"][0]["Coverage"]
             tophit_depth = myco["Species"][0]["Mean Depth"]
 
         myco["Summary"] = [
             {
                 "Name": summary_name,
                 "Num Reads": int(tophit["numreads"]),
-                "Coverage": tophit_coverage,
+                "Coverage": myco["Species"][0]["Coverage"],
                 "Depth": tophit_depth,
             }
         ]
