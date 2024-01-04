@@ -1,6 +1,6 @@
-# Determination of mycobacterial species, subspecies and lineage by the Summary Pipeline 
+# Determination of mycobacterial species, subspecies and lineage naming by the Summary Pipeline 
 
-Part of the Summary Pipeline works on genetic information that has already been assigned to the genus _mycobacteriaceae_. If the species is _Mycobacterium tuberculosis_ then a lineage may also be assigned. Species may be assigned a subspecies. This information forms part of the "Mycobacterium Results" section of the `main_report.json` file output by this repository e.g.
+Part of the Summary Pipeline works on genetic information that has already been assigned to the genus _mycobacteriaceae_. If the species is _Mycobacterium tuberculosis_ then a lineage may also be assigned. Species may be assigned a subspecies. This information forms the "Summary" part of the "Mycobacterium Results" section of the `main_report.json` file output by this repository e.g.
 
 ```json
 "Mycobacterium Results": {
@@ -9,7 +9,7 @@ Part of the Summary Pipeline works on genetic information that has already been 
                 "Name": "M.abscessus_abscessus",
                 "Num Reads": 92865,
                 "Coverage": 76.639,
-                "Depth": 3
+                "Depth": 2.4425
             },
             {
                 "Name": "M.tuberculosis (Unknown)",
@@ -18,6 +18,11 @@ Part of the Summary Pipeline works on genetic information that has already been 
                 "Depth": 0.0166817
             }
         ],
+```
+
+The remainder of the JSON data (e.g. "Phylogenic Group") is drawn from different sources...
+
+```json
         "Species": [
             {
                 "Name": "M.abscessus",
@@ -72,46 +77,13 @@ Two sources of information are used to inform the speciation decision: [Competit
 
 Competitive Mapping outputs a list of species, which can be ordered by "coverage" (the proportion of a reference genome to which reads in the sample "map" i.e. are very similar to) to give a "top hit" species. However, Competitive Mapping does not provide information on lineage or subspecies. This information can in some cases be obtained from mykrobe, which reports subspecies, phylogenic group and lineage. 
 
-The way in which the Summary Pipeline assigns species, subspecies and lineage, and where additional data (depth) are derived from, can be summarised by a graph. Coverage and number of reads mapped (Reads) are always sourced from Competitive Mapping.
+In cases where mykrobe does not return any information, cases where competitive mapping returns a coverage of less than 40%, or cases where there is a mixed population containing an organism in this list (M.intracellulare_chimaera, M.avium_hominissuis, M.paraintracellulare, M.intracellulare, M.lepraemurium, M.abscessus) then the species name from Competitive Mapping is used. Otherwise, the name returned is looked up using the species name from Competitive Mapping and the lineage name from mykrobe (if available). Where no combination of Competitive Mapping and lineage name can be found in the reference table ([example reference table](test_data/reference/name_mapping.csv)), the Competitive Mapping name is used. 
 
-```mermaid
-graph TD;
-    MYKROBE_RETURN{{Has mykrobe returned any information?}};
-
-    ALL_CM[Use name from Competitive Mapping.<br/>Use mean depth from Competitive Mapping.];
-
-    TOPHIT_TB{{Is top hit M.tuberculosis?}};
-
-    MYKROBE_SPECIES[Lookup name.<br/>Use median depth from mykrobe *species*.];
-
-    TOPHIT_SPECIAL_NTM{{Is top hit in this list:<br/>M.intracellulare_chimaera,<br/>M.avium_hominissuis,<br/>M.paraintracellulare,<br/>M.intracellulare,<br/>M.lepraemurium,<br/>M.abscessus?}};
-
-    MIXED{{Is there a mixed population?<br/>Mixed populations are defined as runs where myrkobe returns two phylo groups.}};
-
-    PROCESS_SPECIAL_NTM_UNMIXED[Lookup name.<br/>Use median depth from mykrobe *lineage*.];
-
-    LOW_COV{{Is coverage by competitive mapping less than 40%?}};
-
-    MYKROBE_RETURN--Yes-->TOPHIT_TB;
-    MYKROBE_RETURN--No-->ALL_CM;
-
-    TOPHIT_TB--Yes-->MYKROBE_SPECIES;
-    TOPHIT_TB--No-->TOPHIT_SPECIAL_NTM;
-
-    TOPHIT_SPECIAL_NTM--Yes-->MIXED;
-    MIXED--Yes-->ALL_CM;
-    MIXED--No-->PROCESS_SPECIAL_NTM_UNMIXED;
-    TOPHIT_SPECIAL_NTM--No-->LOW_COV;
-
-    LOW_COV--Yes-->MYKROBE_SPECIES;
-    LOW_COV--No-->ALL_CM;
-
-```
-_Determination of what species information to report_
-
-The name returned is determined by using the species name from Competitive Mapping and the lineage name from mykrobe (if available). Where no combination of Competitive Mapping and lineage name can be found in the reference table ([example reference table](test_data/reference/name_mapping.csv)), the Competitive Mapping name is used.
+Coverage, depth and number of reads mapped (Reads) are always sourced from Competitive Mapping.
 
 ## Additional steps for mixed populations
+
+This software identifies a mixed population where mykrobe returns two phylo groups.
 
 If _M. tuberculosis_ is not the "Main Species", _M. tuberculosis_ data from Competitive Mapping is appended to summary and species information, if any reads at all were mapped. If _M. tuberculosis_ is the "Main Species" in a mixed population, the information from the second hit from Competitive Mapping is appended to the summary information.
 
