@@ -72,23 +72,23 @@ Two sources of information are used to inform the speciation decision: [Competit
 
 Competitive Mapping outputs a list of species, which can be ordered by "coverage" (the proportion of a reference genome to which reads in the sample "map" i.e. are very similar to) to give a "top hit" species. However, Competitive Mapping does not provide information on lineage or subspecies. This information can in some cases be obtained from mykrobe, which reports subspecies, phylogenic group and lineage. 
 
-The way in which the Summary Pipeline assigns species, subspecies and lineage, and where additional data (coverage and depth) are derived from, can be summarised by a graph. Number of reads mapped (Reads) is always sourced from Competitive Mapping.
+The way in which the Summary Pipeline assigns species, subspecies and lineage, and where additional data (depth) are derived from, can be summarised by a graph. Coverage and number of reads mapped (Reads) are always sourced from Competitive Mapping.
 
 ```mermaid
 graph TD;
     MYKROBE_RETURN{{Has mykrobe returned any information?}};
 
-    ALL_CM[Use name from Competitive Mapping.<br/>Use coverage and mean depth from Competitive Mapping.];
+    ALL_CM[Use name from Competitive Mapping.<br/>Use mean depth from Competitive Mapping.];
 
     TOPHIT_TB{{Is top hit M.tuberculosis?}};
 
-    MYKROBE_SPECIES[Lookup name.<br/>Use coverage and median depth from mykrobe *species*.];
+    MYKROBE_SPECIES[Lookup name.<br/>Use median depth from mykrobe *species*.];
 
     TOPHIT_SPECIAL_NTM{{Is top hit in this list:<br/>M.intracellulare_chimaera,<br/>M.avium_hominissuis,<br/>M.paraintracellulare,<br/>M.intracellulare,<br/>M.lepraemurium,<br/>M.abscessus?}};
 
     MIXED{{Is there a mixed population?<br/>Mixed populations are defined as runs where myrkobe returns two phylo groups.}};
 
-    PROCESS_SPECIAL_NTM_UNMIXED[Lookup name.<br/>Use coverage and median depth from mykrobe *lineage*.];
+    PROCESS_SPECIAL_NTM_UNMIXED[Lookup name.<br/>Use median depth from mykrobe *lineage*.];
 
     LOW_COV{{Is coverage by competitive mapping less than 40%?}};
 
