@@ -446,6 +446,8 @@ def generate_sequencing_quality(mappings: dict, clockwork: dict) -> dict:
         "Coverage": clockwork["Sequencing Quality"]["Fixed coverage"],
         "Mean Depth": tb_mapping["meandepth"],
         "Mixed calls": clockwork["Sequencing Quality"]["Mixed calls"],
+        "Null calls": clockwork["Sequencing Quality"]["Null calls"],
+        "Reference genome length": clockwork["Sequencing Quality"]["Reference genome length"],
     }
 
     return seq_qual
