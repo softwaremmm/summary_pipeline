@@ -1,4 +1,12 @@
+## Unreleased
+
 ## 1.12.4 (2024-01-05)
+
+## 2.0.1 (2024-01-05)
+
+### Fix
+
+- Include null calls and ref genome length in main report
 
 ### Refactor
 
@@ -57,10 +65,6 @@
 
 - mean to median as approproriate
 - Updating for changes to summary json format
-- Updating following PR
-- Updating reads origin
-- correcting typo and adding resistance prediction coverage definition.
-- Adding glossary to README.md for terminology in main_report.json and showing where used in the portal.
 
 ## 1.10.0 (2023-10-27)
 
@@ -86,6 +90,11 @@
 
 - Handle phylo and "subspecies" as lists
 
+### Fix
+
+- Updating following PR
+- Updating reads origin
+
 ## 1.8.1 (2023-10-23)
 
 ### Fix
@@ -100,19 +109,16 @@
 
 ## 1.7.0 (2023-10-19)
 
+## 1.6.1 (2023-10-18)
+
 ### Feat
 
 - Always include TB in species list (if present)
 
 ### Fix
 
-- Also include TB in summary
-
-## 1.6.1 (2023-10-18)
-
-### Fix
-
 - Handle empty mykrobe phylo/species/lineage output
+- Also include TB in summary
 
 ## 1.6.0 (2023-10-17)
 
@@ -132,6 +138,11 @@
 ### Feat
 
 - Use genome_name, not #rname for "mapped to"
+
+### Fix
+
+- correcting typo and adding resistance prediction coverage definition.
+- Adding glossary to README.md for terminology in main_report.json and showing where used in the portal.
 
 ## 1.4.1 (2023-10-05)
 
@@ -209,7 +220,7 @@
 
 ### Fix
 
-- **docker-action**: update docker release action
+- add condition to docker yaml
 
 ## 1.1.3 (2023-09-04)
 
