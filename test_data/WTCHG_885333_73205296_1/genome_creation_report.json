@@ -1,6 +1,8 @@
 {
     "Sequencing Quality": {
         "Mixed calls": 351,
-        "Fixed coverage": 98.132
+        "Fixed coverage": 98.132,
+        "Null calls": 87041,
+        "Reference genome length": 4411532
     }
 }
