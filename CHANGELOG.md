@@ -1,3 +1,23 @@
+## 2.0.1 (2024-01-05)
+
+### Fix
+
+- Include null calls and ref genome length in main report
+
+### Refactor
+
+- change mismatched and confusing test file names
+
+## v2.0.0 (2023-12-15)
+
+### Fix
+
+- remove integration action
+
+### Refactor
+
+- Use PIPELINE_BUILD file
+
 ## 1.12.3 (2023-11-15)
 
 ### Fix

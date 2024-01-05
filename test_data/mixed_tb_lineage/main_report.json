@@ -64,7 +64,9 @@
                 "Num Reads": 526186.0,
                 "Coverage": 98.0374,
                 "Mean Depth": 17.1875,
-                "Mixed calls": 1354
+                "Mixed calls": 1354,
+                "Null calls": 87041,
+                "Reference genome length": 4411532
             },
             "Resistance Prediction": {
                 "Resistance Prediction Summary": {
