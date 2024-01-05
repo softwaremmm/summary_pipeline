@@ -1,4 +1,8 @@
-## 1.12.4 (2024-01-05)
+## 2.0.1 (2024-01-05)
+
+### Fix
+
+- Include null calls and ref genome length in main report
 
 ### Refactor
 
