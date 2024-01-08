@@ -28,13 +28,13 @@ All arguments are mandatory. This functionality is not used by the NextFlow pipe
 #### Pass report files as a list
 
 ```{bash}
-summary_json --reports test_data/WTCHG_885333_73205296_1/PIPELINE_BUILD test_data/WTCHG_885333_73205296_1/speciation_report.json test_data/WTCHG_885333_73205296_1/species_comparison_report.json test_data/WTCHG_885333_73205296_1/subspecies_report.json test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json test_data/WTCHG_885333_73205296_1/genome_creation_report.json test_data/WTCHG_885333_73205296_1/knowledge.json
+summary_json --reports test_data/WTCHG_885333_73205296_1/PIPELINE_BUILD test_data/WTCHG_885333_73205296_1/speciation_report.json test_data/WTCHG_885333_73205296_1/species_comparison_report.json test_data/WTCHG_885333_73205296_1/subspecies_report.json test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json test_data/WTCHG_885333_73205296_1/genome_creation_report.json test_data/WTCHG_885333_73205296_1/knowledge.json test_data/reference/name_mapping.csv
 ```
 
 ### NextFlow
 
 ```{bash}
-nextflow run . --reports ./test_data/WTCHG_885333_73205296_1/speciation_report.json,./test_data/WTCHG_885333_73205296_1/species_comparison_report.json,./test_data/WTCHG_885333_73205296_1/subspecies_report.json,./test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json
+nextflow run . --reports test_data/WTCHG_885333_73205296_1/PIPELINE_BUILD,test_data/WTCHG_885333_73205296_1/speciation_report.json,test_data/WTCHG_885333_73205296_1/species_comparison_report.json,test_data/WTCHG_885333_73205296_1/subspecies_report.json,test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json,test_data/WTCHG_885333_73205296_1/genome_creation_report.json,test_data/WTCHG_885333_73205296_1/knowledge.json,test_data/reference/name_mapping.csv
 ```
 ### Running tests
 
