@@ -11,8 +11,8 @@
             {
                 "Name": "M.tuberculosis (lineage4.1.2.1)",
                 "Num Reads": 1250832,
-                "Coverage": 89.358,
-                "Depth": 33
+                "Coverage": 99.0892,
+                "Depth": 37.8527
             },
             {
                 "Name": "M.avium_hominissuis",
