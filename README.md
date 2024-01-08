@@ -59,6 +59,27 @@ Descriptions of test data.
 | [test_data/no_mykrobe] | NTM for which `mykrobe` does not generate phylogenic data |
 | [test_data/WTCHG_885333_73205296_1] | _M. tuberculosis_ |
 
+## Commits
+
+[Commitizen](https://commitizen-tools.github.io/commitizen/) is used to manage versioning of releases. This tool
+can be used to make commits to this repository. Regardless, [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) 
+are required to ensure correct version numbering and changelog population.
+
+## Tags and Releases
+
+**Do not add tags by hand.**
+
+On merging a Pull Request a [GitHub action will run](.github/workflows/version.yaml), causing Commitizen to:
+* Determine the new [semver](https://semver.org/) based on conventional commits.
+* Replace the previous semver in [pyporject.toml](pyproject.toml) and other files as specified therein.
+* Update the [CHANGELOG](CHANGELOG.md) based on commit messages.
+* Commit these changes to the `main` branch.
+* Create a tag for this commit with the tag name of the newly determined semver.
+
+If you wish to release this version and make it available for use in the product, **do this by hand** e.g.
+by navigating to the repository on GitHub, clicking "Tags", clicking the desired tag, clicking "Generate
+Release Notes", then "Create Release from Tag".
+
 ## Glossary & Definitions
 
 | Page in Portal | Name in Portal                                | JSON Path                                                                                        | Origin                        | Notes                                                                                                                                                                                                                                                                         |
