@@ -1,3 +1,15 @@
+## 2.1.0 (2024-01-08)
+
+## 1.12.4 (2024-01-05)
+
+### Feat
+
+- Always use competitive mapping coverage in summary
+
+### Fix
+
+- Summary depth from comp map only
+
 ## 2.0.1 (2024-01-05)
 
 ### Fix
