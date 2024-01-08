@@ -1,3 +1,9 @@
+## 2.1.1 (2024-01-08)
+
+### Fix
+
+- corrects use of reports_list and reports params
+
 ## 2.1.0 (2024-01-08)
 
 ## 1.12.4 (2024-01-05)
