@@ -69,16 +69,17 @@ are required to ensure correct version numbering and changelog population.
 
 **Do not add tags by hand.**
 
-On merging a Pull Request a [GitHub action will run](.github/workflows/version.yaml), causing Commitizen to:
+On merging a Pull Request a [GitHub action will run](.github/workflows/bump_and_build.yaml), causing Commitizen to:
 * Determine the new [semver](https://semver.org/) based on conventional commits.
-* Replace the previous semver in [pyporject.toml](pyproject.toml) and other files as specified therein.
+* Replace the previous semver in [pyproject.toml](pyproject.toml) and other files as specified therein.
 * Update the [CHANGELOG](CHANGELOG.md) based on commit messages.
 * Commit these changes to the `main` branch.
 * Create a tag for this commit with the tag name of the newly determined semver.
+* Build a docker container for this new tag
+* Create a new release from this tag.
 
-If you wish to release this version and make it available for use in the product, **do this by hand** e.g.
-by navigating to the repository on GitHub, clicking "Tags", clicking the desired tag, clicking "Generate
-Release Notes", then "Create Release from Tag".
+There is a workflow for manually triggering a docker build action.
+This shouldn't be required unless something has gone wrong with the commitizen action.
 
 ## Glossary & Definitions
 
