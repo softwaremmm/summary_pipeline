@@ -8,6 +8,11 @@ Summarises output from sub-workflows (part of WP8).
 2. Create a conda environment `conda create -f -y -n summary_pipeline python=3.11`
 3. Activate the conda environment e.g. `conda activate summary_pipeline`
 4. Install this software `pip install .` (use `pip install -e .[dev]` for development)
+5. Install pre-commits
+```bash
+pre-commit install
+pre-commit install -t commit-msg
+```
 
 ## Usage
 
@@ -62,7 +67,7 @@ Descriptions of test data.
 ## Commits
 
 [Commitizen](https://commitizen-tools.github.io/commitizen/) is used to manage versioning of releases. This tool
-can be used to make commits to this repository. Regardless, [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) 
+can be used to make commits to this repository. Regardless, [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)
 are required to ensure correct version numbering and changelog population.
 
 ## Tags and Releases
