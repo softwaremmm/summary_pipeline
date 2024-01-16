@@ -1,3 +1,14 @@
+## 2.2.0 (2024-01-16)
+
+### Feat
+
+- commitizen bump triggers build and release
+
+### Fix
+
+- remove quotes
+- hook for conventional commits
+
 ## 2.1.1 (2024-01-08)
 
 ### Fix
