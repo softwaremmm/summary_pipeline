@@ -9,6 +9,43 @@ Summarises output from sub-workflows (part of WP8).
 3. Activate the conda environment e.g. `conda activate summary_pipeline`
 4. Install this software `pip install .` (use `pip install -e .[dev]` for development)
 
+## Conventional Commits
+Use [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) when developing for this repo.
+You should install the pre-commit hooks to check your commit messages. This can be done using the tool `pre-commit` which is a dev dependency in the `pyproject.toml`.
+You can also use `commitizen` (another dev dependency) to help with writing conventional commits.
+
+To install hooks run
+```bash
+pre-commit install --hook-type commit-msg
+pre-commit install # to get other hooks for formatting etc
+```
+
+To make commit with commitizen run
+```bash
+cz c
+```
+
+## Tags and Releases
+
+[Commitizen](https://commitizen-tools.github.io/commitizen/) is used to manage versioning of releases. This tool
+can be used to make commits to this repository. Regardless, [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)
+are required to ensure correct version numbering and changelog population.
+
+**Do not add tags by hand.**
+
+On merging a Pull Request a [GitHub action will run](.github/workflows/version.yaml), causing Commitizen to:
+* Determine the new [semver](https://semver.org/) based on conventional commits.
+* Replace the previous semver in [pyproject.toml](pyproject.toml) and other files as specified therein.
+* Update the [CHANGELOG](CHANGELOG.md) based on commit messages.
+* Commit these changes to the `main` branch.
+* Create a tag for this commit with the tag name of the newly determined semver.
+* Build a docker container for this new tag
+* Create a new release from this tag.
+
+There is a workflow for manually triggering a docker build action.
+This shouldn't be required unless something has gone wrong with the commitizen action.
+
+
 ## Usage
 
 ```{bash}
@@ -58,27 +95,6 @@ Descriptions of test data.
 | [test_data/SRR2097047] | Bacteria, but not mycobacteria |
 | [test_data/no_mykrobe] | NTM for which `mykrobe` does not generate phylogenic data |
 | [test_data/WTCHG_885333_73205296_1] | _M. tuberculosis_ |
-
-## Commits
-
-[Commitizen](https://commitizen-tools.github.io/commitizen/) is used to manage versioning of releases. This tool
-can be used to make commits to this repository. Regardless, [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) 
-are required to ensure correct version numbering and changelog population.
-
-## Tags and Releases
-
-**Do not add tags by hand.**
-
-On merging a Pull Request a [GitHub action will run](.github/workflows/version.yaml), causing Commitizen to:
-* Determine the new [semver](https://semver.org/) based on conventional commits.
-* Replace the previous semver in [pyporject.toml](pyproject.toml) and other files as specified therein.
-* Update the [CHANGELOG](CHANGELOG.md) based on commit messages.
-* Commit these changes to the `main` branch.
-* Create a tag for this commit with the tag name of the newly determined semver.
-
-If you wish to release this version and make it available for use in the product, **do this by hand** e.g.
-by navigating to the repository on GitHub, clicking "Tags", clicking the desired tag, clicking "Generate
-Release Notes", then "Create Release from Tag".
 
 ## Glossary & Definitions
 

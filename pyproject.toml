@@ -24,15 +24,18 @@ release = [
 dev = [
     "pytest>=7.0",
     "pytest-mock",
+    "pre-commit >= 3.2.2",
 ]
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-bump_message = "version $current_version → $new_version" # [skip ci]"
+update_changelog_on_bump = true
+changelog_incremental = true
+bump_message = "bump: version $current_version → $new_version" # [skip ci]"
 version_type = "semver"
 version_provider = "pep621"
 tag_format = "$version"
 version_files = [
     "main.nf",
-    ".github/workflows/docker.yaml"
+    ".github/workflows/manual_docker.yaml",
 ]
