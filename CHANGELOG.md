@@ -7,6 +7,8 @@
 ## 2.1.0 (2024-01-08)
 
 ## 1.12.4 (2024-01-05)
+A mix up resulted in this tag being created/added to changelog later than in should.
+But merges should be pre 2.0.0
 
 ### Feat
 
