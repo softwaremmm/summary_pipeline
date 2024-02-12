@@ -1,5 +1,4 @@
 import json
-from pathlib import Path
 
 
 def test_coverage(regression_test_set: dict):
@@ -19,6 +18,7 @@ def test_coverage(regression_test_set: dict):
             competitivemapping_report[0]["coverage"]
             == expected_summary["Mycobacterium Results"]["Summary"][0]["Coverage"]
         )
+
 
 def test_depth(regression_test_set: dict):
     """

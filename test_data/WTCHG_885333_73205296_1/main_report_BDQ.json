@@ -1,0 +1,226 @@
+{
+    "Pipeline Outcome": "Sufficient TB reads for analysis completion.",
+    "Organism Identification": {
+        "Human Reads": null,
+        "Unclassified Reads": 67,
+        "Non-Mycobacterium Bacteria Reads": 652,
+        "Mycobacterium Reads": 1977558
+    },
+    "Mycobacterium Results": {
+        "Summary": [
+            {
+                "Name": "M.tuberculosis (lineage4.3.4.2)",
+                "Num Reads": 3953463,
+                "Coverage": 98.6802,
+                "Depth": 132.507
+            }
+        ],
+        "Species": [
+            {
+                "Name": "M.tuberculosis",
+                "Num Reads": 3953463,
+                "Coverage": 98.6802,
+                "Mean Depth": 132.507,
+                "Length": 4411532.0
+            }
+        ],
+        "Phylogenic Group": [
+            {
+                "Name": "Mycobacterium_tuberculosis_complex",
+                "Coverage": 99.462,
+                "Median Depth": 123
+            }
+        ],
+        "Subspecies": [
+            {
+                "Name": "Mycobacterium_tuberculosis",
+                "Coverage": 97.738,
+                "Median Depth": 105
+            }
+        ],
+        "Lineage": [
+            {
+                "Name": "lineage4.3.4.2",
+                "Coverage": 100,
+                "Median Depth": 139
+            }
+        ]
+    },
+    "Genomes": [
+        {
+            "Name": "M. tuberculosis",
+            "Sequencing Quality": {
+                "Mapped To": "M.tuberculosis",
+                "Num Reads": 3953463.0,
+                "Coverage": 98.132,
+                "Mean Depth": 132.507,
+                "Mixed calls": 351,
+                "Null calls": 87041,
+                "Reference genome length": 4411532
+            },
+            "Resistance Prediction": {
+                "Resistance Prediction Summary": {
+                    "First-line treatment": {
+                        "Isoniazid (INH)": "R",
+                        "Rifampicin (RIF)": "R",
+                        "Pyrazinamide (PZA)": "U",
+                        "Ethambutol (EMB)": "U"
+                    },
+                    "Second-line treatment": {
+                        "Moxifloxacin (MXF)": "S",
+                        "Levofloxacin (LEV)": "S",
+                        "Linezolid (LZD)": "S",
+                        "Bedaquiline (BDQ)": "F"
+                    },
+                    "Reserve treatment": {
+                        "Amikacin (AMI)": "S",
+                        "Kanamycin (KAN)": "S",
+                        "Streptomycin (STM)": "U",
+                        "Capreomycin (CAP)": "S",
+                        "Ethionamide (ETH)": "S",
+                        "Delamanid (DLM)": "S"
+                    }
+                },
+                "Resistance Prediction Detail": [
+                    {
+                        "Drug Name": "BDQ",
+                        "Mutations": [
+                            {
+                                "gene": "Rv0678",
+                                "mutation": "Q22X",
+                                "prediction": "F",
+                                "evidence": {
+                                    "Resistant prediction": "Q22!",
+                                    "Observed_samples": {
+                                    "Present_SOLO_SR": 4,
+                                    "Present_SOLO_R": 3,
+                                    "Present_SOLO_S": 1
+                                    },
+                                    "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
+                                    "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
+                                    "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
+                                    "WHO HGVS": "Rv0678_p.Gln22*",
+                                    "FASTA called": "N"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "Drug Name": "EMB",
+                        "Mutations": [
+                            {
+                                "Gene": "embB",
+                                "Mutation": "R24P:0.45",
+                                "Position": 24,
+                                "Ref": "cgc",
+                                "Alt": "zzz",
+                                "Coverage": [
+                                    11,
+                                    9
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
+                    },
+                    {
+                        "Drug Name": "INH",
+                        "Mutations": [
+                            {
+                                "Gene": "katG",
+                                "Mutation": "S315T",
+                                "Position": 315,
+                                "Ref": "agc",
+                                "Alt": "acc",
+                                "Coverage": [
+                                    0,
+                                    104
+                                ],
+                                "Prediction": "R",
+                                "Evidence": ""
+                            },
+                            {
+                                "Gene": null,
+                                "Mutation": "fabG1@I109I&fabG1@c327t",
+                                "Position": null,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    null,
+                                    null
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
+                    },
+                    {
+                        "Drug Name": "PZA",
+                        "Mutations": [
+                            {
+                                "Gene": "pncA",
+                                "Mutation": "T100A",
+                                "Position": 100,
+                                "Ref": "acc",
+                                "Alt": "gcc",
+                                "Coverage": [
+                                    0,
+                                    96
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
+                    },
+                    {
+                        "Drug Name": "RIF",
+                        "Mutations": [
+                            {
+                                "Gene": "rpoB",
+                                "Mutation": "del_1.0",
+                                "Position": null,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    null,
+                                    null
+                                ],
+                                "Prediction": "R",
+                                "Evidence": ""
+                            }
+                        ]
+                    },
+                    {
+                        "Drug Name": "STM",
+                        "Mutations": [
+                            {
+                                "Gene": "gid",
+                                "Mutation": "L50R",
+                                "Position": 50,
+                                "Ref": "ctg",
+                                "Alt": "cgg",
+                                "Coverage": [
+                                    0,
+                                    85
+                                ],
+                                "Prediction": "U",
+                                "Evidence": ""
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "Metadata": {
+        "Pipeline build": "v0.0.55",
+        "Reference Data Files": {
+            "manifest": "target_101_new.fasta",
+            "ref_files": "Ref_prepare",
+            "tb_ref_genome": "NC_000962.3.gbk",
+            "tb_amr_cat": "NC_000962.3_WHO-UCN-GTB-PCI-2021.7_v1.0_GARC1_RUS.csv",
+            "tb_minor_alleles": "minor_alleles.txt",
+            "human_genome_dir": "human-genome"
+        }
+    }
+}

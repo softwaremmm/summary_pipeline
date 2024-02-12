@@ -19,7 +19,7 @@ def test_generate_sequencing_quality(
         "Mean Depth": 132.507,
         "Mixed calls": 351,
         "Null calls": 87041,
-        "Reference genome length": 4411532
+        "Reference genome length": 4411532,
     }
     sq_output = summarise.generate_sequencing_quality(
         eg_competitivemapping_report_contents, eg_clockwork_report_contents

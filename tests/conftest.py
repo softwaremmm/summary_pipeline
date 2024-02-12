@@ -74,6 +74,18 @@ WTCHG_885333_73205296_2 = {
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
+WTCHG_885333_73205296_3 = {
+    "PIPELINE_BUILD": "test_data/WTCHG_885333_73205296_1/PIPELINE_BUILD",
+    "knowledge": "test_data/WTCHG_885333_73205296_1/knowledge.json",
+    "gatekeeper_report": "test_data/WTCHG_885333_73205296_1/speciation_report.json",
+    "competitivemapping_report": "test_data/WTCHG_885333_73205296_1/species_comparison_report.json",
+    "mykrobe_report": "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
+    "clockwork_report": "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
+    "gnomonicus": "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
+    "expected_output": "test_data/WTCHG_885333_73205296_1/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
+}
+
 NO_MYKROBE = {
     "gatekeeper_report": "test_data/no_mykrobe/speciation_report.json",
     "competitivemapping_report": "test_data/no_mykrobe/species_comparison_report.json",
@@ -140,6 +152,7 @@ MIXED_TB_LINEAGE = {
         MALOMENSE,
         WTCHG_885333_73205296_1,
         WTCHG_885333_73205296_2,
+        WTCHG_885333_73205296_3,
         BCG,
         NO_MYKROBE,
         MIX_NTM_WIN,
@@ -156,6 +169,7 @@ MIXED_TB_LINEAGE = {
         "MALOMENSE",
         "WTCHG_885333_73205296_1",
         "WTCHG_885333_73205296_2",
+        "WTCHG_885333_73205296_3",
         "BCG",
         "NO_MYKROBE",
         "MIX_NTM_WIN",
