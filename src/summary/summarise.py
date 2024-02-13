@@ -1,6 +1,5 @@
 """Summay JSON output from GPAS"""
 
-
 import json
 import logging
 import os
@@ -374,7 +373,7 @@ def organism_name(
     # This is a special case of more than one TB linage
     # we may wish to report both lineages in future, but
     # for now we simply report the run as "mixed".
-    if cm_name == "M.tuberculosis" and mixed_tb_lineage == True:
+    if cm_name == "M.tuberculosis" and mixed_tb_lineage is True:
         return "M.tuberculosis (mixed lineage)"
     # Lookup name by Compatitive Mapping name and mykrobe
     # lineage.
@@ -421,7 +420,9 @@ def generate_sequencing_quality(mappings: dict, clockwork: dict) -> dict:
         "Mean Depth": tb_mapping["meandepth"],
         "Mixed calls": clockwork["Sequencing Quality"]["Mixed calls"],
         "Null calls": clockwork["Sequencing Quality"]["Null calls"],
-        "Reference genome length": clockwork["Sequencing Quality"]["Reference genome length"],
+        "Reference genome length": clockwork["Sequencing Quality"][
+            "Reference genome length"
+        ],
     }
 
     return seq_qual
@@ -540,6 +541,7 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
     """
     amr = {"Resistance Prediction Summary": {}, "Resistance Prediction Detail": []}
     data = gnomonicus_data.get("data")
+    meta = gnomonicus_data.get("meta")
 
     # There's 2 main situations here:
     # 1. Populated everything - a sample had >=1 variant within a resistance gene
@@ -548,8 +550,9 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
 
     # let's put the drugs in alphabetical order
     raw_antibiogram = dict(sorted((data.get("antibiogram")).items()))
-    # add BDQ as a placeholder as it will be in e.g. version 2 of the WHO catalogue when it arrives
-    raw_antibiogram["BDQ"] = "-"
+    if meta.get("catalogue_name") != "WHO-UCN-GTB-PCI-2023.5":
+        # Filter out BDQ if we haven't used WHO v2
+        raw_antibiogram["BDQ"] = "-"
     antibiogram = {}
     # the code below groups the drugs according to the treatment_classes
     # this effectively hardcodes version 1 of the WHO catalogue
@@ -610,9 +613,9 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
         effects_muts_vars_df.set_index(["drug", "gene", "mutation"], inplace=True)
 
         # use the pandas helper function defined elsewhere to extract COV from the vcf_evidence field
-        effects_muts_vars_df[
-            ["coverage_ref", "coverage_alt"]
-        ] = effects_muts_vars_df.apply(unpack_COV_from_info, axis=1)
+        effects_muts_vars_df[["coverage_ref", "coverage_alt"]] = (
+            effects_muts_vars_df.apply(unpack_COV_from_info, axis=1)
+        )
         effects_muts_vars_df.drop(columns=["vcf_evidence", "vcf_idx"], inplace=True)
 
         # ignore mutations that have no effect
