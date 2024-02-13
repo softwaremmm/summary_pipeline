@@ -81,8 +81,8 @@ WTCHG_885333_73205296_3 = {
     "competitivemapping_report": "test_data/WTCHG_885333_73205296_1/species_comparison_report.json",
     "mykrobe_report": "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
     "clockwork_report": "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
-    "gnomonicus": "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
-    "expected_output": "test_data/WTCHG_885333_73205296_1/main_report.json",
+    "gnomonicus": "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report_BDQ.json",
+    "expected_output": "test_data/WTCHG_885333_73205296_1/main_report_BDQ.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 

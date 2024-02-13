@@ -86,10 +86,10 @@
                         "Drug Name": "BDQ",
                         "Mutations": [
                             {
-                                "gene": "Rv0678",
-                                "mutation": "Q22X",
-                                "prediction": "F",
-                                "evidence": {
+                                "Gene": "Rv0678",
+                                "Mutation": "Q22X",
+                                "Prediction": "F",
+                                "Evidence": {
                                     "Resistant prediction": "Q22!",
                                     "Observed_samples": {
                                     "Present_SOLO_SR": 4,
@@ -101,7 +101,12 @@
                                     "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
                                     "WHO HGVS": "Rv0678_p.Gln22*",
                                     "FASTA called": "N"
-                                }
+                                },
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [null, null],
+                                "Position": null
+
                             }
                         ]
                     },
