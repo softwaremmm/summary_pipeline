@@ -1,3 +1,9 @@
+## 2.2.1 (2024-02-13)
+
+### Fix
+
+- enable BDQ in antibiogram for WHO v2 results
+
 ## 2.2.0 (2024-01-16)
 
 ### Feat
