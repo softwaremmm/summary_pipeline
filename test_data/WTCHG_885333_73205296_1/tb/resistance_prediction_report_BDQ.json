@@ -305,7 +305,7 @@
         "vcf_idx": 1
       },
       {
-        "variant": "4408054a>c",
+        "variant": "4408054a>z",
         "nucleotide_index": 4408054,
         "gene_name": "gid",
         "gene_position": 50,
@@ -334,7 +334,7 @@
             "c"
           ]
         },
-        "vcf_idx": 1
+        "vcf_idx": null
       },
       {
         "variant": "4408156a>c",
@@ -415,11 +415,11 @@
         "alt": "cgt"
       },
       {
-        "mutation": "L50R",
+        "mutation": "L50Z",
         "gene": "gid",
         "gene_position": 50.0,
         "ref": "ctg",
-        "alt": "cgg"
+        "alt": "czg"
       },
       {
         "mutation": "S315T",
@@ -505,7 +505,7 @@
         },
         {
           "gene": "gid",
-          "mutation": "L50R",
+          "mutation": "L50Z",
           "prediction": "U",
           "evidence": {}
         },

@@ -200,13 +200,13 @@
                         "Mutations": [
                             {
                                 "Gene": "gid",
-                                "Mutation": "L50R",
+                                "Mutation": "L50Z",
                                 "Position": 50,
                                 "Ref": "ctg",
-                                "Alt": "cgg",
+                                "Alt": "czg",
                                 "Coverage": [
-                                    0,
-                                    85
+                                    null,
+                                    null
                                 ],
                                 "Prediction": "U",
                                 "Evidence": ""
