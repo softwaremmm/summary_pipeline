@@ -1,3 +1,10 @@
+## 2.2.3 (2024-04-04)
+
+### Fix
+
+- cleanup pandas print options
+- ensure epistasis rules aren't filtered out when filtering for mutations with no effect
+
 ## 2.2.2 (2024-03-18)
 
 ### Fix
