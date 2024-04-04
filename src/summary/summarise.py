@@ -590,6 +590,9 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
         mutations_df = pandas.DataFrame(mutations_list)
         mutations_df.set_index(["gene", "mutation"], inplace=True)
 
+        pandas.set_option('display.max_columns', None)
+        pandas.set_option('display.max_rows', None)
+
         # now left-join mutations to effects so we can get the a few extra columns
         # note that this can be many:1 since a single mutation can affect multiple drugs
         effects_muts_df = effects_df.join(mutations_df[["ref", "alt", "gene_position"]])
@@ -619,12 +622,13 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
         effects_muts_vars_df.drop(columns=["vcf_evidence", "vcf_idx"], inplace=True)
 
         # ignore mutations that have no effect
-        effects_muts_vars_df = effects_muts_vars_df[
-            effects_muts_vars_df.prediction != "S"
-        ]
-
         # now we have a DataFrame with all the fields and so can construct the dict payload
         effects_muts_vars_df.reset_index(inplace=True)
+        effects_muts_vars_df = effects_muts_vars_df[
+            (effects_muts_vars_df["mutation"].str.contains(r"&")) |
+            (effects_muts_vars_df.prediction != "S")
+        ]
+
         effects_muts_vars_df.set_index("drug", inplace=True)
         payload = construct_payload(effects_muts_vars_df)
         amr["Resistance Prediction Detail"] = payload

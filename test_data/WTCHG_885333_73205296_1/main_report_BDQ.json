@@ -70,7 +70,7 @@
                         "Moxifloxacin (MXF)": "S",
                         "Levofloxacin (LEV)": "S",
                         "Linezolid (LZD)": "S",
-                        "Bedaquiline (BDQ)": "F"
+                        "Bedaquiline (BDQ)": "S"
                     },
                     "Reserve treatment": {
                         "Amikacin (AMI)": "S",
@@ -106,7 +106,18 @@
                                 "Alt": "",
                                 "Coverage": [null, null],
                                 "Position": null
-
+                            },
+                            {
+                                "Gene": null,
+                                "Mutation": "Rv0678@192_ins_g&mmpL5@605_del_g",
+                                "Prediction": "S",
+                                "Evidence": {
+                                    "expert_rule": "Rv0678 mutations confer resistance only if the corresponding efflux pump is functional. It appears that mmpL5 LoF mutations... can confer a hyper-susceptible phenotype to BDQ and CFZ"
+                                  },
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [null, null],
+                                "Position": null
                             }
                         ]
                     },
