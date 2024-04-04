@@ -590,9 +590,6 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
         mutations_df = pandas.DataFrame(mutations_list)
         mutations_df.set_index(["gene", "mutation"], inplace=True)
 
-        pandas.set_option('display.max_columns', None)
-        pandas.set_option('display.max_rows', None)
-
         # now left-join mutations to effects so we can get the a few extra columns
         # note that this can be many:1 since a single mutation can affect multiple drugs
         effects_muts_df = effects_df.join(mutations_df[["ref", "alt", "gene_position"]])
