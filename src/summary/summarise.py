@@ -619,12 +619,13 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
         effects_muts_vars_df.drop(columns=["vcf_evidence", "vcf_idx"], inplace=True)
 
         # ignore mutations that have no effect
-        effects_muts_vars_df = effects_muts_vars_df[
-            effects_muts_vars_df.prediction != "S"
-        ]
-
         # now we have a DataFrame with all the fields and so can construct the dict payload
         effects_muts_vars_df.reset_index(inplace=True)
+        effects_muts_vars_df = effects_muts_vars_df[
+            (effects_muts_vars_df["mutation"].str.contains(r"&")) |
+            (effects_muts_vars_df.prediction != "S")
+        ]
+
         effects_muts_vars_df.set_index("drug", inplace=True)
         payload = construct_payload(effects_muts_vars_df)
         amr["Resistance Prediction Detail"] = payload

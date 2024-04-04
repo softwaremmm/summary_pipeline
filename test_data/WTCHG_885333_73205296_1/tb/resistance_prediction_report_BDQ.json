@@ -399,6 +399,70 @@
           ]
         },
         "vcf_idx": 1
+      },
+      {
+        "variant": "779181_ins_g",
+        "nucleotide_index": 779181,
+        "gene_name": "Rv0678",
+        "gene_position": 192,
+        "codon_idx": 2,
+        "vcf_evidence": {
+          "GT": [
+            1,
+            1
+          ],
+          "DP": 74.0,
+          "ALLELE_DP": [
+            2.0,
+            74.0
+          ],
+          "FRS": 1.0,
+          "COV_TOTAL": 76,
+          "COV": [
+            0,
+            74
+          ],
+          "GT_CONF": 464.57,
+          "GT_CONF_PERCENTILE": 48.64,
+          "POS": 779181,
+          "REF": "c",
+          "ALTS": [
+            "cg"
+          ]
+        },
+        "vcf_idx": 1
+      },
+      {
+        "variant": "777876_del_c",
+        "nucleotide_index": 777876,
+        "gene_name": "mmpL5",
+        "gene_position": 605,
+        "codon_idx": 1,
+        "vcf_evidence": {
+          "GT": [
+            1,
+            1
+          ],
+          "DP": 88.0,
+          "ALLELE_DP": [
+            0.0,
+            88.0
+          ],
+          "FRS": 1.0,
+          "COV_TOTAL": 88,
+          "COV": [
+            0,
+            88
+          ],
+          "GT_CONF": 564.84,
+          "GT_CONF_PERCENTILE": 63.44,
+          "POS": 777875,
+          "REF": "ac",
+          "ALTS": [
+            "a"
+          ]
+        },
+        "vcf_idx": 1
       }
     ],
     "mutations": [
@@ -493,6 +557,16 @@
         "gene_position": 109,
         "ref": "atc",
         "alt": "att"
+      },
+      {
+        "mutation": "605_del_g",
+        "gene": "mmpL5",
+        "gene_position": 605
+      },
+      {
+        "mutation": "192_ins_g",
+        "gene": "Rv0678",
+        "gene_position": 192
       }
     ],
     "effects": {
@@ -650,6 +724,17 @@
             "WHO HGVS": "Rv0678_p.Gln22*",
             "FASTA called": "N"
           }
+        },
+        {
+          "gene": null,
+          "mutation": "Rv0678@192_ins_g&mmpL5@605_del_g",
+          "prediction": "S",
+          "evidence": {
+            "expert_rule": "Rv0678 mutations confer resistance only if the corresponding efflux pump is functional. It appears that mmpL5 LoF mutations... can confer a hyper-susceptible phenotype to BDQ and CFZ"
+          }
+        },
+        {
+          "phenotype": "S"
         }
       ]
     },
@@ -667,7 +752,7 @@
       "AMI": "S",
       "ETH": "S",
       "KAN": "S",
-      "BDQ": "F"
+      "BDQ": "S"
     }
   }
 }
