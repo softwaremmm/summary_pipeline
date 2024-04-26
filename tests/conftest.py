@@ -142,6 +142,16 @@ MIXED_TB_LINEAGE = {
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
+ONT_HET_VARIANT = {
+    "gatekeeper_report": "test_data/ont_het_variant/speciation_report.json",
+    "competitivemapping_report": "test_data/ont_het_variant/species_comparison_report.json",
+    "mykrobe_report": "test_data/ont_het_variant/subspecies_report.json",
+    "clockwork_report": "test_data/ont_het_variant/genome_creation_report.json",
+    "gnomonicus": "test_data/ont_het_variant/tb/resistance_prediction_report.json",
+    "expected_output": "test_data/ont_het_variant/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
+}
+
 
 @pytest.fixture(
     params=[
@@ -160,6 +170,7 @@ MIXED_TB_LINEAGE = {
         NO_LINEAGE_TB,
         MYKROBE_SPECIES_DIFFERENTIATES,
         MIXED_TB_LINEAGE,
+        ONT_HET_VARIANT,
     ],
     ids=[
         "covid",
@@ -177,6 +188,7 @@ MIXED_TB_LINEAGE = {
         "NO_LINEAGE_TB",
         "mykrobe_species_differentiates",
         "mixed_tb_lineage",
+        "ont_montreal",
     ],
 )
 def regression_test_set(request) -> dict:
