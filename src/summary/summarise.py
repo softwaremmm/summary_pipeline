@@ -521,7 +521,7 @@ def unpack_COV_from_info(row: pandas.Series) -> pandas.Series:
     Returns:
         pandas.Series: REF and ALT coverage values
     """
-    result = pandas.Series([None, None])
+    result = pandas.Series([None, None], dtype=float)
     if row.vcf_idx is not None and row.vcf_idx >= 0:
         idx = int(row.vcf_idx)
         if "COV" in row.vcf_evidence:

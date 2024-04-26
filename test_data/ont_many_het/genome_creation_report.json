@@ -1,0 +1,11 @@
+{
+    "Sequencing Quality": {
+        "Reference genome length": 4411532,
+        "Null calls": 923,
+        "Mixed calls": 604,
+        "Masked calls": 316078,
+        "Filtered calls": 8054,
+        "Zero coverage calls": 25020,
+        "Fixed coverage": 92.05085670918855
+    }
+}
