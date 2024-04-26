@@ -1,3 +1,10 @@
+## 2.2.4 (2024-04-26)
+
+### Fix
+
+- check coverage alt as well
+- check for None type in coverage
+
 ## 2.2.3 (2024-04-04)
 
 ### Fix
