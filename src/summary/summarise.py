@@ -488,6 +488,7 @@ def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
 
         if (
             row.coverage_ref is not None
+            and row.coverage_alt is not None
             and row.coverage_ref >= 0
             and row.coverage_alt >= 0
         ):
