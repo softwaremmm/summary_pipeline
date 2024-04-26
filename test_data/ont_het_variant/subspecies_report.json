@@ -1,0 +1,139 @@
+{
+  "phylo_group": {
+    "Non_tuberculosis_mycobacterium_complex": {
+      "percent_coverage": 99.998,
+      "median_depth": 18,
+      "inferred_from_child": true
+    },
+    "Mycobacterium_tuberculosis_complex": {
+      "percent_coverage": 80.593,
+      "median_depth": 2,
+      "inferred_from_child": true
+    }
+  },
+  "sub_complex": {
+    "subNon_tuberculosis_mycobacterium_complex": {
+      "percent_coverage": 99.998,
+      "median_depth": 18,
+      "inferred_from_child": true
+    }
+  },
+  "species": {
+    "Mycobacterium_abscessus": {
+      "percent_coverage": 99.998,
+      "median_depth": 18
+    },
+    "Mycobacterium_tuberculosis_variant_africanum": {
+      "percent_coverage": 60.155,
+      "median_depth": 2
+    }
+  },
+  "lineage": {
+    "lineage": [
+      "lineage5",
+      "lineage6"
+    ],
+    "calls_summary": {
+      "lineage5": {
+        "good_nodes": 1,
+        "tree_depth": 1,
+        "genotypes": {
+          "lineage5": 1
+        }
+      },
+      "lineage6": {
+        "good_nodes": 1,
+        "tree_depth": 1,
+        "genotypes": {
+          "lineage6": 1
+        }
+      }
+    },
+    "calls": {
+      "lineage5": {
+        "lineage5": {
+          "C1799921A": {
+            "variant": "ref-C1799921A?var_name=C1799921A&num_alts=1&ref=NC_000962.3&enum=0&gene=NA&mut=C1799921A",
+            "genotype": [
+              1,
+              1
+            ],
+            "genotype_likelihoods": [
+              -130.28130825363075,
+              -101.35578783397443
+            ],
+            "info": {
+              "coverage": {
+                "reference": {
+                  "percent_coverage": 100,
+                  "median_depth": 1,
+                  "min_non_zero_depth": 1,
+                  "kmer_count": 24,
+                  "klen": 21
+                },
+                "alternate": {
+                  "percent_coverage": 100,
+                  "median_depth": 2,
+                  "min_non_zero_depth": 1,
+                  "kmer_count": 32,
+                  "klen": 21
+                }
+              },
+              "expected_depths": [
+                2
+              ],
+              "contamination_depths": [],
+              "filter": [
+                "LOW_GT_CONF"
+              ],
+              "conf": 29
+            },
+            "_cls": "Call.VariantCall"
+          }
+        }
+      },
+      "lineage6": {
+        "lineage6": {
+          "C1816587G": {
+            "variant": "ref-C1816587G?var_name=C1816587G&num_alts=1&ref=NC_000962.3&enum=0&gene=NA&mut=C1816587G",
+            "genotype": [
+              1,
+              1
+            ],
+            "genotype_likelihoods": [
+              -150.18982157991934,
+              -20.58975735481632
+            ],
+            "info": {
+              "coverage": {
+                "reference": {
+                  "percent_coverage": 15,
+                  "median_depth": 0,
+                  "min_non_zero_depth": 1,
+                  "kmer_count": 3,
+                  "klen": 21
+                },
+                "alternate": {
+                  "percent_coverage": 100,
+                  "median_depth": 1,
+                  "min_non_zero_depth": 1,
+                  "kmer_count": 20,
+                  "klen": 21
+                }
+              },
+              "expected_depths": [
+                2
+              ],
+              "contamination_depths": [],
+              "filter": [
+                "LOW_GT_CONF"
+              ],
+              "conf": 130
+            },
+            "_cls": "Call.VariantCall"
+          }
+        }
+      }
+    }
+  }
+}

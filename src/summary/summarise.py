@@ -485,7 +485,13 @@ def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
             significant_variant["Alt"] = row.mutation[-1]
         else:
             significant_variant["Alt"] = ""
-        if row.coverage_ref >= 0 and row.coverage_alt >= 0:
+
+        if (
+            row.coverage_ref is not None
+            and row.coverage_alt is not None
+            and row.coverage_ref >= 0
+            and row.coverage_alt >= 0
+        ):
             significant_variant["Coverage"] = [
                 int(row.coverage_ref),
                 int(row.coverage_alt),
