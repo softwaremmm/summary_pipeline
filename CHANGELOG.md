@@ -1,3 +1,10 @@
+## 2.2.5 (2024-04-30)
+
+### Fix
+
+- use np nan
+- set dtype when reading cov
+
 ## 2.2.4 (2024-04-26)
 
 ### Fix
