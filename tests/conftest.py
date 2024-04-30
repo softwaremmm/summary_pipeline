@@ -152,6 +152,16 @@ ONT_HET_VARIANT = {
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
+ONT_MANY_HET = {
+    "gatekeeper_report": "test_data/ont_many_het/speciation_report.json",
+    "competitivemapping_report": "test_data/ont_many_het/species_comparison_report.json",
+    "mykrobe_report": "test_data/ont_many_het/subspecies_report.json",
+    "clockwork_report": "test_data/ont_many_het/genome_creation_report.json",
+    "gnomonicus": "test_data/ont_many_het/resistance_prediction_report.json",
+    "expected_output": "test_data/ont_many_het/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
+}
+
 
 @pytest.fixture(
     params=[
@@ -171,6 +181,7 @@ ONT_HET_VARIANT = {
         MYKROBE_SPECIES_DIFFERENTIATES,
         MIXED_TB_LINEAGE,
         ONT_HET_VARIANT,
+        ONT_MANY_HET,
     ],
     ids=[
         "covid",
@@ -189,6 +200,7 @@ ONT_HET_VARIANT = {
         "mykrobe_species_differentiates",
         "mixed_tb_lineage",
         "ont_montreal",
+        "ont_many_het",
     ],
 )
 def regression_test_set(request) -> dict:

@@ -1,0 +1,155 @@
+{
+  "phylo_group": {
+    "Mycobacterium_tuberculosis_complex": {
+      "percent_coverage": 99.592,
+      "median_depth": 96,
+      "inferred_from_child": true
+    }
+  },
+  "sub_complex": {
+    "subMycobacterium_tuberculosis_complex": {
+      "percent_coverage": 99.592,
+      "median_depth": 96
+    }
+  },
+  "species": {
+    "Mycobacterium_tuberculosis": {
+      "percent_coverage": 72.44,
+      "median_depth": 92
+    }
+  },
+  "lineage": {
+    "lineage": [
+      "lineage2.2.1"
+    ],
+    "calls_summary": {
+      "lineage2.2.1": {
+        "good_nodes": 3,
+        "tree_depth": 3,
+        "genotypes": {
+          "lineage2": 1,
+          "lineage2.2": 1,
+          "lineage2.2.1": 1
+        }
+      }
+    },
+    "calls": {
+      "lineage2.2.1": {
+        "lineage2": {
+          "G497491A": {
+            "variant": "ref-G497491A?var_name=G497491A&num_alts=1&ref=NC_000962.3&enum=0&gene=NA&mut=G497491A",
+            "genotype": [
+              1,
+              1
+            ],
+            "genotype_likelihoods": [
+              -6064.7138614930245,
+              -37.73594999678199
+            ],
+            "info": {
+              "coverage": {
+                "reference": {
+                  "percent_coverage": 100,
+                  "median_depth": 2,
+                  "min_non_zero_depth": 2,
+                  "kmer_count": 41,
+                  "klen": 21
+                },
+                "alternate": {
+                  "percent_coverage": 100,
+                  "median_depth": 85,
+                  "min_non_zero_depth": 81,
+                  "kmer_count": 1704,
+                  "klen": 21
+                }
+              },
+              "expected_depths": [
+                96
+              ],
+              "contamination_depths": [],
+              "filter": [],
+              "conf": 6027
+            },
+            "_cls": "Call.VariantCall"
+          }
+        },
+        "lineage2.2": {
+          "G2505085A": {
+            "variant": "ref-G2505085A?var_name=G2505085A&num_alts=2&ref=NC_000962.3&enum=0&gene=NA&mut=G2505085A",
+            "genotype": [
+              1,
+              1
+            ],
+            "genotype_likelihoods": [
+              -10168.542937693755,
+              -97.64265304868147
+            ],
+            "info": {
+              "coverage": {
+                "reference": {
+                  "percent_coverage": 20,
+                  "median_depth": 0,
+                  "min_non_zero_depth": 1,
+                  "kmer_count": 4,
+                  "klen": 21
+                },
+                "alternate": {
+                  "percent_coverage": 100,
+                  "median_depth": 96,
+                  "min_non_zero_depth": 93,
+                  "kmer_count": 1932,
+                  "klen": 21
+                }
+              },
+              "expected_depths": [
+                96
+              ],
+              "contamination_depths": [],
+              "filter": [],
+              "conf": 10071
+            },
+            "_cls": "Call.VariantCall"
+          }
+        },
+        "lineage2.2.1": {
+          "G346693T": {
+            "variant": "ref-G346693T?var_name=G346693T&num_alts=1&ref=NC_000962.3&enum=0&gene=NA&mut=G346693T",
+            "genotype": [
+              1,
+              1
+            ],
+            "genotype_likelihoods": [
+              -3842.526067243939,
+              -316.2184858333288
+            ],
+            "info": {
+              "coverage": {
+                "reference": {
+                  "percent_coverage": 100,
+                  "median_depth": 2,
+                  "min_non_zero_depth": 2,
+                  "kmer_count": 42,
+                  "klen": 21
+                },
+                "alternate": {
+                  "percent_coverage": 100,
+                  "median_depth": 49,
+                  "min_non_zero_depth": 37,
+                  "kmer_count": 1015,
+                  "klen": 21
+                }
+              },
+              "expected_depths": [
+                96
+              ],
+              "contamination_depths": [],
+              "filter": [],
+              "conf": 3526
+            },
+            "_cls": "Call.VariantCall"
+          }
+        }
+      }
+    }
+  }
+}
