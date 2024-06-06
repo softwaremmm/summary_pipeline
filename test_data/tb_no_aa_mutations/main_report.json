@@ -1,0 +1,194 @@
+{
+    "Pipeline Outcome": "Sufficient TB reads for analysis completion.",
+    "Organism Identification": {
+        "Human Reads": null,
+        "Unclassified Reads": 67,
+        "Non-Mycobacterium Bacteria Reads": 652,
+        "Mycobacterium Reads": 1977558
+    },
+    "Mycobacterium Results": {
+        "Summary": [
+            {
+                "Name": "M.tuberculosis (Unknown)",
+                "Num Reads": 3953463,
+                "Coverage": 98.6802,
+                "Depth": 132.507
+            }
+        ],
+        "Species": [
+            {
+                "Name": "M.tuberculosis",
+                "Num Reads": 3953463,
+                "Coverage": 98.6802,
+                "Mean Depth": 132.507,
+                "Length": 4411532.0
+            }
+        ],
+        "Phylogenic Group": [
+            {
+                "Name": "Mycobacterium_tuberculosis_complex",
+                "Coverage": 14.468,
+                "Median Depth": 2
+            }
+        ],
+        "Subspecies": [
+            {
+                "Name": "Mycobacterium_tuberculosis",
+                "Coverage": 14.468,
+                "Median Depth": 2
+            }
+        ],
+        "Lineage": []
+    },
+    "Genomes": [
+        {
+            "Name": "M. tuberculosis",
+            "Sequencing Quality": {
+                "Mapped To": "M.tuberculosis",
+                "Num Reads": 3953463.0,
+                "Coverage": 98.132,
+                "Mean Depth": 132.507,
+                "Mixed calls": 351,
+                "Null calls": 87041,
+                "Reference genome length": 4411532
+            },
+            "Resistance Prediction": {
+                "Resistance Prediction Summary": {
+                    "First-line treatment": {
+                        "Isoniazid (INH)": "S",
+                        "Rifampicin (RIF)": "S",
+                        "Pyrazinamide (PZA)": "S",
+                        "Ethambutol (EMB)": "S"
+                    },
+                    "Second-line treatment": {
+                        "Moxifloxacin (MXF)": "S",
+                        "Levofloxacin (LEV)": "S",
+                        "Linezolid (LZD)": "S",
+                        "Bedaquiline (BDQ)": "-"
+                    },
+                    "Reserve treatment": {
+                        "Amikacin (AMI)": "S",
+                        "Kanamycin (KAN)": "S",
+                        "Streptomycin (STM)": "F",
+                        "Capreomycin (CAP)": "S",
+                        "Ethionamide (ETH)": "S",
+                        "Delamanid (DLM)": "S"
+                    }
+                },
+                "Resistance Prediction Detail": [
+                    {
+                        "Drug Name": "STM",
+                        "Mutations": [
+                            {
+                                "Gene": "rrs",
+                                "Mutation": "g878x",
+                                "Position": 878,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    null,
+                                    null
+                                ],
+                                "Prediction": "F",
+                                "Evidence": {
+                                    "Resistant prediction": "g878a",
+                                    "Observed_samples": {
+                                      "Present_SOLO_SR": 38,
+                                      "Present_SOLO_R": 33,
+                                      "Present_SOLO_S": 5
+                                    },
+                                    "Additional grading criteria applied": "Evidence from ALL dataset only",
+                                    "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
+                                    "INITIAL CONFIDENCE GRADING": "1) Assoc w R",
+                                    "WHO HGVS": "rrs_n.878G>A",
+                                    "FASTA called": "N"
+                                  }
+                            }
+                        ]
+                    },
+                    {
+                        "Drug Name": "LZD",
+                        "Mutations": [
+                            {
+                                "Gene": "rrl",
+                                "Mutation": "a1158g",
+                                "Position": 1158,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    0,
+                                    2
+                                ],
+                                "Prediction": "U",
+                                "Evidence": {
+                                    "reporting_rule": "True"
+                                  }
+                            },
+                            {
+                                "Gene": "rrl",
+                                "Mutation": "g2270x",
+                                "Position": 2270,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    null,
+                                    null
+                                ],
+                                "Prediction": "F",
+                                "Evidence": {
+                                    "Resistant prediction": "g2270t",
+                                    "Observed_samples": {
+                                      "Present_SOLO_SR": 6,
+                                      "Present_SOLO_R": 4,
+                                      "Present_SOLO_S": 2
+                                    },
+                                    "Additional grading criteria applied": "Selection evidence",
+                                    "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
+                                    "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
+                                    "WHO HGVS": "rrl_n.2270G>T",
+                                    "FASTA called": "N"
+                                  }
+                            },
+                            {
+                                "Gene": "rrl",
+                                "Mutation": "g2299x",
+                                "Position": 2299,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    null,
+                                    null
+                                ],
+                                "Prediction": "F",
+                                "Evidence": {
+                                    "Resistant prediction": "g2299t",
+                                    "Observed_samples": {
+                                      "Present_SOLO_SR": 1,
+                                      "Present_SOLO_R": 1,
+                                      "Present_SOLO_S": 0
+                                    },
+                                    "Additional grading criteria applied": "Selection evidence",
+                                    "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
+                                    "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
+                                    "WHO HGVS": "rrl_n.2299G>T",
+                                    "FASTA called": "N"
+                                  }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "Metadata": {
+        "Pipeline build": "v0.0.55",
+        "Reference Data Files": {
+            "manifest": "target_101_new.fasta",
+            "ref_files": "Ref_prepare",
+            "tb_ref_genome": "NC_000962.3.gbk",
+            "tb_amr_cat": "NC_000962.3_WHO-UCN-GTB-PCI-2021.7_v1.0_GARC1_RUS.csv",
+            "tb_minor_alleles": "minor_alleles.txt",
+            "human_genome_dir": "human-genome"
+        }
+    }
+}
