@@ -597,10 +597,10 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
         mutations_df = pandas.DataFrame(mutations_list)
         # In cases of 0 AA mutations, no `ref` or `alt` fields are present
         # so put in dummy values for these
-        # if "ref" not in mutations_df.columns:
-        #     mutations_df["ref"] = np.nan
-        # if "alt" not in mutations_df.columns:
-        #     mutations_df["alt"] = np.nan
+        if "ref" not in mutations_df.columns:
+            mutations_df["ref"] = np.nan
+        if "alt" not in mutations_df.columns:
+            mutations_df["alt"] = np.nan
         mutations_df.set_index(["gene", "mutation"], inplace=True)
 
         # now left-join mutations to effects so we can get the a few extra columns

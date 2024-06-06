@@ -63,8 +63,8 @@
                     "Second-line treatment": {
                         "Moxifloxacin (MXF)": "S",
                         "Levofloxacin (LEV)": "S",
-                        "Linezolid (LZD)": "S",
-                        "Bedaquiline (BDQ)": "-"
+                        "Linezolid (LZD)": "F",
+                        "Bedaquiline (BDQ)": "S"
                     },
                     "Reserve treatment": {
                         "Amikacin (AMI)": "S",
@@ -77,44 +77,14 @@
                 },
                 "Resistance Prediction Detail": [
                     {
-                        "Drug Name": "STM",
-                        "Mutations": [
-                            {
-                                "Gene": "rrs",
-                                "Mutation": "g878x",
-                                "Position": 878,
-                                "Ref": "",
-                                "Alt": "",
-                                "Coverage": [
-                                    null,
-                                    null
-                                ],
-                                "Prediction": "F",
-                                "Evidence": {
-                                    "Resistant prediction": "g878a",
-                                    "Observed_samples": {
-                                      "Present_SOLO_SR": 38,
-                                      "Present_SOLO_R": 33,
-                                      "Present_SOLO_S": 5
-                                    },
-                                    "Additional grading criteria applied": "Evidence from ALL dataset only",
-                                    "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
-                                    "INITIAL CONFIDENCE GRADING": "1) Assoc w R",
-                                    "WHO HGVS": "rrs_n.878G>A",
-                                    "FASTA called": "N"
-                                  }
-                            }
-                        ]
-                    },
-                    {
                         "Drug Name": "LZD",
                         "Mutations": [
                             {
                                 "Gene": "rrl",
                                 "Mutation": "a1158g",
                                 "Position": 1158,
-                                "Ref": "",
-                                "Alt": "",
+                                "Ref": "a",
+                                "Alt": "g",
                                 "Coverage": [
                                     0,
                                     2
@@ -128,8 +98,8 @@
                                 "Gene": "rrl",
                                 "Mutation": "g2270x",
                                 "Position": 2270,
-                                "Ref": "",
-                                "Alt": "",
+                                "Ref": "g",
+                                "Alt": "x",
                                 "Coverage": [
                                     null,
                                     null
@@ -153,8 +123,8 @@
                                 "Gene": "rrl",
                                 "Mutation": "g2299x",
                                 "Position": 2299,
-                                "Ref": "",
-                                "Alt": "",
+                                "Ref": "g",
+                                "Alt": "x",
                                 "Coverage": [
                                     null,
                                     null
@@ -171,6 +141,36 @@
                                     "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
                                     "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
                                     "WHO HGVS": "rrl_n.2299G>T",
+                                    "FASTA called": "N"
+                                  }
+                            }
+                        ]
+                    },
+                    {
+                        "Drug Name": "STM",
+                        "Mutations": [
+                            {
+                                "Gene": "rrs",
+                                "Mutation": "g878x",
+                                "Position": 878,
+                                "Ref": "g",
+                                "Alt": "x",
+                                "Coverage": [
+                                    null,
+                                    null
+                                ],
+                                "Prediction": "F",
+                                "Evidence": {
+                                    "Resistant prediction": "g878a",
+                                    "Observed_samples": {
+                                      "Present_SOLO_SR": 38,
+                                      "Present_SOLO_R": 33,
+                                      "Present_SOLO_S": 5
+                                    },
+                                    "Additional grading criteria applied": "Evidence from ALL dataset only",
+                                    "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
+                                    "INITIAL CONFIDENCE GRADING": "1) Assoc w R",
+                                    "WHO HGVS": "rrs_n.878G>A",
                                     "FASTA called": "N"
                                   }
                             }

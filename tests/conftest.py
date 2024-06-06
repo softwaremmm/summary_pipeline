@@ -131,7 +131,7 @@ NO_AA_MUTATIONS_TB = {
     "competitivemapping_report": "test_data/no_lineage_tb/species_comparison_report.json",
     "mykrobe_report": "test_data/no_lineage_tb/subspecies_report.json",
     "clockwork_report": "test_data/no_lineage_tb/genome_creation_report.json",
-    "gnomonicus": "test_data/tb_no_aa_mutations/tb/resistance_prediction_report.json",
+    "gnomonicus": "test_data/tb_no_aa_mutations/resistance_prediction_report.json",
     "expected_output": "test_data/tb_no_aa_mutations/main_report.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
