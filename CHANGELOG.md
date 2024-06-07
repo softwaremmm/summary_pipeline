@@ -1,3 +1,10 @@
+## 2.2.6 (2024-06-07)
+
+### Fix
+
+- allow gnomonicus reports to not specify ref/alt fields in mutations (happens if there are 0 AA mutations)
+- progress
+
 ## 2.2.5 (2024-04-30)
 
 ### Fix
