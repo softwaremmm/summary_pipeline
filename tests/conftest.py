@@ -124,6 +124,18 @@ NO_LINEAGE_TB = {
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
+NO_AA_MUTATIONS_TB = {
+    "PIPELINE_BUILD": "test_data/no_lineage_tb/PIPELINE_BUILD",
+    "gatekeeper_report": "test_data/no_lineage_tb/speciation_report.json",
+    "knowledge": "test_data/no_lineage_tb/knowledge.json",
+    "competitivemapping_report": "test_data/no_lineage_tb/species_comparison_report.json",
+    "mykrobe_report": "test_data/no_lineage_tb/subspecies_report.json",
+    "clockwork_report": "test_data/no_lineage_tb/genome_creation_report.json",
+    "gnomonicus": "test_data/tb_no_aa_mutations/resistance_prediction_report.json",
+    "expected_output": "test_data/tb_no_aa_mutations/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
+}
+
 MYKROBE_SPECIES_DIFFERENTIATES = {
     "gatekeeper_report": "test_data/mykrobe_species_differentiates/speciation_report.json",
     "competitivemapping_report": "test_data/mykrobe_species_differentiates/species_comparison_report.json",
@@ -178,6 +190,7 @@ ONT_MANY_HET = {
         MIX_NTM_WIN,
         MIX_TB_WIN,
         NO_LINEAGE_TB,
+        NO_AA_MUTATIONS_TB,
         MYKROBE_SPECIES_DIFFERENTIATES,
         MIXED_TB_LINEAGE,
         ONT_HET_VARIANT,
@@ -197,6 +210,7 @@ ONT_MANY_HET = {
         "MIX_NTM_WIN",
         "MIX_TB_WIN",
         "NO_LINEAGE_TB",
+        "NO_AA_MUTATIONS_TB",
         "mykrobe_species_differentiates",
         "mixed_tb_lineage",
         "ont_montreal",
