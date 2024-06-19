@@ -395,7 +395,7 @@ def organism_name(
     return name
 
 
-def generate_sequencing_quality(mappings: dict, clockwork: dict) -> dict:
+def generate_sequencing_quality(mappings: dict, genome_creation_report: dict) -> dict:
     """Summarises sequencing quality.
 
     Args:
@@ -417,11 +417,11 @@ def generate_sequencing_quality(mappings: dict, clockwork: dict) -> dict:
     seq_qual = {
         "Mapped To": tb_mapping["genome_name"],
         "Num Reads": tb_mapping["numreads"],
-        "Coverage": clockwork["Sequencing Quality"]["Fixed coverage"],
+        "Coverage": genome_creation_report["Sequencing Quality"]["Fixed coverage"],
         "Mean Depth": tb_mapping["meandepth"],
-        "Mixed calls": clockwork["Sequencing Quality"]["Mixed calls"],
-        "Null calls": clockwork["Sequencing Quality"]["Null calls"],
-        "Reference genome length": clockwork["Sequencing Quality"][
+        "Mixed calls": genome_creation_report["Sequencing Quality"]["Mixed calls"],
+        "Null calls": genome_creation_report["Sequencing Quality"]["Null calls"],
+        "Reference genome length": genome_creation_report["Sequencing Quality"][
             "Reference genome length"
         ],
     }
@@ -681,15 +681,15 @@ def create_summary(
     # and potentially also have resistance predictions returned
     # FIXME for now we can hard code much of this since there will only ever be one and it will always
     # be M. tuberculosis
-    if "mapping" in reports and "clockwork" in reports and "gnomonicus" in reports:
+    if "mapping" in reports and "creation_report" in reports and "gnomonicus" in reports:
         output["Pipeline Outcome"] = "Sufficient TB reads for analysis completion."
-        clockwork_json = read_json_file(reports["clockwork"])
+        creation_report_json = read_json_file(reports["creation_report"])
         gnom_json = read_json_file(reports["gnomonicus"])
         output["Genomes"] = []
         genome = {}
         genome["Name"] = "M. tuberculosis"
         genome["Sequencing Quality"] = generate_sequencing_quality(
-            mapping_json, clockwork_json
+            mapping_json, creation_report_json
         )
         genome["Resistance Prediction"] = generate_resistance_prediction(gnom_json)
         output["Genomes"].append(genome)
@@ -784,7 +784,7 @@ def collate_reports(cli_args: Arguments) -> dict:
     except AttributeError as error:
         logging.info(error)
     try:
-        reports["clockwork"] = cli_args.clockwork
+        reports["creation_report"] = cli_args.creation_report
     except AttributeError as error:
         logging.info(error)
     try:

@@ -13,8 +13,8 @@ def test_regression(regression_test_set: dict):
         test_reports["mapping"] = regression_test_set["competitivemapping_report"]
     if "mykrobe_report" in regression_test_set:
         test_reports["mykrobe"] = regression_test_set["mykrobe_report"]
-    if "clockwork_report" in regression_test_set:
-        test_reports["clockwork"] = regression_test_set["clockwork_report"]
+    if "creation_report" in regression_test_set:
+        test_reports["creation_report"] = regression_test_set["creation_report"]
     if "gnomonicus" in regression_test_set:
         test_reports["gnomonicus"] = regression_test_set["gnomonicus"]
     if "name_mapping" in regression_test_set:

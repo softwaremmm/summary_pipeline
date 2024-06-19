@@ -34,7 +34,7 @@ def test_Argument_all_reports(all_reports: list):
     assert cli_args.mykrobe == Path(
         "test_data/WTCHG_885333_73205296_1/subspecies_report.json"
     )
-    assert cli_args.clockwork == Path(
+    assert cli_args.creation_report == Path(
         "test_data/WTCHG_885333_73205296_1/genome_creation_report.json"
     )
     assert cli_args.gnomonicus == Path(
@@ -54,7 +54,7 @@ def test_Argument_five_reports(five_reports: list):
     assert cli_args.mykrobe == Path(
         "test_data/WTCHG_885333_73205296_1/subspecies_report.json"
     )
-    assert cli_args.clockwork == Path(
+    assert cli_args.creation_report == Path(
         "test_data/WTCHG_885333_73205296_1/genome_creation_report.json"
     )
     assert cli_args.gnomonicus == Path(

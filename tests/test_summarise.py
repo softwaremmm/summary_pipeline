@@ -10,7 +10,7 @@ def test_read_pipeline_build(eg_PIPELINE_BUILD) -> None:
 
 
 def test_generate_sequencing_quality(
-    eg_competitivemapping_report_contents, eg_clockwork_report_contents
+    eg_competitivemapping_report_contents, eg_creation_report_contents
 ) -> None:
     expected_sq_output = {
         "Mapped To": "M.tuberculosis",
@@ -22,18 +22,18 @@ def test_generate_sequencing_quality(
         "Reference genome length": 4411532,
     }
     sq_output = summarise.generate_sequencing_quality(
-        eg_competitivemapping_report_contents, eg_clockwork_report_contents
+        eg_competitivemapping_report_contents, eg_creation_report_contents
     )
     assert sq_output == expected_sq_output
 
 
 def test_generate_sequencing_quality_error(
-    eg_duplicate_tb_competitivemapping_report_contents, eg_clockwork_report_contents
+    eg_duplicate_tb_competitivemapping_report_contents, eg_creation_report_contents
 ) -> None:
     with pytest.raises(ValueError):
         summarise.generate_sequencing_quality(
             eg_duplicate_tb_competitivemapping_report_contents,
-            eg_clockwork_report_contents,
+            eg_creation_report_contents,
         )
 
 
@@ -48,7 +48,7 @@ def test_collate_reports_five(five_reports_args):
     expected_reports["mykrobe"] = Path(
         "test_data/WTCHG_885333_73205296_1/subspecies_report.json"
     )
-    expected_reports["clockwork"] = Path(
+    expected_reports["creation_report"] = Path(
         "test_data/WTCHG_885333_73205296_1/genome_creation_report.json"
     )
     expected_reports["gnomonicus"] = Path(
