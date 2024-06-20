@@ -46,7 +46,7 @@ WTCHG_885333_73205296_1 = {
     "gatekeeper_report": "test_data/WTCHG_885333_73205296_1/speciation_report.json",
     "competitivemapping_report": "test_data/WTCHG_885333_73205296_1/species_comparison_report.json",
     "mykrobe_report": "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
-    "clockwork_report": "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
+    "creation_report": "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
     "gnomonicus": "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
     "expected_output": "test_data/WTCHG_885333_73205296_1/main_report.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
@@ -57,7 +57,7 @@ BCG = {
     "gatekeeper_report": "test_data/BCG/speciation_report.json",
     "competitivemapping_report": "test_data/BCG/species_comparison_report.json",
     "mykrobe_report": "test_data/BCG/subspecies_report.json",
-    "clockwork_report": "test_data/BCG/genome_creation_report.json",
+    "creation_report": "test_data/BCG/genome_creation_report.json",
     "gnomonicus": "test_data/BCG/tb/resistance_prediction_report.json",
     "expected_output": "test_data/BCG/main_report.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
@@ -68,7 +68,7 @@ WTCHG_885333_73205296_2 = {
     "gatekeeper_report": "test_data/WTCHG_885333_73205296_1/speciation_report.json",
     "competitivemapping_report": "test_data/WTCHG_885333_73205296_1/species_comparison_report.json",
     "mykrobe_report": "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
-    "clockwork_report": "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
+    "creation_report": "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
     "gnomonicus": "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report2.json",
     "expected_output": "test_data/WTCHG_885333_73205296_1/main_report2.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
@@ -80,7 +80,7 @@ WTCHG_885333_73205296_3 = {
     "gatekeeper_report": "test_data/WTCHG_885333_73205296_1/speciation_report.json",
     "competitivemapping_report": "test_data/WTCHG_885333_73205296_1/species_comparison_report.json",
     "mykrobe_report": "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
-    "clockwork_report": "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
+    "creation_report": "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
     "gnomonicus": "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report_BDQ.json",
     "expected_output": "test_data/WTCHG_885333_73205296_1/main_report_BDQ.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
@@ -106,7 +106,7 @@ MIX_TB_WIN = {
     "gatekeeper_report": "test_data/mix_tb_win/speciation_report.json",
     "competitivemapping_report": "test_data/mix_tb_win/species_comparison_report.json",
     "mykrobe_report": "test_data/mix_tb_win/subspecies_report.json",
-    "clockwork_report": "test_data/mix_tb_win/genome_creation_report.json",
+    "creation_report": "test_data/mix_tb_win/genome_creation_report.json",
     "gnomonicus": "test_data/mix_tb_win/tb/resistance_prediction_report.json",
     "expected_output": "test_data/mix_tb_win/main_report.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
@@ -118,7 +118,7 @@ NO_LINEAGE_TB = {
     "knowledge": "test_data/no_lineage_tb/knowledge.json",
     "competitivemapping_report": "test_data/no_lineage_tb/species_comparison_report.json",
     "mykrobe_report": "test_data/no_lineage_tb/subspecies_report.json",
-    "clockwork_report": "test_data/no_lineage_tb/genome_creation_report.json",
+    "creation_report": "test_data/no_lineage_tb/genome_creation_report.json",
     "gnomonicus": "test_data/no_lineage_tb/tb/resistance_prediction_report.json",
     "expected_output": "test_data/no_lineage_tb/main_report.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
@@ -130,7 +130,7 @@ NO_AA_MUTATIONS_TB = {
     "knowledge": "test_data/no_lineage_tb/knowledge.json",
     "competitivemapping_report": "test_data/no_lineage_tb/species_comparison_report.json",
     "mykrobe_report": "test_data/no_lineage_tb/subspecies_report.json",
-    "clockwork_report": "test_data/no_lineage_tb/genome_creation_report.json",
+    "creation_report": "test_data/no_lineage_tb/genome_creation_report.json",
     "gnomonicus": "test_data/tb_no_aa_mutations/resistance_prediction_report.json",
     "expected_output": "test_data/tb_no_aa_mutations/main_report.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
@@ -148,7 +148,7 @@ MIXED_TB_LINEAGE = {
     "gatekeeper_report": "test_data/mixed_tb_lineage/speciation_report.json",
     "competitivemapping_report": "test_data/mixed_tb_lineage/species_comparison_report.json",
     "mykrobe_report": "test_data/mixed_tb_lineage/subspecies_report.json",
-    "clockwork_report": "test_data/mixed_tb_lineage/genome_creation_report.json",
+    "creation_report": "test_data/mixed_tb_lineage/genome_creation_report.json",
     "gnomonicus": "test_data/mixed_tb_lineage/tb/resistance_prediction_report.json",
     "expected_output": "test_data/mixed_tb_lineage/main_report.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
@@ -158,7 +158,7 @@ ONT_HET_VARIANT = {
     "gatekeeper_report": "test_data/ont_het_variant/speciation_report.json",
     "competitivemapping_report": "test_data/ont_het_variant/species_comparison_report.json",
     "mykrobe_report": "test_data/ont_het_variant/subspecies_report.json",
-    "clockwork_report": "test_data/ont_het_variant/genome_creation_report.json",
+    "creation_report": "test_data/ont_het_variant/genome_creation_report.json",
     "gnomonicus": "test_data/ont_het_variant/tb/resistance_prediction_report.json",
     "expected_output": "test_data/ont_het_variant/main_report.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
@@ -168,7 +168,7 @@ ONT_MANY_HET = {
     "gatekeeper_report": "test_data/ont_many_het/speciation_report.json",
     "competitivemapping_report": "test_data/ont_many_het/species_comparison_report.json",
     "mykrobe_report": "test_data/ont_many_het/subspecies_report.json",
-    "clockwork_report": "test_data/ont_many_het/genome_creation_report.json",
+    "creation_report": "test_data/ont_many_het/genome_creation_report.json",
     "gnomonicus": "test_data/ont_many_het/resistance_prediction_report.json",
     "expected_output": "test_data/ont_many_het/main_report.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
@@ -234,7 +234,7 @@ def all_reports_set_individually() -> list:
         "test_data/WTCHG_885333_73205296_1/species_comparison_report.json",
         "--mykrobe",
         "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
-        "--clockwork",
+        "--creation_report",
         "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
         "--gnomonicus",
         "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
@@ -394,13 +394,13 @@ def eg_mykrobe_report_contents(eg_mykrobe_report) -> dict:
 
 
 @pytest.fixture
-def eg_clockwork_report() -> Path:
+def eg_creation_report() -> Path:
     return Path("test_data/WTCHG_885333_73205296_1/genome_creation_report.json")
 
 
 @pytest.fixture
-def eg_clockwork_report_contents(eg_clockwork_report) -> dict:
-    with open(eg_clockwork_report, "r") as file:
+def eg_creation_report_contents(eg_creation_report) -> dict:
+    with open(eg_creation_report, "r") as file:
         return json.load(file)
 
 
