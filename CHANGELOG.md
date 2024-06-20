@@ -1,3 +1,10 @@
+## 2.2.7 (2024-06-20)
+
+### Fix
+
+- correct readme seq quality descriptions
+- rename clockwork to creation report
+
 ## 2.2.6 (2024-06-07)
 
 ### Fix
