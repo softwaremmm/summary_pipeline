@@ -487,18 +487,10 @@ def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
         else:
             significant_variant["Alt"] = ""
 
-        if (
-            row.coverage_ref is not None
-            and row.coverage_alt is not None
-            and row.coverage_ref >= 0
-            and row.coverage_alt >= 0
-        ):
-            significant_variant["Coverage"] = [
-                int(row.coverage_ref),
-                int(row.coverage_alt),
-            ]
-        else:
-            significant_variant["Coverage"] = [None, None]
+        significant_variant["Coverage"] = [
+            int(row.coverage_ref) if row.coverage_ref is not None and row.coverage_ref >=0 else None,
+            int(row.coverage_alt) if row.coverage_alt is not None and row.coverage_alt >=0 else None,
+        ]
         significant_variant["Prediction"] = row.prediction
         if row.evidence == {}:
             significant_variant["Evidence"] = ""
@@ -526,9 +518,23 @@ def unpack_COV_from_info(row: pandas.Series) -> pandas.Series:
     if row.vcf_idx is not None and row.vcf_idx >= 0:
         idx = int(row.vcf_idx)
         if "COV" in row.vcf_evidence:
-            result = pandas.Series(
-                [row.vcf_evidence["COV"][0], row.vcf_evidence["COV"][idx]]
-            )
+            if len(row.vcf_evidence["COV"]) == 1:
+                # Edge case of only one COV value
+                if idx == 0:
+                    # It's a ref (probably a null) so put in just the ref coverage
+                    result = pandas.Series([row.vcf_evidence["COV"][0], 0])
+                else:
+                    # It's an alt (probably a null) so put in just the alt coverage
+                    result = pandas.Series([0, row.vcf_evidence["COV"][idx]])
+            else:
+                if idx == 0:
+                    # It's a ref (probably a null) so put in the ref coverage
+                    result = pandas.Series([row.vcf_evidence["COV"][0], 0])
+                else:
+                    # It's not a ref call, so give ref and alt coverage
+                    result = pandas.Series(
+                        [row.vcf_evidence["COV"][0], row.vcf_evidence["COV"][idx]]
+                    )
     return result
 
 
