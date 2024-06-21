@@ -36,4 +36,4 @@ jobs:
           cz check --rev-range origin/main..
       - name: Test with pytest
         run: |
-          pytest
+          pytest -vv
