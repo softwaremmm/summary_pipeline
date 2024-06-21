@@ -1,3 +1,9 @@
+## 2.2.8 (2024-06-21)
+
+### Fix
+
+- Pipeline outcome messages
+
 ## 2.2.7 (2024-06-20)
 
 ### Fix
