@@ -1,5 +1,5 @@
 {
-    "Pipeline Outcome": "Insufficient mycobacterial reads.",
+    "Pipeline Outcome": "Number of Mycobacterial reads is too low to proceed to Mycobacterial species identification.",
     "Organism Identification": {
         "Human Reads": null,
         "Unclassified Reads": 857,

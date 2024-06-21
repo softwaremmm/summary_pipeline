@@ -1,5 +1,5 @@
 {
-    "Pipeline Outcome": "Sufficient TB reads for analysis completion.",
+    "Pipeline Outcome": "Sufficient reads mapped to M. tuberculosis (H37Rv v3) for genome assembly, resistance prediction and relatedness assessment.",
     "Organism Identification": {
       "Human Reads": null,
       "Unclassified Reads": 2641,

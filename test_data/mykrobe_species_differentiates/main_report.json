@@ -1,5 +1,5 @@
 {
-    "Pipeline Outcome": "Insufficient TB reads.",
+    "Pipeline Outcome": "Mycobacterial species identified. Reads mapped to M. tuberculosis (H37Rv v3) too low to proceed to M. tuberculosis complex genome assembly.",
     "Organism Identification": {
         "Human Reads": null,
         "Unclassified Reads": 149712,

@@ -522,7 +522,7 @@ def unpack_COV_from_info(row: pandas.Series) -> pandas.Series:
     Returns:
         pandas.Series: REF and ALT coverage values
     """
-    result = pandas.Series([np.float64('nan'), np.float64('nan')])
+    result = pandas.Series([np.float64("nan"), np.float64("nan")])
     if row.vcf_idx is not None and row.vcf_idx >= 0:
         idx = int(row.vcf_idx)
         if "COV" in row.vcf_evidence:
@@ -635,8 +635,8 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
         # now we have a DataFrame with all the fields and so can construct the dict payload
         effects_muts_vars_df.reset_index(inplace=True)
         effects_muts_vars_df = effects_muts_vars_df[
-            (effects_muts_vars_df["mutation"].str.contains(r"&")) |
-            (effects_muts_vars_df.prediction != "S")
+            (effects_muts_vars_df["mutation"].str.contains(r"&"))
+            | (effects_muts_vars_df.prediction != "S")
         ]
 
         effects_muts_vars_df.set_index("drug", inplace=True)
@@ -660,7 +660,9 @@ def create_summary(
 
     output = {}
     if "gatekeeper" in reports:
-        output["Pipeline Outcome"] = "Insufficient mycobacterial reads."
+        output["Pipeline Outcome"] = (
+            "Number of Mycobacterial reads is too low to proceed to Mycobacterial species identification."
+        )
         gatekeeper_json = read_json_file(reports["gatekeeper"])
         output["Organism Identification"] = generate_organism_identification(
             gatekeeper_json
@@ -668,7 +670,9 @@ def create_summary(
     else:
         output = "Pipeline failed to produce a summary (summary_pipeline could not find gatekeeper report)."
     if "mapping" in reports and "mykrobe" in reports:
-        output["Pipeline Outcome"] = "Insufficient TB reads."
+        output["Pipeline Outcome"] = (
+            "Mycobacterial species identified. Reads mapped to M. tuberculosis (H37Rv v3) too low to proceed to M. tuberculosis complex genome assembly."
+        )
         mapping_json = read_json_file(reports["mapping"])
         mykrobe_data = read_json_file(reports["mykrobe"])
         name_mapping = pandas.read_csv(reports["name_mapping"])
@@ -681,8 +685,14 @@ def create_summary(
     # and potentially also have resistance predictions returned
     # FIXME for now we can hard code much of this since there will only ever be one and it will always
     # be M. tuberculosis
-    if "mapping" in reports and "creation_report" in reports and "gnomonicus" in reports:
-        output["Pipeline Outcome"] = "Sufficient TB reads for analysis completion."
+    if (
+        "mapping" in reports
+        and "creation_report" in reports
+        and "gnomonicus" in reports
+    ):
+        output["Pipeline Outcome"] = (
+            "Sufficient reads mapped to M. tuberculosis (H37Rv v3) for genome assembly, resistance prediction and relatedness assessment."
+        )
         creation_report_json = read_json_file(reports["creation_report"])
         gnom_json = read_json_file(reports["gnomonicus"])
         output["Genomes"] = []
