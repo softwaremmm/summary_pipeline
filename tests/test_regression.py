@@ -26,5 +26,7 @@ def test_regression(regression_test_set: dict):
         expected_summary = json.load(file)
 
     print(json.dumps(summary, indent=2))
+    for key in test_reports.keys():
+        print(key, test_reports[key])
 
     assert summary == expected_summary
