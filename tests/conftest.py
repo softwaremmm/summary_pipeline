@@ -124,6 +124,18 @@ NO_LINEAGE_TB = {
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
+NULL_CALLS_TB = {
+    "PIPELINE_BUILD": "test_data/tb_null_calls/PIPELINE_BUILD",
+    "gatekeeper_report": "test_data/tb_null_calls/speciation_report.json",
+    "knowledge": "test_data/tb_null_calls/knowledge.json",
+    "competitivemapping_report": "test_data/tb_null_calls/species_comparison_report.json",
+    "mykrobe_report": "test_data/tb_null_calls/subspecies_report.json",
+    "creation_report": "test_data/tb_null_calls/genome_creation_report.json",
+    "gnomonicus": "test_data/tb_null_calls/resistance_prediction_report.json",
+    "expected_output": "test_data/tb_null_calls/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
+}
+
 NO_AA_MUTATIONS_TB = {
     "PIPELINE_BUILD": "test_data/no_lineage_tb/PIPELINE_BUILD",
     "gatekeeper_report": "test_data/no_lineage_tb/speciation_report.json",
@@ -175,6 +187,7 @@ ONT_MANY_HET = {
 }
 
 
+
 @pytest.fixture(
     params=[
         covid,
@@ -190,6 +203,7 @@ ONT_MANY_HET = {
         MIX_NTM_WIN,
         MIX_TB_WIN,
         NO_LINEAGE_TB,
+        NULL_CALLS_TB,
         NO_AA_MUTATIONS_TB,
         MYKROBE_SPECIES_DIFFERENTIATES,
         MIXED_TB_LINEAGE,
@@ -210,6 +224,7 @@ ONT_MANY_HET = {
         "MIX_NTM_WIN",
         "MIX_TB_WIN",
         "NO_LINEAGE_TB",
+        "NULL_CALLS_TB",
         "NO_AA_MUTATIONS_TB",
         "mykrobe_species_differentiates",
         "mixed_tb_lineage",
