@@ -1,0 +1,22 @@
+{
+  "phylo_group": {
+    "Mycobacterium_tuberculosis_complex": {
+      "percent_coverage": 14.468,
+      "median_depth": 2,
+      "inferred_from_child": true
+    }
+  },
+  "sub_complex": {
+    "subMycobacterium_tuberculosis_complex": {
+      "percent_coverage": 14.468,
+      "median_depth": 2,
+      "inferred_from_child": true
+    }
+  },
+  "species": {
+    "Mycobacterium_tuberculosis": {
+      "percent_coverage": 14.468,
+      "median_depth": 2
+    }
+  }
+}
