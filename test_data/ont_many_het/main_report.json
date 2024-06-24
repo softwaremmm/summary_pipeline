@@ -170,21 +170,6 @@
               "Drug Name": "ETH",
               "Mutations": [
                 {
-                  "Gene": "ethA",
-                  "Mutation": "A381P",
-                  "Position": 381,
-                  "Ref": "gcc",
-                  "Alt": "ccc",
-                  "Coverage": [
-                    0,
-                    127
-                  ],
-                  "Prediction": "U",
-                  "Evidence": {
-                    "reporting_rule": "True"
-                  }
-                },
-                {
                   "Gene": "fabG1",
                   "Mutation": "g-17t",
                   "Position": -17,
@@ -206,35 +191,27 @@
                     "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
                     "WHO HGVS": "inhA_c.-779G>T"
                   }
+                },
+                {
+                  "Gene": "ethA",
+                  "Mutation": "A381P",
+                  "Position": 381,
+                  "Ref": "gcc",
+                  "Alt": "ccc",
+                  "Coverage": [
+                    0,
+                    127
+                  ],
+                  "Prediction": "U",
+                  "Evidence": {
+                    "reporting_rule": "True"
+                  }
                 }
               ]
             },
             {
               "Drug Name": "INH",
               "Mutations": [
-                {
-                  "Gene": "fabG1",
-                  "Mutation": "g-17t",
-                  "Position": -17,
-                  "Ref": "g",
-                  "Alt": "t",
-                  "Coverage": [
-                    1,
-                    115
-                  ],
-                  "Prediction": "R",
-                  "Evidence": {
-                    "Observed_samples": {
-                      "Present_SOLO_SR": 56,
-                      "Present_SOLO_R": 33,
-                      "Present_SOLO_S": 23
-                    },
-                    "Additional grading criteria applied": "WHO-endorsed gDST assay",
-                    "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
-                    "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
-                    "WHO HGVS": "inhA_c.-779G>T"
-                  }
-                },
                 {
                   "Gene": "katG",
                   "Mutation": "S315T",
@@ -256,6 +233,29 @@
                     "FINAL CONFIDENCE GRADING": "1) Assoc w R",
                     "INITIAL CONFIDENCE GRADING": "1) Assoc w R",
                     "WHO HGVS": "katG_p.Ser315Thr"
+                  }
+                },
+                {
+                  "Gene": "fabG1",
+                  "Mutation": "g-17t",
+                  "Position": -17,
+                  "Ref": "g",
+                  "Alt": "t",
+                  "Coverage": [
+                    1,
+                    115
+                  ],
+                  "Prediction": "R",
+                  "Evidence": {
+                    "Observed_samples": {
+                      "Present_SOLO_SR": 56,
+                      "Present_SOLO_R": 33,
+                      "Present_SOLO_S": 23
+                    },
+                    "Additional grading criteria applied": "WHO-endorsed gDST assay",
+                    "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
+                    "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
+                    "WHO HGVS": "inhA_c.-779G>T"
                   }
                 }
               ]
