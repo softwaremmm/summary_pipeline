@@ -81,366 +81,6 @@
             "Mutations": [
               {
                 "Gene": "tlyA",
-                "Mutation": "E25X",
-                "Position": 25,
-                "Ref": "gag",
-                "Alt": "xxx",
-                "Coverage": [
-                  1,
-                  0
-                ],
-                "Prediction": "F",
-                "Evidence": {
-                  "Resistant prediction": "E25!",
-                  "Observed_samples": {
-                    "Present_SOLO_SR": 1,
-                    "Present_SOLO_R": 0,
-                    "Present_SOLO_S": 1
-                  },
-                  "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
-                  "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
-                  "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
-                  "WHO HGVS": "tlyA_p.Glu25*"
-                }
-              },
-              {
-                "Gene": "tlyA",
-                "Mutation": "E25X",
-                "Position": 25,
-                "Ref": "gag",
-                "Alt": "xxx",
-                "Coverage": [
-                  1,
-                  0
-                ],
-                "Prediction": "F",
-                "Evidence": {
-                  "Resistant prediction": "E25!",
-                  "Observed_samples": {
-                    "Present_SOLO_SR": 1,
-                    "Present_SOLO_R": 0,
-                    "Present_SOLO_S": 1
-                  },
-                  "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
-                  "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
-                  "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
-                  "WHO HGVS": "tlyA_p.Glu25*"
-                }
-              },
-              {
-                "Gene": "tlyA",
-                "Mutation": "E25X",
-                "Position": 25,
-                "Ref": "gag",
-                "Alt": "xxx",
-                "Coverage": [
-                  1,
-                  0
-                ],
-                "Prediction": "F",
-                "Evidence": {
-                  "Resistant prediction": "E25!",
-                  "Observed_samples": {
-                    "Present_SOLO_SR": 1,
-                    "Present_SOLO_R": 0,
-                    "Present_SOLO_S": 1
-                  },
-                  "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
-                  "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
-                  "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
-                  "WHO HGVS": "tlyA_p.Glu25*"
-                }
-              },
-              {
-                "Gene": "tlyA",
-                "Mutation": "G66X",
-                "Position": 66,
-                "Ref": "gga",
-                "Alt": "xxx",
-                "Coverage": [
-                  1,
-                  0
-                ],
-                "Prediction": "F",
-                "Evidence": {
-                  "Resistant prediction": "G66!",
-                  "Observed_samples": {
-                    "Present_SOLO_SR": 0,
-                    "Present_SOLO_R": 0,
-                    "Present_SOLO_S": 0
-                  },
-                  "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
-                  "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
-                  "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
-                  "WHO HGVS": "tlyA_p.Gly66*"
-                }
-              },
-              {
-                "Gene": "tlyA",
-                "Mutation": "G66X",
-                "Position": 66,
-                "Ref": "gga",
-                "Alt": "xxx",
-                "Coverage": [
-                  1,
-                  0
-                ],
-                "Prediction": "F",
-                "Evidence": {
-                  "Resistant prediction": "G66!",
-                  "Observed_samples": {
-                    "Present_SOLO_SR": 0,
-                    "Present_SOLO_R": 0,
-                    "Present_SOLO_S": 0
-                  },
-                  "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
-                  "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
-                  "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
-                  "WHO HGVS": "tlyA_p.Gly66*"
-                }
-              },
-              {
-                "Gene": "tlyA",
-                "Mutation": "G66X",
-                "Position": 66,
-                "Ref": "gga",
-                "Alt": "xxx",
-                "Coverage": [
-                  1,
-                  0
-                ],
-                "Prediction": "F",
-                "Evidence": {
-                  "Resistant prediction": "G66!",
-                  "Observed_samples": {
-                    "Present_SOLO_SR": 0,
-                    "Present_SOLO_R": 0,
-                    "Present_SOLO_S": 0
-                  },
-                  "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
-                  "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
-                  "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
-                  "WHO HGVS": "tlyA_p.Gly66*"
-                }
-              },
-              {
-                "Gene": "tlyA",
-                "Mutation": "Q21X",
-                "Position": 21,
-                "Ref": "caa",
-                "Alt": "xxx",
-                "Coverage": [
-                  1,
-                  0
-                ],
-                "Prediction": "F",
-                "Evidence": {
-                  "Resistant prediction": "Q21!",
-                  "Observed_samples": {
-                    "Present_SOLO_SR": 1,
-                    "Present_SOLO_R": 0,
-                    "Present_SOLO_S": 1
-                  },
-                  "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
-                  "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
-                  "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
-                  "WHO HGVS": "tlyA_p.Gln21*"
-                }
-              },
-              {
-                "Gene": "tlyA",
-                "Mutation": "Q21X",
-                "Position": 21,
-                "Ref": "caa",
-                "Alt": "xxx",
-                "Coverage": [
-                  1,
-                  0
-                ],
-                "Prediction": "F",
-                "Evidence": {
-                  "Resistant prediction": "Q21!",
-                  "Observed_samples": {
-                    "Present_SOLO_SR": 1,
-                    "Present_SOLO_R": 0,
-                    "Present_SOLO_S": 1
-                  },
-                  "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
-                  "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
-                  "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
-                  "WHO HGVS": "tlyA_p.Gln21*"
-                }
-              },
-              {
-                "Gene": "tlyA",
-                "Mutation": "Q21X",
-                "Position": 21,
-                "Ref": "caa",
-                "Alt": "xxx",
-                "Coverage": [
-                  1,
-                  0
-                ],
-                "Prediction": "F",
-                "Evidence": {
-                  "Resistant prediction": "Q21!",
-                  "Observed_samples": {
-                    "Present_SOLO_SR": 1,
-                    "Present_SOLO_R": 0,
-                    "Present_SOLO_S": 1
-                  },
-                  "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
-                  "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
-                  "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
-                  "WHO HGVS": "tlyA_p.Gln21*"
-                }
-              },
-              {
-                "Gene": "tlyA",
-                "Mutation": "Q22X",
-                "Position": 22,
-                "Ref": "cag",
-                "Alt": "xxx",
-                "Coverage": [
-                  1,
-                  0
-                ],
-                "Prediction": "F",
-                "Evidence": {
-                  "Resistant prediction": "Q22!",
-                  "Observed_samples": {
-                    "Present_SOLO_SR": 1,
-                    "Present_SOLO_R": 1,
-                    "Present_SOLO_S": 0
-                  },
-                  "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
-                  "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
-                  "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
-                  "WHO HGVS": "tlyA_p.Gln22*"
-                }
-              },
-              {
-                "Gene": "tlyA",
-                "Mutation": "Q22X",
-                "Position": 22,
-                "Ref": "cag",
-                "Alt": "xxx",
-                "Coverage": [
-                  1,
-                  0
-                ],
-                "Prediction": "F",
-                "Evidence": {
-                  "Resistant prediction": "Q22!",
-                  "Observed_samples": {
-                    "Present_SOLO_SR": 1,
-                    "Present_SOLO_R": 1,
-                    "Present_SOLO_S": 0
-                  },
-                  "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
-                  "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
-                  "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
-                  "WHO HGVS": "tlyA_p.Gln22*"
-                }
-              },
-              {
-                "Gene": "tlyA",
-                "Mutation": "Q22X",
-                "Position": 22,
-                "Ref": "cag",
-                "Alt": "xxx",
-                "Coverage": [
-                  1,
-                  0
-                ],
-                "Prediction": "F",
-                "Evidence": {
-                  "Resistant prediction": "Q22!",
-                  "Observed_samples": {
-                    "Present_SOLO_SR": 1,
-                    "Present_SOLO_R": 1,
-                    "Present_SOLO_S": 0
-                  },
-                  "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
-                  "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
-                  "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
-                  "WHO HGVS": "tlyA_p.Gln22*"
-                }
-              },
-              {
-                "Gene": "tlyA",
-                "Mutation": "R18X",
-                "Position": 18,
-                "Ref": "cga",
-                "Alt": "xxx",
-                "Coverage": [
-                  1,
-                  0
-                ],
-                "Prediction": "F",
-                "Evidence": {
-                  "Resistant prediction": "R18!",
-                  "Observed_samples": {
-                    "Present_SOLO_SR": 3,
-                    "Present_SOLO_R": 2,
-                    "Present_SOLO_S": 1
-                  },
-                  "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
-                  "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
-                  "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
-                  "WHO HGVS": "tlyA_p.Arg18*"
-                }
-              },
-              {
-                "Gene": "tlyA",
-                "Mutation": "R18X",
-                "Position": 18,
-                "Ref": "cga",
-                "Alt": "xxx",
-                "Coverage": [
-                  1,
-                  0
-                ],
-                "Prediction": "F",
-                "Evidence": {
-                  "Resistant prediction": "R18!",
-                  "Observed_samples": {
-                    "Present_SOLO_SR": 3,
-                    "Present_SOLO_R": 2,
-                    "Present_SOLO_S": 1
-                  },
-                  "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
-                  "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
-                  "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
-                  "WHO HGVS": "tlyA_p.Arg18*"
-                }
-              },
-              {
-                "Gene": "tlyA",
-                "Mutation": "R18X",
-                "Position": 18,
-                "Ref": "cga",
-                "Alt": "xxx",
-                "Coverage": [
-                  1,
-                  0
-                ],
-                "Prediction": "F",
-                "Evidence": {
-                  "Resistant prediction": "R18!",
-                  "Observed_samples": {
-                    "Present_SOLO_SR": 3,
-                    "Present_SOLO_R": 2,
-                    "Present_SOLO_S": 1
-                  },
-                  "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
-                  "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
-                  "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
-                  "WHO HGVS": "tlyA_p.Arg18*"
-                }
-              },
-              {
-                "Gene": "tlyA",
                 "Mutation": "R3X",
                 "Position": 3,
                 "Ref": "cga",
@@ -461,6 +101,126 @@
                   "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
                   "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
                   "WHO HGVS": "tlyA_p.Arg3*"
+                }
+              },
+              {
+                "Gene": "tlyA",
+                "Mutation": "R18X",
+                "Position": 18,
+                "Ref": "cga",
+                "Alt": "xxx",
+                "Coverage": [
+                  1,
+                  0
+                ],
+                "Prediction": "F",
+                "Evidence": {
+                  "Resistant prediction": "R18!",
+                  "Observed_samples": {
+                    "Present_SOLO_SR": 3,
+                    "Present_SOLO_R": 2,
+                    "Present_SOLO_S": 1
+                  },
+                  "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
+                  "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
+                  "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
+                  "WHO HGVS": "tlyA_p.Arg18*"
+                }
+              },
+              {
+                "Gene": "tlyA",
+                "Mutation": "Q21X",
+                "Position": 21,
+                "Ref": "caa",
+                "Alt": "xxx",
+                "Coverage": [
+                  1,
+                  0
+                ],
+                "Prediction": "F",
+                "Evidence": {
+                  "Resistant prediction": "Q21!",
+                  "Observed_samples": {
+                    "Present_SOLO_SR": 1,
+                    "Present_SOLO_R": 0,
+                    "Present_SOLO_S": 1
+                  },
+                  "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
+                  "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
+                  "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
+                  "WHO HGVS": "tlyA_p.Gln21*"
+                }
+              },
+              {
+                "Gene": "tlyA",
+                "Mutation": "Q22X",
+                "Position": 22,
+                "Ref": "cag",
+                "Alt": "xxx",
+                "Coverage": [
+                  1,
+                  0
+                ],
+                "Prediction": "F",
+                "Evidence": {
+                  "Resistant prediction": "Q22!",
+                  "Observed_samples": {
+                    "Present_SOLO_SR": 1,
+                    "Present_SOLO_R": 1,
+                    "Present_SOLO_S": 0
+                  },
+                  "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
+                  "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
+                  "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
+                  "WHO HGVS": "tlyA_p.Gln22*"
+                }
+              },
+              {
+                "Gene": "tlyA",
+                "Mutation": "E25X",
+                "Position": 25,
+                "Ref": "gag",
+                "Alt": "xxx",
+                "Coverage": [
+                  1,
+                  0
+                ],
+                "Prediction": "F",
+                "Evidence": {
+                  "Resistant prediction": "E25!",
+                  "Observed_samples": {
+                    "Present_SOLO_SR": 1,
+                    "Present_SOLO_R": 0,
+                    "Present_SOLO_S": 1
+                  },
+                  "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
+                  "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
+                  "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
+                  "WHO HGVS": "tlyA_p.Glu25*"
+                }
+              },
+              {
+                "Gene": "tlyA",
+                "Mutation": "G66X",
+                "Position": 66,
+                "Ref": "gga",
+                "Alt": "xxx",
+                "Coverage": [
+                  1,
+                  0
+                ],
+                "Prediction": "F",
+                "Evidence": {
+                  "Resistant prediction": "G66!",
+                  "Observed_samples": {
+                    "Present_SOLO_SR": 0,
+                    "Present_SOLO_R": 0,
+                    "Present_SOLO_S": 0
+                  },
+                  "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
+                  "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
+                  "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
+                  "WHO HGVS": "tlyA_p.Gly66*"
                 }
               }
             ]
