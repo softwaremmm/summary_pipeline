@@ -1,3 +1,10 @@
+## 2.2.9 (2024-06-24)
+
+### Fix
+
+- formatting
+- parse cov at null sites better
+
 ## 2.2.8 (2024-06-21)
 
 ### Fix
