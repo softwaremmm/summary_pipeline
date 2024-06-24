@@ -676,7 +676,6 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
             | (effects_muts_vars_df.prediction != "S")
         ]
 
-        # effects_muts_vars_df.set_index("drug", inplace=True)
         payload = construct_payload(effects_muts_vars_df)
         amr["Resistance Prediction Detail"] = payload
 
