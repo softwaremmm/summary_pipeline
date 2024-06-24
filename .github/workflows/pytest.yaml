@@ -36,4 +36,10 @@ jobs:
           cz check --rev-range origin/main..
       - name: Test with pytest
         run: |
+          pwd
+          echo
+          ls -lhat
+          echo
+          python --version
+          pip freeze
           pytest -vv
