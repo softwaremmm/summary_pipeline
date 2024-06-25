@@ -413,8 +413,16 @@ def generate_sequencing_quality(mappings: dict, genome_creation_report: dict) ->
         )
     tb_mapping = tb_mappings[0]
 
+    genome_name = tb_mapping["genome_name"]
+
+    match genome_name:
+        case "M.tuberculosis":
+            mapped_to_name = "M. tuberculosis H37Rv v3 (NC_000962.3)"
+        case _:
+            mapped_to_name = genome_name
+
     seq_qual = {
-        "Mapped To": tb_mapping["genome_name"],
+        "Mapped To": mapped_to_name,
         "Num Reads": tb_mapping["numreads"],
         "Coverage": genome_creation_report["Sequencing Quality"]["Fixed coverage"],
         "Mean Depth": tb_mapping["meandepth"],
