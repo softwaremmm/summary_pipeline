@@ -342,7 +342,6 @@ def process_lineages(lineages: dict) -> list[dict]:
 
     else:
         for lineage_name in lineages:
-            print(lineage_name)
             new_line = {
                 "Name": lineage_name,
                 "Coverage": lineages[lineage_name]["percent_coverage"],
@@ -446,15 +445,18 @@ def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
     # TODO: tried to do more elegantly with pandas.to_json() but ended up doing simply
 
     # create an alphabetical list of the drugs
-    drugs = significant_variants_df.index.unique()
+    drugs = significant_variants_df.drug.unique()
     drugs = sorted(drugs)
 
     drug_blocks = {}
     for drug in drugs:
         drug_blocks[drug] = {"Drug Name": drug, "Mutations": []}
+    
+    seen_mutations = {}
 
     for idx, row in significant_variants_df.iterrows():
         significant_variant = {}
+        keep = True
 
         if pandas.isnull(row.gene):
             significant_variant["Gene"] = None
@@ -495,13 +497,38 @@ def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
             if row.coverage_alt is not None and row.coverage_alt >= 0
             else None,
         ]
+
+        if seen_mutations.get((row.drug, significant_variant["Gene"], significant_variant["Mutation"])):
+            # Already seen this mutation so check if this is variant's coverage is less
+            old_idx, significant_cov = seen_mutations.get((row.drug, significant_variant["Gene"], significant_variant["Mutation"]))
+            if significant_cov[0] is not None:
+                if significant_variant["Coverage"][0] is not None:
+                    if significant_variant["Coverage"][0] > significant_cov[0]:
+                        keep = False
+                else:
+                    # Last row for this codon gave a specific value, this didn't, so don't keep this
+                    keep = False
+            if significant_cov[1] is not None:
+                if significant_variant["Coverage"][1] is not None:
+                    if significant_variant["Coverage"][1] > significant_cov[1]:
+                        keep = False
+                else:
+                    # Last row for this codon gave a specific value, this didn't, so don't keep this
+                    keep = False
+            
+            if keep:
+                # Remove the old one in favour of this
+                del drug_blocks[row.drug]["Mutations"][old_idx]
+
+
         significant_variant["Prediction"] = row.prediction
         if row.evidence == {}:
             significant_variant["Evidence"] = ""
         else:
             significant_variant["Evidence"] = row.evidence
 
-        drug_blocks[idx]["Mutations"].append(significant_variant)
+        drug_blocks[row.drug]["Mutations"].append(significant_variant)
+        seen_mutations[(row.drug, significant_variant["Gene"], significant_variant["Mutation"])] = (len(drug_blocks[row.drug]["Mutations"])-1, significant_variant["Coverage"])
 
     for drug_name in drugs:
         payload.append(drug_blocks[drug_name])
@@ -649,7 +676,6 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
             | (effects_muts_vars_df.prediction != "S")
         ]
 
-        effects_muts_vars_df.set_index("drug", inplace=True)
         payload = construct_payload(effects_muts_vars_df)
         amr["Resistance Prediction Detail"] = payload
 
