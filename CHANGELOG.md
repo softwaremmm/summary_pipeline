@@ -1,3 +1,9 @@
+## 2.2.10 (2024-06-25)
+
+### Fix
+
+- return only a single mutation for >1 snp in a codon
+
 ## 2.2.9 (2024-06-24)
 
 ### Fix
