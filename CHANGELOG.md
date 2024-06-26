@@ -1,3 +1,13 @@
+## 2.3.0 (2024-06-26)
+
+### Feat
+
+- use full reference name for TB
+
+### Refactor
+
+- rename reference genome
+
 ## 2.2.10 (2024-06-25)
 
 ### Fix
