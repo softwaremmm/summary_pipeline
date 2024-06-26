@@ -13,7 +13,7 @@ def test_generate_sequencing_quality(
     eg_competitivemapping_report_contents, eg_creation_report_contents
 ) -> None:
     expected_sq_output = {
-        "Mapped To": "M.tuberculosis",
+        "Mapped To": "M. tuberculosis (H37Rv v3) NC_000962.3",
         "Num Reads": 3953463.0,
         "Coverage": 98.132,
         "Mean Depth": 132.507,
