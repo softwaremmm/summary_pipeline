@@ -44,7 +44,7 @@
     {
       "Name": "M. tuberculosis",
       "Sequencing Quality": {
-        "Mapped To": "M. tuberculosis H37Rv v3 (NC_000962.3)",
+        "Mapped To": "M. tuberculosis (H37Rv v3) NC_000962.3",
         "Num Reads": 3953463.0,
         "Coverage": 98.132,
         "Mean Depth": 132.507,

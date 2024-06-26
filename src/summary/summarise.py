@@ -417,7 +417,7 @@ def generate_sequencing_quality(mappings: dict, genome_creation_report: dict) ->
 
     match genome_name:
         case "M.tuberculosis":
-            mapped_to_name = "M. tuberculosis H37Rv v3 (NC_000962.3)"
+            mapped_to_name = "M. tuberculosis (H37Rv v3) NC_000962.3"
         case _:
             mapped_to_name = genome_name
 
