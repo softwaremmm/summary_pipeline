@@ -1,3 +1,9 @@
+## 2.3.1 (2024-06-27)
+
+### Fix
+
+- update format on species comparison report
+
 ## 2.3.0 (2024-06-26)
 
 ### Feat
