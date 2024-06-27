@@ -1,1255 +1,1261 @@
-[
-    {
-        "genome_name":"M.gordonae",
-        "length":7103222.0,
-        "coverage":54.1159,
-        "numreads":252921.0,
-        "meandepth":4.90154
-    },
-    {
-        "genome_name":"M.paragordonae",
-        "length":6730319.0,
-        "coverage":45.6098,
-        "numreads":158811.0,
-        "meandepth":3.18373
-    },
-    {
-        "genome_name":"M.intracellulare_chimaera",
-        "length":5865644.0,
-        "coverage":6.01676,
-        "numreads":8579.0,
-        "meandepth":0.202367
-    },
-    {
-        "genome_name":"M.helveticum",
-        "length":5769598.0,
-        "coverage":5.9514365942,
-        "numreads":7859.0,
-        "meandepth":0.1821587689
-    },
-    {
-        "genome_name":"M.kubicae",
-        "length":5958133.0,
-        "coverage":5.87223,
-        "numreads":7533.0,
-        "meandepth":0.164372
-    },
-    {
-        "genome_name":"M.nebraskense",
-        "length":6727177.0,
-        "coverage":5.322216759,
-        "numreads":9270.0,
-        "meandepth":0.1860440564
-    },
-    {
-        "genome_name":"M.parmense",
-        "length":5952912.0,
-        "coverage":5.14014,
-        "numreads":6573.0,
-        "meandepth":0.147577
-    },
-    {
-        "genome_name":"M.parascrofulaceum",
-        "length":6564171.0,
-        "coverage":4.7063394227,
-        "numreads":6625.0,
-        "meandepth":0.1319553444
-    },
-    {
-        "genome_name":"M.asiaticum",
-        "length":5938932.0,
-        "coverage":3.7900413358,
-        "numreads":6394.0,
-        "meandepth":0.1176719886
-    },
-    {
-        "genome_name":"M.avium_hominissuis",
-        "length":5118245.0,
-        "coverage":2.44304,
-        "numreads":2406.0,
-        "meandepth":0.0543346
-    },
-    {
-        "genome_name":"M.vicinigordonae",
-        "length":6266765.0,
-        "coverage":2.12903,
-        "numreads":3605.0,
-        "meandepth":0.0583213
-    },
-    {
-        "genome_name":"M.angelicum",
-        "length":6662911.0,
-        "coverage":1.8257333814,
-        "numreads":3514.0,
-        "meandepth":0.0519435165
-    },
-    {
-        "genome_name":"M.shinjukuense",
-        "length":4504020.0,
-        "coverage":1.63556,
-        "numreads":1981.0,
-        "meandepth":0.0420908
-    },
-    {
-        "genome_name":"M.heidelbergense",
-        "length":5050576.0,
-        "coverage":1.60407,
-        "numreads":1611.0,
-        "meandepth":0.0350051
-    },
-    {
-        "genome_name":"M.paraense",
-        "length":5619528.0,
-        "coverage":1.5847585995,
-        "numreads":2133.0,
-        "meandepth":0.0400501651
-    },
-    {
-        "genome_name":"M.intracellulare",
-        "length":5621211.0,
-        "coverage":1.57785,
-        "numreads":1601.0,
-        "meandepth":0.0360227
-    },
-    {
-        "genome_name":"M.szulgai",
-        "length":6672659.0,
-        "coverage":1.4460207281,
-        "numreads":2896.0,
-        "meandepth":0.0421230895
-    },
-    {
-        "genome_name":"M.conspicuum",
-        "length":6237139.0,
-        "coverage":1.39651,
-        "numreads":2461.0,
-        "meandepth":0.0378286
-    },
-    {
-        "genome_name":"M.alsense",
-        "length":5692845.0,
-        "coverage":1.3725657035,
-        "numreads":2138.0,
-        "meandepth":0.0375395765
-    },
-    {
-        "genome_name":"M.interjectum",
-        "length":5903836.0,
-        "coverage":1.3480209865,
-        "numreads":2054.0,
-        "meandepth":0.0352518295
-    },
-    {
-        "genome_name":"M.palustre",
-        "length":6037522.0,
-        "coverage":1.3169306539,
-        "numreads":1994.0,
-        "meandepth":0.0329305642
-    },
-    {
-        "genome_name":"M.intermedium",
-        "length":6817968.0,
-        "coverage":1.2800882752,
-        "numreads":2762.0,
-        "meandepth":0.0387804693
-    },
-    {
-        "genome_name":"M.europaeum",
-        "length":5630674.0,
-        "coverage":1.2716589954,
-        "numreads":1603.0,
-        "meandepth":0.030410921
-    },
-    {
-        "genome_name":"M.bohemicum",
-        "length":5097190.0,
-        "coverage":1.2332081075,
-        "numreads":1487.0,
-        "meandepth":0.0297565777
-    },
-    {
-        "genome_name":"M.malmoense",
-        "length":5319859.0,
-        "coverage":1.20811,
-        "numreads":1499.0,
-        "meandepth":0.0296664
-    },
-    {
-        "genome_name":"M.lacus",
-        "length":5092988.0,
-        "coverage":1.18339,
-        "numreads":1889.0,
-        "meandepth":0.0348446
-    },
-    {
-        "genome_name":"M.tuberculosis",
-        "length":4411532.0,
-        "coverage":1.07076,
-        "numreads":1012.0,
-        "meandepth":0.0204344
-    },
-    {
-        "genome_name":"M.colombiense",
-        "length":5581643.0,
-        "coverage":1.05281,
-        "numreads":1360.0,
-        "meandepth":0.0238326
-    },
-    {
-        "genome_name":"M.paraseoulense",
-        "length":6085955.0,
-        "coverage":1.00579,
-        "numreads":1567.0,
-        "meandepth":0.0264
-    },
-    {
-        "genome_name":"M.pseudokansasii",
-        "length":6425786.0,
-        "coverage":0.9889369343,
-        "numreads":3113.0,
-        "meandepth":0.0600216394
-    },
-    {
-        "genome_name":"M.ostraviense",
-        "length":6127734.0,
-        "coverage":0.975042,
-        "numreads":1729.0,
-        "meandepth":0.029711
-    },
-    {
-        "genome_name":"M.gastri",
-        "length":5816659.0,
-        "coverage":0.9600355153,
-        "numreads":1577.0,
-        "meandepth":0.0269809571
-    },
-    {
-        "genome_name":"M.persicum",
-        "length":6347217.0,
-        "coverage":0.9310539903,
-        "numreads":2644.0,
-        "meandepth":0.0470922884
-    },
-    {
-        "genome_name":"M.vulneris",
-        "length":6266718.0,
-        "coverage":0.8707110749,
-        "numreads":1370.0,
-        "meandepth":0.0210992347
-    },
-    {
-        "genome_name":"M.kansasii",
-        "length":6432277.0,
-        "coverage":0.869879,
-        "numreads":1858.0,
-        "meandepth":0.029102
-    },
-    {
-        "genome_name":"M.florentinum",
-        "length":6219859.0,
-        "coverage":0.868396,
-        "numreads":1384.0,
-        "meandepth":0.0225499
-    },
-    {
-        "genome_name":"M.marseillense",
-        "length":5266037.0,
-        "coverage":0.866021,
-        "numreads":1102.0,
-        "meandepth":0.0204771
-    },
-    {
-        "genome_name":"M.lepraemurium",
-        "length":4050523.0,
-        "coverage":0.857865,
-        "numreads":710.0,
-        "meandepth":0.0185137
-    },
-    {
-        "genome_name":"M.simulans",
-        "length":6192024.0,
-        "coverage":0.8222833314,
-        "numreads":1854.0,
-        "meandepth":0.0248981404
-    },
-    {
-        "genome_name":"M.shigaense",
-        "length":5232660.0,
-        "coverage":0.814767,
-        "numreads":1046.0,
-        "meandepth":0.0195721
-    },
-    {
-        "genome_name":"M.lentiflavum",
-        "length":5901783.0,
-        "coverage":0.808976,
-        "numreads":1106.0,
-        "meandepth":0.0181689
-    },
-    {
-        "genome_name":"M.saskatchewanense",
-        "length":6008916.0,
-        "coverage":0.804787,
-        "numreads":1244.0,
-        "meandepth":0.0205112
-    },
-    {
-        "genome_name":"M.mantenii",
-        "length":6185541.0,
-        "coverage":0.799898,
-        "numreads":1144.0,
-        "meandepth":0.0183829
-    },
-    {
-        "genome_name":"M.ahvazicum",
-        "length":6120821.0,
-        "coverage":0.7626753927,
-        "numreads":1066.0,
-        "meandepth":0.018270274
-    },
-    {
-        "genome_name":"M.triplex",
-        "length":6382840.0,
-        "coverage":0.7567789436,
-        "numreads":1156.0,
-        "meandepth":0.0184140786
-    },
-    {
-        "genome_name":"M.sherrisii",
-        "length":5562166.0,
-        "coverage":0.7180121284,
-        "numreads":1104.0,
-        "meandepth":0.0190912962
-    },
-    {
-        "genome_name":"M.genavense",
-        "length":4936071.0,
-        "coverage":0.7128343057,
-        "numreads":831.0,
-        "meandepth":0.01665758
-    },
-    {
-        "genome_name":"M.arosiense",
-        "length":5980206.0,
-        "coverage":0.6978525101,
-        "numreads":1241.0,
-        "meandepth":0.0197232329
-    },
-    {
-        "genome_name":"M.attenuatum",
-        "length":6344986.0,
-        "coverage":0.6949264582,
-        "numreads":1443.0,
-        "meandepth":0.0216982408
-    },
-    {
-        "genome_name":"M.stomatepiae",
-        "length":6210822.0,
-        "coverage":0.690327,
-        "numreads":1055.0,
-        "meandepth":0.0165389
-    },
-    {
-        "genome_name":"M.branderi",
-        "length":5115366.0,
-        "coverage":0.626309,
-        "numreads":955.0,
-        "meandepth":0.0173411
-    },
-    {
-        "genome_name":"M.marinum",
-        "length":6336293.0,
-        "coverage":0.624845,
-        "numreads":1352.0,
-        "meandepth":0.0165014
-    },
-    {
-        "genome_name":"M.paraintracellulare",
-        "length":5332910.0,
-        "coverage":0.584765,
-        "numreads":592.0,
-        "meandepth":0.0113696
-    },
-    {
-        "genome_name":"M.montefiorense",
-        "length":5744567.0,
-        "coverage":0.5612260012,
-        "numreads":811.0,
-        "meandepth":0.0129766165
-    },
-    {
-        "genome_name":"M.celatum",
-        "length":4720680.0,
-        "coverage":0.5456839384,
-        "numreads":738.0,
-        "meandepth":0.0138382526
-    },
-    {
-        "genome_name":"M.saopaulense",
-        "length":5607630.0,
-        "coverage":0.482664,
-        "numreads":850.0,
-        "meandepth":0.011122
-    },
-    {
-        "genome_name":"M.simiae",
-        "length":5788994.0,
-        "coverage":0.464105,
-        "numreads":715.0,
-        "meandepth":0.0113299
-    },
-    {
-        "genome_name":"M.fragae",
-        "length":4731047.0,
-        "coverage":0.4419529432,
-        "numreads":827.0,
-        "meandepth":0.0132896632
-    },
-    {
-        "genome_name":"M.cookii",
-        "length":5318517.0,
-        "coverage":0.43593,
-        "numreads":635.0,
-        "meandepth":0.011127
-    },
-    {
-        "genome_name":"M.noviomagense",
-        "length":4779798.0,
-        "coverage":0.338445,
-        "numreads":551.0,
-        "meandepth":0.00920562
-    },
-    {
-        "genome_name":"M.mageritense",
-        "length":8006721.0,
-        "coverage":0.31817,
-        "numreads":512.0,
-        "meandepth":0.0071706
-    },
-    {
-        "genome_name":"M.poriferae",
-        "length":5712830.0,
-        "coverage":0.314503,
-        "numreads":7446.0,
-        "meandepth":0.182436
-    },
-    {
-        "genome_name":"M.spongiae",
-        "length":5581157.0,
-        "coverage":0.314093,
-        "numreads":803.0,
-        "meandepth":0.00941776
-    },
-    {
-        "genome_name":"M.xenopi",
-        "length":4917655.0,
-        "coverage":0.307504,
-        "numreads":544.0,
-        "meandepth":0.008452
-    },
-    {
-        "genome_name":"M.haemophilum",
-        "length":4235765.0,
-        "coverage":0.299497,
-        "numreads":447.0,
-        "meandepth":0.00835363
-    },
-    {
-        "genome_name":"M.shimoidei",
-        "length":4842631.0,
-        "coverage":0.2977096055,
-        "numreads":600.0,
-        "meandepth":0.0098188336
-    },
-    {
-        "genome_name":"M.longobardus",
-        "length":4546193.0,
-        "coverage":0.2803883675,
-        "numreads":449.0,
-        "meandepth":0.0095451145
-    },
-    {
-        "genome_name":"M.paraterrae",
-        "length":5522624.0,
-        "coverage":0.275829,
-        "numreads":447.0,
-        "meandepth":0.00729889
-    },
-    {
-        "genome_name":"M.phlei",
-        "length":5349645.0,
-        "coverage":0.27413,
-        "numreads":397.0,
-        "meandepth":0.00666493
-    },
-    {
-        "genome_name":"M.novum",
-        "length":4458926.0,
-        "coverage":0.26715,
-        "numreads":316.0,
-        "meandepth":0.005393
-    },
-    {
-        "genome_name":"M.fallax",
-        "length":4156821.0,
-        "coverage":0.263158,
-        "numreads":279.0,
-        "meandepth":0.00625863
-    },
-    {
-        "genome_name":"M.alkanivorans",
-        "length":4050246.0,
-        "coverage":0.2471452385,
-        "numreads":321.0,
-        "meandepth":0.0075829984
-    },
-    {
-        "genome_name":"M.hassiacum",
-        "length":5269097.0,
-        "coverage":0.2449,
-        "numreads":345.0,
-        "meandepth":0.00492779
-    },
-    {
-        "genome_name":"M.heckeshornense",
-        "length":4865109.0,
-        "coverage":0.244147,
-        "numreads":396.0,
-        "meandepth":0.00659533
-    },
-    {
-        "genome_name":"M.acidiphilus",
-        "length":4545982.0,
-        "coverage":0.2433797269,
-        "numreads":403.0,
-        "meandepth":0.0062879719
-    },
-    {
-        "genome_name":"M.trivialis",
-        "length":3591083.0,
-        "coverage":0.2431856557,
-        "numreads":226.0,
-        "meandepth":0.0054189779
-    },
-    {
-        "genome_name":"M.rutilum",
-        "length":5987931.0,
-        "coverage":0.23853,
-        "numreads":338.0,
-        "meandepth":0.00557672
-    },
-    {
-        "genome_name":"M.terrae",
-        "length":4532317.0,
-        "coverage":0.236413,
-        "numreads":368.0,
-        "meandepth":0.00647528
-    },
-    {
-        "genome_name":"M.chlorophenolicum",
-        "length":7379520.0,
-        "coverage":0.2337415765,
-        "numreads":646.0,
-        "meandepth":0.00900872
-    },
-    {
-        "genome_name":"M.crocinum",
-        "length":5965857.0,
-        "coverage":0.227545,
-        "numreads":454.0,
-        "meandepth":0.00692357
-    },
-    {
-        "genome_name":"M.kumamotonensis",
-        "length":5330450.0,
-        "coverage":0.2228142387,
-        "numreads":1369.0,
-        "meandepth":0.0287782478
-    },
-    {
-        "genome_name":"M.manitobense",
-        "length":6058529.0,
-        "coverage":0.212048173,
-        "numreads":411.0,
-        "meandepth":0.0059346106
-    },
-    {
-        "genome_name":"M.litorale",
-        "length":5579510.0,
-        "coverage":0.203136,
-        "numreads":328.0,
-        "meandepth":0.0047825
-    },
-    {
-        "genome_name":"M.palauense",
-        "length":6230283.0,
-        "coverage":0.199750162,
-        "numreads":317.0,
-        "meandepth":0.0045534042
-    },
-    {
-        "genome_name":"M.elephantis",
-        "length":5223216.0,
-        "coverage":0.1978282951,
-        "numreads":351.0,
-        "meandepth":0.0048382064
-    },
-    {
-        "genome_name":"M.heraklionensis",
-        "length":5061737.0,
-        "coverage":0.19193,
-        "numreads":250.0,
-        "meandepth":0.00359521
-    },
-    {
-        "genome_name":"M.parakoreensis",
-        "length":3921563.0,
-        "coverage":0.190511,
-        "numreads":249.0,
-        "meandepth":0.00477539
-    },
-    {
-        "genome_name":"M.hiberniae",
-        "length":4396654.0,
-        "coverage":0.184913,
-        "numreads":324.0,
-        "meandepth":0.00565999
-    },
-    {
-        "genome_name":"M.anyangense",
-        "length":5696751.0,
-        "coverage":0.184035,
-        "numreads":319.0,
-        "meandepth":0.00426155
-    },
-    {
-        "genome_name":"M.pallens",
-        "length":6035548.0,
-        "coverage":0.180845,
-        "numreads":331.0,
-        "meandepth":0.00577926
-    },
-    {
-        "genome_name":"M.lacusdiani",
-        "length":6138096.0,
-        "coverage":0.1797300272,
-        "numreads":405.0,
-        "meandepth":0.007173724
-    },
-    {
-        "genome_name":"M.chitae",
-        "length":5461769.0,
-        "coverage":0.178733,
-        "numreads":265.0,
-        "meandepth":0.00400676
-    },
-    {
-        "genome_name":"M.rufum",
-        "length":5750445.0,
-        "coverage":0.178647,
-        "numreads":277.0,
-        "meandepth":0.00401499
-    },
-    {
-        "genome_name":"M.nonchromogenicus",
-        "length":4465329.0,
-        "coverage":0.1785534369,
-        "numreads":309.0,
-        "meandepth":0.006231791
-    },
-    {
-        "genome_name":"M.celeriflavum",
-        "length":5024249.0,
-        "coverage":0.176006,
-        "numreads":371.0,
-        "meandepth":0.00659243
-    },
-    {
-        "genome_name":"M.pulveris",
-        "length":5484749.0,
-        "coverage":0.170546,
-        "numreads":231.0,
-        "meandepth":0.00362131
-    },
-    {
-        "genome_name":"M.cosmeticum",
-        "length":6462090.0,
-        "coverage":0.1700379538,
-        "numreads":295.0,
-        "meandepth":0.0040582848
-    },
-    {
-        "genome_name":"M.thermoresistibile",
-        "length":4950685.0,
-        "coverage":0.16828,
-        "numreads":220.0,
-        "meandepth":0.00347366
-    },
-    {
-        "genome_name":"M.phocaicum",
-        "length":5853197.0,
-        "coverage":0.166046,
-        "numreads":287.0,
-        "meandepth":0.00448575
-    },
-    {
-        "genome_name":"M.monacense",
-        "length":6042466.0,
-        "coverage":0.166041,
-        "numreads":331.0,
-        "meandepth":0.00442568
-    },
-    {
-        "genome_name":"M.malmesburyense",
-        "length":5470965.0,
-        "coverage":0.1639198575,
-        "numreads":311.0,
-        "meandepth":0.0040250643
-    },
-    {
-        "genome_name":"M.porcinum",
-        "length":6960672.0,
-        "coverage":0.1617946674,
-        "numreads":260.0,
-        "meandepth":0.0035792518
-    },
-    {
-        "genome_name":"M.virginiensis",
-        "length":4980142.0,
-        "coverage":0.159995,
-        "numreads":216.0,
-        "meandepth":0.00313907
-    },
-    {
-        "genome_name":"M.koreensis",
-        "length":4155701.0,
-        "coverage":0.154607,
-        "numreads":185.0,
-        "meandepth":0.00346873
-    },
-    {
-        "genome_name":"M.frederiksbergense",
-        "length":6388142.0,
-        "coverage":0.1527829909,
-        "numreads":454.0,
-        "meandepth":0.0058228168
-    },
-    {
-        "genome_name":"M.moriokaense",
-        "length":6225779.0,
-        "coverage":0.150632,
-        "numreads":294.0,
-        "meandepth":0.00403516
-    },
-    {
-        "genome_name":"M.gilvum",
-        "length":5547747.0,
-        "coverage":0.144779,
-        "numreads":240.0,
-        "meandepth":0.00374675
-    },
-    {
-        "genome_name":"M.psychrotolerans",
-        "length":5732362.0,
-        "coverage":0.14453,
-        "numreads":253.0,
-        "meandepth":0.0031453
-    },
-    {
-        "genome_name":"M.novocastrense",
-        "length":5624151.0,
-        "coverage":0.144217,
-        "numreads":234.0,
-        "meandepth":0.00348337
-    },
-    {
-        "genome_name":"M.smegmatis",
-        "length":6993871.0,
-        "coverage":0.142339,
-        "numreads":260.0,
-        "meandepth":0.00273225
-    },
-    {
-        "genome_name":"M.parafortuitum",
-        "length":6044196.0,
-        "coverage":0.141987,
-        "numreads":245.0,
-        "meandepth":0.00282006
-    },
-    {
-        "genome_name":"M.gallinarum",
-        "length":6090007.0,
-        "coverage":0.137028,
-        "numreads":256.0,
-        "meandepth":0.00386929
-    },
-    {
-        "genome_name":"M.llatzerense",
-        "length":6091591.0,
-        "coverage":0.1326418936,
-        "numreads":206.0,
-        "meandepth":0.0029975753
-    },
-    {
-        "genome_name":"M.aromaticivorans",
-        "length":6297623.0,
-        "coverage":0.1322558746,
-        "numreads":263.0,
-        "meandepth":0.0032583684
-    },
-    {
-        "genome_name":"M.agri",
-        "length":6987256.0,
-        "coverage":0.132240774,
-        "numreads":282.0,
-        "meandepth":0.0033433723
-    },
-    {
-        "genome_name":"M.komanii",
-        "length":5378970.0,
-        "coverage":0.1312705168,
-        "numreads":213.0,
-        "meandepth":0.0029191467
-    },
-    {
-        "genome_name":"M.vinylchloridicum",
-        "length":7196491.0,
-        "coverage":0.1298549603,
-        "numreads":376.0,
-        "meandepth":0.0041499402
-    },
-    {
-        "genome_name":"M.alvei",
-        "length":5712683.0,
-        "coverage":0.128206,
-        "numreads":253.0,
-        "meandepth":0.00423286
-    },
-    {
-        "genome_name":"M.icosiumassiliensis",
-        "length":4850031.0,
-        "coverage":0.1280195441,
-        "numreads":233.0,
-        "meandepth":0.0037519374
-    },
-    {
-        "genome_name":"M.diernhoferi",
-        "length":5998503.0,
-        "coverage":0.127932,
-        "numreads":212.0,
-        "meandepth":0.00288789
-    },
-    {
-        "genome_name":"M.aichiense",
-        "length":5925482.0,
-        "coverage":0.127753,
-        "numreads":251.0,
-        "meandepth":0.00312363
-    },
-    {
-        "genome_name":"M.bacteremicum",
-        "length":5952041.0,
-        "coverage":0.1274688673,
-        "numreads":194.0,
-        "meandepth":0.0024316028
-    },
-    {
-        "genome_name":"M.insubricum",
-        "length":4577045.0,
-        "coverage":0.12744,
-        "numreads":138.0,
-        "meandepth":0.00223965
-    },
-    {
-        "genome_name":"M.vaccae",
-        "length":6235754.0,
-        "coverage":0.127378,
-        "numreads":262.0,
-        "meandepth":0.00359171
-    },
-    {
-        "genome_name":"M.holsaticum",
-        "length":5623685.0,
-        "coverage":0.126003,
-        "numreads":237.0,
-        "meandepth":0.00339866
-    },
-    {
-        "genome_name":"M.houstonense",
-        "length":6461255.0,
-        "coverage":0.1239386684,
-        "numreads":305.0,
-        "meandepth":0.0034189954
-    },
-    {
-        "genome_name":"M.stellerae",
-        "length":6956345.0,
-        "coverage":0.1201061754,
-        "numreads":337.0,
-        "meandepth":0.0037833085
-    },
-    {
-        "genome_name":"M.grossiae",
-        "length":5637923.0,
-        "coverage":0.119725,
-        "numreads":182.0,
-        "meandepth":0.00240762
-    },
-    {
-        "genome_name":"M.canariasense",
-        "length":6755573.0,
-        "coverage":0.1193681558,
-        "numreads":237.0,
-        "meandepth":0.0032114232
-    },
-    {
-        "genome_name":"M.neworleansense",
-        "length":6287317.0,
-        "coverage":0.1186354011,
-        "numreads":259.0,
-        "meandepth":0.0035353739
-    },
-    {
-        "genome_name":"M.farcinogenes",
-        "length":6344228.0,
-        "coverage":0.118297,
-        "numreads":205.0,
-        "meandepth":0.00349656
-    },
-    {
-        "genome_name":"M.brumae",
-        "length":3988920.0,
-        "coverage":0.11735,
-        "numreads":141.0,
-        "meandepth":0.00268594
-    },
-    {
-        "genome_name":"M.chubuense",
-        "length":5583723.0,
-        "coverage":0.116213,
-        "numreads":229.0,
-        "meandepth":0.00294553
-    },
-    {
-        "genome_name":"M.wolinskyi",
-        "length":7516859.0,
-        "coverage":0.1158329865,
-        "numreads":222.0,
-        "meandepth":0.0022106309
-    },
-    {
-        "genome_name":"M.minnesotensis",
-        "length":4224047.0,
-        "coverage":0.115576,
-        "numreads":194.0,
-        "meandepth":0.00325612
-    },
-    {
-        "genome_name":"M.flavescens",
-        "length":5395557.0,
-        "coverage":0.114168,
-        "numreads":203.0,
-        "meandepth":0.00274986
-    },
-    {
-        "genome_name":"M.rhodesiae",
-        "length":6009003.0,
-        "coverage":0.1139456397,
-        "numreads":232.0,
-        "meandepth":0.0028282562
-    },
-    {
-        "genome_name":"M.confluentis",
-        "length":5876557.0,
-        "coverage":0.1134,
-        "numreads":211.0,
-        "meandepth":0.00262722
-    },
-    {
-        "genome_name":"M.septicum",
-        "length":6515693.0,
-        "coverage":0.113158,
-        "numreads":212.0,
-        "meandepth":0.00284053
-    },
-    {
-        "genome_name":"M.sphagni",
-        "length":6066978.0,
-        "coverage":0.1123953174,
-        "numreads":202.0,
-        "meandepth":0.0025352003
-    },
-    {
-        "genome_name":"M.baixiangningiae",
-        "length":6181092.0,
-        "coverage":0.11189,
-        "numreads":312.0,
-        "meandepth":0.00440958
-    },
-    {
-        "genome_name":"M.helvum",
-        "length":6400811.0,
-        "coverage":0.111298,
-        "numreads":245.0,
-        "meandepth":0.0026981
-    },
-    {
-        "genome_name":"M.vanbaalenii",
-        "length":6491865.0,
-        "coverage":0.107257,
-        "numreads":185.0,
-        "meandepth":0.00223526
-    },
-    {
-        "genome_name":"M.duvalii",
-        "length":5657388.0,
-        "coverage":0.105349,
-        "numreads":235.0,
-        "meandepth":0.00298442
-    },
-    {
-        "genome_name":"M.peregrinum",
-        "length":7109837.0,
-        "coverage":0.1034482428,
-        "numreads":270.0,
-        "meandepth":0.0026359278
-    },
-    {
-        "genome_name":"M.mucogenicum",
-        "length":6099273.0,
-        "coverage":0.102914,
-        "numreads":245.0,
-        "meandepth":0.00279099
-    },
-    {
-        "genome_name":"M.doricum",
-        "length":4029398.0,
-        "coverage":0.10133,
-        "numreads":162.0,
-        "meandepth":0.00288877
-    },
-    {
-        "genome_name":"M.kyogaense",
-        "length":5759757.0,
-        "coverage":0.1013064121,
-        "numreads":159.0,
-        "meandepth":0.0020664062
-    },
-    {
-        "genome_name":"M.austroafricanum",
-        "length":6287627.0,
-        "coverage":0.100435,
-        "numreads":217.0,
-        "meandepth":0.00268623
-    },
-    {
-        "genome_name":"M.fluoranthenivorans",
-        "length":6837082.0,
-        "coverage":0.0998818,
-        "numreads":272.0,
-        "meandepth":0.00418117
-    },
-    {
-        "genome_name":"M.setense",
-        "length":6065527.0,
-        "coverage":0.099562626,
-        "numreads":176.0,
-        "meandepth":0.0020349417
-    },
-    {
-        "genome_name":"M.sarraceniae",
-        "length":4828255.0,
-        "coverage":0.0985863,
-        "numreads":195.0,
-        "meandepth":0.00360213
-    },
-    {
-        "genome_name":"M.neoaurum",
-        "length":5756799.0,
-        "coverage":0.0950702,
-        "numreads":145.0,
-        "meandepth":0.00216735
-    },
-    {
-        "genome_name":"M.arupensis",
-        "length":4448209.0,
-        "coverage":0.093723165,
-        "numreads":120.0,
-        "meandepth":0.001884354
-    },
-    {
-        "genome_name":"M.madagascariense",
-        "length":5712088.0,
-        "coverage":0.0905098,
-        "numreads":196.0,
-        "meandepth":0.00242136
-    },
-    {
-        "genome_name":"M.syngnathidarum",
-        "length":6344489.0,
-        "coverage":0.0852393325,
-        "numreads":182.0,
-        "meandepth":0.0024252532
-    },
-    {
-        "genome_name":"M.tusciae",
-        "length":6162880.0,
-        "coverage":0.0850738658,
-        "numreads":219.0,
-        "meandepth":0.0027243742
-    },
-    {
-        "genome_name":"M.goodii",
-        "length":6741306.0,
-        "coverage":0.0843753,
-        "numreads":221.0,
-        "meandepth":0.00241615
-    },
-    {
-        "genome_name":"M.fortuitum_fortuitum",
-        "length":6406072.0,
-        "coverage":0.0828121,
-        "numreads":144.0,
-        "meandepth":0.00164407
-    },
-    {
-        "genome_name":"M.gadium",
-        "length":5964999.0,
-        "coverage":0.0806035,
-        "numreads":180.0,
-        "meandepth":0.00221978
-    },
-    {
-        "genome_name":"M.senegalense",
-        "length":6086722.0,
-        "coverage":0.0805688,
-        "numreads":103.0,
-        "meandepth":0.0014208
-    },
-    {
-        "genome_name":"M.aubagnense",
-        "length":5734470.0,
-        "coverage":0.0801818,
-        "numreads":149.0,
-        "meandepth":0.00173948
-    },
-    {
-        "genome_name":"M.hackensackense",
-        "length":6709978.0,
-        "coverage":0.0798065503,
-        "numreads":122.0,
-        "meandepth":0.0015901695
-    },
-    {
-        "genome_name":"M.tokaiense",
-        "length":6328149.0,
-        "coverage":0.0774318,
-        "numreads":126.0,
-        "meandepth":0.00127225
-    },
-    {
-        "genome_name":"M.aquaticum",
-        "length":7927592.0,
-        "coverage":0.0773248998,
-        "numreads":310.0,
-        "meandepth":0.0030752073
-    },
-    {
-        "genome_name":"M.mengxianglii",
-        "length":5962395.0,
-        "coverage":0.0766974,
-        "numreads":137.0,
-        "meandepth":0.00154133
-    },
-    {
-        "genome_name":"M.brisbanense",
-        "length":7387494.0,
-        "coverage":0.074991589,
-        "numreads":286.0,
-        "meandepth":0.0040143535
-    },
-    {
-        "genome_name":"M.aurum",
-        "length":6035584.0,
-        "coverage":0.0730832,
-        "numreads":158.0,
-        "meandepth":0.00179287
-    },
-    {
-        "genome_name":"M.sediminis",
-        "length":6250641.0,
-        "coverage":0.0716567,
-        "numreads":123.0,
-        "meandepth":0.0017211
-    },
-    {
-        "genome_name":"M.abscessus",
-        "length":5067172.0,
-        "coverage":0.0572114,
-        "numreads":59.0,
-        "meandepth":0.000813669
-    },
-    {
-        "genome_name":"M.iranicum",
-        "length":6335651.0,
-        "coverage":0.0506972459,
-        "numreads":136.0,
-        "meandepth":0.0015404888
-    },
-    {
-        "genome_name":"M.immunogenum",
-        "length":5573781.0,
-        "coverage":0.0471134,
-        "numreads":75.0,
-        "meandepth":0.000956083
-    },
-    {
-        "genome_name":"M.chelonae_gwanakae",
-        "length":5106636.0,
-        "coverage":0.0392235,
-        "numreads":65.0,
-        "meandepth":0.00145419
-    },
-    {
-        "genome_name":"M.franklinii",
-        "length":5431726.0,
-        "coverage":0.0303770868,
-        "numreads":101.0,
-        "meandepth":0.0016453348
-    },
-    {
-        "genome_name":"M.saopaolens",
-        "length":4649175.0,
-        "coverage":0.0226062,
-        "numreads":53.0,
-        "meandepth":0.000667
-    },
-    {
-        "genome_name":"M.salmoniphilum",
-        "length":4776697.0,
-        "coverage":0.0204953,
-        "numreads":36.0,
-        "meandepth":0.00057634
-    },
-    {
-        "genome_name":"M.leprae",
-        "length":3187112.0,
-        "coverage":0.0181042,
-        "numreads":28.0,
-        "meandepth":0.000623762
-    },
-    {
-        "genome_name":"M.stephanolepidis",
-        "length":4994485.0,
-        "coverage":0.0175994,
-        "numreads":32.0,
-        "meandepth":0.000400241
-    },
-    {
-        "genome_name":"M.lepromatosis",
-        "length":3271694.0,
-        "coverage":0.0130819,
-        "numreads":26.0,
-        "meandepth":0.000350583
-    }
-]
+{
+    "total_read_counts": {
+        "mapped_reads": 12124,
+        "unmapped_reads": 7876
+    },
+    "references": [
+        {
+            "genome_name": "M.gordonae",
+            "length": 7103222.0,
+            "coverage": 54.1159,
+            "numreads": 252921.0,
+            "meandepth": 4.90154
+        },
+        {
+            "genome_name": "M.paragordonae",
+            "length": 6730319.0,
+            "coverage": 45.6098,
+            "numreads": 158811.0,
+            "meandepth": 3.18373
+        },
+        {
+            "genome_name": "M.intracellulare_chimaera",
+            "length": 5865644.0,
+            "coverage": 6.01676,
+            "numreads": 8579.0,
+            "meandepth": 0.202367
+        },
+        {
+            "genome_name": "M.helveticum",
+            "length": 5769598.0,
+            "coverage": 5.9514365942,
+            "numreads": 7859.0,
+            "meandepth": 0.1821587689
+        },
+        {
+            "genome_name": "M.kubicae",
+            "length": 5958133.0,
+            "coverage": 5.87223,
+            "numreads": 7533.0,
+            "meandepth": 0.164372
+        },
+        {
+            "genome_name": "M.nebraskense",
+            "length": 6727177.0,
+            "coverage": 5.322216759,
+            "numreads": 9270.0,
+            "meandepth": 0.1860440564
+        },
+        {
+            "genome_name": "M.parmense",
+            "length": 5952912.0,
+            "coverage": 5.14014,
+            "numreads": 6573.0,
+            "meandepth": 0.147577
+        },
+        {
+            "genome_name": "M.parascrofulaceum",
+            "length": 6564171.0,
+            "coverage": 4.7063394227,
+            "numreads": 6625.0,
+            "meandepth": 0.1319553444
+        },
+        {
+            "genome_name": "M.asiaticum",
+            "length": 5938932.0,
+            "coverage": 3.7900413358,
+            "numreads": 6394.0,
+            "meandepth": 0.1176719886
+        },
+        {
+            "genome_name": "M.avium_hominissuis",
+            "length": 5118245.0,
+            "coverage": 2.44304,
+            "numreads": 2406.0,
+            "meandepth": 0.0543346
+        },
+        {
+            "genome_name": "M.vicinigordonae",
+            "length": 6266765.0,
+            "coverage": 2.12903,
+            "numreads": 3605.0,
+            "meandepth": 0.0583213
+        },
+        {
+            "genome_name": "M.angelicum",
+            "length": 6662911.0,
+            "coverage": 1.8257333814,
+            "numreads": 3514.0,
+            "meandepth": 0.0519435165
+        },
+        {
+            "genome_name": "M.shinjukuense",
+            "length": 4504020.0,
+            "coverage": 1.63556,
+            "numreads": 1981.0,
+            "meandepth": 0.0420908
+        },
+        {
+            "genome_name": "M.heidelbergense",
+            "length": 5050576.0,
+            "coverage": 1.60407,
+            "numreads": 1611.0,
+            "meandepth": 0.0350051
+        },
+        {
+            "genome_name": "M.paraense",
+            "length": 5619528.0,
+            "coverage": 1.5847585995,
+            "numreads": 2133.0,
+            "meandepth": 0.0400501651
+        },
+        {
+            "genome_name": "M.intracellulare",
+            "length": 5621211.0,
+            "coverage": 1.57785,
+            "numreads": 1601.0,
+            "meandepth": 0.0360227
+        },
+        {
+            "genome_name": "M.szulgai",
+            "length": 6672659.0,
+            "coverage": 1.4460207281,
+            "numreads": 2896.0,
+            "meandepth": 0.0421230895
+        },
+        {
+            "genome_name": "M.conspicuum",
+            "length": 6237139.0,
+            "coverage": 1.39651,
+            "numreads": 2461.0,
+            "meandepth": 0.0378286
+        },
+        {
+            "genome_name": "M.alsense",
+            "length": 5692845.0,
+            "coverage": 1.3725657035,
+            "numreads": 2138.0,
+            "meandepth": 0.0375395765
+        },
+        {
+            "genome_name": "M.interjectum",
+            "length": 5903836.0,
+            "coverage": 1.3480209865,
+            "numreads": 2054.0,
+            "meandepth": 0.0352518295
+        },
+        {
+            "genome_name": "M.palustre",
+            "length": 6037522.0,
+            "coverage": 1.3169306539,
+            "numreads": 1994.0,
+            "meandepth": 0.0329305642
+        },
+        {
+            "genome_name": "M.intermedium",
+            "length": 6817968.0,
+            "coverage": 1.2800882752,
+            "numreads": 2762.0,
+            "meandepth": 0.0387804693
+        },
+        {
+            "genome_name": "M.europaeum",
+            "length": 5630674.0,
+            "coverage": 1.2716589954,
+            "numreads": 1603.0,
+            "meandepth": 0.030410921
+        },
+        {
+            "genome_name": "M.bohemicum",
+            "length": 5097190.0,
+            "coverage": 1.2332081075,
+            "numreads": 1487.0,
+            "meandepth": 0.0297565777
+        },
+        {
+            "genome_name": "M.malmoense",
+            "length": 5319859.0,
+            "coverage": 1.20811,
+            "numreads": 1499.0,
+            "meandepth": 0.0296664
+        },
+        {
+            "genome_name": "M.lacus",
+            "length": 5092988.0,
+            "coverage": 1.18339,
+            "numreads": 1889.0,
+            "meandepth": 0.0348446
+        },
+        {
+            "genome_name": "M.tuberculosis",
+            "length": 4411532.0,
+            "coverage": 1.07076,
+            "numreads": 1012.0,
+            "meandepth": 0.0204344
+        },
+        {
+            "genome_name": "M.colombiense",
+            "length": 5581643.0,
+            "coverage": 1.05281,
+            "numreads": 1360.0,
+            "meandepth": 0.0238326
+        },
+        {
+            "genome_name": "M.paraseoulense",
+            "length": 6085955.0,
+            "coverage": 1.00579,
+            "numreads": 1567.0,
+            "meandepth": 0.0264
+        },
+        {
+            "genome_name": "M.pseudokansasii",
+            "length": 6425786.0,
+            "coverage": 0.9889369343,
+            "numreads": 3113.0,
+            "meandepth": 0.0600216394
+        },
+        {
+            "genome_name": "M.ostraviense",
+            "length": 6127734.0,
+            "coverage": 0.975042,
+            "numreads": 1729.0,
+            "meandepth": 0.029711
+        },
+        {
+            "genome_name": "M.gastri",
+            "length": 5816659.0,
+            "coverage": 0.9600355153,
+            "numreads": 1577.0,
+            "meandepth": 0.0269809571
+        },
+        {
+            "genome_name": "M.persicum",
+            "length": 6347217.0,
+            "coverage": 0.9310539903,
+            "numreads": 2644.0,
+            "meandepth": 0.0470922884
+        },
+        {
+            "genome_name": "M.vulneris",
+            "length": 6266718.0,
+            "coverage": 0.8707110749,
+            "numreads": 1370.0,
+            "meandepth": 0.0210992347
+        },
+        {
+            "genome_name": "M.kansasii",
+            "length": 6432277.0,
+            "coverage": 0.869879,
+            "numreads": 1858.0,
+            "meandepth": 0.029102
+        },
+        {
+            "genome_name": "M.florentinum",
+            "length": 6219859.0,
+            "coverage": 0.868396,
+            "numreads": 1384.0,
+            "meandepth": 0.0225499
+        },
+        {
+            "genome_name": "M.marseillense",
+            "length": 5266037.0,
+            "coverage": 0.866021,
+            "numreads": 1102.0,
+            "meandepth": 0.0204771
+        },
+        {
+            "genome_name": "M.lepraemurium",
+            "length": 4050523.0,
+            "coverage": 0.857865,
+            "numreads": 710.0,
+            "meandepth": 0.0185137
+        },
+        {
+            "genome_name": "M.simulans",
+            "length": 6192024.0,
+            "coverage": 0.8222833314,
+            "numreads": 1854.0,
+            "meandepth": 0.0248981404
+        },
+        {
+            "genome_name": "M.shigaense",
+            "length": 5232660.0,
+            "coverage": 0.814767,
+            "numreads": 1046.0,
+            "meandepth": 0.0195721
+        },
+        {
+            "genome_name": "M.lentiflavum",
+            "length": 5901783.0,
+            "coverage": 0.808976,
+            "numreads": 1106.0,
+            "meandepth": 0.0181689
+        },
+        {
+            "genome_name": "M.saskatchewanense",
+            "length": 6008916.0,
+            "coverage": 0.804787,
+            "numreads": 1244.0,
+            "meandepth": 0.0205112
+        },
+        {
+            "genome_name": "M.mantenii",
+            "length": 6185541.0,
+            "coverage": 0.799898,
+            "numreads": 1144.0,
+            "meandepth": 0.0183829
+        },
+        {
+            "genome_name": "M.ahvazicum",
+            "length": 6120821.0,
+            "coverage": 0.7626753927,
+            "numreads": 1066.0,
+            "meandepth": 0.018270274
+        },
+        {
+            "genome_name": "M.triplex",
+            "length": 6382840.0,
+            "coverage": 0.7567789436,
+            "numreads": 1156.0,
+            "meandepth": 0.0184140786
+        },
+        {
+            "genome_name": "M.sherrisii",
+            "length": 5562166.0,
+            "coverage": 0.7180121284,
+            "numreads": 1104.0,
+            "meandepth": 0.0190912962
+        },
+        {
+            "genome_name": "M.genavense",
+            "length": 4936071.0,
+            "coverage": 0.7128343057,
+            "numreads": 831.0,
+            "meandepth": 0.01665758
+        },
+        {
+            "genome_name": "M.arosiense",
+            "length": 5980206.0,
+            "coverage": 0.6978525101,
+            "numreads": 1241.0,
+            "meandepth": 0.0197232329
+        },
+        {
+            "genome_name": "M.attenuatum",
+            "length": 6344986.0,
+            "coverage": 0.6949264582,
+            "numreads": 1443.0,
+            "meandepth": 0.0216982408
+        },
+        {
+            "genome_name": "M.stomatepiae",
+            "length": 6210822.0,
+            "coverage": 0.690327,
+            "numreads": 1055.0,
+            "meandepth": 0.0165389
+        },
+        {
+            "genome_name": "M.branderi",
+            "length": 5115366.0,
+            "coverage": 0.626309,
+            "numreads": 955.0,
+            "meandepth": 0.0173411
+        },
+        {
+            "genome_name": "M.marinum",
+            "length": 6336293.0,
+            "coverage": 0.624845,
+            "numreads": 1352.0,
+            "meandepth": 0.0165014
+        },
+        {
+            "genome_name": "M.paraintracellulare",
+            "length": 5332910.0,
+            "coverage": 0.584765,
+            "numreads": 592.0,
+            "meandepth": 0.0113696
+        },
+        {
+            "genome_name": "M.montefiorense",
+            "length": 5744567.0,
+            "coverage": 0.5612260012,
+            "numreads": 811.0,
+            "meandepth": 0.0129766165
+        },
+        {
+            "genome_name": "M.celatum",
+            "length": 4720680.0,
+            "coverage": 0.5456839384,
+            "numreads": 738.0,
+            "meandepth": 0.0138382526
+        },
+        {
+            "genome_name": "M.saopaulense",
+            "length": 5607630.0,
+            "coverage": 0.482664,
+            "numreads": 850.0,
+            "meandepth": 0.011122
+        },
+        {
+            "genome_name": "M.simiae",
+            "length": 5788994.0,
+            "coverage": 0.464105,
+            "numreads": 715.0,
+            "meandepth": 0.0113299
+        },
+        {
+            "genome_name": "M.fragae",
+            "length": 4731047.0,
+            "coverage": 0.4419529432,
+            "numreads": 827.0,
+            "meandepth": 0.0132896632
+        },
+        {
+            "genome_name": "M.cookii",
+            "length": 5318517.0,
+            "coverage": 0.43593,
+            "numreads": 635.0,
+            "meandepth": 0.011127
+        },
+        {
+            "genome_name": "M.noviomagense",
+            "length": 4779798.0,
+            "coverage": 0.338445,
+            "numreads": 551.0,
+            "meandepth": 0.00920562
+        },
+        {
+            "genome_name": "M.mageritense",
+            "length": 8006721.0,
+            "coverage": 0.31817,
+            "numreads": 512.0,
+            "meandepth": 0.0071706
+        },
+        {
+            "genome_name": "M.poriferae",
+            "length": 5712830.0,
+            "coverage": 0.314503,
+            "numreads": 7446.0,
+            "meandepth": 0.182436
+        },
+        {
+            "genome_name": "M.spongiae",
+            "length": 5581157.0,
+            "coverage": 0.314093,
+            "numreads": 803.0,
+            "meandepth": 0.00941776
+        },
+        {
+            "genome_name": "M.xenopi",
+            "length": 4917655.0,
+            "coverage": 0.307504,
+            "numreads": 544.0,
+            "meandepth": 0.008452
+        },
+        {
+            "genome_name": "M.haemophilum",
+            "length": 4235765.0,
+            "coverage": 0.299497,
+            "numreads": 447.0,
+            "meandepth": 0.00835363
+        },
+        {
+            "genome_name": "M.shimoidei",
+            "length": 4842631.0,
+            "coverage": 0.2977096055,
+            "numreads": 600.0,
+            "meandepth": 0.0098188336
+        },
+        {
+            "genome_name": "M.longobardus",
+            "length": 4546193.0,
+            "coverage": 0.2803883675,
+            "numreads": 449.0,
+            "meandepth": 0.0095451145
+        },
+        {
+            "genome_name": "M.paraterrae",
+            "length": 5522624.0,
+            "coverage": 0.275829,
+            "numreads": 447.0,
+            "meandepth": 0.00729889
+        },
+        {
+            "genome_name": "M.phlei",
+            "length": 5349645.0,
+            "coverage": 0.27413,
+            "numreads": 397.0,
+            "meandepth": 0.00666493
+        },
+        {
+            "genome_name": "M.novum",
+            "length": 4458926.0,
+            "coverage": 0.26715,
+            "numreads": 316.0,
+            "meandepth": 0.005393
+        },
+        {
+            "genome_name": "M.fallax",
+            "length": 4156821.0,
+            "coverage": 0.263158,
+            "numreads": 279.0,
+            "meandepth": 0.00625863
+        },
+        {
+            "genome_name": "M.alkanivorans",
+            "length": 4050246.0,
+            "coverage": 0.2471452385,
+            "numreads": 321.0,
+            "meandepth": 0.0075829984
+        },
+        {
+            "genome_name": "M.hassiacum",
+            "length": 5269097.0,
+            "coverage": 0.2449,
+            "numreads": 345.0,
+            "meandepth": 0.00492779
+        },
+        {
+            "genome_name": "M.heckeshornense",
+            "length": 4865109.0,
+            "coverage": 0.244147,
+            "numreads": 396.0,
+            "meandepth": 0.00659533
+        },
+        {
+            "genome_name": "M.acidiphilus",
+            "length": 4545982.0,
+            "coverage": 0.2433797269,
+            "numreads": 403.0,
+            "meandepth": 0.0062879719
+        },
+        {
+            "genome_name": "M.trivialis",
+            "length": 3591083.0,
+            "coverage": 0.2431856557,
+            "numreads": 226.0,
+            "meandepth": 0.0054189779
+        },
+        {
+            "genome_name": "M.rutilum",
+            "length": 5987931.0,
+            "coverage": 0.23853,
+            "numreads": 338.0,
+            "meandepth": 0.00557672
+        },
+        {
+            "genome_name": "M.terrae",
+            "length": 4532317.0,
+            "coverage": 0.236413,
+            "numreads": 368.0,
+            "meandepth": 0.00647528
+        },
+        {
+            "genome_name": "M.chlorophenolicum",
+            "length": 7379520.0,
+            "coverage": 0.2337415765,
+            "numreads": 646.0,
+            "meandepth": 0.00900872
+        },
+        {
+            "genome_name": "M.crocinum",
+            "length": 5965857.0,
+            "coverage": 0.227545,
+            "numreads": 454.0,
+            "meandepth": 0.00692357
+        },
+        {
+            "genome_name": "M.kumamotonensis",
+            "length": 5330450.0,
+            "coverage": 0.2228142387,
+            "numreads": 1369.0,
+            "meandepth": 0.0287782478
+        },
+        {
+            "genome_name": "M.manitobense",
+            "length": 6058529.0,
+            "coverage": 0.212048173,
+            "numreads": 411.0,
+            "meandepth": 0.0059346106
+        },
+        {
+            "genome_name": "M.litorale",
+            "length": 5579510.0,
+            "coverage": 0.203136,
+            "numreads": 328.0,
+            "meandepth": 0.0047825
+        },
+        {
+            "genome_name": "M.palauense",
+            "length": 6230283.0,
+            "coverage": 0.199750162,
+            "numreads": 317.0,
+            "meandepth": 0.0045534042
+        },
+        {
+            "genome_name": "M.elephantis",
+            "length": 5223216.0,
+            "coverage": 0.1978282951,
+            "numreads": 351.0,
+            "meandepth": 0.0048382064
+        },
+        {
+            "genome_name": "M.heraklionensis",
+            "length": 5061737.0,
+            "coverage": 0.19193,
+            "numreads": 250.0,
+            "meandepth": 0.00359521
+        },
+        {
+            "genome_name": "M.parakoreensis",
+            "length": 3921563.0,
+            "coverage": 0.190511,
+            "numreads": 249.0,
+            "meandepth": 0.00477539
+        },
+        {
+            "genome_name": "M.hiberniae",
+            "length": 4396654.0,
+            "coverage": 0.184913,
+            "numreads": 324.0,
+            "meandepth": 0.00565999
+        },
+        {
+            "genome_name": "M.anyangense",
+            "length": 5696751.0,
+            "coverage": 0.184035,
+            "numreads": 319.0,
+            "meandepth": 0.00426155
+        },
+        {
+            "genome_name": "M.pallens",
+            "length": 6035548.0,
+            "coverage": 0.180845,
+            "numreads": 331.0,
+            "meandepth": 0.00577926
+        },
+        {
+            "genome_name": "M.lacusdiani",
+            "length": 6138096.0,
+            "coverage": 0.1797300272,
+            "numreads": 405.0,
+            "meandepth": 0.007173724
+        },
+        {
+            "genome_name": "M.chitae",
+            "length": 5461769.0,
+            "coverage": 0.178733,
+            "numreads": 265.0,
+            "meandepth": 0.00400676
+        },
+        {
+            "genome_name": "M.rufum",
+            "length": 5750445.0,
+            "coverage": 0.178647,
+            "numreads": 277.0,
+            "meandepth": 0.00401499
+        },
+        {
+            "genome_name": "M.nonchromogenicus",
+            "length": 4465329.0,
+            "coverage": 0.1785534369,
+            "numreads": 309.0,
+            "meandepth": 0.006231791
+        },
+        {
+            "genome_name": "M.celeriflavum",
+            "length": 5024249.0,
+            "coverage": 0.176006,
+            "numreads": 371.0,
+            "meandepth": 0.00659243
+        },
+        {
+            "genome_name": "M.pulveris",
+            "length": 5484749.0,
+            "coverage": 0.170546,
+            "numreads": 231.0,
+            "meandepth": 0.00362131
+        },
+        {
+            "genome_name": "M.cosmeticum",
+            "length": 6462090.0,
+            "coverage": 0.1700379538,
+            "numreads": 295.0,
+            "meandepth": 0.0040582848
+        },
+        {
+            "genome_name": "M.thermoresistibile",
+            "length": 4950685.0,
+            "coverage": 0.16828,
+            "numreads": 220.0,
+            "meandepth": 0.00347366
+        },
+        {
+            "genome_name": "M.phocaicum",
+            "length": 5853197.0,
+            "coverage": 0.166046,
+            "numreads": 287.0,
+            "meandepth": 0.00448575
+        },
+        {
+            "genome_name": "M.monacense",
+            "length": 6042466.0,
+            "coverage": 0.166041,
+            "numreads": 331.0,
+            "meandepth": 0.00442568
+        },
+        {
+            "genome_name": "M.malmesburyense",
+            "length": 5470965.0,
+            "coverage": 0.1639198575,
+            "numreads": 311.0,
+            "meandepth": 0.0040250643
+        },
+        {
+            "genome_name": "M.porcinum",
+            "length": 6960672.0,
+            "coverage": 0.1617946674,
+            "numreads": 260.0,
+            "meandepth": 0.0035792518
+        },
+        {
+            "genome_name": "M.virginiensis",
+            "length": 4980142.0,
+            "coverage": 0.159995,
+            "numreads": 216.0,
+            "meandepth": 0.00313907
+        },
+        {
+            "genome_name": "M.koreensis",
+            "length": 4155701.0,
+            "coverage": 0.154607,
+            "numreads": 185.0,
+            "meandepth": 0.00346873
+        },
+        {
+            "genome_name": "M.frederiksbergense",
+            "length": 6388142.0,
+            "coverage": 0.1527829909,
+            "numreads": 454.0,
+            "meandepth": 0.0058228168
+        },
+        {
+            "genome_name": "M.moriokaense",
+            "length": 6225779.0,
+            "coverage": 0.150632,
+            "numreads": 294.0,
+            "meandepth": 0.00403516
+        },
+        {
+            "genome_name": "M.gilvum",
+            "length": 5547747.0,
+            "coverage": 0.144779,
+            "numreads": 240.0,
+            "meandepth": 0.00374675
+        },
+        {
+            "genome_name": "M.psychrotolerans",
+            "length": 5732362.0,
+            "coverage": 0.14453,
+            "numreads": 253.0,
+            "meandepth": 0.0031453
+        },
+        {
+            "genome_name": "M.novocastrense",
+            "length": 5624151.0,
+            "coverage": 0.144217,
+            "numreads": 234.0,
+            "meandepth": 0.00348337
+        },
+        {
+            "genome_name": "M.smegmatis",
+            "length": 6993871.0,
+            "coverage": 0.142339,
+            "numreads": 260.0,
+            "meandepth": 0.00273225
+        },
+        {
+            "genome_name": "M.parafortuitum",
+            "length": 6044196.0,
+            "coverage": 0.141987,
+            "numreads": 245.0,
+            "meandepth": 0.00282006
+        },
+        {
+            "genome_name": "M.gallinarum",
+            "length": 6090007.0,
+            "coverage": 0.137028,
+            "numreads": 256.0,
+            "meandepth": 0.00386929
+        },
+        {
+            "genome_name": "M.llatzerense",
+            "length": 6091591.0,
+            "coverage": 0.1326418936,
+            "numreads": 206.0,
+            "meandepth": 0.0029975753
+        },
+        {
+            "genome_name": "M.aromaticivorans",
+            "length": 6297623.0,
+            "coverage": 0.1322558746,
+            "numreads": 263.0,
+            "meandepth": 0.0032583684
+        },
+        {
+            "genome_name": "M.agri",
+            "length": 6987256.0,
+            "coverage": 0.132240774,
+            "numreads": 282.0,
+            "meandepth": 0.0033433723
+        },
+        {
+            "genome_name": "M.komanii",
+            "length": 5378970.0,
+            "coverage": 0.1312705168,
+            "numreads": 213.0,
+            "meandepth": 0.0029191467
+        },
+        {
+            "genome_name": "M.vinylchloridicum",
+            "length": 7196491.0,
+            "coverage": 0.1298549603,
+            "numreads": 376.0,
+            "meandepth": 0.0041499402
+        },
+        {
+            "genome_name": "M.alvei",
+            "length": 5712683.0,
+            "coverage": 0.128206,
+            "numreads": 253.0,
+            "meandepth": 0.00423286
+        },
+        {
+            "genome_name": "M.icosiumassiliensis",
+            "length": 4850031.0,
+            "coverage": 0.1280195441,
+            "numreads": 233.0,
+            "meandepth": 0.0037519374
+        },
+        {
+            "genome_name": "M.diernhoferi",
+            "length": 5998503.0,
+            "coverage": 0.127932,
+            "numreads": 212.0,
+            "meandepth": 0.00288789
+        },
+        {
+            "genome_name": "M.aichiense",
+            "length": 5925482.0,
+            "coverage": 0.127753,
+            "numreads": 251.0,
+            "meandepth": 0.00312363
+        },
+        {
+            "genome_name": "M.bacteremicum",
+            "length": 5952041.0,
+            "coverage": 0.1274688673,
+            "numreads": 194.0,
+            "meandepth": 0.0024316028
+        },
+        {
+            "genome_name": "M.insubricum",
+            "length": 4577045.0,
+            "coverage": 0.12744,
+            "numreads": 138.0,
+            "meandepth": 0.00223965
+        },
+        {
+            "genome_name": "M.vaccae",
+            "length": 6235754.0,
+            "coverage": 0.127378,
+            "numreads": 262.0,
+            "meandepth": 0.00359171
+        },
+        {
+            "genome_name": "M.holsaticum",
+            "length": 5623685.0,
+            "coverage": 0.126003,
+            "numreads": 237.0,
+            "meandepth": 0.00339866
+        },
+        {
+            "genome_name": "M.houstonense",
+            "length": 6461255.0,
+            "coverage": 0.1239386684,
+            "numreads": 305.0,
+            "meandepth": 0.0034189954
+        },
+        {
+            "genome_name": "M.stellerae",
+            "length": 6956345.0,
+            "coverage": 0.1201061754,
+            "numreads": 337.0,
+            "meandepth": 0.0037833085
+        },
+        {
+            "genome_name": "M.grossiae",
+            "length": 5637923.0,
+            "coverage": 0.119725,
+            "numreads": 182.0,
+            "meandepth": 0.00240762
+        },
+        {
+            "genome_name": "M.canariasense",
+            "length": 6755573.0,
+            "coverage": 0.1193681558,
+            "numreads": 237.0,
+            "meandepth": 0.0032114232
+        },
+        {
+            "genome_name": "M.neworleansense",
+            "length": 6287317.0,
+            "coverage": 0.1186354011,
+            "numreads": 259.0,
+            "meandepth": 0.0035353739
+        },
+        {
+            "genome_name": "M.farcinogenes",
+            "length": 6344228.0,
+            "coverage": 0.118297,
+            "numreads": 205.0,
+            "meandepth": 0.00349656
+        },
+        {
+            "genome_name": "M.brumae",
+            "length": 3988920.0,
+            "coverage": 0.11735,
+            "numreads": 141.0,
+            "meandepth": 0.00268594
+        },
+        {
+            "genome_name": "M.chubuense",
+            "length": 5583723.0,
+            "coverage": 0.116213,
+            "numreads": 229.0,
+            "meandepth": 0.00294553
+        },
+        {
+            "genome_name": "M.wolinskyi",
+            "length": 7516859.0,
+            "coverage": 0.1158329865,
+            "numreads": 222.0,
+            "meandepth": 0.0022106309
+        },
+        {
+            "genome_name": "M.minnesotensis",
+            "length": 4224047.0,
+            "coverage": 0.115576,
+            "numreads": 194.0,
+            "meandepth": 0.00325612
+        },
+        {
+            "genome_name": "M.flavescens",
+            "length": 5395557.0,
+            "coverage": 0.114168,
+            "numreads": 203.0,
+            "meandepth": 0.00274986
+        },
+        {
+            "genome_name": "M.rhodesiae",
+            "length": 6009003.0,
+            "coverage": 0.1139456397,
+            "numreads": 232.0,
+            "meandepth": 0.0028282562
+        },
+        {
+            "genome_name": "M.confluentis",
+            "length": 5876557.0,
+            "coverage": 0.1134,
+            "numreads": 211.0,
+            "meandepth": 0.00262722
+        },
+        {
+            "genome_name": "M.septicum",
+            "length": 6515693.0,
+            "coverage": 0.113158,
+            "numreads": 212.0,
+            "meandepth": 0.00284053
+        },
+        {
+            "genome_name": "M.sphagni",
+            "length": 6066978.0,
+            "coverage": 0.1123953174,
+            "numreads": 202.0,
+            "meandepth": 0.0025352003
+        },
+        {
+            "genome_name": "M.baixiangningiae",
+            "length": 6181092.0,
+            "coverage": 0.11189,
+            "numreads": 312.0,
+            "meandepth": 0.00440958
+        },
+        {
+            "genome_name": "M.helvum",
+            "length": 6400811.0,
+            "coverage": 0.111298,
+            "numreads": 245.0,
+            "meandepth": 0.0026981
+        },
+        {
+            "genome_name": "M.vanbaalenii",
+            "length": 6491865.0,
+            "coverage": 0.107257,
+            "numreads": 185.0,
+            "meandepth": 0.00223526
+        },
+        {
+            "genome_name": "M.duvalii",
+            "length": 5657388.0,
+            "coverage": 0.105349,
+            "numreads": 235.0,
+            "meandepth": 0.00298442
+        },
+        {
+            "genome_name": "M.peregrinum",
+            "length": 7109837.0,
+            "coverage": 0.1034482428,
+            "numreads": 270.0,
+            "meandepth": 0.0026359278
+        },
+        {
+            "genome_name": "M.mucogenicum",
+            "length": 6099273.0,
+            "coverage": 0.102914,
+            "numreads": 245.0,
+            "meandepth": 0.00279099
+        },
+        {
+            "genome_name": "M.doricum",
+            "length": 4029398.0,
+            "coverage": 0.10133,
+            "numreads": 162.0,
+            "meandepth": 0.00288877
+        },
+        {
+            "genome_name": "M.kyogaense",
+            "length": 5759757.0,
+            "coverage": 0.1013064121,
+            "numreads": 159.0,
+            "meandepth": 0.0020664062
+        },
+        {
+            "genome_name": "M.austroafricanum",
+            "length": 6287627.0,
+            "coverage": 0.100435,
+            "numreads": 217.0,
+            "meandepth": 0.00268623
+        },
+        {
+            "genome_name": "M.fluoranthenivorans",
+            "length": 6837082.0,
+            "coverage": 0.0998818,
+            "numreads": 272.0,
+            "meandepth": 0.00418117
+        },
+        {
+            "genome_name": "M.setense",
+            "length": 6065527.0,
+            "coverage": 0.099562626,
+            "numreads": 176.0,
+            "meandepth": 0.0020349417
+        },
+        {
+            "genome_name": "M.sarraceniae",
+            "length": 4828255.0,
+            "coverage": 0.0985863,
+            "numreads": 195.0,
+            "meandepth": 0.00360213
+        },
+        {
+            "genome_name": "M.neoaurum",
+            "length": 5756799.0,
+            "coverage": 0.0950702,
+            "numreads": 145.0,
+            "meandepth": 0.00216735
+        },
+        {
+            "genome_name": "M.arupensis",
+            "length": 4448209.0,
+            "coverage": 0.093723165,
+            "numreads": 120.0,
+            "meandepth": 0.001884354
+        },
+        {
+            "genome_name": "M.madagascariense",
+            "length": 5712088.0,
+            "coverage": 0.0905098,
+            "numreads": 196.0,
+            "meandepth": 0.00242136
+        },
+        {
+            "genome_name": "M.syngnathidarum",
+            "length": 6344489.0,
+            "coverage": 0.0852393325,
+            "numreads": 182.0,
+            "meandepth": 0.0024252532
+        },
+        {
+            "genome_name": "M.tusciae",
+            "length": 6162880.0,
+            "coverage": 0.0850738658,
+            "numreads": 219.0,
+            "meandepth": 0.0027243742
+        },
+        {
+            "genome_name": "M.goodii",
+            "length": 6741306.0,
+            "coverage": 0.0843753,
+            "numreads": 221.0,
+            "meandepth": 0.00241615
+        },
+        {
+            "genome_name": "M.fortuitum_fortuitum",
+            "length": 6406072.0,
+            "coverage": 0.0828121,
+            "numreads": 144.0,
+            "meandepth": 0.00164407
+        },
+        {
+            "genome_name": "M.gadium",
+            "length": 5964999.0,
+            "coverage": 0.0806035,
+            "numreads": 180.0,
+            "meandepth": 0.00221978
+        },
+        {
+            "genome_name": "M.senegalense",
+            "length": 6086722.0,
+            "coverage": 0.0805688,
+            "numreads": 103.0,
+            "meandepth": 0.0014208
+        },
+        {
+            "genome_name": "M.aubagnense",
+            "length": 5734470.0,
+            "coverage": 0.0801818,
+            "numreads": 149.0,
+            "meandepth": 0.00173948
+        },
+        {
+            "genome_name": "M.hackensackense",
+            "length": 6709978.0,
+            "coverage": 0.0798065503,
+            "numreads": 122.0,
+            "meandepth": 0.0015901695
+        },
+        {
+            "genome_name": "M.tokaiense",
+            "length": 6328149.0,
+            "coverage": 0.0774318,
+            "numreads": 126.0,
+            "meandepth": 0.00127225
+        },
+        {
+            "genome_name": "M.aquaticum",
+            "length": 7927592.0,
+            "coverage": 0.0773248998,
+            "numreads": 310.0,
+            "meandepth": 0.0030752073
+        },
+        {
+            "genome_name": "M.mengxianglii",
+            "length": 5962395.0,
+            "coverage": 0.0766974,
+            "numreads": 137.0,
+            "meandepth": 0.00154133
+        },
+        {
+            "genome_name": "M.brisbanense",
+            "length": 7387494.0,
+            "coverage": 0.074991589,
+            "numreads": 286.0,
+            "meandepth": 0.0040143535
+        },
+        {
+            "genome_name": "M.aurum",
+            "length": 6035584.0,
+            "coverage": 0.0730832,
+            "numreads": 158.0,
+            "meandepth": 0.00179287
+        },
+        {
+            "genome_name": "M.sediminis",
+            "length": 6250641.0,
+            "coverage": 0.0716567,
+            "numreads": 123.0,
+            "meandepth": 0.0017211
+        },
+        {
+            "genome_name": "M.abscessus",
+            "length": 5067172.0,
+            "coverage": 0.0572114,
+            "numreads": 59.0,
+            "meandepth": 0.000813669
+        },
+        {
+            "genome_name": "M.iranicum",
+            "length": 6335651.0,
+            "coverage": 0.0506972459,
+            "numreads": 136.0,
+            "meandepth": 0.0015404888
+        },
+        {
+            "genome_name": "M.immunogenum",
+            "length": 5573781.0,
+            "coverage": 0.0471134,
+            "numreads": 75.0,
+            "meandepth": 0.000956083
+        },
+        {
+            "genome_name": "M.chelonae_gwanakae",
+            "length": 5106636.0,
+            "coverage": 0.0392235,
+            "numreads": 65.0,
+            "meandepth": 0.00145419
+        },
+        {
+            "genome_name": "M.franklinii",
+            "length": 5431726.0,
+            "coverage": 0.0303770868,
+            "numreads": 101.0,
+            "meandepth": 0.0016453348
+        },
+        {
+            "genome_name": "M.saopaolens",
+            "length": 4649175.0,
+            "coverage": 0.0226062,
+            "numreads": 53.0,
+            "meandepth": 0.000667
+        },
+        {
+            "genome_name": "M.salmoniphilum",
+            "length": 4776697.0,
+            "coverage": 0.0204953,
+            "numreads": 36.0,
+            "meandepth": 0.00057634
+        },
+        {
+            "genome_name": "M.leprae",
+            "length": 3187112.0,
+            "coverage": 0.0181042,
+            "numreads": 28.0,
+            "meandepth": 0.000623762
+        },
+        {
+            "genome_name": "M.stephanolepidis",
+            "length": 4994485.0,
+            "coverage": 0.0175994,
+            "numreads": 32.0,
+            "meandepth": 0.000400241
+        },
+        {
+            "genome_name": "M.lepromatosis",
+            "length": 3271694.0,
+            "coverage": 0.0130819,
+            "numreads": 26.0,
+            "meandepth": 0.000350583
+        }
+    ]
+}

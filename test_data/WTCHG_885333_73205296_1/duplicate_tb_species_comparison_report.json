@@ -1,16 +1,22 @@
-[
-    {
-        "genome_name": "M.tuberculosis",
-        "length": 4411532.0,
-        "coverage": 98.6837,
-        "numreads": 3953437.0,
-        "meandepth": 132.506
+{
+    "total_read_counts": {
+        "mapped_reads": 12124,
+        "unmapped_reads": 7876
     },
-    {
-        "genome_name": "M.tuberculosis ",
-        "length": 4411532.0,
-        "coverage": 98.6837,
-        "numreads": 3953437.0,
-        "meandepth": 132.506
-    }
-]
+    "references": [
+        {
+            "genome_name": "M.tuberculosis",
+            "length": 4411532.0,
+            "coverage": 98.6837,
+            "numreads": 3953437.0,
+            "meandepth": 132.506
+        },
+        {
+            "genome_name": "M.tuberculosis ",
+            "length": 4411532.0,
+            "coverage": 98.6837,
+            "numreads": 3953437.0,
+            "meandepth": 132.506
+        }
+    ]
+}

@@ -108,7 +108,7 @@ def generate_mycobacterium_results(
     }
 
     # Species (competitive mapping)
-    mappings_sorted = pandas.DataFrame.from_dict(mappings).sort_values(
+    mappings_sorted = pandas.DataFrame.from_dict(mappings["references"]).sort_values(
         by=["coverage"], ascending=False
     )
     tophit = mappings_sorted.head(1).to_dict(orient="records")[0]
@@ -405,7 +405,7 @@ def generate_sequencing_quality(mappings: dict, genome_creation_report: dict) ->
     """
     # Much of this data is a repeat of data already in Myco Results
     tb_mappings = list(
-        filter(lambda mapping: "tuberculosis" in mapping["genome_name"], mappings)
+        filter(lambda mapping: "tuberculosis" in mapping["genome_name"], mappings["references"])
     )
     if len(tb_mappings) > 1:
         raise ValueError(
@@ -459,7 +459,7 @@ def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
     drug_blocks = {}
     for drug in drugs:
         drug_blocks[drug] = {"Drug Name": drug, "Mutations": []}
-    
+
     seen_mutations = {}
 
     for idx, row in significant_variants_df.iterrows():
@@ -523,7 +523,7 @@ def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
                 else:
                     # Last row for this codon gave a specific value, this didn't, so don't keep this
                     keep = False
-            
+
             if keep:
                 # Remove the old one in favour of this
                 del drug_blocks[row.drug]["Mutations"][old_idx]
