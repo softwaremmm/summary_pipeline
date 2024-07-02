@@ -374,7 +374,7 @@ def organism_name(
     # we may wish to report both lineages in future, but
     # for now we simply report the run as "mixed".
     if cm_name == "M.tuberculosis" and mixed_tb_lineage is True:
-        return "M.tuberculosis (mixed lineage)"
+        return "M. tuberculosis (mixed lineage)"
     # Lookup name by Compatitive Mapping name and mykrobe
     # lineage.
     name_df = mapping[(mapping.reference == cm_name) & (mapping.LINEAGE == lineage)]
