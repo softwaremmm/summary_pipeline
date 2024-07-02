@@ -89,4 +89,4 @@ If _M. tuberculosis_ is not the "Main Species", _M. tuberculosis_ data from Comp
 
 ## Additional steps for mixed lineages
 
-If more than one lineage of _M. tuberculosis_ is is returned, then species is reported as `M.tuberculosis (mixed lineage)`.
+If more than one lineage of _M. tuberculosis_ is is returned, then species is reported as `M. tuberculosis (mixed lineage)`.
