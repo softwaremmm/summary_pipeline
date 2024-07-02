@@ -1,3 +1,9 @@
+## 2.3.2 (2024-07-02)
+
+### Fix
+
+- Correct spacing (mixed lineage)
+
 ## 2.3.1 (2024-06-27)
 
 ### Fix
