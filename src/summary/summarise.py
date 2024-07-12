@@ -99,7 +99,7 @@ def generate_mycobacterium_results(
     Returns:
         dict: Summary of Competitive Mapping and Mykrobe outputs.
     """
-    myco = {
+    myco: dict = {
         "Summary": [],
         "Species": [],
         "Phylogenic Group": [],
@@ -223,9 +223,26 @@ def generate_mycobacterium_results(
     if tb_row.empty is False:
         tb = tb_row.to_dict(orient="records")[0]
         if tb != tophit:
+            # check if mykrobe has lineage for TB
+            tb_name = organism_name(tb["genome_name"], name_mapping)
+            if myco["Lineage"]:
+                tb_lineages = [
+                    lineage["Name"]
+                    for lineage in myco["Lineage"]
+                    if lineage["Name"].startswith("lineage")
+                ]
+                if len(tb_lineages) > 1:
+                    tb_name = organism_name(
+                        tb["genome_name"], name_mapping, "Unknown", True
+                    )
+                elif len(tb_lineages) == 1:
+                    tb_name = organism_name(
+                        tb["genome_name"], name_mapping, tb_lineages[0]
+                    )
+
             myco["Species"].append(
                 {
-                    "Name": organism_name(tb["genome_name"], name_mapping),
+                    "Name": tb_name,
                     "Num Reads": int(tb["numreads"]),
                     "Coverage": tb["coverage"],
                     "Mean Depth": tb["meandepth"],
@@ -234,7 +251,7 @@ def generate_mycobacterium_results(
             )
             myco["Summary"].append(
                 {
-                    "Name": organism_name(tb["genome_name"], name_mapping),
+                    "Name": tb_name,
                     "Num Reads": int(tb["numreads"]),
                     "Coverage": tb["coverage"],
                     "Depth": tb["meandepth"],
@@ -405,7 +422,10 @@ def generate_sequencing_quality(mappings: dict, genome_creation_report: dict) ->
     """
     # Much of this data is a repeat of data already in Myco Results
     tb_mappings = list(
-        filter(lambda mapping: "tuberculosis" in mapping["genome_name"], mappings["references"])
+        filter(
+            lambda mapping: "tuberculosis" in mapping["genome_name"],
+            mappings["references"],
+        )
     )
     if len(tb_mappings) > 1:
         raise ValueError(
@@ -506,9 +526,13 @@ def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
             else None,
         ]
 
-        if seen_mutations.get((row.drug, significant_variant["Gene"], significant_variant["Mutation"])):
+        if seen_mutations.get(
+            (row.drug, significant_variant["Gene"], significant_variant["Mutation"])
+        ):
             # Already seen this mutation so check if this is variant's coverage is less
-            old_idx, significant_cov = seen_mutations.get((row.drug, significant_variant["Gene"], significant_variant["Mutation"]))
+            old_idx, significant_cov = seen_mutations.get(
+                (row.drug, significant_variant["Gene"], significant_variant["Mutation"])
+            )
             if significant_cov[0] is not None:
                 if significant_variant["Coverage"][0] is not None:
                     if significant_variant["Coverage"][0] > significant_cov[0]:
@@ -528,7 +552,6 @@ def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
                 # Remove the old one in favour of this
                 del drug_blocks[row.drug]["Mutations"][old_idx]
 
-
         significant_variant["Prediction"] = row.prediction
         if row.evidence == {}:
             significant_variant["Evidence"] = ""
@@ -536,7 +559,12 @@ def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
             significant_variant["Evidence"] = row.evidence
 
         drug_blocks[row.drug]["Mutations"].append(significant_variant)
-        seen_mutations[(row.drug, significant_variant["Gene"], significant_variant["Mutation"])] = (len(drug_blocks[row.drug]["Mutations"])-1, significant_variant["Coverage"])
+        seen_mutations[
+            (row.drug, significant_variant["Gene"], significant_variant["Mutation"])
+        ] = (
+            len(drug_blocks[row.drug]["Mutations"]) - 1,
+            significant_variant["Coverage"],
+        )
 
     for drug_name in drugs:
         payload.append(drug_blocks[drug_name])
