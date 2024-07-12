@@ -186,6 +186,15 @@ ONT_MANY_HET = {
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
+NTM_WIN_TB_FINISH = {
+    "gatekeeper_report": "test_data/ntm_win_tb_finish/speciation_report.json",
+    "competitivemapping_report": "test_data/ntm_win_tb_finish/species_comparison_report.json",
+    "mykrobe_report": "test_data/ntm_win_tb_finish/subspecies_report.json",
+    "creation_report": "test_data/ntm_win_tb_finish/genome_creation_report.json",
+    "gnomonicus": "test_data/ntm_win_tb_finish/tb/resistance_prediction_report.json",
+    "expected_output": "test_data/ntm_win_tb_finish/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
+}
 
 
 @pytest.fixture(
@@ -209,6 +218,7 @@ ONT_MANY_HET = {
         MIXED_TB_LINEAGE,
         ONT_HET_VARIANT,
         ONT_MANY_HET,
+        NTM_WIN_TB_FINISH,
     ],
     ids=[
         "covid",
@@ -230,6 +240,7 @@ ONT_MANY_HET = {
         "mixed_tb_lineage",
         "ont_montreal",
         "ont_many_het",
+        "ntm_win_tb_finish",
     ],
 )
 def regression_test_set(request) -> dict:
