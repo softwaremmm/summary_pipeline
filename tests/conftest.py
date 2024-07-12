@@ -186,6 +186,15 @@ ONT_MANY_HET = {
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
+MORE_CHELONAE_TB_ASSEMBLED = {
+    "gatekeeper_report": "test_data/more_chelonae_tb_assembled/speciation_report.json",
+    "competitivemapping_report": "test_data/more_chelonae_tb_assembled/species_comparison_report.json",
+    "mykrobe_report": "test_data/more_chelonae_tb_assembled/subspecies_report.json",
+    "creation_report": "test_data/more_chelonae_tb_assembled/genome_creation_report.json",
+    "gnomonicus": "test_data/more_chelonae_tb_assembled/tb/resistance_prediction_report.json",
+    "expected_output": "test_data/more_chelonae_tb_assembled/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
+}
 
 
 @pytest.fixture(
@@ -209,6 +218,7 @@ ONT_MANY_HET = {
         MIXED_TB_LINEAGE,
         ONT_HET_VARIANT,
         ONT_MANY_HET,
+        MORE_CHELONAE_TB_ASSEMBLED,
     ],
     ids=[
         "covid",
@@ -230,6 +240,7 @@ ONT_MANY_HET = {
         "mixed_tb_lineage",
         "ont_montreal",
         "ont_many_het",
+        "more_chelonae_tb_assembled",
     ],
 )
 def regression_test_set(request) -> dict:
