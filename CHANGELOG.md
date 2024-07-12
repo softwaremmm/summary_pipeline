@@ -1,3 +1,9 @@
+## 2.3.4 (2024-07-12)
+
+### Fix
+
+- force TB win if genome assembled
+
 ## 2.3.3 (2024-07-12)
 
 ### Fix
