@@ -88,13 +88,20 @@ def generate_organism_identification(gatekeeper_data: dict) -> dict:
 
 
 def generate_mycobacterium_results(
-    mappings: dict, mykrobe_data: dict, name_mapping: pandas.DataFrame
+    mappings: dict,
+    mykrobe_data: dict,
+    name_mapping: pandas.DataFrame,
+    tb_genome_assembled: bool = False,
+    tb_reference_name: str = "M.tuberculosis",
 ) -> dict:
     """Summarises Competitive Mapping and Mykrobe outputs.
 
     Args:
         mappings (dict): Output from Competitive Mapping.
         mykrobe_data (dict): Output from Mykrobe.
+        name_mapping (pandas.DataFrame): Mapping of reference names and mykrobe "lineages" to reportable names.
+        tb_genome_assembled (bool, optional): True if M. tuberculosis genome was assembled. Defaults to False.
+        tb_reference_name (str, optional): Name of M. tuberculosis reference. Defaults to "M.tuberculosis".
 
     Returns:
         dict: Summary of Competitive Mapping and Mykrobe outputs.
@@ -111,6 +118,15 @@ def generate_mycobacterium_results(
     mappings_sorted = pandas.DataFrame.from_dict(mappings["references"]).sort_values(
         by=["meandepth"], ascending=False
     )
+    # If a TB genome has been assembled, always put it first
+    if tb_genome_assembled:
+        mappings_sorted = pandas.concat(
+            [
+                mappings_sorted[mappings_sorted.genome_name == tb_reference_name],
+                mappings_sorted[mappings_sorted.genome_name != tb_reference_name],
+            ],
+            ignore_index=True,
+        )
     tophit = mappings_sorted.head(1).to_dict(orient="records")[0]
 
     myco["Species"] = [
@@ -163,7 +179,7 @@ def generate_mycobacterium_results(
             mixed_pop = False
 
         # Summary
-        if tophit_name == "M.tuberculosis":
+        if tophit_name == tb_reference_name:
             # USE MYKROBE lineage and species information
 
             # Append lineage information from mykrobe to species name
@@ -219,7 +235,7 @@ def generate_mycobacterium_results(
         ]
 
     # Always include TB, if present
-    tb_row = mappings_sorted[mappings_sorted["genome_name"] == "M.tuberculosis"]
+    tb_row = mappings_sorted[mappings_sorted["genome_name"] == tb_reference_name]
     if tb_row.empty is False:
         tb = tb_row.to_dict(orient="records")[0]
         if tb != tophit:
@@ -243,7 +259,7 @@ def generate_mycobacterium_results(
 
     # Include 1st runner up in a mixed population
     # with TB winner
-    if tophit_name == "M.tuberculosis" and mixed_pop:
+    if tophit_name == tb_reference_name and mixed_pop:
         second_hit = mappings_sorted.head(2).to_dict(orient="records")[1]
         myco["Summary"].append(
             {
@@ -405,7 +421,10 @@ def generate_sequencing_quality(mappings: dict, genome_creation_report: dict) ->
     """
     # Much of this data is a repeat of data already in Myco Results
     tb_mappings = list(
-        filter(lambda mapping: "tuberculosis" in mapping["genome_name"], mappings["references"])
+        filter(
+            lambda mapping: "tuberculosis" in mapping["genome_name"],
+            mappings["references"],
+        )
     )
     if len(tb_mappings) > 1:
         raise ValueError(
@@ -506,9 +525,13 @@ def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
             else None,
         ]
 
-        if seen_mutations.get((row.drug, significant_variant["Gene"], significant_variant["Mutation"])):
+        if seen_mutations.get(
+            (row.drug, significant_variant["Gene"], significant_variant["Mutation"])
+        ):
             # Already seen this mutation so check if this is variant's coverage is less
-            old_idx, significant_cov = seen_mutations.get((row.drug, significant_variant["Gene"], significant_variant["Mutation"]))
+            old_idx, significant_cov = seen_mutations.get(
+                (row.drug, significant_variant["Gene"], significant_variant["Mutation"])
+            )
             if significant_cov[0] is not None:
                 if significant_variant["Coverage"][0] is not None:
                     if significant_variant["Coverage"][0] > significant_cov[0]:
@@ -528,7 +551,6 @@ def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
                 # Remove the old one in favour of this
                 del drug_blocks[row.drug]["Mutations"][old_idx]
 
-
         significant_variant["Prediction"] = row.prediction
         if row.evidence == {}:
             significant_variant["Evidence"] = ""
@@ -536,7 +558,12 @@ def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
             significant_variant["Evidence"] = row.evidence
 
         drug_blocks[row.drug]["Mutations"].append(significant_variant)
-        seen_mutations[(row.drug, significant_variant["Gene"], significant_variant["Mutation"])] = (len(drug_blocks[row.drug]["Mutations"])-1, significant_variant["Coverage"])
+        seen_mutations[
+            (row.drug, significant_variant["Gene"], significant_variant["Mutation"])
+        ] = (
+            len(drug_blocks[row.drug]["Mutations"]) - 1,
+            significant_variant["Coverage"],
+        )
 
     for drug_name in drugs:
         payload.append(drug_blocks[drug_name])
@@ -721,7 +748,7 @@ def create_summary(
         mykrobe_data = read_json_file(reports["mykrobe"])
         name_mapping = pandas.read_csv(reports["name_mapping"])
         output["Mycobacterium Results"] = generate_mycobacterium_results(
-            mapping_json, mykrobe_data, name_mapping
+            mapping_json, mykrobe_data, name_mapping, "creation_report" in reports
         )
     else:
         output["Mycobacterium Results"] = None
