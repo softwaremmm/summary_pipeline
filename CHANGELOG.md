@@ -1,3 +1,9 @@
+## 2.3.3 (2024-07-12)
+
+### Fix
+
+- sort comp map by meandepth
+
 ## 2.3.2 (2024-07-02)
 
 ### Fix
