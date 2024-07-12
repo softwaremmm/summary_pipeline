@@ -14,6 +14,16 @@ def test_coverage(regression_test_set: dict):
         with open(regression_test_set["expected_output"], "r") as file:
             expected_summary = json.load(file)
 
+        if (
+            expected_summary["Pipeline Outcome"]
+            == "Sufficient reads mapped to M. tuberculosis (H37Rv v3) for genome assembly, resistance prediction and relatedness assessment."
+            and expected_summary["Mycobacterium Results"]["Species"][0]["Name"]
+            != competitivemapping_report["references"][0]["genome_name"]
+        ):
+            # In this case the "main species" is not the one with the highest meandepth
+            # but has been reassigned to M. tuberculosis as the genome has been assembled
+            return
+
         assert (
             competitivemapping_report["references"][0]["coverage"]
             == expected_summary["Mycobacterium Results"]["Summary"][0]["Coverage"]
@@ -32,6 +42,16 @@ def test_depth(regression_test_set: dict):
 
         with open(regression_test_set["expected_output"], "r") as file:
             expected_summary = json.load(file)
+
+        if (
+            expected_summary["Pipeline Outcome"]
+            == "Sufficient reads mapped to M. tuberculosis (H37Rv v3) for genome assembly, resistance prediction and relatedness assessment."
+            and expected_summary["Mycobacterium Results"]["Species"][0]["Name"]
+            != competitivemapping_report["references"][0]["genome_name"]
+        ):
+            # In this case the "main species" is not the one with the highest meandepth
+            # but has been reassigned to M. tuberculosis as the genome has been assembled
+            return
 
         assert (
             competitivemapping_report["references"][0]["meandepth"]
