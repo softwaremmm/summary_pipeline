@@ -9,10 +9,10 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "M.abscessus_abscessus",
-                "Num Reads": 92865,
-                "Coverage": 76.639,
-                "Depth": 2.44258
+                "Name": "M.septicum",
+                "Num Reads": 573848,
+                "Coverage": 61.6525,
+                "Depth": 12.07
             },
             {
                 "Name": "M.tuberculosis (Unknown)",
@@ -23,11 +23,11 @@
         ],
         "Species": [
             {
-                "Name": "M.abscessus",
-                "Num Reads": 92865,
-                "Coverage": 76.639,
-                "Mean Depth": 2.44258,
-                "Length": 5067172.0
+                "Name": "M.septicum",
+                "Num Reads": 573848,
+                "Coverage": 61.6525,
+                "Mean Depth": 12.07,
+                "Length": 6515693.0
             },
             {
                 "Name": "M.tuberculosis (Unknown)",

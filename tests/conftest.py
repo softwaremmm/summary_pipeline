@@ -32,11 +32,11 @@ MALOMENSE = {
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
-ABSCESSUS = {
-    "gatekeeper_report": "test_data/abscessus_over_40pc/speciation_report.json",
-    "competitivemapping_report": "test_data/abscessus_over_40pc/species_comparison_report.json",
-    "mykrobe_report": "test_data/abscessus_over_40pc/subspecies_report.json",
-    "expected_output": "test_data/abscessus_over_40pc/main_report.json",
+SEPTICUM = {
+    "gatekeeper_report": "test_data/septicum/speciation_report.json",
+    "competitivemapping_report": "test_data/septicum/species_comparison_report.json",
+    "mykrobe_report": "test_data/septicum/subspecies_report.json",
+    "expected_output": "test_data/septicum/main_report.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
@@ -193,7 +193,7 @@ ONT_MANY_HET = {
         covid,
         covid_no_meta,
         SRR2097047,
-        ABSCESSUS,
+        SEPTICUM,
         MALOMENSE,
         WTCHG_885333_73205296_1,
         WTCHG_885333_73205296_2,
@@ -214,7 +214,7 @@ ONT_MANY_HET = {
         "covid",
         "covid_no_meta",
         "SRR2097047",
-        "ABSCESSUS",
+        "SEPTICUM",
         "MALOMENSE",
         "WTCHG_885333_73205296_1",
         "WTCHG_885333_73205296_2",
