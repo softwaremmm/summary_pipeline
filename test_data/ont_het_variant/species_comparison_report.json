@@ -5,20 +5,6 @@
     },
     "references": [
         {
-            "genome_name": "M.tuberculosis",
-            "length": 4411532.0,
-            "coverage": 98.0922,
-            "numreads": 9414,
-            "meandepth": 4.25294,
-            "total_reads": 9500,
-            "total_alns": 11207,
-            "exclusive_reads": 1958,
-            "primary_reads": 6611,
-            "secondary_reads": 155,
-            "supplementary_reads": 2803,
-            "supplementary_alns": 3996
-        },
-        {
             "genome_name": "M.abscessus",
             "length": 5067172.0,
             "coverage": 97.9465,
@@ -31,6 +17,20 @@
             "secondary_reads": 2924,
             "supplementary_reads": 5518,
             "supplementary_alns": 34845
+        },
+        {
+            "genome_name": "M.tuberculosis",
+            "length": 4411532.0,
+            "coverage": 98.0922,
+            "numreads": 9414,
+            "meandepth": 4.25294,
+            "total_reads": 9500,
+            "total_alns": 11207,
+            "exclusive_reads": 1958,
+            "primary_reads": 6611,
+            "secondary_reads": 155,
+            "supplementary_reads": 2803,
+            "supplementary_alns": 3996
         },
         {
             "genome_name": "M.immunogenum",

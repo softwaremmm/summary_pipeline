@@ -5,19 +5,19 @@
     },
     "references": [
         {
-            "genome_name": "M.abscessus",
-            "length": 5067172.0,
-            "coverage": 76.639,
-            "numreads": 92865.0,
-            "meandepth": 2.44258
-        },
-        {
             "genome_name": "M.septicum",
             "length": 6515693.0,
             "coverage": 61.6525,
             "numreads": 573848.0,
             "meandepth": 12.07
         },
+        {
+            "genome_name": "M.abscessus",
+            "length": 5067172.0,
+            "coverage": 76.639,
+            "numreads": 92865.0,
+            "meandepth": 2.44258
+        },        
         {
             "genome_name": "M.neworleansense",
             "length": 6287317.0,

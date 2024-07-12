@@ -109,7 +109,7 @@ def generate_mycobacterium_results(
 
     # Species (competitive mapping)
     mappings_sorted = pandas.DataFrame.from_dict(mappings["references"]).sort_values(
-        by=["coverage"], ascending=False
+        by=["meandepth"], ascending=False
     )
     tophit = mappings_sorted.head(1).to_dict(orient="records")[0]
 
