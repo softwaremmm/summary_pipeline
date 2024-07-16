@@ -216,7 +216,7 @@ def generate_mycobacterium_results(
                 )
 
         elif myco["Species"][0]["Coverage"] < 40:
-            # USE MYKROBE
+            # USE COMPETITIVE MAPPING
 
             summary_name = organism_name(tophit_name, name_mapping)
 

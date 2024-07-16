@@ -73,11 +73,15 @@ _Mycobacterium tuberculosis_ (Lineage 3)
 
 _Mycobacterium fortuitum_ subspecies _fortuitum_
 
-Two sources of information are used to inform the speciation decision: [Competitive Mapping](https://github.com/GlobalPathogenAnalysisService/competitivemapping_pipeline) and [mykrobe](https://github.com/GlobalPathogenAnalysisService/lineagecalling_pipeline). These each output a JSON file which is analysed by the code in this repository to determine species information.  
+The "**main species**" reported in the batch view is the first species in this list.
 
-Competitive Mapping outputs a list of species, which can be ordered by "coverage" (the proportion of a reference genome to which reads in the sample "map" i.e. are very similar to) to give a "top hit" species. However, Competitive Mapping does not provide information on lineage or subspecies. This information can in some cases be obtained from mykrobe, which reports subspecies, phylogenic group and lineage. 
+Two sources of information are used to inform the speciation decision: [Competitive Mapping](https://github.com/GlobalPathogenAnalysisService/competitivemapping_pipeline) and [mykrobe](https://github.com/GlobalPathogenAnalysisService/lineagecalling_pipeline). These each output a JSON file which is analysed by the code in this repository to determine species information.
 
-In cases where mykrobe does not return any information, cases where competitive mapping returns a coverage of less than 40%, or cases where there is a mixed population containing an organism in this list (M.intracellulare_chimaera, M.avium_hominissuis, M.paraintracellulare, M.intracellulare, M.lepraemurium, M.abscessus) then the species name from Competitive Mapping is used. Otherwise, the name returned is looked up using the species name from Competitive Mapping and the lineage name from mykrobe (if available). Where no combination of Competitive Mapping and lineage name can be found in the reference table ([example reference table](test_data/reference/name_mapping.csv)), the Competitive Mapping name is used. 
+Competitive Mapping outputs a list of species, which can be ordered by "meandepth" (the mean number of reads mapped to an individual base in the reference genome) to give a "top hit" species. However, Competitive Mapping does not provide information on lineage or subspecies. This information can in some cases be obtained from mykrobe, which reports subspecies, phylogenic group and lineage. 
+
+If the mycobacteria pipeline reaches a point where an _M. tuberculosis_ genome is assembled (and thus variants are called, relatedness and AMR information generated), _M. tuberculosis_ is always the main species (with lineage information appended, as appropriate).
+
+In cases where mykrobe does not return any information, cases where competitive mapping returns a coverage of less than 40%, or cases where there is a mixed population containing an organism in this list (_M. intracellulare_chimaera_, _M. avium_hominissuis_, _M. paraintracellulare_, _M. intracellulare_, _M. lepraemurium_, _M. abscessus_) then the species name from Competitive Mapping is used. Otherwise, the name returned is looked up using the species name from Competitive Mapping and the lineage name from mykrobe (if available). Where no combination of Competitive Mapping and lineage name can be found in the reference table ([example reference table](test_data/reference/name_mapping.csv)), the Competitive Mapping name is used. 
 
 Coverage, depth and number of reads mapped (Reads) are always sourced from Competitive Mapping.
 
