@@ -1,0 +1,28 @@
+{
+  "phylo_group": {
+    "Non_tuberculosis_mycobacterium_complex": {
+      "percent_coverage": 99.87,
+      "median_depth": 17,
+      "inferred_from_child": true
+    }
+  },
+  "sub_complex": {
+    "subNon_tuberculosis_mycobacterium_complex": {
+      "percent_coverage": 99.87,
+      "median_depth": 17,
+      "inferred_from_child": true
+    }
+  },
+  "species": {
+    "Mycobacterium_avium": {
+      "percent_coverage": 99.87,
+      "median_depth": 17
+    }
+  },
+  "lineage": {
+    "Mycobacterium_avium_subsp._silvaticum": {
+      "percent_coverage": 84.802,
+      "median_depth": 16
+    }
+  }
+}
