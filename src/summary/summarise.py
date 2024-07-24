@@ -198,6 +198,7 @@ def generate_mycobacterium_results(
 
         elif tophit_name in [
             "M.intracellulare_chimaera",
+            "M.avium",
             "M.avium_hominissuis",
             "M.paraintracellulare",
             "M.intracellulare",
