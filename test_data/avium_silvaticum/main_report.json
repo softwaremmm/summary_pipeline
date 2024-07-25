@@ -9,13 +9,13 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "M.avium_silvaticum",
+                "Name": "M. avium subsp. silvaticum (MAC)",
                 "Num Reads": 562248,
                 "Coverage": 87.6706,
                 "Depth": 15.908499999999998
             },
             {
-                "Name": "M.tuberculosis (Unknown)",
+                "Name": "M. tuberculosis (lineage Unknown)",
                 "Num Reads": 35,
                 "Coverage": 0.107378,
                 "Depth": 0.00108738
@@ -30,7 +30,7 @@
                 "Length": 5118245.0
             },
             {
-                "Name": "M.tuberculosis (Unknown)",
+                "Name": "M.tuberculosis",
                 "Num Reads": 35,
                 "Coverage": 0.107378,
                 "Mean Depth": 0.00108738,
