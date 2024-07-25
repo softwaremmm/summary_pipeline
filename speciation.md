@@ -83,6 +83,8 @@ If the mycobacteria pipeline reaches a point where an _M. tuberculosis_ genome i
 
 In cases where mykrobe does not return any information or cases where there is a **mixed population** containing an organism in this list (_M. intracellulare_chimaera_, _M. avium_hominissuis_, _M. paraintracellulare_, _M. intracellulare_, _M. lepraemurium_, _M. abscessus_) then the species name from Competitive Mapping is used. Otherwise, the name returned is looked up using the species name from Competitive Mapping and the lineage name from mykrobe (if available). Where no combination of Competitive Mapping and lineage name can be found in the reference table ([example reference table](test_data/reference/name_mapping.csv)), the Competitive Mapping name is used. 
 
+In practise, the Competitive Mapping name is always looked up in the lookup table with an "Unknown" lineage in conditions where mykrobe doesn't return a value or the logic dictates mykorbe should not be used - this may return a string which is not identical to the Competitive Mapping name input string, e.g. with additional spacing characters.
+
 Coverage, depth and number of reads mapped (Reads) are always sourced from Competitive Mapping.
 
 ## Additional steps for mixed populations
