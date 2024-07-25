@@ -9,7 +9,7 @@
   "Mycobacterium Results": {
     "Summary": [
       {
-        "Name": "M.tuberculosis (Unknown)",
+        "Name": "M. tuberculosis (lineage Unknown)",
         "Num Reads": 3953463,
         "Coverage": 98.6802,
         "Depth": 132.507

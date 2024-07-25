@@ -9,7 +9,7 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "M.tuberculosis_bovis(BCG)",
+                "Name": "M. bovis subsp. BCG (MTB complex)",
                 "Num Reads": 848988,
                 "Coverage": 93.0073,
                 "Depth": 26.9736

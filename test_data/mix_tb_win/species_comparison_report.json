@@ -12,7 +12,7 @@
             "meandepth": 37.8527
         },
         {
-            "genome_name": "M.avium_hominissuis",
+            "genome_name": "M.avium",
             "length": 5118245.0,
             "coverage": 91.2336,
             "numreads": 581035.0,
