@@ -1,3 +1,10 @@
+## 2.4.2 (2024-07-25)
+
+### Fix
+
+- update expectation for new name mapping
+- Include M. avium in species list
+
 ## 2.4.1 (2024-07-25)
 
 ### Fix
