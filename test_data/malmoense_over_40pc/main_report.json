@@ -9,13 +9,13 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "M.malmoense",
+                "Name": "M. malmoense",
                 "Num Reads": 1829356,
                 "Coverage": 98.1481,
                 "Depth": 45.9673
             },
             {
-                "Name": "M.tuberculosis (Unknown)",
+                "Name": "M. tuberculosis (lineage Unknown)",
                 "Num Reads": 582,
                 "Coverage": 0.838008,
                 "Depth": 0.0148735
@@ -30,7 +30,7 @@
                 "Length": 5319859.0
             },
             {
-                "Name": "M.tuberculosis (Unknown)",
+                "Name": "M.tuberculosis",
                 "Num Reads": 582,
                 "Coverage": 0.838008,
                 "Mean Depth": 0.0148735,

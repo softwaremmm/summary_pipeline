@@ -9,13 +9,13 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "M.tuberculosis (lineage4.1.2.1)",
+                "Name": "M. tuberculosis (lineage 4.1.2.1)",
                 "Num Reads": 1250832,
                 "Coverage": 99.0892,
                 "Depth": 37.8527
             },
             {
-                "Name": "M.avium_hominissuis",
+                "Name": "M. avium",
                 "Num Reads": 581035,
                 "Coverage": 91.2336,
                 "Depth": 14.9584
@@ -28,6 +28,13 @@
                 "Coverage": 99.0892,
                 "Mean Depth": 37.8527,
                 "Length": 4411532.0
+            },
+            {
+                "Name": "M.avium",
+                "Num Reads": 581035,
+                "Coverage": 91.2336,
+                "Mean Depth": 14.9584,
+                "Length": 5118245.0
             }
         ],
         "Phylogenic Group": [

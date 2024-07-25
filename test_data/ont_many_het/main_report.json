@@ -9,7 +9,7 @@
     "Mycobacterium Results": {
       "Summary": [
         {
-          "Name": "M.tuberculosis (lineage2.2.1)",
+          "Name": "M. tuberculosis (lineage 2.2.1)",
           "Num Reads": 298042,
           "Coverage": 99.4629,
           "Depth": 141.751

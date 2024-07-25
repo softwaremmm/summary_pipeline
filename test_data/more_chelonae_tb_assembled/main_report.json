@@ -15,7 +15,7 @@
                 "Depth": 35.1784
             },
             {
-                "Name": "M.chelonae",
+                "Name": "M. chelonae",
                 "Num Reads": 1391364,
                 "Coverage": 89.7258,
                 "Depth": 36.5127
@@ -28,6 +28,13 @@
                 "Coverage": 99.8386,
                 "Mean Depth": 35.1784,
                 "Length": 4411532.0
+            },
+            {
+                "Name": "M.chelonae",
+                "Num Reads": 1391364,
+                "Coverage": 89.7258,
+                "Mean Depth": 36.5127,
+                "Length": 5106636.0
             }
         ],
         "Phylogenic Group": [

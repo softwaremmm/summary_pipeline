@@ -238,7 +238,7 @@ MORE_CHELONAE_TB_ASSEMBLED = {
         "NO_AA_MUTATIONS_TB",
         "mykrobe_species_differentiates",
         "mixed_tb_lineage",
-        "ont_montreal",
+        "ont_het_variant",
         "ont_many_het",
         "more_chelonae_tb_assembled",
     ],

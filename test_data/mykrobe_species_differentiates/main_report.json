@@ -9,13 +9,13 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "M.gordonae",
+                "Name": "M. gordonae",
                 "Num Reads": 252921,
                 "Coverage": 54.1159,
                 "Depth": 4.90154
             },
             {
-                "Name": "M.tuberculosis (Unknown)",
+                "Name": "M. tuberculosis (lineage Unknown)",
                 "Num Reads": 1012,
                 "Coverage": 1.07076,
                 "Depth": 0.0204344
@@ -30,7 +30,7 @@
                 "Length": 7103222.0
             },
             {
-                "Name": "M.tuberculosis (Unknown)",
+                "Name": "M.tuberculosis",
                 "Num Reads": 1012,
                 "Coverage": 1.07076,
                 "Mean Depth": 0.0204344,

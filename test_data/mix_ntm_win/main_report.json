@@ -9,13 +9,13 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "M.avium_hominissuis",
+                "Name": "M. avium",
                 "Num Reads": 89007,
                 "Coverage": 75.9888,
                 "Depth": 2.34133
             },
             {
-                "Name": "M.tuberculosis (Unknown)",
+                "Name": "M. tuberculosis (lineage Unknown)",
                 "Num Reads": 41055,
                 "Coverage": 63.0743,
                 "Depth": 1.29548
@@ -23,14 +23,14 @@
         ],
         "Species": [
             {
-                "Name": "M.avium_hominissuis",
+                "Name": "M.avium",
                 "Num Reads": 89007,
                 "Coverage": 75.9888,
                 "Mean Depth": 2.34133,
                 "Length": 5118245.0
             },
             {
-                "Name": "M.tuberculosis (Unknown)",
+                "Name": "M.tuberculosis",
                 "Num Reads": 41055,
                 "Coverage": 63.0743,
                 "Mean Depth": 1.29548,

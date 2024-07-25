@@ -5,7 +5,7 @@
     },
     "references": [
         {
-            "genome_name": "M.avium_hominissuis",
+            "genome_name": "M.avium",
             "length": 5118245.0,
             "coverage": 75.9888,
             "numreads": 89007.0,
