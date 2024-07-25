@@ -9,13 +9,13 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "M.septicum",
+                "Name": "M. septicum",
                 "Num Reads": 573848,
                 "Coverage": 61.6525,
                 "Depth": 12.07
             },
             {
-                "Name": "M.tuberculosis (Unknown)",
+                "Name": "M. tuberculosis (lineage Unknown)",
                 "Num Reads": 608,
                 "Coverage": 1.35089,
                 "Depth": 0.0166817
@@ -30,7 +30,7 @@
                 "Length": 6515693.0
             },
             {
-                "Name": "M.tuberculosis (Unknown)",
+                "Name": "M.tuberculosis",
                 "Num Reads": 608,
                 "Coverage": 1.35089,
                 "Mean Depth": 0.0166817,

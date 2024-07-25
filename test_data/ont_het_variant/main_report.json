@@ -15,7 +15,7 @@
                 "Depth": 4.25294
             },
             {
-                "Name": "M.abscessus",
+                "Name": "M. abscessus",
                 "Num Reads": 154369,
                 "Coverage": 97.9465,
                 "Depth": 30.4485
@@ -28,6 +28,13 @@
                 "Coverage": 98.0922,
                 "Mean Depth": 4.25294,
                 "Length": 4411532.0
+            },
+            {
+                "Name": "M.abscessus",
+                "Num Reads": 154369,
+                "Coverage": 97.9465,
+                "Mean Depth": 30.4485,
+                "Length": 5067172.0
             }
         ],
         "Phylogenic Group": [

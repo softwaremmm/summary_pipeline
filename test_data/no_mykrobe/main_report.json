@@ -9,13 +9,13 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "M.komanii",
+                "Name": "M. komanii",
                 "Num Reads": 377667,
                 "Coverage": 63.2765020326,
                 "Depth": 8.6599462091
             },
             {
-                "Name": "M.tuberculosis (Unknown)",
+                "Name": "M. tuberculosis (lineage Unknown)",
                 "Num Reads": 494,
                 "Coverage": 0.666231,
                 "Depth": 0.0103273
@@ -30,7 +30,7 @@
                 "Length": 5378970.0
             },
             {
-                "Name": "M.tuberculosis (Unknown)",
+                "Name": "M.tuberculosis",
                 "Num Reads": 494,
                 "Coverage": 0.666231,
                 "Mean Depth": 0.0103273,

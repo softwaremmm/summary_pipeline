@@ -196,34 +196,16 @@ def generate_mycobacterium_results(
                 # Default to just top hit if no lineage name exists
                 summary_name = organism_name(tophit_name, name_mapping)
 
-        elif tophit_name in [
-            "M.intracellulare_chimaera",
-            "M.avium_hominissuis",
-            "M.paraintracellulare",
-            "M.intracellulare",
-            "M.lepraemurium",
-            "M.abscessus",
-        ]:
-            # USE MYKROBE
-            if mixed_pop:
-                # Use competitive mapping
-                summary_name = organism_name(tophit_name, name_mapping)
-
-            else:
+        else:
+            if not mixed_pop and len(myco["Lineage"]) == 1:
                 # Use lineage name as species name
                 summary_name = organism_name(
                     tophit_name, name_mapping, myco["Lineage"][0]["Name"]
                 )
+            else:
+                # Use competitive mapping only
+                summary_name = organism_name(tophit_name, name_mapping)
 
-        elif myco["Species"][0]["Coverage"] < 40:
-            # USE MYKROBE
-
-            summary_name = organism_name(tophit_name, name_mapping)
-
-        else:
-            # USE COMPETITIVE MAPPING
-
-            summary_name = organism_name(tophit_name, name_mapping)
 
         myco["Summary"] = [
             {
@@ -241,7 +223,7 @@ def generate_mycobacterium_results(
         if tb != tophit:
             myco["Species"].append(
                 {
-                    "Name": organism_name(tb["genome_name"], name_mapping),
+                    "Name": tb["genome_name"],
                     "Num Reads": int(tb["numreads"]),
                     "Coverage": tb["coverage"],
                     "Mean Depth": tb["meandepth"],
@@ -269,6 +251,15 @@ def generate_mycobacterium_results(
                 "Depth": second_hit["meandepth"],
             }
         )
+        myco["Species"].append(
+                {
+                    "Name": second_hit["genome_name"],
+                    "Num Reads": int(second_hit["numreads"]),
+                    "Coverage": second_hit["coverage"],
+                    "Mean Depth": second_hit["meandepth"],
+                    "Length": second_hit["length"],
+                }
+            )
 
     return myco
 
@@ -391,21 +382,23 @@ def organism_name(
     # for now we simply report the run as "mixed".
     if cm_name == "M.tuberculosis" and mixed_tb_lineage is True:
         return "M. tuberculosis (mixed lineage)"
-    # Lookup name by Compatitive Mapping name and mykrobe
-    # lineage.
+
+    # Lookup name by Competitive Mapping name and mykrobe lineage.
     name_df = mapping[(mapping.reference == cm_name) & (mapping.LINEAGE == lineage)]
     if name_df.empty:
         # This means the name we're seeking isn't in the lookup table
-        name = cm_name
-    else:
-        # Multiple names identical names are returned where mykrobe
-        # indentifies an alternate species associated with a single species
-        # in competitive mapping e.g. "Mycobacterium_algericum" or
-        # "Mycobacterium_algericum_A" are both associated with
-        # "M.algericus". We ignore this information from mykrobe.
-        name = pandas.unique(name_df.REPORT).item()
-        # If more than one unique name is returned, it will cause an
-        # error.
+        # Fall back to trying with lineage "Unknown"
+        name_df = mapping[(mapping.reference == cm_name) & (mapping.LINEAGE == "Unknown")]
+
+        if name_df.empty:
+            # Name must not be in table. Use competitive mapping name directly
+            return cm_name
+
+    # By this point we know that name_df is not empty
+
+    name = pandas.unique(name_df.REPORT).item()
+    # If more than one unique name is returned, it will cause an error.
+    # The name mapping spreadsheet should not contain such duplicates.
 
     return name
 
