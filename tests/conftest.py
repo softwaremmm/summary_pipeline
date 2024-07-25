@@ -196,6 +196,14 @@ MORE_CHELONAE_TB_ASSEMBLED = {
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
+AVIUM_SILVATICUM = {
+    "gatekeeper_report": "test_data/avium_silvaticum/speciation_report.json",
+    "competitivemapping_report": "test_data/avium_silvaticum/species_comparison_report.json",
+    "mykrobe_report": "test_data/avium_silvaticum/subspecies_report.json",
+    "expected_output": "test_data/avium_silvaticum/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
+}
+
 
 @pytest.fixture(
     params=[
@@ -219,6 +227,7 @@ MORE_CHELONAE_TB_ASSEMBLED = {
         ONT_HET_VARIANT,
         ONT_MANY_HET,
         MORE_CHELONAE_TB_ASSEMBLED,
+        AVIUM_SILVATICUM,
     ],
     ids=[
         "covid",
@@ -241,6 +250,7 @@ MORE_CHELONAE_TB_ASSEMBLED = {
         "ont_het_variant",
         "ont_many_het",
         "more_chelonae_tb_assembled",
+        "avium_silvaticum",
     ],
 )
 def regression_test_set(request) -> dict:

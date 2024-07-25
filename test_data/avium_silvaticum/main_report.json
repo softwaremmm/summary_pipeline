@@ -1,0 +1,63 @@
+{
+    "Pipeline Outcome": "Mycobacterial species identified. Reads mapped to M. tuberculosis (H37Rv v3) too low to proceed to M. tuberculosis complex genome assembly.",
+    "Organism Identification": {
+        "Human Reads": null,
+        "Unclassified Reads": 250,
+        "Non-Mycobacterium Bacteria Reads": 74,
+        "Mycobacterium Reads": 645282
+    },
+    "Mycobacterium Results": {
+        "Summary": [
+            {
+                "Name": "M. avium subsp. silvaticum (MAC)",
+                "Num Reads": 562248,
+                "Coverage": 87.6706,
+                "Depth": 15.908499999999998
+            },
+            {
+                "Name": "M. tuberculosis (lineage Unknown)",
+                "Num Reads": 35,
+                "Coverage": 0.107378,
+                "Depth": 0.00108738
+            }
+        ],
+        "Species": [
+            {
+                "Name": "M.avium",
+                "Num Reads": 562248,
+                "Coverage": 87.6706,
+                "Mean Depth": 15.908499999999998,
+                "Length": 5118245.0
+            },
+            {
+                "Name": "M.tuberculosis",
+                "Num Reads": 35,
+                "Coverage": 0.107378,
+                "Mean Depth": 0.00108738,
+                "Length": 4411532.0
+            }
+        ],
+        "Phylogenic Group": [
+            {
+                "Name": "Non_tuberculosis_mycobacterium_complex",
+                "Coverage": 99.87,
+                "Median Depth": 17
+            }
+        ],
+        "Subspecies": [
+            {
+                "Name": "Mycobacterium_avium",
+                "Coverage": 99.87,
+                "Median Depth": 17
+            }
+        ],
+        "Lineage": [
+            {
+                "Name": "Mycobacterium_avium_subsp._silvaticum",
+                "Coverage": 84.802,
+                "Median Depth": 16
+            }
+        ]
+    },
+    "Genomes": null
+}
