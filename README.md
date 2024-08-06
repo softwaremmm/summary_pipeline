@@ -79,22 +79,29 @@ Install for development and run `pytest`. No NextFlow tests are yet present.
 
 ### Test Data
 
-Descriptions of test data.
+Descriptions of test data. List / descriptions may be incomplete, but hopefully still helpful.
 
-| Test Data Directory | Description |
-| --- | --- |
-| ToDo | _????_, less than 40% coverage by competitive mapping |
-| [test_data/abscessus_over_40pc] | _M. abscessus_, more than 40% coverage by competitive mapping |
-| [test_data/malmoense_over_40pc] | _M. malmoense_, more than 40% coverage by competitive mapping |
-| [test_data/clade_animal_A3] | _M. tuberculosis_ with lineage not specified as a number |
-| [test_data/covid] | Covid |
-| [test_data/covid_no_meta] | Covid but without a pipeline versions file |
-| [test_data/mix_ntm_win] | A mykrobe mixed result with an NTM as the main species |
-| [test_data/mix_tb_win] | A mykrobe mixed result with _M. tuberculosis_ as the main species |
-| [test_data/mixed_tb_lineage] | A mykrobe mixed result with TB as the main species, but with mixed lineage |
-| [test_data/SRR2097047] | Bacteria, but not mycobacteria |
-| [test_data/no_mykrobe] | NTM for which `mykrobe` does not generate phylogenic data |
-| [test_data/WTCHG_885333_73205296_1] | _M. tuberculosis_ |
+| Test Data Directory                        | Description                                                                                   |
+| ------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| [test_data/BCG]                            |                                                                                               |
+| [test_data/covid]                          | Covid                                                                                         |
+| [test_data/covid_no_meta]                  | Covid but without a pipeline versions file                                                    |
+| [test_data/gordonae]                       |                                                                                               |
+| [test_data/malmoense_over_40pc]            | _M. malmoense_, more than 40% coverage by competitive mapping                                 |
+| [test_data/mix_ntm_win]                    | A mykrobe mixed result with an NTM as the main species                                        |
+| [test_data/mix_tb_win]                     | A mykrobe mixed result with _M. tuberculosis_ as the main species                             |
+| [test_data/mixed_tb_lineage]               | A mykrobe mixed result with TB as the main species, but with mixed lineage                    |
+| [test_data/more_chelonae_tb_assembled]     | An _M. chelonae_ "win" by competitive mapping, but with enough TB reads to assemble a genome. |
+| [test_data/mykrobe_species_differentiates] |                                                                                               |
+| [test_data/no_lineage_tb]                  |                                                                                               |
+| [test_data/no_mykrobe]                     | NTM for which `mykrobe` does not generate phylogenic data                                     |
+| [test_data/ont_het_variant]                |                                                                                               |
+| [test_data/ont_many_het]                   |                                                                                               |
+| [test_data/septicum]                       |                                                                                               |
+| [test_data/tb_no_aa_mutations]             |                                                                                               |
+| [test_data/tb_null_calls]                  |                                                                                               |
+| [test_data/SRR2097047]                     | Bacteria, but not mycobacteria                                                                |
+| [test_data/WTCHG_885333_73205296_1]        | _M. tuberculosis_                                                                             |
 
 ## Glossary & Definitions
 
