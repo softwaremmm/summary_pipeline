@@ -65,13 +65,13 @@ The remainder of the JSON data (e.g. "Phylogenic Group") is drawn from different
 
 Some of the information appears in the "Mycobacterial species identified" section of the user interface e.g.
 
-![M.tuberculosis](docs/mycobacterial_species_identified.png)
+![M. tuberculosis](docs/mycobacterial_species_identified.png)
 
-_Mycobacterium tuberculosis_ (Lineage 3)
+_Mycobacterium tuberculosis_ (Lineage 1.2.2)
 
-![M.fortuitum_fortuitum](docs/subspecies.png)
+![M. abscessus subsp. massiliense](docs/subspecies.png)
 
-_Mycobacterium fortuitum_ subspecies _fortuitum_
+_Mycobacterium abscessus_ subspecies _massiliense_
 
 The "**main species**" reported in the batch view is the first species in this list.
 If the mycobacteria pipeline reaches a point where an _M. tuberculosis_ genome is assembled (and thus variants are called, relatedness and AMR information generated), _M. tuberculosis_ is always the main species (with lineage information appended, as appropriate).
