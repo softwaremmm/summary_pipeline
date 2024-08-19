@@ -1,4 +1,4 @@
-name: Tests (pytest)
+name: Tests
 
 on:
   workflow_dispatch:
@@ -38,7 +38,7 @@ jobs:
         run: |
           pytest
   nf-test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted # Uses https://github.com/GlobalPathogenAnalysisService/git_runners
     steps:
       - uses: actions/checkout@v4
         with:
