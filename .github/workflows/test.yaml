@@ -13,7 +13,7 @@ on:
 
 jobs:
   build:
-    name: Ex1 (${{ matrix.python-version }}
+    name: pytest (${{ matrix.python-version }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
