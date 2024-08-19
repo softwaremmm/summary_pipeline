@@ -12,7 +12,9 @@ params.help = ''
 process summary_json {
     cpus 1
     memory '0.5 GB'
-    container 'lhr.ocir.io/lrbvkel2wjot/gpas/summary_pipeline:2.4.2'
+    container = {
+        params.test_container=="" ? 'lhr.ocir.io/lrbvkel2wjot/gpas/summary_pipeline:2.4.2' : params.test_container
+    }
 
     debug true
     pod label: "name", value: "summary_pipeline:summary_json"
