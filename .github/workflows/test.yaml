@@ -37,3 +37,15 @@ jobs:
       - name: Test with pytest
         run: |
           pytest
+  nf-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build docker container
+        run: |
+          docker build -t summary_test .
+      - name: Inspect
+        run: |
+          docker image inspect summary_test
+
+      - name: Run nf-test
+        run: nf-test test tests/workflow.nf.test --profile local_docker
