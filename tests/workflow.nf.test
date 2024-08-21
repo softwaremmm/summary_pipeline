@@ -1,0 +1,27 @@
+nextflow_workflow {
+
+    name "Test Workflow"
+    script "main.nf"
+    workflow "summary"
+
+    test("Summary workflow") {
+        // This is intended as a smoke test to ensure the workflow runs without errors
+        // More detailled testing is done for the Python package used by Nextflow
+        when {
+            workflow {
+                """
+                input[0] =  ['$projectDir/test_data/WTCHG_885333_73205296_1/genome_creation_report.json',
+                            '$projectDir/test_data/WTCHG_885333_73205296_1/knowledge.json',
+                            '$projectDir/test_data/WTCHG_885333_73205296_1/speciation_report.json',
+                            '$projectDir/test_data/WTCHG_885333_73205296_1/species_comparison_report.json',
+                            '$projectDir/test_data/WTCHG_885333_73205296_1/subspecies_report.json',
+                            '$projectDir/test_data/reference/name_mapping.csv']
+                """
+            }
+        }
+
+        then {
+             assert workflow.success
+        }
+    }
+}

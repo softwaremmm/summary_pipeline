@@ -1,4 +1,4 @@
-name: Tests (pytest)
+name: Tests
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ on:
 
 jobs:
   build:
-    name: Ex1 (${{ matrix.python-version }}
+    name: pytest (${{ matrix.python-version }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -37,3 +37,19 @@ jobs:
       - name: Test with pytest
         run: |
           pytest
+  nf-test:
+    runs-on: self-hosted # Uses https://github.com/GlobalPathogenAnalysisService/git_runners
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: "${{ secrets.PAT_TOKEN }}"
+          fetch-depth: 0
+      - name: Build docker container
+        run: |
+          docker build -t summary_test .
+      - name: Inspect
+        run: |
+          docker image inspect summary_test
+
+      - name: Run nf-test
+        run: nf-test test tests/workflow.nf.test --profile local_docker
