@@ -9,7 +9,7 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "M. tuberculosis (lineage Unknown)",
+                "Name": "M. canettii (MTB complex)",
                 "Num Reads": 976682,
                 "Coverage": 96.8996,
                 "Depth": 31.9049
