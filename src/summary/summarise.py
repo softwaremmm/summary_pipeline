@@ -209,7 +209,7 @@ def generate_mycobacterium_results(
                     species=myco["Subspecies"][0]["Name"],
                 )
             else:
-                # Default to just top hit if no lineage name exists
+                # Default to just top hit if no lineage name or (sub)species exists
                 summary_name = organism_name(tophit_name, name_mapping)
 
         else:
