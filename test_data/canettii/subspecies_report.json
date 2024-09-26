@@ -1,0 +1,21 @@
+{
+  "phylo_group": {
+    "Mycobacterium_tuberculosis_complex": {
+      "percent_coverage": 100,
+      "median_depth": 29,
+      "inferred_from_child": true
+    }
+  },
+  "sub_complex": {
+    "subMycobacterium_tuberculosis_complex": {
+      "percent_coverage": 100,
+      "median_depth": 29
+    }
+  },
+  "species": {
+    "Mycobacterium_canettii": {
+      "percent_coverage": 99.914,
+      "median_depth": 29
+    }
+  }
+}

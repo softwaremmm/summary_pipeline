@@ -204,6 +204,15 @@ AVIUM_SILVATICUM = {
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
+CANETTII = {
+    "gatekeeper_report": "test_data/canettii/speciation_report.json",
+    "competitivemapping_report": "test_data/canettii/species_comparison_report.json",
+    "mykrobe_report": "test_data/canettii/subspecies_report.json",
+    "creation_report": "test_data/canettii/genome_creation_report.json",
+    "gnomonicus": "test_data/canettii/tb/resistance_prediction_report.json",
+    "expected_output": "test_data/canettii/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
+}
 
 @pytest.fixture(
     params=[
@@ -228,6 +237,7 @@ AVIUM_SILVATICUM = {
         ONT_MANY_HET,
         MORE_CHELONAE_TB_ASSEMBLED,
         AVIUM_SILVATICUM,
+        CANETTII,
     ],
     ids=[
         "covid",
@@ -251,6 +261,7 @@ AVIUM_SILVATICUM = {
         "ont_many_het",
         "more_chelonae_tb_assembled",
         "avium_silvaticum",
+        "canettii",
     ],
 )
 def regression_test_set(request) -> dict:

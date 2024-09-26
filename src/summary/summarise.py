@@ -165,7 +165,7 @@ def generate_mycobacterium_results(
         if "species" in mykrobe_data:
             myco["Subspecies"] = process_subspecies(
                 mykrobe_data.get("species")
-            )  # Why is species assigned to subspecies?
+            )  # Why is species assigned to subspecies? Because these ideas are conflated in TB complex.
 
         # Lineage (mykrobe)
         if "lineage" in mykrobe_data:
@@ -184,16 +184,32 @@ def generate_mycobacterium_results(
 
             # Append lineage information from mykrobe to species name
             # from competitive mapping, if available
+
+            # assume if a lineage is included, then a (sub)species must be too
             if len(myco["Lineage"]) == 1:
                 summary_name = organism_name(
-                    tophit_name, name_mapping, myco["Lineage"][0]["Name"]
+                    tophit_name,
+                    name_mapping,
+                    lineage=myco["Lineage"][0]["Name"],
+                    species=myco["Subspecies"][0]["Name"],
                 )
             elif len(myco["Lineage"]) == 2:
                 summary_name = organism_name(
-                    tophit_name, name_mapping, myco["Lineage"][0]["Name"], True
+                    tophit_name,
+                    name_mapping,
+                    lineage=myco["Lineage"][0]["Name"],
+                    mixed_tb_lineage=True,
+                    species=myco["Subspecies"][0]["Name"],
+                )
+            elif len(myco["Subspecies"]) == 1:
+                # case where only (sub)species is available, no lineage
+                summary_name = organism_name(
+                    tophit_name,
+                    name_mapping,
+                    species=myco["Subspecies"][0]["Name"],
                 )
             else:
-                # Default to just top hit if no lineage name exists
+                # Default to just top hit if no lineage name or (sub)species exists
                 summary_name = organism_name(tophit_name, name_mapping)
 
         else:
@@ -205,7 +221,6 @@ def generate_mycobacterium_results(
             else:
                 # Use competitive mapping only
                 summary_name = organism_name(tophit_name, name_mapping)
-
 
         myco["Summary"] = [
             {
@@ -232,7 +247,11 @@ def generate_mycobacterium_results(
             )
             myco["Summary"].append(
                 {
-                    "Name": organism_name(tb["genome_name"], name_mapping),
+                    "Name": organism_name(
+                        tb["genome_name"],
+                        name_mapping,
+                        species="Mycobacterium_tuberculosis",
+                    ),
                     "Num Reads": int(tb["numreads"]),
                     "Coverage": tb["coverage"],
                     "Depth": tb["meandepth"],
@@ -252,14 +271,14 @@ def generate_mycobacterium_results(
             }
         )
         myco["Species"].append(
-                {
-                    "Name": second_hit["genome_name"],
-                    "Num Reads": int(second_hit["numreads"]),
-                    "Coverage": second_hit["coverage"],
-                    "Mean Depth": second_hit["meandepth"],
-                    "Length": second_hit["length"],
-                }
-            )
+            {
+                "Name": second_hit["genome_name"],
+                "Num Reads": int(second_hit["numreads"]),
+                "Coverage": second_hit["coverage"],
+                "Mean Depth": second_hit["meandepth"],
+                "Length": second_hit["length"],
+            }
+        )
 
     return myco
 
@@ -364,6 +383,7 @@ def organism_name(
     mapping: pandas.DataFrame,
     lineage: str = "Unknown",
     mixed_tb_lineage: bool = False,
+    species: str = "Unknown",
 ) -> str:
     """Determine the name to report for the organism.
 
@@ -373,6 +393,7 @@ def organism_name(
         and mykrobe outputs to reportable name.
         lineage (str, optional): Lineage from mykrobe. Defaults to "Unknown".
         mixed_tb_lineage (bool, optional): True if mykrobe reports multiple lineages. Defaults to False
+        species (str, optional): Species from mykrobe. Defaults to "Unknown".
 
     Returns:
         str: Reportable name for the organism.
@@ -383,16 +404,24 @@ def organism_name(
     if cm_name == "M.tuberculosis" and mixed_tb_lineage is True:
         return "M. tuberculosis (mixed lineage)"
 
-    # Lookup name by Competitive Mapping name and mykrobe lineage.
-    name_df = mapping[(mapping.reference == cm_name) & (mapping.LINEAGE == lineage)]
+    # Lookup name by Competitive Mapping name, and mykrobe species and lineage.
+    name_df = mapping[
+        (mapping.reference == cm_name)
+        & (mapping.SPECIES == species)
+        & (mapping.LINEAGE == lineage)
+    ]
     if name_df.empty:
-        # This means the name we're seeking isn't in the lookup table
-        # Fall back to trying with lineage "Unknown"
-        name_df = mapping[(mapping.reference == cm_name) & (mapping.LINEAGE == "Unknown")]
-
+        # Lookup name by Competitive Mapping name and mykrobe lineage.
+        name_df = mapping[(mapping.reference == cm_name) & (mapping.LINEAGE == lineage)]
         if name_df.empty:
-            # Name must not be in table. Use competitive mapping name directly
-            return cm_name
+            # This means the name we're seeking isn't in the lookup table
+            # Fall back to trying with lineage "Unknown"
+            name_df = mapping[
+                (mapping.reference == cm_name) & (mapping.LINEAGE == "Unknown")
+            ]
+            if name_df.empty:
+                # Name must not be in table. Use competitive mapping name directly
+                return cm_name
 
     # By this point we know that name_df is not empty
 
