@@ -1,3 +1,10 @@
+## 2.4.3 (2024-09-26)
+
+### Fix
+
+- Capture TB complex, unknown lineage in lookup
+- Correctly report canettii
+
 ## 2.4.2 (2024-07-25)
 
 ### Fix

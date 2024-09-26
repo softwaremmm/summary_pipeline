@@ -13,7 +13,7 @@ process summary_json {
     cpus 1
     memory '0.5 GB'
     container = {
-        params.test_container=="" ? 'lhr.ocir.io/lrbvkel2wjot/gpas/summary_pipeline:2.4.2' : params.test_container
+        params.test_container=="" ? 'lhr.ocir.io/lrbvkel2wjot/gpas/summary_pipeline:2.4.3' : params.test_container
     }
 
     debug true
