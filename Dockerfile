@@ -1,5 +1,5 @@
 # Python 3.11 base image
-FROM python:3.11
+FROM python:3.13
 
 # Add Python files from repo to Docker image
 COPY ./src /app/src
