@@ -1,3 +1,9 @@
+## 2.4.4 (2024-11-01)
+
+### Fix
+
+- expand mapping csv and add generic lineage case
+
 ## 2.4.3 (2024-09-26)
 
 ### Fix
