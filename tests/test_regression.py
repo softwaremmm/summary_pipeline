@@ -1,4 +1,5 @@
 import json
+
 from summary import summarise
 
 
@@ -24,5 +25,9 @@ def test_regression(regression_test_set: dict):
 
     with open(regression_test_set["expected_output"], "r") as file:
         expected_summary = json.load(file)
+
+    if summary != expected_summary:
+        with open(regression_test_set["expected_output"] + ".test_output", "w") as file:
+            json.dump(summary, file, indent=4)
 
     assert summary == expected_summary

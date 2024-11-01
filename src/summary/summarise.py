@@ -6,8 +6,9 @@ import os
 import sys
 from pathlib import Path
 
-import pandas
 import numpy as np
+import pandas
+
 from summary.cli_args import Arguments
 
 logging.basicConfig(
@@ -233,30 +234,29 @@ def generate_mycobacterium_results(
 
     # Always include TB, if present
     tb_row = mappings_sorted[mappings_sorted["genome_name"] == tb_reference_name]
-    if tb_row.empty is False:
+    if not tb_row.empty and tophit_name != tb_reference_name:
         tb = tb_row.to_dict(orient="records")[0]
-        if tb != tophit:
-            myco["Species"].append(
-                {
-                    "Name": tb["genome_name"],
-                    "Num Reads": int(tb["numreads"]),
-                    "Coverage": tb["coverage"],
-                    "Mean Depth": tb["meandepth"],
-                    "Length": tb["length"],
-                }
-            )
-            myco["Summary"].append(
-                {
-                    "Name": organism_name(
-                        tb["genome_name"],
-                        name_mapping,
-                        species="Mycobacterium_tuberculosis",
-                    ),
-                    "Num Reads": int(tb["numreads"]),
-                    "Coverage": tb["coverage"],
-                    "Depth": tb["meandepth"],
-                }
-            )
+        myco["Species"].append(
+            {
+                "Name": tb["genome_name"],
+                "Num Reads": int(tb["numreads"]),
+                "Coverage": tb["coverage"],
+                "Mean Depth": tb["meandepth"],
+                "Length": tb["length"],
+            }
+        )
+        myco["Summary"].append(
+            {
+                "Name": organism_name(
+                    tb["genome_name"],
+                    name_mapping,
+                    species="Mycobacterium_tuberculosis",
+                ),
+                "Num Reads": int(tb["numreads"]),
+                "Coverage": tb["coverage"],
+                "Depth": tb["meandepth"],
+            }
+        )
 
     # Include 1st runner up in a mixed population
     # with TB winner
@@ -404,21 +404,23 @@ def organism_name(
     if cm_name == "M.tuberculosis" and mixed_tb_lineage is True:
         return "M. tuberculosis (mixed lineage)"
 
+    # generic lineage case
+    if cm_name == "M.tuberculosis" and species == "Mycobacterium_tuberculosis" and "lineage" in lineage:
+        lineage_number = lineage.removeprefix("lineage")
+        return f"M. tuberculosis (lineage {lineage_number})"
+
+    # subset to only the rows that match the competitive mapping name
+    mapping = mapping[mapping.reference == cm_name].copy()
+
     # Lookup name by Competitive Mapping name, and mykrobe species and lineage.
-    name_df = mapping[
-        (mapping.reference == cm_name)
-        & (mapping.SPECIES == species)
-        & (mapping.LINEAGE == lineage)
-    ]
+    name_df = mapping[(mapping.SPECIES == species) & (mapping.LINEAGE == lineage)]
     if name_df.empty:
         # Lookup name by Competitive Mapping name and mykrobe lineage.
-        name_df = mapping[(mapping.reference == cm_name) & (mapping.LINEAGE == lineage)]
+        name_df = mapping[mapping.LINEAGE == lineage]
         if name_df.empty:
             # This means the name we're seeking isn't in the lookup table
             # Fall back to trying with lineage "Unknown"
-            name_df = mapping[
-                (mapping.reference == cm_name) & (mapping.LINEAGE == "Unknown")
-            ]
+            name_df = mapping[mapping.LINEAGE == "Unknown"]
             if name_df.empty:
                 # Name must not be in table. Use competitive mapping name directly
                 return cm_name
