@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
-import pandas
+import pandas as pd
 
 from summary.cli_args import Arguments
 
@@ -91,7 +91,7 @@ def generate_organism_identification(gatekeeper_data: dict) -> dict:
 def generate_mycobacterium_results(
     mappings: dict,
     mykrobe_data: dict,
-    name_mapping: pandas.DataFrame,
+    name_mapping: pd.DataFrame,
     tb_genome_assembled: bool = False,
     tb_reference_name: str = "M.tuberculosis",
 ) -> dict:
@@ -100,14 +100,14 @@ def generate_mycobacterium_results(
     Args:
         mappings (dict): Output from Competitive Mapping.
         mykrobe_data (dict): Output from Mykrobe.
-        name_mapping (pandas.DataFrame): Mapping of reference names and mykrobe "lineages" to reportable names.
+        name_mapping (pd.DataFrame): Mapping of reference names and mykrobe "lineages" to reportable names.
         tb_genome_assembled (bool, optional): True if M. tuberculosis genome was assembled. Defaults to False.
         tb_reference_name (str, optional): Name of M. tuberculosis reference. Defaults to "M.tuberculosis".
 
     Returns:
         dict: Summary of Competitive Mapping and Mykrobe outputs.
     """
-    myco = {
+    myco: dict[str, list] = {
         "Summary": [],
         "Species": [],
         "Phylogenic Group": [],
@@ -115,170 +115,82 @@ def generate_mycobacterium_results(
         "Lineage": [],
     }
 
-    # Species (competitive mapping)
-    mappings_sorted = pandas.DataFrame.from_dict(mappings["references"]).sort_values(
-        by=["meandepth"], ascending=False
-    )
-    # If a TB genome has been assembled, always put it first
-    if tb_genome_assembled:
-        mappings_sorted = pandas.concat(
-            [
-                mappings_sorted[mappings_sorted.genome_name == tb_reference_name],
-                mappings_sorted[mappings_sorted.genome_name != tb_reference_name],
-            ],
-            ignore_index=True,
-        )
-    tophit = mappings_sorted.head(1).to_dict(orient="records")[0]
-
-    myco["Species"] = [
-        {
-            "Name": tophit["genome_name"],
-            "Num Reads": int(tophit["numreads"]),
-            "Coverage": tophit["coverage"],
-            "Mean Depth": tophit["meandepth"],
-            "Length": tophit["length"],
-        }
-    ]
-    tophit_name = tophit["genome_name"]
-
-    if mykrobe_data == {}:
-        # If mykrobe doesn't return a species,
-        # USE COMPETITIVE MAPPING
-
-        summary_name = organism_name(tophit_name, name_mapping)
-
-        myco["Summary"] = [
-            {
-                "Name": summary_name,
-                "Num Reads": int(tophit["numreads"]),
-                "Coverage": myco["Species"][0]["Coverage"],
-                "Depth": myco["Species"][0]["Mean Depth"],
-            }
-        ]
-
-        mixed_pop = False
-
-    else:
+    # Add mykrobe data for phylo group, subspecies, and lineage
+    mixed_phylo_pop = False
+    if mykrobe_data != {}:
         # Phylogenetic Group (mykrobe)
-        myco["Phylogenic Group"] = process_phylo_group(mykrobe_data.get("phylo_group"))
+        myco["Phylogenic Group"] = process_phylo_group(mykrobe_data["phylo_group"])
 
         # "Subspecies" (mykrobe)
         if "species" in mykrobe_data:
             myco["Subspecies"] = process_subspecies(
-                mykrobe_data.get("species")
+                mykrobe_data["species"]
             )  # Why is species assigned to subspecies? Because these ideas are conflated in TB complex.
 
         # Lineage (mykrobe)
         if "lineage" in mykrobe_data:
-            myco["Lineage"] = process_lineages(mykrobe_data.get("lineage"))
+            myco["Lineage"] = process_lineages(mykrobe_data["lineage"])
 
         if len(myco["Phylogenic Group"]) == 2:
-            mixed_pop = True
+            mixed_phylo_pop = True
         elif len(myco["Phylogenic Group"]) > 2:
             raise ValueError("Mixed population with more than two phylo groups.")
-        else:
-            mixed_pop = False
+    lineages = [lin["Name"] for lin in myco["Lineage"]]
+    subspecies = [sub["Name"] for sub in myco["Subspecies"]]
 
-        # Summary
-        if tophit_name == tb_reference_name:
-            # USE MYKROBE lineage and species information
+    # Which hits to report?
+    # Should report TB first if TB genome assembled
+    # Should always report TB if present
+    # Should report non-TB species if mixed phylogenetic population
 
-            # Append lineage information from mykrobe to species name
-            # from competitive mapping, if available
+    mappings_sorted = pd.DataFrame.from_dict(mappings["references"]).sort_values(
+        by=["meandepth"], ascending=False
+    )
+    tophit = mappings_sorted.head(1).to_dict(orient="records")[0]
+    hits = [tophit]
 
-            # assume if a lineage is included, then a (sub)species must be too
-            if len(myco["Lineage"]) == 1:
-                summary_name = organism_name(
-                    tophit_name,
-                    name_mapping,
-                    lineage=myco["Lineage"][0]["Name"],
-                    species=myco["Subspecies"][0]["Name"],
-                )
-            elif len(myco["Lineage"]) == 2:
-                summary_name = organism_name(
-                    tophit_name,
-                    name_mapping,
-                    lineage=myco["Lineage"][0]["Name"],
-                    mixed_tb_lineage=True,
-                    species=myco["Subspecies"][0]["Name"],
-                )
-            elif len(myco["Subspecies"]) == 1:
-                # case where only (sub)species is available, no lineage
-                summary_name = organism_name(
-                    tophit_name,
-                    name_mapping,
-                    species=myco["Subspecies"][0]["Name"],
-                )
+    # if tb present always include it
+    if tophit["genome_name"] != tb_reference_name:
+        tb_row = mappings_sorted[mappings_sorted["genome_name"] == tb_reference_name]
+        if not tb_row.empty:
+            tb_hit = tb_row.to_dict(orient="records")[0]
+            if tb_genome_assembled:
+                hits.insert(0, tb_hit)
             else:
-                # Default to just top hit if no lineage name or (sub)species exists
-                summary_name = organism_name(tophit_name, name_mapping)
+                hits.append(tb_hit)
 
-        else:
-            if not mixed_pop and len(myco["Lineage"]) == 1:
-                # Use lineage name as species name
-                summary_name = organism_name(
-                    tophit_name, name_mapping, myco["Lineage"][0]["Name"]
-                )
-            else:
-                # Use competitive mapping only
-                summary_name = organism_name(tophit_name, name_mapping)
-
-        myco["Summary"] = [
-            {
-                "Name": summary_name,
-                "Num Reads": int(tophit["numreads"]),
-                "Coverage": myco["Species"][0]["Coverage"],
-                "Depth": myco["Species"][0]["Mean Depth"],
-            }
-        ]
-
-    # Always include TB, if present
-    tb_row = mappings_sorted[mappings_sorted["genome_name"] == tb_reference_name]
-    if not tb_row.empty and tophit_name != tb_reference_name:
-        tb = tb_row.to_dict(orient="records")[0]
-        myco["Species"].append(
-            {
-                "Name": tb["genome_name"],
-                "Num Reads": int(tb["numreads"]),
-                "Coverage": tb["coverage"],
-                "Mean Depth": tb["meandepth"],
-                "Length": tb["length"],
-            }
-        )
-        myco["Summary"].append(
-            {
-                "Name": organism_name(
-                    tb["genome_name"],
-                    name_mapping,
-                    species="Mycobacterium_tuberculosis",
-                ),
-                "Num Reads": int(tb["numreads"]),
-                "Coverage": tb["coverage"],
-                "Depth": tb["meandepth"],
-            }
-        )
-
-    # Include 1st runner up in a mixed population
-    # with TB winner
-    if tophit_name == tb_reference_name and mixed_pop:
+    # if mixed phylo population, make sure top non-tb hit is included
+    if tophit["genome_name"] == tb_reference_name and mixed_phylo_pop:
         second_hit = mappings_sorted.head(2).to_dict(orient="records")[1]
-        myco["Summary"].append(
-            {
-                "Name": organism_name(second_hit["genome_name"], name_mapping),
-                "Num Reads": int(second_hit["numreads"]),
-                "Coverage": second_hit["coverage"],
-                "Depth": second_hit["meandepth"],
-            }
-        )
-        myco["Species"].append(
-            {
-                "Name": second_hit["genome_name"],
-                "Num Reads": int(second_hit["numreads"]),
-                "Coverage": second_hit["coverage"],
-                "Mean Depth": second_hit["meandepth"],
-                "Length": second_hit["length"],
-            }
-        )
+        hits.append(second_hit)
+
+    # Species comes directly from competitive mapping
+    myco["Species"] = [
+        {
+            "Name": hit["genome_name"],
+            "Num Reads": int(hit["numreads"]),
+            "Coverage": hit["coverage"],
+            "Mean Depth": hit["meandepth"],
+            "Length": hit["length"],
+        }
+        for hit in hits
+    ]
+
+    # Summary is just species with the reportable name
+    myco["Summary"] = [
+        {
+            "Name": organism_name(
+                hit["genome_name"],
+                name_mapping,
+                subspecies,
+                lineages,
+            ),
+            "Num Reads": int(hit["numreads"]),
+            "Coverage": hit["coverage"],
+            "Depth": hit["meandepth"],
+        }
+        for hit in hits
+    ]
 
     return myco
 
@@ -380,58 +292,69 @@ def process_lineages(lineages: dict) -> list[dict]:
 
 def organism_name(
     cm_name: str,
-    mapping: pandas.DataFrame,
-    lineage: str = "Unknown",
-    mixed_tb_lineage: bool = False,
-    species: str = "Unknown",
+    mapping: pd.DataFrame,
+    species: list[str],
+    lineages: list[str],
 ) -> str:
     """Determine the name to report for the organism.
 
     Args:
         cm_name (str): Name from Competitive Mapping.
-        mapping (pandas.DataFrame): Reference data mapping Competitive Mapping
+        mapping (pd.DataFrame): Reference data mapping Competitive Mapping
         and mykrobe outputs to reportable name.
-        lineage (str, optional): Lineage from mykrobe. Defaults to "Unknown".
-        mixed_tb_lineage (bool, optional): True if mykrobe reports multiple lineages. Defaults to False
-        species (str, optional): Species from mykrobe. Defaults to "Unknown".
+        species (str): All species from mykrobe.
+        lineages (str): All lineages from mykrobe.
 
     Returns:
         str: Reportable name for the organism.
     """
-    # This is a special case of more than one TB linage
-    # we may wish to report both lineages in future, but
-    # for now we simply report the run as "mixed".
-    if cm_name == "M.tuberculosis" and mixed_tb_lineage is True:
-        return "M. tuberculosis (mixed lineage)"
-
-    # generic lineage case
-    if cm_name == "M.tuberculosis" and species == "Mycobacterium_tuberculosis" and "lineage" in lineage:
-        lineage_number = lineage.removeprefix("lineage")
-        return f"M. tuberculosis (lineage {lineage_number})"
+    print(f"cm_name: {cm_name}, species: {species}, lineages: {lineages}")
 
     # subset to only the rows that match the competitive mapping name
     mapping = mapping[mapping.reference == cm_name].copy()
 
-    # Lookup name by Competitive Mapping name, and mykrobe species and lineage.
-    name_df = mapping[(mapping.SPECIES == species) & (mapping.LINEAGE == lineage)]
-    if name_df.empty:
-        # Lookup name by Competitive Mapping name and mykrobe lineage.
-        name_df = mapping[mapping.LINEAGE == lineage]
-        if name_df.empty:
-            # This means the name we're seeking isn't in the lookup table
-            # Fall back to trying with lineage "Unknown"
-            name_df = mapping[mapping.LINEAGE == "Unknown"]
-            if name_df.empty:
-                # Name must not be in table. Use competitive mapping name directly
-                return cm_name
+    # subset by species
+    species_df = mapping[mapping.SPECIES.isin(species)]
+    if species_df.empty:
+        # No matches found, fall back to generic case
+        species_df = mapping[mapping.SPECIES == "Unknown"]
 
-    # By this point we know that name_df is not empty
+    # count number of unique species in table now
+    if species_df.SPECIES.nunique() > 1:
+        if cm_name == "M.tuberculosis":
+            # Special case of mixed species. e.g. canetti and normal tb
+            return "M. tuberculosis (mixed subspecies)"
+        raise ValueError(
+            f"More than one unique species {species_df.SPECIES.unique()} found for {cm_name}"
+        )
 
-    name = pandas.unique(name_df.REPORT).item()
-    # If more than one unique name is returned, it will cause an error.
-    # The name mapping spreadsheet should not contain such duplicates.
+    # subset by lineage
+    lineage_df = species_df[species_df.LINEAGE.isin(lineages)]
+    if lineage_df.empty:
+        # No matches found, fall back to generic case
+        lineage_df = species_df[species_df.LINEAGE == "Unknown"]
 
-    return name
+    if lineage_df.empty:
+        # No matches found for cm_name, so return cm_name directly
+        return cm_name
+
+    if lineage_df.LINEAGE.nunique() > 1:
+        if cm_name == "M.tuberculosis":
+            # Africanum can also be mixed
+            if "africanum" in lineage_df.SPECIES.unique()[0]:
+                return "M. africanum (mixed lineage) (MTB complex)"
+            return "M. tuberculosis (mixed lineage)"
+        raise ValueError(
+            f"More than one unique lineage {lineage_df.LINEAGE.unique()} found for {cm_name}"
+        )
+
+    # Can now conclude that there is only one row in the table
+    reporting_names = pd.unique(lineage_df.REPORT)
+    if len(reporting_names) > 1:
+        raise ValueError(
+            f"Multiple names: {reporting_names} for {cm_name}. Should not be possible!!"
+        )
+    return reporting_names[0]
 
 
 def generate_sequencing_quality(mappings: dict, genome_creation_report: dict) -> dict:
@@ -479,11 +402,11 @@ def generate_sequencing_quality(mappings: dict, genome_creation_report: dict) ->
     return seq_qual
 
 
-def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
+def construct_payload(significant_variants_df: pd.DataFrame) -> list:
     """Construct Resistance Prediction Details payload for the summary JSON.
 
     Args:
-        significant_variants_df (pandas.DataFrame):
+        significant_variants_df (pd.DataFrame):
 
     Returns:
         list: results for incorporation in summary JSON
@@ -493,7 +416,7 @@ def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
     payload = []
     valid_nucleotides = ["a", "t", "c", "g", "x", "z"]
 
-    # TODO: tried to do more elegantly with pandas.to_json() but ended up doing simply
+    # TODO: tried to do more elegantly with pd.to_json() but ended up doing simply
 
     # create an alphabetical list of the drugs
     drugs = significant_variants_df.drug.unique()
@@ -509,14 +432,14 @@ def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
         significant_variant = {}
         keep = True
 
-        if pandas.isnull(row.gene):
+        if pd.isnull(row.gene):
             significant_variant["Gene"] = None
         else:
             significant_variant["Gene"] = row.gene
 
         significant_variant["Mutation"] = row.mutation
 
-        if pandas.isnull(row.gene_position):
+        if pd.isnull(row.gene_position):
             significant_variant["Position"] = None
         else:
             significant_variant["Position"] = int(row.gene_position)
@@ -595,16 +518,16 @@ def construct_payload(significant_variants_df: pandas.DataFrame) -> list:
     return payload
 
 
-def unpack_COV_from_info(row: pandas.Series) -> pandas.Series:
-    """Helper pandas function for retrieving the COV from the INFO column
+def unpack_COV_from_info(row: pd.Series) -> pd.Series:
+    """Helper pd function for retrieving the COV from the INFO column
 
     Args:
-        row (pandas.Series): row passed from pandas apply function
+        row (pd.Series): row passed from pd apply function
 
     Returns:
-        pandas.Series: REF and ALT coverage values
+        pd.Series: REF and ALT coverage values
     """
-    result = pandas.Series([np.float64("nan"), np.float64("nan")])
+    result = pd.Series([np.float64("nan"), np.float64("nan")])
     if row.vcf_idx is not None and row.vcf_idx >= 0:
         idx = int(row.vcf_idx)
         if "COV" in row.vcf_evidence:
@@ -612,17 +535,17 @@ def unpack_COV_from_info(row: pandas.Series) -> pandas.Series:
                 # Edge case of only one COV value
                 if idx == 0:
                     # It's a ref (probably a null) so put in just the ref coverage
-                    result = pandas.Series([row.vcf_evidence["COV"][0], 0])
+                    result = pd.Series([row.vcf_evidence["COV"][0], 0])
                 else:
                     # It's an alt (probably a null) so put in just the alt coverage
-                    result = pandas.Series([0, row.vcf_evidence["COV"][idx]])
+                    result = pd.Series([0, row.vcf_evidence["COV"][idx]])
             else:
                 if idx == 0:
                     # It's a ref (probably a null) so put in the ref coverage
-                    result = pandas.Series([row.vcf_evidence["COV"][0], 0])
+                    result = pd.Series([row.vcf_evidence["COV"][0], 0])
                 else:
                     # It's not a ref call, so give ref and alt coverage
-                    result = pandas.Series(
+                    result = pd.Series(
                         [row.vcf_evidence["COV"][0], row.vcf_evidence["COV"][idx]]
                     )
     return result
@@ -677,7 +600,7 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
     else:
         # Situation 1 - variants
 
-        # retrieve the effects block and build our base pandas DataFrame
+        # retrieve the effects block and build our base pd DataFrame
         effects = data.get("effects")
         effects_list = []
         for drug_name in effects:
@@ -685,12 +608,12 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
                 if "phenotype" not in effect_mutation:
                     effect_mutation["drug"] = drug_name
                     effects_list.append(effect_mutation)
-        effects_df = pandas.DataFrame(effects_list)
+        effects_df = pd.DataFrame(effects_list)
         effects_df.set_index(["gene", "mutation"], inplace=True)
 
-        # retrieve the mutations block and build another pandas DataFrame
+        # retrieve the mutations block and build another pd DataFrame
         mutations_list = data.get("mutations")
-        mutations_df = pandas.DataFrame(mutations_list)
+        mutations_df = pd.DataFrame(mutations_list)
         # In cases of 0 AA mutations, no `ref` or `alt` fields are present
         # so put in dummy values for these
         if "ref" not in mutations_df.columns:
@@ -707,7 +630,7 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
 
         # finally, retrieve the variants block and build the final DataFrame
         variants = data.get("variants")
-        variants_df = pandas.DataFrame(variants)
+        variants_df = pd.DataFrame(variants)
         variants_df.rename(columns={"gene_name": "gene"}, inplace=True)
         variants_df.set_index(["gene", "gene_position"], inplace=True)
 
@@ -721,7 +644,7 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
         effects_muts_vars_df.reset_index(inplace=True)
         effects_muts_vars_df.set_index(["drug", "gene", "mutation"], inplace=True)
 
-        # use the pandas helper function defined elsewhere to extract COV from the vcf_evidence field
+        # use the pd helper function defined elsewhere to extract COV from the vcf_evidence field
         effects_muts_vars_df[["coverage_ref", "coverage_alt"]] = (
             effects_muts_vars_df.apply(unpack_COV_from_info, axis=1)
         )
@@ -770,7 +693,7 @@ def create_summary(
         )
         mapping_json = read_json_file(reports["mapping"])
         mykrobe_data = read_json_file(reports["mykrobe"])
-        name_mapping = pandas.read_csv(reports["name_mapping"])
+        name_mapping = pd.read_csv(reports["name_mapping"])
         output["Mycobacterium Results"] = generate_mycobacterium_results(
             mapping_json, mykrobe_data, name_mapping, "creation_report" in reports
         )

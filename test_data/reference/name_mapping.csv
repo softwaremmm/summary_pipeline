@@ -1,291 +1,298 @@
 reference,SPECIES,LINEAGE,REPORT
 M.abscessus,Mycobacterium_abscessus,Mycobacterium_abscessus_subsp._abscessus,M. abscessus subsp. abscessus
 M.abscessus,Mycobacterium_abscessus,Mycobacterium_abscessus_subsp._bolletii,M. abscessus subsp. bolletii
-M.abscessus,Mycobacterium_abscessus,Unknown,M. abscessus
 M.abscessus,Mycobacterium_abscessus,Mycobacterium_abscessus_subsp._massiliense,M. abscessus subsp. massiliense
-M.agri,Mycobacterium_agri,Unknown,M. agri
-M.aichiense,Mycobacterium_aichiense,Unknown,M. aichiense
+M.abscessus,Mycobacterium_abscessus,Unknown,M. abscessus
+M.abscessus,Unknown,Unknown,M. abscessus
+M.acidiphilus,Unknown,Unknown,M. acidiphilus
+M.agri,Unknown,Unknown,M. agri
+M.ahvazicum,Unknown,Unknown,M. ahvazicum
+M.aichiense,Unknown,Unknown,M. aichiense
 M.algericus,Mycobacterium_algericum_A,Unknown,M. algericus
-M.algericus,Mycobacterium_algericum,Unknown,M. algericus
-M.alvei,Mycobacterium_alvei,Unknown,M. alvei
-M.angelicum,Mycobacterium_angelicum,Unknown,M. angelicum
-M.aromaticivorans,Mycobacterium_aromaticivorans,Unknown,M. aromaticivorans
-M.arosiense,Mycobacterium_arosiense,Unknown,M. arosiense
-M.arupensis,Mycobacterium_arupense,Unknown,M. arupensis
-M.asiaticum,Mycobacterium_asiaticum,Unknown,M. asiaticum
-M.attenuatum,Mycobacterium_attenuatum,Unknown,M. attenuatum
-M.aubagnense,Mycobacterium_aubagnense,Unknown,M. aubagnense
-M.aurum,Mycobacterium_aurum,Unknown,M. aurum
-M.austroafricanum,Mycobacterium_austroafricanum,Unknown,M. austroafricanum
+M.algericus,Unknown,Unknown,M. algericus
+M.alkanivorans,Unknown,Unknown,M. alkanivorans
+M.alsense,Unknown,Unknown,M. alsense
+M.alvei,Unknown,Unknown,M. alvei
+M.angelicum,Unknown,Unknown,M. angelicum
+M.anyangense,Unknown,Unknown,M. anyangense
+M.aquaticum,Unknown,Unknown,M. aquaticum
+M.aromaticivorans,Unknown,Unknown,M. aromaticivorans
+M.arosiense,Unknown,Unknown,M. arosiense
+M.arupensis,Unknown,Unknown,M. arupensis
+M.asiaticum,Unknown,Unknown,M. asiaticum
+M.attenuatum,Unknown,Unknown,M. attenuatum
+M.aubagnense,Unknown,Unknown,M. aubagnense
+M.aurum,Unknown,Unknown,M. aurum
+M.austroafricanum,Unknown,Unknown,M. austroafricanum
 M.avium,Mycobacterium_avium,Mycobacterium_avium_subsp._avium,M. avium subsp. avium (MAC)
-M.avium,Mycobacterium_avium,Unknown,M. avium
-M.avium,Mycobacterium_avium,Mycobacterium_avium_subsp._silvaticum,M. avium subsp. silvaticum (MAC)
 M.avium,Mycobacterium_avium,Mycobacterium_avium_subsp._hominissuis,M. avium subsp. hominissuis (MAC)
-M.bacteremicum,Mycobacterium_bacteremicum,Unknown,M. bacteremicum
-M.boenickei,Mycobacterium_boenickei,Unknown,M. boenickei
-M.bohemicum,Mycobacterium_bohemicum,Unknown,M. bohemicum
-M.branderi,Mycobacterium_branderi,Unknown,M. branderi
-M.brisbanense,Mycobacterium_brisbanense,Unknown,M. brisbanense
-M.brumae,Mycobacterium_brumae,Unknown,M. brumae
-M.canariasense,Mycobacterium_canariasense,Unknown,M. canariasense
-M.celatum,Mycobacterium_celatum,Unknown,M. celatum
-M.chelonae,Mycobacterium_chelonae,Mycobacterium_chelonae_subsp._chelonae,M. chelonae subsp. chelonae
-M.chelonae,Mycobacterium_chelonae,Unknown,M. chelonae
+M.avium,Mycobacterium_avium,Mycobacterium_avium_subsp._silvaticum,M. avium subsp. silvaticum (MAC)
+M.avium,Mycobacterium_avium,Unknown,M. avium
+M.avium,Unknown,Unknown,M. avium
+M.bacteremicum,Unknown,Unknown,M. bacteremicum
+M.baixiangningiae,Unknown,Unknown,M. baixiangningiae
+M.boenickei,Unknown,Unknown,M. boenickei
+M.bohemicum,Unknown,Unknown,M. bohemicum
+M.branderi,Unknown,Unknown,M. branderi
+M.brisbanense,Unknown,Unknown,M. brisbanense
+M.brumae,Unknown,Unknown,M. brumae
+M.canariasense,Unknown,Unknown,M. canariasense
+M.celatum,Unknown,Unknown,M. celatum
+M.celeriflavum,Unknown,Unknown,M. celeriflavum
 M.chelonae,Mycobacterium_chelonae,Mycobacterium_chelonae_chemovar._niacinogenes,M. chelonae subsp. niacinogenes
+M.chelonae,Mycobacterium_chelonae,Mycobacterium_chelonae_subsp._chelonae,M. chelonae subsp. chelonae
 M.chelonae,Mycobacterium_chelonae,Mycobacterium_chelonae_subsp._gwanakae,M. chelonae subsp. gwanakae
-M.chitae,Mycobacterium_chitae,Unknown,M. chitae
-M.chlorophenolicum,Mycobacterium_chlorophenolicum,Unknown,M. chlorophenolicum
+M.chelonae,Mycobacterium_chelonae,Unknown,M. chelonae
+M.chelonae,Unknown,Unknown,M. chelonae
+M.chitae,Unknown,Unknown,M. chitae
+M.chlorophenolicum,Unknown,Unknown,M. chlorophenolicum
+M.chubuense,Unknown,Unknown,M. chubuense
 M.colombiense,Mycobacterium_colombiense_B,Unknown,M. colombiense
-M.colombiense,Mycobacterium_colombiense,Unknown,M. colombiense
-M.confluentis,Mycobacterium_confluentis,Unknown,M. confluentis
-M.cosmeticum,Mycobacterium_cosmeticum,Unknown,M. cosmeticum
-M.crocinum,Mycobacterium_crocinum,Unknown,M. crocinum
-M.diernhoferi,Mycobacterium_diernhoferi,Unknown,M. diernhoferi
-M.doricum,Mycobacterium_doricum,Unknown,M. doricum
-M.duvalii,Mycobacterium_duvalii,Unknown,M. duvalii
-M.elephantis,Mycobacterium_elephantis,Unknown,M. elephantis
+M.colombiense,Unknown,Unknown,M. colombiense
+M.confluentis,Unknown,Unknown,M. confluentis
+M.conspicuum,Unknown,Unknown,M. conspicuum
+M.cookii,Unknown,Unknown,M. cookii
+M.cosmeticum,Unknown,Unknown,M. cosmeticum
+M.crocinum,Unknown,Unknown,M. crocinum
+M.diernhoferi,Unknown,Unknown,M. diernhoferi
+M.doricum,Unknown,Unknown,M. doricum
+M.duvalii,Unknown,Unknown,M. duvalii
+M.elephantis,Unknown,Unknown,M. elephantis
 M.europaeum,Mycobacterium_europaeum_A,Unknown,M. europaeum
-M.europaeum,Mycobacterium_europaeum,Unknown,M. europaeum
-M.fallax,Mycobacterium_fallax,Unknown,M. fallax
-M.farcinogenes,Mycobacterium_farcinogenes,Unknown,M. farcinogenes
-M.flavescens,Mycobacterium_flavescens,Unknown,M. flavescens
-M.florentinum,Mycobacterium_florentinum,Unknown,M. florentinum
-M.fluoranthenivorans,Mycobacterium_fluoranthenivorans,Unknown,M. fluoranthenivorans
-M.fortuitum,Mycobacterium_fortuitum,Unknown,M. fortuitum
-M.fortuitum,Mycobacterium_fortuitum,Mycobacterium_fortuitum_subsp._fortuitum,M. fortuitum subsp. fortuitum
+M.europaeum,Unknown,Unknown,M. europaeum
+M.fallax,Unknown,Unknown,M. fallax
+M.farcinogenes,Unknown,Unknown,M. farcinogenes
+M.flavescens,Unknown,Unknown,M. flavescens
+M.florentinum,Unknown,Unknown,M. florentinum
+M.fluoranthenivorans,Unknown,Unknown,M. fluoranthenivorans
 M.fortuitum,Mycobacterium_fortuitum,Mycobacterium_fortuitum_subsp._acetamidolyticum,M. fortuitum subsp. acetamidolyticum
-M.franklinii,Mycobacterium_franklinii,Unknown,M. franklinii
-M.frederiksbergense,Mycobacterium_frederiksbergense,Unknown,M. frederiksbergense
-M.gadium,Mycobacterium_gadium,Unknown,M. gadium
-M.gallinarum,Mycobacterium_gallinarum,Unknown,M. gallinarum
-M.gastri,Mycobacterium_gastri,Unknown,M. gastri
-M.genavense,Mycobacterium_genavense,Unknown,M. genavense
-M.goodii,Mycobacterium_goodii,Unknown,M. goodii
-M.gordonae,Mycobacterium_gordonae,Unknown,M. gordonae
+M.fortuitum,Mycobacterium_fortuitum,Mycobacterium_fortuitum_subsp._fortuitum,M. fortuitum subsp. fortuitum
+M.fortuitum,Mycobacterium_fortuitum,Unknown,M. fortuitum
+M.fortuitum,Unknown,Unknown,M. fortuitum
+M.fragae,Unknown,Unknown,M. fragae
+M.franklinii,Unknown,Unknown,M. franklinii
+M.frederiksbergense,Unknown,Unknown,M. frederiksbergense
+M.gadium,Unknown,Unknown,M. gadium
+M.gallinarum,Unknown,Unknown,M. gallinarum
+M.gastri,Unknown,Unknown,M. gastri
+M.genavense,Unknown,Unknown,M. genavense
+M.gilvum,Unknown,Unknown,M. gilvum
+M.goodii,Unknown,Unknown,M. goodii
 M.gordonae,Mycobacterium_gordonae_B,Unknown,M. gordonae
-M.hackensackense,Mycobacterium_hackensackense,Unknown,M. hackensackense
-M.haemophilum,Mycobacterium_haemophilum,Unknown,M. haemophilum
-M.hassiacum,Mycobacterium_hassiacum,Unknown,M. hassiacum
-M.heckeshornense,Mycobacterium_heckeshornense,Unknown,M. heckeshornense
-M.heidelbergense,Mycobacterium_heidelbergense,Unknown,M. heidelbergense
-M.heraklionensis,Mycobacterium_heraklionense_B,Unknown,M. heraklionensis
-M.heraklionensis,Mycobacterium_heraklionense,Unknown,M. heraklionensis
+M.gordonae,Unknown,Unknown,M. gordonae
+M.grossiae,Unknown,Unknown,M. grossiae
+M.hackensackense,Unknown,Unknown,M. hackensackense
+M.haemophilum,Unknown,Unknown,M. haemophilum
+M.hassiacum,Unknown,Unknown,M. hassiacum
+M.heckeshornense,Unknown,Unknown,M. heckeshornense
+M.heidelbergense,Unknown,Unknown,M. heidelbergense
+M.helveticum,Unknown,Unknown,M. helveticum
+M.helvum,Unknown,Unknown,M. helvum
 M.heraklionensis,Mycobacterium_heraklionense_A,Unknown,M. heraklionensis
-M.hiberniae,Mycobacterium_hiberniae,Unknown,M. hiberniae
-M.holsaticum,Mycobacterium_holsaticum,Unknown,M. holsaticum
-M.houstonense,Mycobacterium_houstonense,Unknown,M. houstonense
-M.immunogenum,Mycobacterium_immunogenum,Unknown,M. immunogenum
-M.insubricum,Mycobacterium_insubricum,Unknown,M. insubricum
+M.heraklionensis,Mycobacterium_heraklionense_B,Unknown,M. heraklionensis
+M.heraklionensis,Unknown,Unknown,M. heraklionensis
+M.hiberniae,Unknown,Unknown,M. hiberniae
+M.holsaticum,Unknown,Unknown,M. holsaticum
+M.houstonense,Unknown,Unknown,M. houstonense
+M.icosiumassiliensis,Unknown,Unknown,M. icosiumassiliensis
+M.immunogenum,Unknown,Unknown,M. immunogenum
+M.insubricum,Unknown,Unknown,M. insubricum
 M.interjectum,Mycobacterium_interjectum_B,Unknown,M. interjectum
-M.intermedium,Mycobacterium_intermedium,Unknown,M. intermedium
+M.intermedium,Unknown,Unknown,M. intermedium
+M.intracellulare,Mycobacterium_intracellulare,Mycobacterium_intracellulare_subsp._chimaera,M. intracellulare subsp. chimaera  (MAC)
+M.intracellulare,Mycobacterium_intracellulare,Mycobacterium_intracellulare_subsp._intracellulare,M. intracellulare subsp. intracellulare (MAC)
 M.intracellulare,Mycobacterium_intracellulare,Mycobacterium_intracellulare_subsp._yongonense,M. intracellulare subsp. yongonense (MAC)
 M.intracellulare,Mycobacterium_intracellulare,Unknown,M. intracellulare (MAC)
-M.intracellulare,Mycobacterium_intracellulare,Mycobacterium_intracellulare_subsp._intracellulare,M. intracellulare subsp. intracellulare (MAC)
-M.intracellulare,Mycobacterium_intracellulare,Mycobacterium_intracellulare_subsp._chimaera,M. intracellulare subsp. chimaera  (MAC)
-M.iranicum,Mycobacterium_iranicum,Unknown,M. iranicum
-M.kansasii,Mycobacterium_kansasii,Unknown,M. kansasii
-M.koreensis,Mycobacterium_koreense,Unknown,M. koreensis
-M.kubicae,Mycobacterium_kubicae,Unknown,M. kubicae
-M.kumamotonensis,Mycobacterium_kumamotonense,Unknown,M. kumamotonensis
-M.kyogaense,Mycobacterium_kyogaense,Unknown,M. kyogaense
-M.lacus,Mycobacterium_lacus,Unknown,M. lacus
-M.lentiflavum,Mycobacterium_lentiflavum,Unknown,M. lentiflavum
-M.litorale,Mycobacterium_litorale,Unknown,M. litorale
-M.llatzerense,Mycobacterium_llatzerense,Unknown,M. llatzerense
-M.madagascariense,Mycobacterium_madagascariense,Unknown,M. madagascariense
-M.mageritense,Mycobacterium_mageritense,Unknown,M. mageritense
-M.malmoense,Mycobacterium_malmoense,Unknown,M. malmoense
-M.manitobense,Mycobacterium_manitobense,Unknown,M. manitobense
-M.mantenii,Mycobacterium_mantenii,Unknown,M. mantenii
-M.marinum,Mycobacterium_marinum,Unknown,M. marinum
-M.marseillense,Mycobacterium_marseillense,Unknown,M. marseillense
-M.minnesotensis,Mycobacterium_minnesotense,Unknown,M. minnesotensis
-M.monacense,Mycobacterium_monacense,Unknown,M. monacense
-M.montefiorense,Mycobacterium_montefiorense,Unknown,M. montefiorense
-M.moriokaense,Mycobacterium_moriokaense,Unknown,M. moriokaense
-M.mucogenicum,Mycobacterium_mucogenicum_B,Unknown,M. mucogenicum
-M.nebraskense,Mycobacterium_nebraskense,Unknown,M. nebraskense
-M.neoaurum,Mycobacterium_neoaurum,Unknown,M. neoaurum
-M.neworleansense,Mycobacterium_neworleansense,Unknown,M. neworleansense
-M.nonchromogenicus,Mycobacterium_nonchromogenicum,Unknown,M. nonchromogenicus
-M.novocastrense,Mycobacterium_novocastrense,Unknown,M. novocastrense
-M.novum,Mycobacterium_novum,Unknown,M. novum
-M.ostraviense,Mycobacterium_ostraviense,Unknown,M. ostraviense
-M.pallens,Mycobacterium_pallens,Unknown,M. pallens
-M.palustre,Mycobacterium_palustre,Unknown,M. palustre
-M.paraense,Mycobacterium_paraense,Unknown,M. paraense
-M.paragordonae,Mycobacterium_paragordonae,Unknown,M. paragordonae
-M.parascrofulaceum,Mycobacterium_parascrofulaceum,Unknown,M. parascrofulaceum
-M.paraseoulense,Mycobacterium_paraseoulense,Unknown,M. paraseoulense
-M.paraterrae,Mycobacterium_paraterrae,Unknown,M. paraterrae
+M.intracellulare,Unknown,Unknown,M. intracellulare (MAC)
+M.intracellulare_chimaera,Unknown,Mycobacterium_intracellulare_subsp._chimaera,M. intracellulare subsp. chimaera (MAC)
+M.intracellulare_chimaera,Unknown,Unknown,M. intracellulare subsp. chimaera (MAC)
+M.intracellulare_yongonense,Unknown,Unknown,M. intracellulare subsp. yongonense (MAC)
+M.iranicum,Unknown,Unknown,M. iranicum
+M.kansasii,Unknown,Unknown,M. kansasii
+M.komanii,Unknown,Unknown,M. komanii
+M.koreensis,Unknown,Unknown,M. koreensis
+M.kubicae,Unknown,Unknown,M. kubicae
+M.kumamotonensis,Unknown,Unknown,M. kumamotonensis
+M.kyogaense,Unknown,Unknown,M. kyogaense
+M.lacus,Unknown,Unknown,M. lacus
+M.lacusdiani,Unknown,Unknown,M. lacusdiani
+M.lentiflavum,Unknown,Unknown,M. lentiflavum
+M.leprae,Unknown,Unknown,M. leprae
+M.lepraemurium,Unknown,Unknown,M. lepraemurium
+M.lepromatosis,Unknown,Unknown,M. lepromatosis
+M.litorale,Unknown,Unknown,M. litorale
+M.llatzerense,Unknown,Unknown,M. llatzerense
+M.longobardus,Unknown,Unknown,M. longobardus
+M.madagascariense,Unknown,Unknown,M. madagascariense
+M.mageritense,Unknown,Unknown,M. mageritense
+M.malmesburyense,Unknown,Unknown,M. malmesburyense
+M.malmoense,Unknown,Unknown,M. malmoense
+M.manitobense,Unknown,Unknown,M. manitobense
+M.mantenii,Unknown,Unknown,M. mantenii
+M.marinum,Unknown,Unknown,M. marinum
+M.marseillense,Unknown,Unknown,M. marseillense
+M.mengxianglii,Unknown,Unknown,M. mengxianglii
+M.minnesotensis,Unknown,Unknown,M. minnesotensis
+M.monacense,Unknown,Unknown,M. monacense
+M.montefiorense,Unknown,Unknown,M. montefiorense
+M.moriokaense,Unknown,Unknown,M. moriokaense
+M.mucogenicum,Unknown,Unknown,M. mucogenicum
+M.nebraskense,Unknown,Unknown,M. nebraskense
+M.neoaurum,Unknown,Unknown,M. neoaurum
+M.neworleansense,Unknown,Unknown,M. neworleansense
+M.nivoides,Unknown,Unknown,M. nivoides
+M.nonchromogenicus,Unknown,Unknown,M. nonchromogenicus
+M.noviomagense,Unknown,Unknown,M. noviomagense
+M.novocastrense,Unknown,Unknown,M. novocastrense
+M.novum,Unknown,Unknown,M. novum
+M.ostraviense,Unknown,Unknown,M. ostraviense
+M.palauense,Unknown,Unknown,M. palauense
+M.pallens,Unknown,Unknown,M. pallens
+M.palustre,Unknown,Unknown,M. palustre
+M.paraense,Unknown,Unknown,M. paraense
+M.parafortuitum,Unknown,Unknown,M. parafortuitum
+M.paragordonae,Unknown,Unknown,M. paragordonae
+M.paraintracellulare,Unknown,Unknown,M. paraintracellulare
+M.parakoreensis,Unknown,Unknown,M. parakoreensis
+M.parascrofulaceum,Unknown,Unknown,M. parascrofulaceum
+M.paraseoulense,Unknown,Unknown,M. paraseoulense
+M.paraterrae,Unknown,Unknown,M. paraterrae
+M.parmense,Unknown,Unknown,M. parmense
 M.peregrinum,Mycobacterium_peregrinum_A,Unknown,M. peregrinum
 M.peregrinum,Mycobacterium_peregrinum_B,Unknown,M. peregrinum
-M.peregrinum,Mycobacterium_peregrinum,Unknown,M. peregrinum
-M.persicum,Mycobacterium_persicum,Unknown,M. persicum
-M.phlei,Mycobacterium_phlei,Unknown,M. phlei
-M.phocaicum,Mycobacterium_phocaicum,Unknown,M. phocaicum
-M.porcinum,Mycobacterium_porcinum,Unknown,M. porcinum
-M.poriferae,Mycobacterium_poriferae,Unknown,M. poriferae
-M.pseudokansasii,Mycobacterium_pseudokansasii,Unknown,M. pseudokansasii
-M.psychrotolerans,Mycobacterium_psychrotolerans,Unknown,M. psychrotolerans
-M.pulveris,Mycobacterium_pulveris,Unknown,M. pulveris
-M.rhodesiae,Mycobacterium_rhodesiae,Unknown,M. rhodesiae
-M.rufum,Mycobacterium_rufum,Unknown,M. rufum
-M.rutilum,Mycobacterium_rutilum,Unknown,M. rutilum
-M.salmoniphilum,Mycobacterium_salmoniphilum,Unknown,M. salmoniphilum
-M.saskatchewanense,Mycobacterium_saskatchewanense,Unknown,M. saskatchewanense
-M.senegalense,Mycobacterium_senegalense,Unknown,M. senegalense
-M.senriense,Mycobacterium_senuense,Unknown,M. senriense
-M.seoulense,Mycobacterium_seoulense,Unknown,M. seoulense
-M.septicum,Mycobacterium_septicum,Unknown,M. septicum
-M.setense,Mycobacterium_setense,Unknown,M. setense
-M.sherrisii,Mycobacterium_sherrisii,Unknown,M. sherrisii
-M.shimoidei,Mycobacterium_shimoidei,Unknown,M. shimoidei
-M.shinjukuense,Mycobacterium_shinjukuense,Unknown,M. shinjukuense
-M.simiae,Mycobacterium_simiae,Unknown,M. simiae
-M.smegmatis,Mycobacterium_smegmatis,Unknown,M. smegmatis
-M.sphagni,Mycobacterium_sphagni,Unknown,M. sphagni
-M.stomatepiae,Mycobacterium_stomatepiae,Unknown,M. stomatepiae
-M.syngnathidarum,Mycobacterium_syngnathidarum,Unknown,M. syngnathidarum
-M.szulgai,Mycobacterium_szulgai,Unknown,M. szulgai
-M.szulgai,Mycobacterium_szulgae,Unknown,M. szulgai
-M.terrae,Mycobacterium_terrae,Unknown,M. terrae
-M.thermoresistibile,Mycobacterium_thermoresistibile,Unknown,M. thermoresistibile
-M.tokaiense,Mycobacterium_tokaiense,Unknown,M. tokaiense
-M.triplex,Mycobacterium_triplex,Unknown,M. triplex
-M.tuberculosis,Unknown,Unknown,M. tuberculosis (lineage Unknown)
-M.tuberculosis,Mycobacterium_tuberculosis_variant_caprae,lineageCaprae,M. caprae (MTB complex)
-M.tuberculosis,Mycobacterium_tuberculosis_variant_caprae,Unknown,M. caprae (MTB complex)
-M.tuberculosis,Mycobacterium_canettii,Mycobacterium_tuberculosis_subsp._canettii,M. canettii (MTB complex)
-M.tuberculosis,Mycobacterium_canettii,Unknown,M. canettii (MTB complex)
+M.peregrinum,Unknown,Unknown,M. peregrinum
+M.persicum,Unknown,Unknown,M. persicum
+M.phlei,Unknown,Unknown,M. phlei
+M.phocaicum,Unknown,Unknown,M. phocaicum
+M.porcinum,Unknown,Unknown,M. porcinum
+M.poriferae,Unknown,Unknown,M. poriferae
+M.pseudokansasii,Unknown,Unknown,M. pseudokansasii
+M.pseudoshottsii,Unknown,Unknown,M. pseudoshottsii
+M.psychrotolerans,Unknown,Unknown,M. psychrotolerans
+M.pulveris,Unknown,Unknown,M. pulveris
+M.rhodesiae,Unknown,Unknown,M. rhodesiae
+M.rufum,Unknown,Unknown,M. rufum
+M.rutilum,Unknown,Unknown,M. rutilum
+M.salmoniphilum,Unknown,Unknown,M. salmoniphilum
+M.saopaolens,Unknown,Unknown,M. saopaolens
+M.saopaulense,Unknown,Unknown,M. saopaulense
+M.sarraceniae,Unknown,Unknown,M. sarraceniae
+M.saskatchewanense,Unknown,Unknown,M. saskatchewanense
+M.sediminis,Unknown,Unknown,M. sediminis
+M.senegalense,Unknown,Unknown,M. senegalense
+M.senriense,Unknown,Unknown,M. senriense
+M.seoulense,Unknown,Unknown,M. seoulense
+M.septicum,Unknown,Unknown,M. septicum
+M.setense,Unknown,Unknown,M. setense
+M.sherrisii,Unknown,Unknown,M. sherrisii
+M.shigaense,Unknown,Unknown,M. shigaense
+M.shimoidei,Unknown,Unknown,M. shimoidei
+M.shinjukuense,Unknown,Unknown,M. shinjukuense
+M.simiae,Unknown,Unknown,M. simiae
+M.simulans,Unknown,Unknown,M. simulans
+M.smegmatis,Unknown,Unknown,M. smegmatis
+M.sphagni,Unknown,Unknown,M. sphagni
+M.spongiae,Unknown,Unknown,M. spongiae
+M.stellerae,Unknown,Unknown,M. stellerae
+M.stephanolepidis,Unknown,Unknown,M. stephanolepidis
+M.stomatepiae,Unknown,Unknown,M. stomatepiae
+M.syngnathidarum,Unknown,Unknown,M. syngnathidarum
+M.szulgai,Unknown,Unknown,M. szulgai
+M.szulgai,Unknown,Unknown,M. szulgai
+M.terrae,Unknown,Unknown,M. terrae
+M.thermoresistibile,Unknown,Unknown,M. thermoresistibile
+M.tokaiense,Unknown,Unknown,M. tokaiense
+M.triplex,Unknown,Unknown,M. triplex
+M.trivialis,Unknown,Unknown,M. trivialis
 M.tuberculosis,Mycobacterium_bovis,Unknown,M. bovis (MTB complex)
 M.tuberculosis,Mycobacterium_bovis,lineageBovis,M. bovis (MTB complex)
 M.tuberculosis,Mycobacterium_bovis,lineageBovis.BCG,M. bovis subsp. BCG (MTB complex)
-M.tuberculosis,Mycobacterium_tuberculosis_variant_microti,clade_animal_A2,M. microti (MTB complex)
-M.tuberculosis,Mycobacterium_tuberculosis_variant_microti,Unknown,M. microti (MTB complex)
-M.tuberculosis,Mycobacterium_africanum,lineage6,M. africanum (lineage 6) (MTB complex)
-M.tuberculosis,Mycobacterium_africanum,Unknown,M. africanum (lineage 6) (MTB complex)
-M.tuberculosis,Mycobacterium_tuberculosis_variant_africanum,lineage6,M. africanum (lineage 6) (MTB complex)
-M.tuberculosis,Mycobacterium_tuberculosis_variant_africanum,Unknown,M. africanum (lineage 6) (MTB complex)
-M.tuberculosis,Mycobacterium_orygis,clade_animal_A3,M. orgyis (MTB complex)
-M.tuberculosis,Mycobacterium_orygis,Unknown,M. orgyis (MTB complex)
-M.tuberculosis,Mycobacterium_mungi,clade_animal_A1,M. mungi (MTB complex)
+M.tuberculosis,Mycobacterium_canettii,Mycobacterium_tuberculosis_subsp._canettii,M. canettii (MTB complex)
+M.tuberculosis,Mycobacterium_canettii,Unknown,M. canettii (MTB complex)
 M.tuberculosis,Mycobacterium_mungi,Unknown,M. mungi (MTB complex)
+M.tuberculosis,Mycobacterium_mungi,clade_animal_A1,M. mungi (MTB complex)
+M.tuberculosis,Mycobacterium_orygis,Unknown,M. orgyis (MTB complex)
+M.tuberculosis,Mycobacterium_orygis,clade_animal_A3,M. orgyis (MTB complex)
+M.tuberculosis,Mycobacterium_africanum,Unknown,M. africanum (lineage 6) (MTB complex)
+M.tuberculosis,Mycobacterium_africanum,lineage6,M. africanum (lineage 6) (MTB complex)
+M.tuberculosis,Mycobacterium_africanum,lineage5,M. africanum (lineage 5) (MTB complex)
+M.tuberculosis,Mycobacterium_tuberculosis_variant_africanum,Unknown,M. africanum (lineage 6) (MTB complex)
+M.tuberculosis,Mycobacterium_tuberculosis_variant_africanum,lineage6,M. africanum (lineage 6) (MTB complex)
+M.tuberculosis,Mycobacterium_tuberculosis_variant_africanum,lineage5,M. africanum (lineage 5) (MTB complex)
+M.tuberculosis,Mycobacterium_tuberculosis_variant_caprae,Unknown,M. caprae (MTB complex)
+M.tuberculosis,Mycobacterium_tuberculosis_variant_caprae,lineageCaprae,M. caprae (MTB complex)
+M.tuberculosis,Mycobacterium_tuberculosis_variant_microti,Unknown,M. microti (MTB complex)
+M.tuberculosis,Mycobacterium_tuberculosis_variant_microti,clade_animal_A2,M. microti (MTB complex)
 M.tuberculosis,Mycobacterium_tuberculosis,Unknown,M. tuberculosis (lineage Unknown)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.1.2,M. tuberculosis (lineage 4.1.2)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.4.1.1,M. tuberculosis (lineage 4.4.1.1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.4,M. tuberculosis (lineage 4.4)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage2.2.1,M. tuberculosis (lineage 2.2.1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.4.1.2,M. tuberculosis (lineage 4.4.1.2)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.6.1,M. tuberculosis (lineage 4.6.1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.1.1.2,M. tuberculosis (lineage 4.1.1.2)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage2.2.2,M. tuberculosis (lineage 2.2.2)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage3.1.2.1,M. tuberculosis (lineage 3.1.2.1)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage1,M. tuberculosis (lineage 1)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage1.1,M. tuberculosis (lineage 1.1)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage1.1.1,M. tuberculosis (lineage 1.1.1)
 M.tuberculosis,Mycobacterium_tuberculosis,lineage1.1.1.1,M. tuberculosis (lineage 1.1.1.1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage2.2.5,M. tuberculosis (lineage 2.2.5)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.2.2,M. tuberculosis (lineage 4.2.2)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.6.2.2,M. tuberculosis (lineage 4.6.2.2)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.3.2,M. tuberculosis (lineage 4.3.2)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.1.2.1,M. tuberculosis (lineage 4.1.2.1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.6.1.2,M. tuberculosis (lineage 4.6.1.2)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage2.2.7,M. tuberculosis (lineage 2.2.7)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4,M. tuberculosis (lineage 4)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.10,M. tuberculosis (lineage 4.10)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.6,M. tuberculosis (lineage 4.6)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage2.2.3,M. tuberculosis (lineage 2.2.3)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.2.1,M. tuberculosis (lineage 4.2.1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage3.1.2,M. tuberculosis (lineage 3.1.2)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage3,M. tuberculosis (lineage 3)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.3.4.2,M. tuberculosis (lineage 4.3.4.2)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage2.2.10,M. tuberculosis (lineage 2.2.10)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.3.4.1,M. tuberculosis (lineage 4.3.4.1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.3.3,M. tuberculosis (lineage 4.3.3)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage2.2.6,M. tuberculosis (lineage 2.2.6)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage1.1.2,M. tuberculosis (lineage 1.1.2)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage1.1.3,M. tuberculosis (lineage 1.1.3)
 M.tuberculosis,Mycobacterium_tuberculosis,lineage1.2.1,M. tuberculosis (lineage 1.2.1)
 M.tuberculosis,Mycobacterium_tuberculosis,lineage1.2.2,M. tuberculosis (lineage 1.2.2)
 M.tuberculosis,Mycobacterium_tuberculosis,lineage2.1,M. tuberculosis (lineage 2.1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.6.1.1,M. tuberculosis (lineage 4.6.1.1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.1.1.1,M. tuberculosis (lineage 4.1.1.1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.3,M. tuberculosis (lineage 4.3)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage1.1.3,M. tuberculosis (lineage 1.1.3)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.5,M. tuberculosis (lineage 4.5)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage2.2.9,M. tuberculosis (lineage 2.2.9)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.1.1,M. tuberculosis (lineage 4.1.1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.3.1,M. tuberculosis (lineage 4.3.1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.1.3,M. tuberculosis (lineage 4.1.3)
 M.tuberculosis,Mycobacterium_tuberculosis,lineage2.2,M. tuberculosis (lineage 2.2)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.3.2.1,M. tuberculosis (lineage 4.3.2.1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage3.1.1,M. tuberculosis (lineage 3.1.1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.6.2.1,M. tuberculosis (lineage 4.6.2.1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.2.2.1,M. tuberculosis (lineage 4.2.2.1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.4.2,M. tuberculosis (lineage 4.4.2)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage1.1.1,M. tuberculosis (lineage 1.1.1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage1.1,M. tuberculosis (lineage 1.1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.3.4.2.1,M. tuberculosis (lineage 4.3.4.2.1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.1,M. tuberculosis (lineage 4.1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage2.2.8,M. tuberculosis (lineage 2.2.8)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage1,M. tuberculosis (lineage 1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.1.1.3,M. tuberculosis (lineage 4.1.1.3)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage3.1.2.2,M. tuberculosis (lineage 3.1.2.2)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.4.1,M. tuberculosis (lineage 4.4.1)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage4.3.4,M. tuberculosis (lineage 4.3.4)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage2.2.1,M. tuberculosis (lineage 2.2.1)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage2.2.10,M. tuberculosis (lineage 2.2.10)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage2.2.2,M. tuberculosis (lineage 2.2.2)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage2.2.3,M. tuberculosis (lineage 2.2.3)
 M.tuberculosis,Mycobacterium_tuberculosis,lineage2.2.4,M. tuberculosis (lineage 2.2.4)
-M.tuberculosis,Mycobacterium_tuberculosis,lineage1.1.2,M. tuberculosis (lineage 1.1.2)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage2.2.5,M. tuberculosis (lineage 2.2.5)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage2.2.6,M. tuberculosis (lineage 2.2.6)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage2.2.7,M. tuberculosis (lineage 2.2.7)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage2.2.8,M. tuberculosis (lineage 2.2.8)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage2.2.9,M. tuberculosis (lineage 2.2.9)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage3,M. tuberculosis (lineage 3)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage3.1.1,M. tuberculosis (lineage 3.1.1)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage3.1.2,M. tuberculosis (lineage 3.1.2)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage3.1.2.1,M. tuberculosis (lineage 3.1.2.1)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage3.1.2.2,M. tuberculosis (lineage 3.1.2.2)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4,M. tuberculosis (lineage 4)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.1,M. tuberculosis (lineage 4.1)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.1.1,M. tuberculosis (lineage 4.1.1)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.1.1.1,M. tuberculosis (lineage 4.1.1.1)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.1.1.2,M. tuberculosis (lineage 4.1.1.2)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.1.1.3,M. tuberculosis (lineage 4.1.1.3)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.1.2,M. tuberculosis (lineage 4.1.2)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.1.2.1,M. tuberculosis (lineage 4.1.2.1)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.1.3,M. tuberculosis (lineage 4.1.3)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.10,M. tuberculosis (lineage 4.10)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.2.1,M. tuberculosis (lineage 4.2.1)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.2.2,M. tuberculosis (lineage 4.2.2)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.2.2.1,M. tuberculosis (lineage 4.2.2.1)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.3,M. tuberculosis (lineage 4.3)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.3.1,M. tuberculosis (lineage 4.3.1)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.3.2,M. tuberculosis (lineage 4.3.2)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.3.2.1,M. tuberculosis (lineage 4.3.2.1)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.3.3,M. tuberculosis (lineage 4.3.3)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.3.4,M. tuberculosis (lineage 4.3.4)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.3.4.1,M. tuberculosis (lineage 4.3.4.1)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.3.4.2,M. tuberculosis (lineage 4.3.4.2)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.3.4.2.1,M. tuberculosis (lineage 4.3.4.2.1)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.4,M. tuberculosis (lineage 4.4)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.4.1,M. tuberculosis (lineage 4.4.1)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.4.1.1,M. tuberculosis (lineage 4.4.1.1)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.4.1.2,M. tuberculosis (lineage 4.4.1.2)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.4.2,M. tuberculosis (lineage 4.4.2)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.5,M. tuberculosis (lineage 4.5)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.6,M. tuberculosis (lineage 4.6)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.6.1,M. tuberculosis (lineage 4.6.1)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.6.1.1,M. tuberculosis (lineage 4.6.1.1)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.6.1.2,M. tuberculosis (lineage 4.6.1.2)
 M.tuberculosis,Mycobacterium_tuberculosis,lineage4.6.2,M. tuberculosis (lineage 4.6.2)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.6.2.1,M. tuberculosis (lineage 4.6.2.1)
+M.tuberculosis,Mycobacterium_tuberculosis,lineage4.6.2.2,M. tuberculosis (lineage 4.6.2.2)
 M.tuberculosis,Mycobacterium_tuberculosis,lineage5,M. tuberculosis (lineage 5)
 M.tuberculosis,Mycobacterium_tuberculosis,lineage7,M. tuberculosis (lineage 7)
-M.tusciae,Mycobacterium_tusciae,Unknown,M. tusciae
-M.vaccae,Mycobacterium_vaccae,Unknown,M. vaccae
-M.vanbaalenii,Mycobacterium_vanbaalenii,Unknown,M. vanbaalenii
-M.vulneris,Mycobacterium_vulneris,Unknown,M. vulneris
-M.wolinskyi,Mycobacterium_wolinskyi,Unknown,M. wolinskyi
-M.xenopi,Mycobacterium_xenopi,Unknown,M. xenopi
-M.acidiphilus,,Unknown,M. acidiphilus
-M.ahvazicum,,Unknown,M. ahvazicum
-M.alkanivorans,,Unknown,M. alkanivorans
-M.alsense,,Unknown,M. alsense
-M.anyangense,,Unknown,M. anyangense
-M.aquaticum,,Unknown,M. aquaticum
-M.baixiangningiae,,Unknown,M. baixiangningiae
-M.celeriflavum,,Unknown,M. celeriflavum
-M.chubuense,,Unknown,M. chubuense
-M.conspicuum,,Unknown,M. conspicuum
-M.cookii,,Unknown,M. cookii
-M.fragae,,Unknown,M. fragae
-M.gilvum,,Unknown,M. gilvum
-M.grossiae,,Unknown,M. grossiae
-M.helveticum,,Unknown,M. helveticum
-M.helvum,,Unknown,M. helvum
-M.icosiumassiliensis,,Unknown,M. icosiumassiliensis
-M.intracellulare_chimaera,,Unknown,M. intracellulare subsp. chimaera (MAC)
-M.intracellulare_chimaera,,Mycobacterium_intracellulare_subsp._chimaera,M. intracellulare subsp. chimaera (MAC)
-M.intracellulare_yongonense,,Unknown,M. intracellulare subsp. yongonense (MAC)
-M.komanii,,Unknown,M. komanii
-M.lacusdiani,,Unknown,M. lacusdiani
-M.leprae,,Unknown,M. leprae
-M.lepraemurium,,Unknown,M. lepraemurium
-M.lepromatosis,,Unknown,M. lepromatosis
-M.longobardus,,Unknown,M. longobardus
-M.malmesburyense,,Unknown,M. malmesburyense
-M.mengxianglii,,Unknown,M. mengxianglii
-M.nivoides,,Unknown,M. nivoides
-M.noviomagense,,Unknown,M. noviomagense
-M.palauense,,Unknown,M. palauense
-M.parafortuitum,,Unknown,M. parafortuitum
-M.paraintracellulare,,Unknown,M. paraintracellulare
-M.parakoreensis,,Unknown,M. parakoreensis
-M.parmense,,Unknown,M. parmense
-M.pseudoshottsii,,Unknown,M. pseudoshottsii
-M.saopaulense,,Unknown,M. saopaulense
-M.sarraceniae,,Unknown,M. sarraceniae
-M.sediminis,,Unknown,M. sediminis
-M.shigaense,,Unknown,M. shigaense
-M.simulans,,Unknown,M. simulans
-M.saopaolens,,Unknown,M. saopaolens
-M.spongiae,,Unknown,M. spongiae
-M.stellerae,,Unknown,M. stellerae
-M.stephanolepidis,,Unknown,M. stephanolepidis
-M.trivialis,,Unknown,M. trivialis
-M.vicinigordonae,,Unknown,M. vicinigordonae
-M.vinylchloridicum,,Unknown,M. vinylchloridicum
-M.virginiensis,,Unknown,M. virginiensis
+M.tuberculosis,Unknown,Unknown,M. tuberculosis (lineage Unknown)
+M.tusciae,Unknown,Unknown,M. tusciae
+M.vaccae,Unknown,Unknown,M. vaccae
+M.vanbaalenii,Unknown,Unknown,M. vanbaalenii
+M.vicinigordonae,Unknown,Unknown,M. vicinigordonae
+M.vinylchloridicum,Unknown,Unknown,M. vinylchloridicum
+M.virginiensis,Unknown,Unknown,M. virginiensis
+M.vulneris,Unknown,Unknown,M. vulneris
+M.wolinskyi,Unknown,Unknown,M. wolinskyi
+M.xenopi,Unknown,Unknown,M. xenopi

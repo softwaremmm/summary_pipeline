@@ -231,6 +231,14 @@ MUNGI = {
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
+TB_MIXED_SPECIES = {
+    "gatekeeper_report": "test_data/tb_mixed_species/speciation_report.json",
+    "competitivemapping_report": "test_data/tb_mixed_species/species_comparison_report.json",
+    "mykrobe_report": "test_data/tb_mixed_species/subspecies_report.json",
+    "expected_output": "test_data/tb_mixed_species/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
+}
+
 @pytest.fixture(
     params=[
         covid,
@@ -257,6 +265,7 @@ MUNGI = {
         AVIUM_SILVATICUM,
         CANETTII,
         MUNGI,
+        TB_MIXED_SPECIES,
     ],
     ids=[
         "covid",
@@ -283,6 +292,7 @@ MUNGI = {
         "avium_silvaticum",
         "canettii",
         "mungi",
+        "TB_MIXED_SPECIES",
     ],
 )
 def regression_test_set(request) -> dict:
