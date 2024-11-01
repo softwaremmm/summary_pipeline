@@ -1,0 +1,50 @@
+{
+    "Pipeline Outcome": "Mycobacterial species identified. Reads mapped to M. tuberculosis (H37Rv v3) too low to proceed to M. tuberculosis complex genome assembly.",
+    "Organism Identification": {
+        "Human Reads": null,
+        "Unclassified Reads": 1596,
+        "Non-Mycobacterium Bacteria Reads": 11046,
+        "Mycobacterium Reads": 15505688
+    },
+    "Mycobacterium Results": {
+        "Summary": [
+            {
+                "Name": "M. mungi (MTB complex)",
+                "Num Reads": 15127751,
+                "Coverage": 98.1387,
+                "Depth": 302.466
+            }
+        ],
+        "Species": [
+            {
+                "Name": "M.tuberculosis",
+                "Num Reads": 15127751,
+                "Coverage": 98.1387,
+                "Mean Depth": 302.466,
+                "Length": 4411532.0
+            }
+        ],
+        "Phylogenic Group": [
+            {
+                "Name": "Mycobacterium_tuberculosis_complex",
+                "Coverage": 99.134,
+                "Median Depth": 240
+            }
+        ],
+        "Subspecies": [
+            {
+                "Name": "Mycobacterium_mungi",
+                "Coverage": 19.056,
+                "Median Depth": 197
+            }
+        ],
+        "Lineage": [
+            {
+                "Name": "clade_animal_A1",
+                "Coverage": 0,
+                "Median Depth": 0
+            }
+        ]
+    },
+    "Genomes": null
+}

@@ -1,0 +1,78 @@
+{
+  "phylo_group": {
+    "Mycobacterium_tuberculosis_complex": {
+      "percent_coverage": 99.134,
+      "median_depth": 240,
+      "inferred_from_child": true
+    }
+  },
+  "sub_complex": {
+    "subMycobacterium_tuberculosis_complex": {
+      "percent_coverage": 99.134,
+      "median_depth": 240
+    }
+  },
+  "species": {
+    "Mycobacterium_mungi": {
+      "percent_coverage": 19.056,
+      "median_depth": 197
+    }
+  },
+  "lineage": {
+    "lineage": [
+      "clade_animal_A1"
+    ],
+    "calls_summary": {
+      "clade_animal_A1": {
+        "good_nodes": 1,
+        "tree_depth": 1,
+        "genotypes": {
+          "clade_animal_A1": 1
+        }
+      }
+    },
+    "calls": {
+      "clade_animal_A1": {
+        "clade_animal_A1": {
+          "G2873278T": {
+            "variant": "ref-G2873278T?var_name=G2873278T&num_alts=1&ref=NC_000962.3&enum=0&gene=NA&mut=G2873278T",
+            "genotype": [
+              1,
+              1
+            ],
+            "genotype_likelihoods": [
+              -27357.533289315317,
+              -99999999,
+              -281.06638960720693
+            ],
+            "info": {
+              "coverage": {
+                "reference": {
+                  "percent_coverage": 0,
+                  "median_depth": 0,
+                  "min_non_zero_depth": 0,
+                  "kmer_count": 0,
+                  "klen": 21
+                },
+                "alternate": {
+                  "percent_coverage": 100,
+                  "median_depth": 212,
+                  "min_non_zero_depth": 203,
+                  "kmer_count": 4250,
+                  "klen": 21
+                }
+              },
+              "expected_depths": [
+                240
+              ],
+              "contamination_depths": [],
+              "filter": [],
+              "conf": 27076
+            },
+            "_cls": "Call.VariantCall"
+          }
+        }
+      }
+    }
+  }
+}

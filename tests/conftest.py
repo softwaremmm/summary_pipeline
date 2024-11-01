@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 import pytest
+
 from summary.cli_args import Arguments
 
 covid = {
@@ -37,6 +38,14 @@ SEPTICUM = {
     "competitivemapping_report": "test_data/septicum/species_comparison_report.json",
     "mykrobe_report": "test_data/septicum/subspecies_report.json",
     "expected_output": "test_data/septicum/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
+}
+
+TB_NO_MYKROBE = {
+    "gatekeeper_report": "test_data/tb_no_mykrobe/speciation_report.json",
+    "competitivemapping_report": "test_data/tb_no_mykrobe/species_comparison_report.json",
+    "mykrobe_report": "test_data/tb_no_mykrobe/subspecies_report.json",
+    "expected_output": "test_data/tb_no_mykrobe/main_report.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
@@ -214,11 +223,20 @@ CANETTII = {
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
+MUNGI = {
+    "gatekeeper_report": "test_data/mungi/speciation_report.json",
+    "competitivemapping_report": "test_data/mungi/species_comparison_report.json",
+    "mykrobe_report": "test_data/mungi/subspecies_report.json",
+    "expected_output": "test_data/mungi/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
+}
+
 @pytest.fixture(
     params=[
         covid,
         covid_no_meta,
         SRR2097047,
+        TB_NO_MYKROBE,
         SEPTICUM,
         MALOMENSE,
         WTCHG_885333_73205296_1,
@@ -238,11 +256,13 @@ CANETTII = {
         MORE_CHELONAE_TB_ASSEMBLED,
         AVIUM_SILVATICUM,
         CANETTII,
+        MUNGI,
     ],
     ids=[
         "covid",
         "covid_no_meta",
         "SRR2097047",
+        "TB_NO_MYKROBE",
         "SEPTICUM",
         "MALOMENSE",
         "WTCHG_885333_73205296_1",
@@ -262,6 +282,7 @@ CANETTII = {
         "more_chelonae_tb_assembled",
         "avium_silvaticum",
         "canettii",
+        "mungi",
     ],
 )
 def regression_test_set(request) -> dict:
