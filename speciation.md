@@ -80,9 +80,6 @@ Two sources of information are used to inform the speciation decision: [Competit
 
 Competitive Mapping outputs a list of species, which is ordered by "meandepth" (the mean number of reads mapped to an individual base in the reference genome) to give a "top hit" species. However, Competitive Mapping does not provide information on lineage or subspecies. This information can in some cases be obtained from mykrobe, which reports species (which we usually refer to as subspecies), phylogenic group and lineage.
 
-In cases where mykrobe does not return any information or cases where there is a **mixed population** then the species name from Competitive Mapping is used. Otherwise, the name returned is looked up using the species name from Competitive Mapping, and the species and the lineage name from mykrobe (if available). Where no combination of Competitive Mapping, mykrobe species and lineage name can be found in the reference table ([example reference table](test_data/reference/name_mapping.csv)), the Competitive Mapping name is used.
-Note: The Competitive Mapping name is still converted to a nicer display name using the table.
-
 Coverage, depth and number of reads mapped (Reads) are always sourced from Competitive Mapping.
 
 ## Additional steps for mixed populations
@@ -91,6 +88,12 @@ This software identifies a mixed population where mykrobe returns two phylo grou
 
 If _M. tuberculosis_ is not the "Main Species", _M. tuberculosis_ data from Competitive Mapping is appended to summary and species information, if any reads at all were mapped. If _M. tuberculosis_ is the "Main Species" in a mixed population, the information from the second hit from Competitive Mapping is appended to the summary and species information.
 
-## Additional steps for mixed lineages
 
-If more than one lineage of _M. tuberculosis_ is is returned, then species is reported as `M. tuberculosis (mixed lineage)`.
+## Name mapping table lookup ([example reference table](test_data/reference/name_mapping.csv))
+For a given competitive mapping reference, the name_mapping.csv is used to determine how to report it's name based on the results from mykrobe.
+
+1. The table is filtered so reference==competitive mapping name
+2. The table is filtered for rows where SPECIES is found in the mykrobe output. If no rows match than the row where SPECIES==UNKNOWN is used.
+If multiple species match than name is reported as "mixed subspecies" for M.tuberculosis
+3. This is repeated for LINEAGE. But if multiple lineages match than "mixed lineage" is reported.
+4. At this point we should have a single row, so use REPORT value.
