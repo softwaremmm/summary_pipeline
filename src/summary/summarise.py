@@ -119,7 +119,7 @@ def generate_mycobacterium_results(
     mixed_phylo_pop = False
     if mykrobe_data != {}:
         # Phylogenetic Group (mykrobe)
-        myco["Phylogenic Group"] = process_phylo_group(mykrobe_data["phylo_group"])
+        myco["Phylogenic Group"] = process_phylo_group(mykrobe_data.get("phylo_group"))
 
         # "Subspecies" (mykrobe)
         if "species" in mykrobe_data:
@@ -195,7 +195,7 @@ def generate_mycobacterium_results(
     return myco
 
 
-def process_phylo_group(phylo_group: dict) -> list[dict]:
+def process_phylo_group(phylo_group: dict | None) -> list[dict]:
     """Restructure phylogenetic group information from mykrobe
 
     Args:
@@ -207,6 +207,9 @@ def process_phylo_group(phylo_group: dict) -> list[dict]:
     Returns:
         list[dict]: Restructured phylogenetic information
     """
+    if phylo_group is None:
+        return []
+
     phylos = []
     for group in phylo_group:
         phylo = {
