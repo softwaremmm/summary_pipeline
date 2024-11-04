@@ -308,7 +308,28 @@ def organism_name(
     Returns:
         str: Reportable name for the organism.
     """
-    print(f"cm_name: {cm_name}, species: {species}, lineages: {lineages}")
+
+    # Check for new lineages e.g. lineage 11.2
+    def is_digit_lineage(lineage: str) -> bool:
+        return lineage.startswith("lineage") and all(
+            char.isdigit() or char == "." for char in lineage[7:]
+        )
+
+    if cm_name == "M.tuberculosis":
+        new_rows = []
+        for lineage in lineages:
+            if is_digit_lineage(lineage) and lineage not in mapping.LINEAGE.unique():
+                # add new lineage to mapping
+                new_rows.append(
+                    {
+                        "reference": "M.tuberculosis",
+                        "SPECIES": "Mycobacterium_tuberculosis",
+                        "LINEAGE": lineage,
+                        "REPORT": f"M. tuberculosis (lineage {lineage[7:]})",
+                    }
+                )
+        if new_rows:
+            mapping = pd.concat([mapping, pd.DataFrame(new_rows)])
 
     # subset to only the rows that match the competitive mapping name
     mapping = mapping[mapping.reference == cm_name].copy()
