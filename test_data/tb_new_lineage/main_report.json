@@ -9,7 +9,7 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "MTB Complex (mixed lineage)",
+                "Name": "M. tuberculosis (lineage 12.4.5)",
                 "Num Reads": 526186,
                 "Coverage": 99.8744,
                 "Depth": 17.1875
@@ -33,11 +33,6 @@
         ],
         "Subspecies": [
             {
-                "Name": "Mycobacterium_bovis",
-                "Coverage": 97.983,
-                "Median Depth": 6
-            },
-            {
                 "Name": "Mycobacterium_tuberculosis",
                 "Coverage": 99.492,
                 "Median Depth": 11
@@ -45,14 +40,9 @@
         ],
         "Lineage": [
             {
-                "Name": "lineage4.10",
+                "Name": "lineage12.4.5",
                 "Coverage": 100,
                 "Median Depth": 10
-            },
-            {
-                "Name": "lineageBovis",
-                "Coverage": 100,
-                "Median Depth": 16
             }
         ]
     },
