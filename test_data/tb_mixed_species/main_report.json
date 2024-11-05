@@ -9,7 +9,7 @@
     "Mycobacterium Results": {
         "Summary": [
             {
-                "Name": "M. tuberculosis (mixed subspecies)",
+                "Name": "MTB Complex (mixed lineage)",
                 "Num Reads": 5036701,
                 "Coverage": 99.99,
                 "Depth": 211.522

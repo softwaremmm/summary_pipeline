@@ -505,3 +505,7 @@ def eg_gnomonicus_report() -> Path:
 def eg_gnomonicus_report_contents(eg_gnomonicus_report) -> dict:
     with open(eg_gnomonicus_report, "r") as file:
         return json.load(file)
+
+@pytest.fixture
+def name_mapping() -> Path:
+    return Path("test_data/reference/name_mapping.csv")
