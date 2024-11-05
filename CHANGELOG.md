@@ -1,3 +1,15 @@
+## 2.4.5 (2024-11-05)
+
+### Fix
+
+- use get for dict
+- add pytest just for naming
+- use defaults instead of errors
+- add missing mykrobe species which are in manifest
+- use get for phylo_group
+- add check for future M.tb lineages
+- simplify naming in order to report mixed subspecies
+
 ## 2.4.4 (2024-11-01)
 
 ### Fix
