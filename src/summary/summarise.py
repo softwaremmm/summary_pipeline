@@ -119,17 +119,19 @@ def generate_mycobacterium_results(
     mixed_phylo_pop = False
     if mykrobe_data != {}:
         # Phylogenetic Group (mykrobe)
-        myco["Phylogenic Group"] = process_phylo_group(mykrobe_data.get("phylo_group"))
+        myco["Phylogenic Group"] = process_phylo_group(
+            mykrobe_data.get("phylo_group", {})
+        )
 
         # "Subspecies" (mykrobe)
         if "species" in mykrobe_data:
             myco["Subspecies"] = process_subspecies(
-                mykrobe_data["species"]
+                mykrobe_data.get("species", {})
             )  # Why is species assigned to subspecies? Because these ideas are conflated in TB complex.
 
         # Lineage (mykrobe)
         if "lineage" in mykrobe_data:
-            myco["Lineage"] = process_lineages(mykrobe_data["lineage"])
+            myco["Lineage"] = process_lineages(mykrobe_data.get("lineage", {}))
 
         if len(myco["Phylogenic Group"]) == 2:
             mixed_phylo_pop = True
@@ -195,7 +197,7 @@ def generate_mycobacterium_results(
     return myco
 
 
-def process_phylo_group(phylo_group: dict | None) -> list[dict]:
+def process_phylo_group(phylo_group: dict) -> list[dict]:
     """Restructure phylogenetic group information from mykrobe
 
     Args:
@@ -207,9 +209,6 @@ def process_phylo_group(phylo_group: dict | None) -> list[dict]:
     Returns:
         list[dict]: Restructured phylogenetic information
     """
-    if phylo_group is None:
-        return []
-
     phylos = []
     for group in phylo_group:
         phylo = {
