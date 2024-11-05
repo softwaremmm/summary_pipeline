@@ -347,10 +347,11 @@ def organism_name(
     if species_df.SPECIES.nunique() > 1:
         if cm_name == "M.tuberculosis":
             # Special case of mixed species. e.g. canetti and normal tb
-            return "M. tuberculosis (mixed subspecies)"
-        raise ValueError(
+            return "MTB Complex (mixed lineage)"
+        logging.warning(
             f"More than one unique species {species_df.SPECIES.unique()} found for {cm_name}"
         )
+        return f"{cm_name.replace('M.', 'M. ')} (mixed lineage)"
 
     # subset by lineage
     lineage_df = species_df[species_df.LINEAGE.isin(lineages)]
@@ -364,13 +365,17 @@ def organism_name(
 
     if lineage_df.LINEAGE.nunique() > 1:
         if cm_name == "M.tuberculosis":
-            # Africanum can also be mixed
+            # Specific catches for mixed lineages
             if "africanum" in lineage_df.SPECIES.unique()[0]:
                 return "M. africanum (mixed lineage) (MTB complex)"
+            if "bovis" in lineage_df.SPECIES.unique()[0]:
+                return "M. bovis (mixed lineage) (MTB complex)"
             return "M. tuberculosis (mixed lineage)"
-        raise ValueError(
+
+        logging.warning(
             f"More than one unique lineage {lineage_df.LINEAGE.unique()} found for {cm_name}"
         )
+        return f"{cm_name.replace('M.', 'M. ')} (mixed lineage)"
 
     # Can now conclude that there is only one row in the table
     reporting_names = pd.unique(lineage_df.REPORT)
