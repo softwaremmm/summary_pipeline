@@ -17,7 +17,9 @@ M.angelicum,Unknown,Unknown,M. angelicum
 M.anyangense,Unknown,Unknown,M. anyangense
 M.aquaticum,Unknown,Unknown,M. aquaticum
 M.aromaticivorans,Unknown,Unknown,M. aromaticivorans
+M.arosiense,arosiense_A,Unknown,M. arosiense
 M.arosiense,Unknown,Unknown,M. arosiense
+M.arupensis,arupense,Unknown,M. arupensis
 M.arupensis,Unknown,Unknown,M. arupensis
 M.asiaticum,Unknown,Unknown,M. asiaticum
 M.attenuatum,Unknown,Unknown,M. attenuatum
@@ -27,6 +29,7 @@ M.austroafricanum,Unknown,Unknown,M. austroafricanum
 M.avium,Mycobacterium_avium,Mycobacterium_avium_subsp._avium,M. avium subsp. avium (MAC)
 M.avium,Mycobacterium_avium,Mycobacterium_avium_subsp._hominissuis,M. avium subsp. hominissuis (MAC)
 M.avium,Mycobacterium_avium,Mycobacterium_avium_subsp._silvaticum,M. avium subsp. silvaticum (MAC)
+M.avium,Mycobacterium_avium,Mycobacterium_avium_subsp._paratuberculosis,M. avium subsp. paratuberculosis (MAC)
 M.avium,Mycobacterium_avium,Unknown,M. avium
 M.avium,Unknown,Unknown,M. avium
 M.bacteremicum,Unknown,Unknown,M. bacteremicum
@@ -98,6 +101,7 @@ M.icosiumassiliensis,Unknown,Unknown,M. icosiumassiliensis
 M.immunogenum,Unknown,Unknown,M. immunogenum
 M.insubricum,Unknown,Unknown,M. insubricum
 M.interjectum,Mycobacterium_interjectum_B,Unknown,M. interjectum
+M.interjectum,Unknown,Unknown,M. interjectum
 M.intermedium,Unknown,Unknown,M. intermedium
 M.intracellulare,Mycobacterium_intracellulare,Mycobacterium_intracellulare_subsp._chimaera,M. intracellulare subsp. chimaera  (MAC)
 M.intracellulare,Mycobacterium_intracellulare,Mycobacterium_intracellulare_subsp._intracellulare,M. intracellulare subsp. intracellulare (MAC)
@@ -223,6 +227,7 @@ M.tuberculosis,Mycobacterium_tuberculosis_variant_caprae,Unknown,M. caprae (MTB 
 M.tuberculosis,Mycobacterium_tuberculosis_variant_caprae,lineageCaprae,M. caprae (MTB complex)
 M.tuberculosis,Mycobacterium_tuberculosis_variant_microti,Unknown,M. microti (MTB complex)
 M.tuberculosis,Mycobacterium_tuberculosis_variant_microti,clade_animal_A2,M. microti (MTB complex)
+M.tuberculosis,Mycobacterium_tuberculosis_variant_pinnipedii,Unknown,M. pinnipedii (MTB complex)
 M.tuberculosis,Mycobacterium_tuberculosis,Unknown,M. tuberculosis (lineage Unknown)
 M.tuberculosis,Mycobacterium_tuberculosis,lineage1,M. tuberculosis (lineage 1)
 M.tuberculosis,Mycobacterium_tuberculosis,lineage1.1,M. tuberculosis (lineage 1.1)
