@@ -1,3 +1,9 @@
+## 2.4.6 (2024-11-11)
+
+### Fix
+
+- remove debug and useless logging
+
 ## 2.4.5 (2024-11-05)
 
 ### Fix
