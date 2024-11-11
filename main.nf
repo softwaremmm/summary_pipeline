@@ -16,7 +16,6 @@ process summary_json {
         params.test_container=="" ? 'lhr.ocir.io/lrbvkel2wjot/gpas/summary_pipeline:2.4.5' : params.test_container
     }
 
-    debug true
     pod label: "name", value: "summary_pipeline:summary_json"
     pod label: "sample_id", value: "${params.sample_id}"
     pod label: "run_id", value: "${params.run_id}"
@@ -40,13 +39,6 @@ workflow summary {
     reports_list
 
   main:
-    log.info """
-        ========================================================================
-        Summary
-
-        Combines output from workflow steps to create a single summary JSON file.
-    """.stripIndent()
-
     if (reports_list == '') {
       exit 1, 'error: A list of reports is mandatory'
     }
@@ -84,10 +76,9 @@ workflow {
             Path to mykrobe report (`subspecies_report.json`).
             Path to gnomonicus report (`resistance_prediction_report.json`).
             '''
-
             .stripIndent()
 
-    exit(0)
+      exit(0)
     }
   main:
     reports_list = params.reports?.split(',') as List
