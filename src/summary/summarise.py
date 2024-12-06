@@ -798,7 +798,7 @@ def read_pipeline_build(path: Path) -> str:
             "File " + str(path) + " does not exist. Data could not be loaded"
         )
     with open(path, "r") as file:
-        return file.read()
+        return file.read().strip()
 
 
 def write_summary(output: dict, location: Path = Path("Mega.json")) -> None:
