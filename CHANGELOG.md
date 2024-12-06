@@ -1,3 +1,9 @@
+## 2.4.7 (2024-12-06)
+
+### Fix
+
+- strip whitespace from pipeline build
+
 ## 2.4.6 (2024-11-11)
 
 ### Fix
