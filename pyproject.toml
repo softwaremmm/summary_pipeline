@@ -23,17 +23,20 @@ dev = [
     "pytest-mock",
     "pre-commit >= 3.2.2",
     "commitizen",
+    "version_bumper @ git+https://github.com/GlobalPathogenAnalysisService/version_bumper.git",
 ]
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-update_changelog_on_bump = true
-changelog_incremental = true
+update_changelog_on_bump = false
 bump_message = "bump: version $current_version → $new_version" # [skip ci]"
 version_type = "semver"
 version_provider = "pep621"
 tag_format = "$version"
+
+[tool.version_bumper]
+active_version = "2.4.7"
 version_files = [
     "main.nf",
-    ".github/workflows/manual_docker.yaml",
+    ".github/workflows/manual_docker.yml",
 ]
