@@ -11,7 +11,7 @@ params.help = ''
 
 process summary_json {
     cpus 1
-    memory '0.5 GB'
+    memory '5 GB'
     container = {
         params.test_container=="" ? 'lhr.ocir.io/lrbvkel2wjot/gpas/summary_pipeline:2532a01' : params.test_container
     }
