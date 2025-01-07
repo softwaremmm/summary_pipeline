@@ -1,8 +1,5 @@
 #!/usr/bin/env nextflow
 
-//Set DSL2 syntax
-nextflow.enable.dsl = 2
-
 params.help = ''
 
 workflow {
