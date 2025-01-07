@@ -61,7 +61,7 @@ process summary_json {
     cpus 1
     memory '0.5 GB'
     container {
-        params.test_container == "" ? 'lhr.ocir.io/lrbvkel2wjot/gpas/summary_pipeline:2532a01' : params.test_container
+        params.test_container == "" ? 'lhr.ocir.io/lrbvkel2wjot/gpas/summary_pipeline:f0c9f45' : params.test_container
     }
 
     pod label: "name", value: "summary_pipeline:summary_json"
