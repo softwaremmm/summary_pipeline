@@ -58,7 +58,6 @@ workflow summary {
 
     emit:
     main_report = summary_json_output.main_report
-    error_report = summary_json_output.main_error
 }
 
 process summary_json {
@@ -77,11 +76,9 @@ process summary_json {
 
     output:
     path "main_report.json", emit: main_report
-    path "main_error.json", emit: main_error
 
     script:
     """
     summary_json --reports ${reports} --output main_report.json
-    touch main_error.json
     """
 }
