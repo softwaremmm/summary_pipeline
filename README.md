@@ -1,42 +1,43 @@
 # Summary Pipeline
+Summarises output from sub-workflows.
 
-Summarises output from sub-workflows (part of WP8).
+## Requirements
+- docker
+- nextflow
+- nf-test for testing
 
-## Installation
-
-1. Clone this repository
-2. Create a conda environment `conda create -f -y -n summary_pipeline python=3.11`
-3. Activate the conda environment e.g. `conda activate summary_pipeline`
-4. Install this software `pip install .` (use `pip install -e .[dev]` for development)
-
-## Tags, Releases, and Committing
-Use conventional commits. This is enforced with commitizen validate action and pre-commit hooks:
+Python package can be installed with
 ```bash
-pre-commit install --hook-type commit-msg
+pip install .
+# or for development
+pip install -e .[dev]
 ```
 
-This repo uses a standard gitflow approach, but with some changes to deal with docker containers in nextflow:
-- There is a pyproject version which should be updated to match semantic version releases (from main/release branches)
-- There is an `active_version` controlled by version_bumper which allows develop to have commit hash based versions.
-- Every push to develop will cause an action to run `bumper bump <commit-hash> --no-tag --active`. This:
-    - bumps the `active_version` in pyproject.toml
-    - bumps the container tag used by nextflow processes
-    - leaves the pyproject version as is
 
-  Another workflow then builds and pushes the new container.\
-  **Important: To deploy this you will need to use the hash of the bump commit, not the hash of the merge commit/container.**
+## Running nextflow
+Only input parameter is `--reports` which is a list of all reports to summarise.
 
-- In a release branch you can create a release candidate with `bumper bump a.b.c-rcX`. This also updates the pyproject version. Pushing the changes and new tag (automatically created) will trigger a build action.
-- When release branch is ready for main run `bumper bump a.b.c --no-tag`. Push these changes to main and make a release there to build the container.
+To save output files need to set `--publish true` which will save output files to `results`.
 
+```bash
+nextflow run . --publish true --reports test_data/WTCHG_885333_73205296_1/PIPELINE_BUILD,test_data/WTCHG_885333_73205296_1/speciation_report.json,test_data/WTCHG_885333_73205296_1/species_comparison_report.json,test_data/WTCHG_885333_73205296_1/subspecies_report.json,test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json,test_data/WTCHG_885333_73205296_1/genome_creation_report.json,test_data/WTCHG_885333_73205296_1/knowledge.json,test_data/reference/name_mapping.csv
+```
 
-## Usage
+Can also use a glob pattern matching the reports (quotes needed).
+For example using the BCG test data:
+```bash
+nextflow run . --reports "{test_data/BCG/**,test_data/reference/name_mapping.csv}"
+```
+
+## Running python directly
+There are two ways to run the python command `summary_json` directly:
+
+#### Pass report files as a list
+Python will split by comma, and look for reports based on file names.
 
 ```{bash}
-conda activate summary_pipeline
+summary_json --reports test_data/WTCHG_885333_73205296_1/PIPELINE_BUILD test_data/WTCHG_885333_73205296_1/speciation_report.json test_data/WTCHG_885333_73205296_1/species_comparison_report.json test_data/WTCHG_885333_73205296_1/subspecies_report.json test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json test_data/WTCHG_885333_73205296_1/genome_creation_report.json test_data/WTCHG_885333_73205296_1/knowledge.json test_data/reference/name_mapping.csv
 ```
-
-### Python (via CLI)
 
 #### Specify individual report files
 
@@ -46,20 +47,18 @@ summary_json --gatekeeper test_data/WTCHG_885333_73205296_1/speciation_report.js
 
 All arguments are mandatory. This functionality is not used by the NextFlow pipeline and may be removed in future.
 
-#### Pass report files as a list
 
-```{bash}
-summary_json --reports test_data/WTCHG_885333_73205296_1/PIPELINE_BUILD test_data/WTCHG_885333_73205296_1/speciation_report.json test_data/WTCHG_885333_73205296_1/species_comparison_report.json test_data/WTCHG_885333_73205296_1/subspecies_report.json test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json test_data/WTCHG_885333_73205296_1/genome_creation_report.json test_data/WTCHG_885333_73205296_1/knowledge.json test_data/reference/name_mapping.csv
+## Testing
+
+Install for development and run:
+```bash
+pytest
+nf-test test tests/*.nf.test
+
+# If you've changed python code may need to build test container:
+docker build -t test_container_myco_summary .
+nf-test test tests/workflow.nf.test --profile local_docker
 ```
-
-### NextFlow
-
-```{bash}
-nextflow run . --reports test_data/WTCHG_885333_73205296_1/PIPELINE_BUILD,test_data/WTCHG_885333_73205296_1/speciation_report.json,test_data/WTCHG_885333_73205296_1/species_comparison_report.json,test_data/WTCHG_885333_73205296_1/subspecies_report.json,test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json,test_data/WTCHG_885333_73205296_1/genome_creation_report.json,test_data/WTCHG_885333_73205296_1/knowledge.json,test_data/reference/name_mapping.csv
-```
-### Running tests
-
-Install for development and run `pytest`. No NextFlow tests are yet present.
 
 ### Test Data
 
@@ -128,3 +127,22 @@ Descriptions of test data. List / descriptions may be incomplete, but hopefully 
 | Sample Details | Relevant Mutations: Coverage                  | $['Genomes']['Resistance Prediction']['Resistance Prediction Detail']['Mutations']['Coverage']   | Gnomonicus                    | Resistance prediction coverage a tuple where the first int is the number of reads supporting the wildtype (i.e. reference) base and the second int is the number of reads supporting the called mutation.                                                                     |
 | Sample Details | Relevant Mutations: Prediction                | $['Genomes']['Resistance Prediction']['Resistance Prediction Detail']['Mutations']['Prediction'] | Gnomonicus                    | Resultant resistance prediction for the specific drug based upon this particular genetic mutation                                                                                                                                                                             |
 | Sample Details | Relevant Mutations: Evidence                  | $['Genomes']['Resistance Prediction']['Resistance Prediction Detail']['Mutations']['Evidence']   | Gnomonicus                    | Not in use                                                                                                                                                                                                                                                                    |
+## Tags, Releases, and Committing
+Use conventional commits. This is enforced with commitizen validate action and pre-commit hooks:
+```bash
+pre-commit install
+```
+
+This repo uses a standard gitflow approach, but with some changes to deal with docker containers in nextflow:
+- There is a pyproject version which should be updated to match semantic version releases (from main/release branches)
+- There is an `active_version` controlled by version_bumper which allows develop to have commit hash based versions.
+- Every push to develop will cause an action to run `bumper bump <commit-hash> --no-tag --active`. This:
+    - bumps the `active_version` in pyproject.toml
+    - bumps the container tag used by nextflow processes
+    - leaves the pyproject version as is
+
+  Another workflow then builds and pushes the new container.\
+  **Important: To deploy this you will need to use the hash of the bump commit, not the hash of the merge commit/container.**
+
+- In a release branch you can create a release candidate with `bumper bump a.b.c-rcX`. This also updates the pyproject version. Pushing the changes and new tag (automatically created) will trigger a build action.
+- When release branch is ready for main run `bumper bump a.b.c --no-tag`. Push these changes to main and make a release there to build the container.
