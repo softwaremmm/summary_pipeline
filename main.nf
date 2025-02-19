@@ -1,7 +1,5 @@
 #!/usr/bin/env nextflow
 
-params.help = ''
-
 workflow {
     //Define ANSI colours for ease
     def ANSI_GREEN = "\033[1;32m"
@@ -62,7 +60,7 @@ process summary_json {
     cpus 1
     memory '0.5 GB'
     container {
-        params.test_container == "" ? 'lhr.ocir.io/lrbvkel2wjot/gpas/summary_pipeline:f0c9f45' : params.test_container
+        params.test_container_myco_summary == "" ? 'lhr.ocir.io/lrbvkel2wjot/gpas/summary_pipeline:f0c9f45' : params.test_container_myco_summary
     }
 
     pod label: "name", value: "summary_pipeline:summary_json"
