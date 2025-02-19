@@ -30,14 +30,22 @@ workflow {
             Path to competitive mapping report (`species_comparison_report.json`).
             Path to mykrobe report (`subspecies_report.json`).
             Path to gnomonicus report (`resistance_prediction_report.json`).
+            Or glob pattern to find all reports e.g. `sample_reports/*`.
             '''.stripIndent()
         )
 
         exit(0)
     }
-    reports_list = params.reports?.split(',') as List
-    reports_list_abs = reports_list.collect { it -> projectDir / it }
-    summary(reports_list_abs)
+
+    if (params.reports.contains("*")) {
+        reports_ch = Channel.fromPath(params.reports).collect().map { ["sample", it] }
+    } else {
+        reports_list = params.reports?.split(',') as List
+        reports_list_abs = reports_list.collect { it -> projectDir / it }
+        reports_ch = Channel.of(reports_list_abs).map { ["sample", it] }
+    }
+    reports_ch.view()
+    summary(reports_ch)
 }
 
 workflow summary {
@@ -45,14 +53,10 @@ workflow summary {
     reports_list
 
     main:
-    if (reports_list == '') {
-        exit(1, 'error: A list of reports is mandatory')
-    }
-
-    summary_json_output = summary_json(reports_list)
+    summary_json(reports_list)
 
     emit:
-    main_report = summary_json_output.main_report
+    main_report = summary_json.out.main_report
 }
 
 process summary_json {
@@ -68,10 +72,10 @@ process summary_json {
     pod label: "run_id", value: "${params.run_id}"
 
     input:
-    path reports
+    tuple val(sample_name), path (reports)
 
     output:
-    path "main_report.json", emit: main_report
+    tuple val(sample_name), path ("main_report.json"), emit: main_report
 
     script:
     """
