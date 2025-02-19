@@ -58,6 +58,7 @@ workflow summary {
 }
 
 process summary_json {
+    publishDir "results", enabled: params.publish, mode: 'copy', saveAs: { filename -> sample_name + "_" + filename }
     cpus 1
     memory '0.5 GB'
     container {
