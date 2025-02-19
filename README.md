@@ -29,6 +29,9 @@ For example using the BCG test data:
 nextflow run . --reports "{test_data/BCG/**,test_data/reference/name_mapping.csv}"
 ```
 
+**Note: local pipeline does not support running batches of samples easily. Better to make a bash script with a simple loop.**
+
+
 ## Running python directly
 There are two ways to run the python command `summary_json` directly:
 
