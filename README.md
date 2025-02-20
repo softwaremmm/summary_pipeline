@@ -17,10 +17,10 @@ pip install -e .[dev]
 ## Running nextflow
 Only input parameter is `--reports` which is a list of all reports to summarise.
 
-To save output files need to set `--publish true` which will save output files to `results`.
+To save output files need to set `--publish_dir` which will save output files to directory provided.
 
 ```bash
-nextflow run . --publish true --reports test_data/WTCHG_885333_73205296_1/PIPELINE_BUILD,test_data/WTCHG_885333_73205296_1/speciation_report.json,test_data/WTCHG_885333_73205296_1/species_comparison_report.json,test_data/WTCHG_885333_73205296_1/subspecies_report.json,test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json,test_data/WTCHG_885333_73205296_1/genome_creation_report.json,test_data/WTCHG_885333_73205296_1/knowledge.json,test_data/reference/name_mapping.csv
+nextflow run . --publish_dir results --reports test_data/WTCHG_885333_73205296_1/PIPELINE_BUILD,test_data/WTCHG_885333_73205296_1/speciation_report.json,test_data/WTCHG_885333_73205296_1/species_comparison_report.json,test_data/WTCHG_885333_73205296_1/subspecies_report.json,test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json,test_data/WTCHG_885333_73205296_1/genome_creation_report.json,test_data/WTCHG_885333_73205296_1/knowledge.json,test_data/reference/name_mapping.csv
 ```
 
 Can also use a glob pattern matching the reports (quotes needed).
