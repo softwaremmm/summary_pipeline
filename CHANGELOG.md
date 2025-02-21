@@ -1,9 +1,19 @@
 ## 2.5.0
 
+Changes for nextflow linting and better local running
+
+### Fix
+
+- use tuples for channels
+- rename test container param to be specific
+- enable use of a glob for providing input reports (for local use)
+
 ### Chores
 
 - Adopt Nextflow linting via Nextflow language server
 - Remove redundant lines for error report and DSL2
+- add publish_dir option
+- add nf-test config
 
 ## 2.4.7 (2024-12-06)
 
