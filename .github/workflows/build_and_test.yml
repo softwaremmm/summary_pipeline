@@ -50,10 +50,10 @@ jobs:
           fetch-depth: 0
       - name: Build docker container
         run: |
-          docker build -t summary_test .
+          docker build -t test_container_myco_summary .
       - name: Inspect
         run: |
-          docker image inspect summary_test
+          docker image inspect test_container_myco_summary
 
       - name: Run nf-test
         run: nf-test test tests/workflow.nf.test --profile local_docker
