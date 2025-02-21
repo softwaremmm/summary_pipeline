@@ -1,3 +1,10 @@
+## 2.5.0
+
+### Chores
+
+- Adopt Nextflow linting via Nextflow language server
+- Remove redundant lines for error report and DSL2
+
 ## 2.4.7 (2024-12-06)
 
 ### Fix
