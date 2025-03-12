@@ -47,12 +47,12 @@
             {
                 "Name": "lineage4.10",
                 "Coverage": 100,
-                "Median Depth": 10
+                "Median Depth": 9
             },
             {
                 "Name": "lineageBovis",
                 "Coverage": 100,
-                "Median Depth": 16
+                "Median Depth": 5
             }
         ]
     },

@@ -41,8 +41,8 @@
         "Lineage": [
             {
                 "Name": "clade_animal_A1",
-                "Coverage": 0,
-                "Median Depth": 0
+                "Coverage": 100,
+                "Median Depth": 212
             }
         ]
     },

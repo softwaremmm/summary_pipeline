@@ -65,12 +65,12 @@
             {
                 "Name": "lineage5",
                 "Coverage": 100,
-                "Median Depth": 1
+                "Median Depth": 2
             },
             {
                 "Name": "lineage6",
-                "Coverage": 15,
-                "Median Depth": 0
+                "Coverage": 100,
+                "Median Depth": 1
             }
         ]
     },

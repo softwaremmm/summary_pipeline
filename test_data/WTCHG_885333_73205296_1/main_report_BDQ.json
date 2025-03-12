@@ -42,7 +42,7 @@
             {
                 "Name": "lineage4.3.4.2",
                 "Coverage": 100,
-                "Median Depth": 139
+                "Median Depth": 110
             }
         ]
     },
@@ -88,36 +88,42 @@
                             {
                                 "Gene": "Rv0678",
                                 "Mutation": "Q22X",
+                                "Position": null,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    null,
+                                    null
+                                ],
                                 "Prediction": "F",
                                 "Evidence": {
                                     "Resistant prediction": "Q22!",
                                     "Observed_samples": {
-                                    "Present_SOLO_SR": 4,
-                                    "Present_SOLO_R": 3,
-                                    "Present_SOLO_S": 1
+                                        "Present_SOLO_SR": 4,
+                                        "Present_SOLO_R": 3,
+                                        "Present_SOLO_S": 1
                                     },
                                     "Additional grading criteria applied": "Indel frameshift or premature stop codon (LoF)",
                                     "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
                                     "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
                                     "WHO HGVS": "Rv0678_p.Gln22*",
                                     "FASTA called": "N"
-                                },
-                                "Ref": "",
-                                "Alt": "",
-                                "Coverage": [null, null],
-                                "Position": null
+                                }
                             },
                             {
                                 "Gene": null,
                                 "Mutation": "Rv0678@192_ins_g&mmpL5@605_del_g",
+                                "Position": null,
+                                "Ref": "",
+                                "Alt": "",
+                                "Coverage": [
+                                    null,
+                                    null
+                                ],
                                 "Prediction": "S",
                                 "Evidence": {
                                     "expert_rule": "Rv0678 mutations confer resistance only if the corresponding efflux pump is functional. It appears that mmpL5 LoF mutations... can confer a hyper-susceptible phenotype to BDQ and CFZ"
-                                  },
-                                "Ref": "",
-                                "Alt": "",
-                                "Coverage": [null, null],
-                                "Position": null
+                                }
                             }
                         ]
                     },
