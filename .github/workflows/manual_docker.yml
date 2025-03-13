@@ -6,7 +6,7 @@ on:
       image_tag:
         description: 'container image tag'
         required: false
-        default: '3898901'
+        default: '40d5d13'
         type: string
 
 jobs:
