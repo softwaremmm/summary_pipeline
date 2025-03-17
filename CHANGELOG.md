@@ -7,6 +7,7 @@ Changes for nextflow linting and better local running
 - use tuples for channels
 - rename test container param to be specific
 - enable use of a glob for providing input reports (for local use)
+- Correctly report mykrobe depth and coverage against lineage
 
 ### Chores
 
