@@ -1,5 +1,7 @@
 """Summay JSON output from GPAS"""
 
+# pylint: disable=logging-not-lazy
+
 import json
 import logging
 import os
@@ -247,40 +249,24 @@ def process_subspecies(species: dict) -> list[dict]:
 
 
 def process_lineages(lineages: dict) -> list[dict]:
-    """Summarise mykrobe lineages output
+    """Summarise mykrobe lineages output.
+
+    See https://github.com/Mykrobe-tools/mykrobe/wiki/AMR-prediction-output
+    for mykrobe structure
 
     Args:
-        lineages (dict): Lineages information from mykrobe
+        lineages (dict): Just the lineages information from mykrobe
 
     Returns:
-        list[dict]: List of lineage summaries
+        list[dict]: List of coverage and depth for each lineage detected
     """
-    lineage_summary = []
-    if "lineage" in lineages:
-        for lineage_name in lineages.get("lineage"):
-            calls = lineages.get("calls")
-            specific_line = calls.get(lineage_name)
-            # TODO: Needs review. Trying to be generic,
-            # should this come from the first item in the list???
-            # TODO: This section also needs better error handling
-            top_level = list(specific_line.keys())[0]
-            variant_level = specific_line.get(top_level)
-            variant_name = list(variant_level.keys())[0]
-            info_level = variant_level.get(variant_name)
-            # TODO: Chained getfields would be nicer...Or better generic handling of this
-            info = info_level.get("info")
-            cov = info.get("coverage")
-            ref = cov.get("reference")
-            coverage = ref.get("percent_coverage")
-            mediandepth = ref.get("median_depth")
-            new_line = {
-                "Name": lineage_name,
-                "Coverage": coverage,
-                "Median Depth": mediandepth,
-            }
-            lineage_summary.append(new_line)
 
-    else:
+    # Note that h37rv is lineage 4.10
+
+    lineage_summary = []
+
+    # For subspecies like Mycobacterium_avium_subsp._silvaticum the structure is simpler
+    if "lineage" not in lineages:
         for lineage_name in lineages:
             new_line = {
                 "Name": lineage_name,
@@ -288,6 +274,66 @@ def process_lineages(lineages: dict) -> list[dict]:
                 "Median Depth": lineages[lineage_name]["median_depth"],
             }
             lineage_summary.append(new_line)
+        return lineage_summary
+
+    calls = lineages.get("calls", {})
+    for lineage_name in lineages.get("lineage", []):
+        new_line = {
+            "Name": lineage_name,
+            "Coverage": 0,
+            "Median Depth": 0,
+        }
+
+        if lineage_name not in calls:
+            logging.warning(f"Lineage {lineage_name} not found in calls")
+            lineage_summary.append(new_line)
+            continue
+
+        lineage_call_info = calls.get(lineage_name, {})
+        # mykrobe report will have ref-alt data for each lineage determining variant
+        # e.g. for both 2, 2.2, and 2.2.5
+        # but we only use the most specific so 2.2.5
+        call_support = lineage_call_info.get(lineage_name, {})
+
+        # Only expect to find one variant call for a lineage
+        variants = list(call_support.keys())
+        if len(variants) != 1:
+            logging.warning(f"Multiple variant calls found for lineage {lineage_name}")
+            lineage_summary.append(new_line)
+            continue
+        variant_support = call_support.get(variants[0], {})
+
+        genotype = variant_support.get("genotype", [])
+        if len(genotype) != 2:
+            logging.warning(
+                f"Genotype for lineage {lineage_name} not as expected. Should be form [a, b]"
+            )
+            lineage_summary.append(new_line)
+            continue
+
+        called_allele = genotype[0]
+        if genotype[0] != genotype[1]:
+            # mixed call
+            logging.info(
+                f"Lineage {lineage_name} has mixed call."
+                + " Will report depth/cov for alternate allele."
+                + " Unless call is lineage 4 or 4.10 (H37Rv) which uses ref."
+            )
+            if lineage_name in ["lineage4", "lineage4.10"]:
+                called_allele = 0
+            else:
+                called_allele = 1
+
+        called_allele_name = "reference" if called_allele == 0 else "alternate"
+        coverage_info = (
+            variant_support.get("info", {})
+            .get("coverage", {})
+            .get(called_allele_name, {})
+        )
+
+        new_line["Coverage"] = coverage_info.get("percent_coverage", 0)
+        new_line["Median Depth"] = coverage_info.get("median_depth", 0)
+        lineage_summary.append(new_line)
 
     return lineage_summary
 
@@ -673,9 +719,9 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
         effects_muts_vars_df.set_index(["drug", "gene", "mutation"], inplace=True)
 
         # use the pd helper function defined elsewhere to extract COV from the vcf_evidence field
-        effects_muts_vars_df[["coverage_ref", "coverage_alt"]] = (
-            effects_muts_vars_df.apply(unpack_COV_from_info, axis=1)
-        )
+        effects_muts_vars_df[
+            ["coverage_ref", "coverage_alt"]
+        ] = effects_muts_vars_df.apply(unpack_COV_from_info, axis=1)
         effects_muts_vars_df.drop(columns=["vcf_evidence", "vcf_idx"], inplace=True)
 
         # ignore mutations that have no effect
@@ -706,9 +752,9 @@ def create_summary(
 
     output = {}
     if "gatekeeper" in reports:
-        output["Pipeline Outcome"] = (
-            "Number of Mycobacterial reads is too low to proceed to Mycobacterial species identification."
-        )
+        output[
+            "Pipeline Outcome"
+        ] = "Number of Mycobacterial reads is too low to proceed to Mycobacterial species identification."
         gatekeeper_json = read_json_file(reports["gatekeeper"])
         output["Organism Identification"] = generate_organism_identification(
             gatekeeper_json
@@ -716,9 +762,9 @@ def create_summary(
     else:
         output = "Pipeline failed to produce a summary (summary_pipeline could not find gatekeeper report)."
     if "mapping" in reports and "mykrobe" in reports:
-        output["Pipeline Outcome"] = (
-            "Mycobacterial species identified. Reads mapped to M. tuberculosis (H37Rv v3) too low to proceed to M. tuberculosis complex genome assembly."
-        )
+        output[
+            "Pipeline Outcome"
+        ] = "Mycobacterial species identified. Reads mapped to M. tuberculosis (H37Rv v3) too low to proceed to M. tuberculosis complex genome assembly."
         mapping_json = read_json_file(reports["mapping"])
         mykrobe_data = read_json_file(reports["mykrobe"])
         name_mapping = pd.read_csv(reports["name_mapping"])
@@ -736,9 +782,9 @@ def create_summary(
         and "creation_report" in reports
         and "gnomonicus" in reports
     ):
-        output["Pipeline Outcome"] = (
-            "Sufficient reads mapped to M. tuberculosis (H37Rv v3) for genome assembly, resistance prediction and relatedness assessment."
-        )
+        output[
+            "Pipeline Outcome"
+        ] = "Sufficient reads mapped to M. tuberculosis (H37Rv v3) for genome assembly, resistance prediction and relatedness assessment."
         creation_report_json = read_json_file(reports["creation_report"])
         gnom_json = read_json_file(reports["gnomonicus"])
         output["Genomes"] = []

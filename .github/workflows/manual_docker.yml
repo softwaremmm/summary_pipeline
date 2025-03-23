@@ -6,28 +6,28 @@ on:
       image_tag:
         description: 'container image tag'
         required: false
-        default: '2.4.7'
+        default: '2.5.0'
         type: string
 
 jobs:
   build-docker:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Login to OCR
-        uses: docker/login-action@v2
-        with:
-          registry: lhr.ocir.io
-          username: ${{ secrets.OCR_USERNAME }}
-          password: ${{ secrets.OCR_TOKEN }}
-      - name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v4
-        with:
-          file: Dockerfile
-          tags: |
-            lhr.ocir.io/lrbvkel2wjot/gpas/summary_pipeline:${{ inputs.image_tag }}
-          push: true
-          no-cache: true
-      - name: Docker digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+    - uses: actions/checkout@v4
+    - name: Login to OCR
+      uses: docker/login-action@v2
+      with:
+        registry: lhr.ocir.io
+        username: ${{ secrets.OCR_USERNAME }}
+        password: ${{ secrets.OCR_TOKEN }}
+    - name: Build and push
+      id: docker_build
+      uses: docker/build-push-action@v4
+      with:
+        file: Dockerfile
+        tags: |
+          lhr.ocir.io/lrbvkel2wjot/gpas/summary_pipeline:${{ inputs.image_tag }}
+        push: true
+        no-cache: true
+    - name: Docker digest
+      run: echo ${{ steps.docker_build.outputs.digest }}

@@ -2,6 +2,8 @@ import json
 
 from summary import summarise
 
+OVERWRITE_EXPECTED_OUTPUT = False
+
 
 def test_regression(regression_test_set: dict):
     test_reports = {}
@@ -27,7 +29,13 @@ def test_regression(regression_test_set: dict):
         expected_summary = json.load(file)
 
     if summary != expected_summary:
-        with open(regression_test_set["expected_output"] + ".test_output", "w") as file:
+        outfile = (
+            regression_test_set["expected_output"]
+            if OVERWRITE_EXPECTED_OUTPUT
+            else regression_test_set["expected_output"] + ".test_output"
+        )
+
+        with open(outfile, "w", encoding="utf-8") as file:
             json.dump(summary, file, indent=4)
 
     assert summary == expected_summary
