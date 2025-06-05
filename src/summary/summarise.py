@@ -536,15 +536,17 @@ def construct_payload(significant_variants_df: pd.DataFrame) -> list:
             significant_variant["Alt"] = row.mutation[-1]
         else:
             significant_variant["Alt"] = ""
-
-        significant_variant["Coverage"] = [
-            int(row.coverage_ref)
-            if row.coverage_ref is not None and row.coverage_ref >= 0
-            else None,
-            int(row.coverage_alt)
-            if row.coverage_alt is not None and row.coverage_alt >= 0
-            else None,
-        ]
+        if row.coverage_ref == "Complex" and row.coverage_alt == "Complex":
+            significant_variant["Coverage"] = ["Complex", "Complex"]
+        else:
+            significant_variant["Coverage"] = [
+                int(row.coverage_ref)
+                if row.coverage_ref is not None and row.coverage_ref >= 0
+                else None,
+                int(row.coverage_alt)
+                if row.coverage_alt is not None and row.coverage_alt >= 0
+                else None,
+            ]
 
         if seen_mutations.get(
             (row.drug, significant_variant["Gene"], significant_variant["Mutation"])
@@ -553,14 +555,14 @@ def construct_payload(significant_variants_df: pd.DataFrame) -> list:
             old_idx, significant_cov = seen_mutations.get(
                 (row.drug, significant_variant["Gene"], significant_variant["Mutation"])
             )
-            if significant_cov[0] is not None:
+            if significant_cov[0] is not None and significant_cov[0] != "Complex":
                 if significant_variant["Coverage"][0] is not None:
                     if significant_variant["Coverage"][0] > significant_cov[0]:
                         keep = False
                 else:
                     # Last row for this codon gave a specific value, this didn't, so don't keep this
                     keep = False
-            if significant_cov[1] is not None:
+            if significant_cov[1] is not None and significant_cov[1] != "Complex":
                 if significant_variant["Coverage"][1] is not None:
                     if significant_variant["Coverage"][1] > significant_cov[1]:
                         keep = False
@@ -622,6 +624,9 @@ def unpack_COV_from_info(row: pd.Series) -> pd.Series:
                     result = pd.Series(
                         [row.vcf_evidence["COV"][0], row.vcf_evidence["COV"][idx]]
                     )
+        elif "VCF row is complex" in row.vcf_evidence:
+            # Complex row, so despite no VCF evidence, we want to mark as such
+            result = pd.Series(["Complex", "Complex"])
     return result
 
 
