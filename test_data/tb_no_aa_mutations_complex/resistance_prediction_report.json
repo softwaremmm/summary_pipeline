@@ -1,0 +1,144 @@
+{
+    "meta": {
+      "status": "success",
+      "workflow_name": "gnomonicus",
+      "workflow_version": "2.5.3",
+      "workflow_task": "resistance_prediction",
+      "guid": "final",
+      "UTC-datetime-completed": "2024-06-05T05:44:15.632063",
+      "time_taken_s": 58.40144228935242,
+      "reference": "NC_000962",
+      "catalogue_file": "NC_000962.3_WHO-UCN-TB-2023.5_v2.0_GARC1_RFUS.csv",
+      "reference_file": "NC_000962.3.gbk",
+      "vcf_file": "final.vcf",
+      "catalogue_type": "RFUS",
+      "catalogue_name": "WHO-UCN-GTB-PCI-2023.5",
+      "catalogue_version": 2.0
+    },
+    "data": {
+      "variants": [
+        {
+          "variant": "1474815a>g",
+          "nucleotide_index": 1474815,
+          "gene_name": "rrl",
+          "gene_position": 1158,
+          "codon_idx": null,
+          "vcf_evidence": {"VCF row is complex": "Please refer to the VCF file for evidence."},
+          "vcf_idx": 1
+        }
+      ],
+      "mutations": [
+        {
+          "mutation": "a1158g",
+          "gene": "rrl",
+          "gene_position": 1158
+        },
+        {
+          "mutation": "g2270x",
+          "gene": "rrl",
+          "gene_position": 2270
+        },
+        {
+          "mutation": "g2299x",
+          "gene": "rrl",
+          "gene_position": 2299
+        },
+        {
+          "mutation": "g878x",
+          "gene": "rrs",
+          "gene_position": 878
+        }
+      ],
+      "effects": {
+        "LZD": [
+          {
+            "gene": "rrl",
+            "mutation": "a1158g",
+            "prediction": "U",
+            "evidence": {
+              "reporting_rule": "True"
+            }
+          },
+          {
+            "gene": "rrl",
+            "mutation": "g2270x",
+            "prediction": "F",
+            "evidence": {
+              "Resistant prediction": "g2270t",
+              "Observed_samples": {
+                "Present_SOLO_SR": 6,
+                "Present_SOLO_R": 4,
+                "Present_SOLO_S": 2
+              },
+              "Additional grading criteria applied": "Selection evidence",
+              "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
+              "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
+              "WHO HGVS": "rrl_n.2270G>T",
+              "FASTA called": "N"
+            }
+          },
+          {
+            "gene": "rrl",
+            "mutation": "g2299x",
+            "prediction": "F",
+            "evidence": {
+              "Resistant prediction": "g2299t",
+              "Observed_samples": {
+                "Present_SOLO_SR": 1,
+                "Present_SOLO_R": 1,
+                "Present_SOLO_S": 0
+              },
+              "Additional grading criteria applied": "Selection evidence",
+              "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
+              "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
+              "WHO HGVS": "rrl_n.2299G>T",
+              "FASTA called": "N"
+            }
+          },
+          {
+            "phenotype": "F"
+          }
+        ],
+        "STM": [
+          {
+            "gene": "rrs",
+            "mutation": "g878x",
+            "prediction": "F",
+            "evidence": {
+              "Resistant prediction": "g878a",
+              "Observed_samples": {
+                "Present_SOLO_SR": 38,
+                "Present_SOLO_R": 33,
+                "Present_SOLO_S": 5
+              },
+              "Additional grading criteria applied": "Evidence from ALL dataset only",
+              "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
+              "INITIAL CONFIDENCE GRADING": "1) Assoc w R",
+              "WHO HGVS": "rrs_n.878G>A",
+              "FASTA called": "N"
+            }
+          },
+          {
+            "phenotype": "F"
+          }
+        ]
+      },
+      "antibiogram": {
+        "LEV": "S",
+        "MXF": "S",
+        "DLM": "S",
+        "RIF": "S",
+        "BDQ": "S",
+        "CFZ": "S",
+        "STM": "F",
+        "LZD": "F",
+        "AMI": "S",
+        "CAP": "S",
+        "KAN": "S",
+        "ETH": "S",
+        "INH": "S",
+        "PZA": "S",
+        "EMB": "S"
+      }
+    }
+  }
