@@ -12,7 +12,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 requires-python = "~=3.11"
-version = "2.5.0"
+version = "2.5.1"
 
 [project.scripts]
 summary_json = "summary.summarise:cli_entry_point"
@@ -35,7 +35,7 @@ version_provider = "pep621"
 tag_format = "$version"
 
 [tool.version_bumper]
-active_version = "a52b35c"
+active_version = "2.5.1"
 version_files = [
     "main.nf",
     ".github/workflows/manual_docker.yml",
