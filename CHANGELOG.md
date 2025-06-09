@@ -1,3 +1,6 @@
+## 2.5.1
+* Passthrough `Complex` for coverage of complex VCF rows which did not have evidence given due to complexity
+
 ## 2.5.0
 
 Changes for nextflow linting and better local running
