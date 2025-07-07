@@ -22,7 +22,7 @@ logging.basicConfig(
 treatment_classes = {
     "First-line treatment": ["INH", "RIF", "PZA", "EMB"],
     "Second-line treatment": ["MXF", "LEV", "LZD", "BDQ"],
-    "Reserve treatment": ["AMI", "KAN", "STM", "CAP", "ETH", "DLM"],
+    "Reserve treatment": ["AMI", "KAN", "STM", "CAP", "ETH", "DLM", "CFZ"],
 }
 
 drug_names = {
@@ -666,9 +666,10 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
         antibiogram[treatment_category] = {}
         # drug3 is the 3 letter code
         for drug3 in drug_list:
-            if drug3 in raw_antibiogram.keys():
-                drug_name_long = drug_names[drug3] + " (" + drug3 + ")"
-                antibiogram[treatment_category][drug_name_long] = raw_antibiogram[drug3]
+            drug_name_long = drug_names[drug3] + " (" + drug3 + ")"
+            antibiogram[treatment_category][drug_name_long] = raw_antibiogram.get(
+                drug3, "-"
+            )
 
     amr["Resistance Prediction Summary"] = antibiogram
 
@@ -724,9 +725,9 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
         effects_muts_vars_df.set_index(["drug", "gene", "mutation"], inplace=True)
 
         # use the pd helper function defined elsewhere to extract COV from the vcf_evidence field
-        effects_muts_vars_df[
-            ["coverage_ref", "coverage_alt"]
-        ] = effects_muts_vars_df.apply(unpack_COV_from_info, axis=1)
+        effects_muts_vars_df[["coverage_ref", "coverage_alt"]] = (
+            effects_muts_vars_df.apply(unpack_COV_from_info, axis=1)
+        )
         effects_muts_vars_df.drop(columns=["vcf_evidence", "vcf_idx"], inplace=True)
 
         # ignore mutations that have no effect
@@ -757,9 +758,9 @@ def create_summary(
 
     output = {}
     if "gatekeeper" in reports:
-        output[
-            "Pipeline Outcome"
-        ] = "Number of Mycobacterial reads is too low to proceed to Mycobacterial species identification."
+        output["Pipeline Outcome"] = (
+            "Number of Mycobacterial reads is too low to proceed to Mycobacterial species identification."
+        )
         gatekeeper_json = read_json_file(reports["gatekeeper"])
         output["Organism Identification"] = generate_organism_identification(
             gatekeeper_json
@@ -767,9 +768,9 @@ def create_summary(
     else:
         output = "Pipeline failed to produce a summary (summary_pipeline could not find gatekeeper report)."
     if "mapping" in reports and "mykrobe" in reports:
-        output[
-            "Pipeline Outcome"
-        ] = "Mycobacterial species identified. Reads mapped to M. tuberculosis (H37Rv v3) too low to proceed to M. tuberculosis complex genome assembly."
+        output["Pipeline Outcome"] = (
+            "Mycobacterial species identified. Reads mapped to M. tuberculosis (H37Rv v3) too low to proceed to M. tuberculosis complex genome assembly."
+        )
         mapping_json = read_json_file(reports["mapping"])
         mykrobe_data = read_json_file(reports["mykrobe"])
         name_mapping = pd.read_csv(reports["name_mapping"])
@@ -787,9 +788,9 @@ def create_summary(
         and "creation_report" in reports
         and "gnomonicus" in reports
     ):
-        output[
-            "Pipeline Outcome"
-        ] = "Sufficient reads mapped to M. tuberculosis (H37Rv v3) for genome assembly, resistance prediction and relatedness assessment."
+        output["Pipeline Outcome"] = (
+            "Sufficient reads mapped to M. tuberculosis (H37Rv v3) for genome assembly, resistance prediction and relatedness assessment."
+        )
         creation_report_json = read_json_file(reports["creation_report"])
         gnom_json = read_json_file(reports["gnomonicus"])
         output["Genomes"] = []

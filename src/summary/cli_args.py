@@ -108,7 +108,9 @@ class Arguments:  # pylint: disable=too-few-public-methods
             except ValueError as error:
                 logging.info(error)
             try:
-                self.creation_report = self._get_report(args.reports, ReportType.CREATION_REPORT)
+                self.creation_report = self._get_report(
+                    args.reports, ReportType.CREATION_REPORT
+                )
             except ValueError as error:
                 logging.info(error)
             try:

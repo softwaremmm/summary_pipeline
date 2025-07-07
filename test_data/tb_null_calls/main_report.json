@@ -72,7 +72,8 @@
             "Streptomycin (STM)": "S",
             "Capreomycin (CAP)": "F",
             "Ethionamide (ETH)": "S",
-            "Delamanid (DLM)": "S"
+            "Delamanid (DLM)": "S",
+            "Clofazimine (CFZ)": "S"
           }
         },
         "Resistance Prediction Detail": [
