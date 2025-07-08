@@ -1,3 +1,8 @@
+## 2.5.2
+* chore: Parameterise container prefix
+* ci: Remove unused manual docker action
+* fix: ensure CFZ is properly passed into the resistance prediction summary
+
 ## 2.5.1
 * Passthrough `Complex` for coverage of complex VCF rows which did not have evidence given due to complexity
 
