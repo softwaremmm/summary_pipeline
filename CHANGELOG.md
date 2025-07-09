@@ -1,3 +1,6 @@
+## 2.5.3
+* Correct container image name
+
 ## 2.5.2
 * chore: Parameterise container prefix
 * ci: Remove unused manual docker action
