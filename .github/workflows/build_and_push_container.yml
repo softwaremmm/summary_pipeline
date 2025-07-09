@@ -15,7 +15,7 @@ on:
 env:
   REGISTRY: lhr.ocir.io
   IMAGE_NAME: lrbvkel2wjot/gpas/summary_pipeline
-  IMAGE_NAME_GPAS_LTD: lr3yhdniv6gu/summary_pipeline
+  IMAGE_NAME_GPAS_LTD: lr3yhdniv6gu/gpas/summary_pipeline
 
 jobs:
   build:
