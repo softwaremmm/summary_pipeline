@@ -860,7 +860,7 @@ def create_summary(
         output = "Pipeline failed to produce a summary (summary_pipeline could not find gatekeeper report)."
     if "mapping" in reports and "mykrobe" in reports:
         output["Pipeline Outcome"] = (
-            "Mycobacterial species identified. Reads mapped to M. tuberculosis (H37Rv v3) too low to proceed to M. tuberculosis complex genome assembly."
+            "Mycobacterial species identified. Reads too low to proceed to genome assembly."
         )
         mapping_json = read_json_file(reports["mapping"])
         mykrobe_data = read_json_file(reports["mykrobe"])
@@ -1004,5 +1004,5 @@ def cli_entry_point() -> None:
     """CLI entry point."""
     cli_args = Arguments(sys.argv[1:])
     reports = collate_reports(cli_args)
-    summary = create_summary(reports)
+    summary = create_summary(reports, assembled_species=cli_args.assembled_species)
     write_summary(summary, cli_args.output)

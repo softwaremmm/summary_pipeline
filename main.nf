@@ -45,15 +45,17 @@ workflow {
         reports_ch = Channel.of(reports_list_abs).map { ["sample", it] }
     }
     reports_ch.view()
-    summary(reports_ch)
+    assembled_species = params.reports?.split(",") as List
+    summary(reports_ch, assembled_species)
 }
 
 workflow summary {
     take:
     reports_list
+    assembled_species
 
     main:
-    summary_json(reports_list)
+    summary_json(reports_list, assembled_species)
 
     emit:
     main_report = summary_json.out.main_report
@@ -73,6 +75,7 @@ process summary_json {
 
     input:
     tuple val(sample_name), path (reports)
+    val(assembled_species)
 
     output:
     tuple val(sample_name), path ("main_report.json"), emit: main_report
