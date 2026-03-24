@@ -16,6 +16,7 @@ nextflow_workflow {
                             '$projectDir/test_data/WTCHG_885333_73205296_1/species_comparison_report.json',
                             '$projectDir/test_data/WTCHG_885333_73205296_1/subspecies_report.json',
                             '$projectDir/test_data/reference/name_mapping.csv']]
+                input[1] = ["Mycobacterium Tuberculosis"]
                 """
             }
         }
