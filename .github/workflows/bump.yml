@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - develop
+  pull_request:
+    branches:
+      - "*"
 
 jobs:
   bump:
@@ -19,6 +22,11 @@ jobs:
         with:
           token: "${{ secrets.PAT_TOKEN }}"
           fetch-depth: 0
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
+
 
       - name: Install dependencies
         run: |
@@ -46,7 +54,7 @@ jobs:
         with:
           github_token: ${{ secrets.PAT_TOKEN }}
           tags: true
-          branch: develop
+          branch: ${{ steps.extract_branch.outputs.branch }}
 
   build_container:
     needs: bump
