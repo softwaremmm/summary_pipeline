@@ -199,95 +199,6 @@ def generate_mycobacterium_results(
     return myco
 
 
-def generate_assembled_results(
-    mappings: dict,
-    mykrobe_data: dict,
-    name_mapping: pd.DataFrame,
-    assembled_species: list[str],
-) -> dict:
-    """Summarises Competitive Mapping and Mykrobe outputs.
-
-    Args:
-        mappings (dict): Output from Competitive Mapping.
-        mykrobe_data (dict): Output from Mykrobe.
-        name_mapping (pd.DataFrame): Mapping of reference names and mykrobe "lineages" to reportable names.
-        assembled_species (list[str]): List of the species with assembled genomes.
-
-    Returns:
-        dict: Summary of Competitive Mapping and Mykrobe outputs.
-    """
-    myco: dict[str, list] = {
-        "Summary": [],
-        "Species": [],
-        "Phylogenic Group": [],
-        "Subspecies": [],
-        "Lineage": [],
-    }
-    if len(assembled_species) == 0:
-        return myco
-
-    # Add mykrobe data for phylo group, subspecies, and lineage
-    if mykrobe_data != {}:
-        # Phylogenetic Group (mykrobe)
-        myco["Phylogenic Group"] = process_phylo_group(
-            mykrobe_data.get("phylo_group", {})
-        )
-
-        # "Subspecies" (mykrobe)
-        if "species" in mykrobe_data:
-            myco["Subspecies"] = process_subspecies(
-                mykrobe_data.get("species", {})
-            )  # Why is species assigned to subspecies? Because these ideas are conflated in TB complex.
-
-        # Lineage (mykrobe)
-        if "lineage" in mykrobe_data:
-            myco["Lineage"] = process_lineages(mykrobe_data.get("lineage", {}))
-
-    lineages = [lin["Name"] for lin in myco["Lineage"]]
-    subspecies = [sub["Name"] for sub in myco["Subspecies"]]
-
-    # Which hits to report?
-    # Should report TB first if TB genome assembled
-    # Should always report TB if present
-    # Should report non-TB species if mixed phylogenetic population
-
-    mappings_sorted = pd.DataFrame.from_dict(mappings["references"]).sort_values(
-        by=["meandepth"], ascending=False
-    )
-
-    hits = [hit for hit in mappings_sorted.head(1).to_dict(orient="records") if hit["genome_name"] in assembled_species]
-    print(f"Found {len(hits)} with assembled genomes: {assembled_species}")
-    # Species comes directly from competitive mapping
-    myco["Species"] = [
-        {
-            "Name": hit["genome_name"],
-            "Num Reads": int(hit["numreads"]),
-            "Coverage": hit["coverage"],
-            "Mean Depth": hit["meandepth"],
-            "Length": hit["length"],
-        }
-        for hit in hits
-    ]
-
-    # Summary is just species with the reportable name
-    myco["Summary"] = [
-        {
-            "Name": organism_name(
-                hit["genome_name"],
-                name_mapping,
-                subspecies,
-                lineages,
-            ),
-            "Num Reads": int(hit["numreads"]),
-            "Coverage": hit["coverage"],
-            "Depth": hit["meandepth"],
-        }
-        for hit in hits
-    ]
-    print(len(myco))
-
-    return myco
-
 def process_phylo_group(phylo_group: dict) -> list[dict]:
     """Restructure phylogenetic group information from mykrobe
 
@@ -835,7 +746,6 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
 
 def create_summary(
     reports: dict,
-    assembled_species: list[str] = [],
 ) -> dict:
     """Summarises GPAS pipeline output.
 
@@ -868,9 +778,6 @@ def create_summary(
         output["Mycobacterium Results"] = generate_mycobacterium_results(
             mapping_json, mykrobe_data, name_mapping, "creation_report" in reports
         )
-        output["Assembled NTM Results"] = generate_assembled_results(
-            mapping_json, mykrobe_data, name_mapping, assembled_species
-        )
     else:
         output["Mycobacterium Results"] = None
     # make this next block a list to cope with the future when other species are also mapped,
@@ -883,7 +790,7 @@ def create_summary(
         and "gnomonicus" in reports
     ):
         output["Pipeline Outcome"] = (
-            f"Sufficient reads mapped to {len(assembled_species)} species for genome assembly and resistance prediction."
+            "Sufficient reads mapped to M. tuberculosis (H37Rv v3) for genome assembly, resistance prediction and relatedness assessment."
         )
         creation_report_json = read_json_file(reports["creation_report"])
         gnom_json = read_json_file(reports["gnomonicus"])
