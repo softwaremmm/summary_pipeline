@@ -45,14 +45,13 @@ workflow {
         reports_ch = Channel.of(reports_list_abs).map { ["sample", it] }
     }
     reports_ch.view()
-    assembled_species = params.reports?.split(",") as List
-    summary(reports_ch, assembled_species)
+    summary(reports_ch, params.assembled_species)
 }
 
 workflow summary {
     take:
     reports_list
-    assembled_species
+    assembled_species // String of comma-separated species to include in summary report, e.g. "Mycobacterium tuberculosis, Mycobacterium avium"
 
     main:
     summary_json(reports_list, assembled_species)
@@ -66,7 +65,7 @@ process summary_json {
     cpus 1
     memory '0.5 GB'
     container {
-        params.test_container_myco_summary == "" ? params.container_prefix + '/gpas/summary_pipeline:2.5.3-ntms' : params.test_container_myco_summary
+        params.test_container_myco_summary == "" ? params.container_prefix + '/gpas/summary_pipeline:2.5.3-ntms2' : params.test_container_myco_summary
     }
 
     pod label: "name", value: "summary_pipeline:summary_json"
@@ -75,13 +74,14 @@ process summary_json {
 
     input:
     tuple val(sample_name), path (reports)
-    val(assembled_species)
+    val assembled_species
 
     output:
     tuple val(sample_name), path ("main_report.json"), emit: main_report
 
     script:
+    ASSEMBLED_SPECIES = assembled_species.length() > 0 ? "--assembled_species ${assembled_species.replace("Mycobacterium ", "M.").split(',').join(' ')}" : ""
     """
-    summary_json --reports ${reports} --output main_report.json
+    summary_json --reports ${reports} --output main_report.json ${ASSEMBLED_SPECIES}
     """
 }

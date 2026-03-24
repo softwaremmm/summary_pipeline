@@ -255,8 +255,15 @@ def generate_assembled_results(
         by=["meandepth"], ascending=False
     )
 
-    hits = [hit for hit in mappings_sorted.head(1).to_dict(orient="records") if hit["genome_name"] in assembled_species]
-    print(f"Found {len(hits)} with assembled genomes: {assembled_species}")
+    # Pull out the hits based on non-case-sensitive match to the assembled species
+    # Much easier to do this than guarantee all cases match
+    assembled_species = {sp.lower() for sp in assembled_species}
+    hits = [
+        hit
+        for hit in mappings_sorted.head(1).to_dict(orient="records")
+        if hit["genome_name"].lower() in assembled_species
+    ]
+
     # Species comes directly from competitive mapping
     myco["Species"] = [
         {
@@ -284,9 +291,9 @@ def generate_assembled_results(
         }
         for hit in hits
     ]
-    print(len(myco))
 
     return myco
+
 
 def process_phylo_group(phylo_group: dict) -> list[dict]:
     """Restructure phylogenetic group information from mykrobe
@@ -905,6 +912,13 @@ def create_summary(
     if "knowledge" in reports:
         knowledge = read_json_file(reports["knowledge"])
         output["Metadata"]["Reference Data Files"] = knowledge
+
+    if len(assembled_species) > 0:
+        # Lots of these checks are TB specific, so override the pipeline outcome based on
+        # the species spat out of clockwork
+        output["Pipeline Outcome"] = (
+            f"Sufficient reads mapped to {len(assembled_species)} species for genome assembly and resistance prediction."
+        )
 
     return output
 
