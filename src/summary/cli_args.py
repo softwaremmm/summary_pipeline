@@ -79,6 +79,13 @@ class Arguments:  # pylint: disable=too-few-public-methods
             dest="reports",
             help="A list of report files, the contents of which will be inferred by filename",
         )
+        report_list.add_argument(
+            "--assembled_species",
+            nargs="*",
+            dest="assembled_species",
+            default=[],
+            help="A list of species that were assembled in the pipeline.",
+        )
         outputs = parser.add_argument_group(title="Output parameters")
         outputs.add_argument(
             "--output_path",
@@ -128,6 +135,7 @@ class Arguments:  # pylint: disable=too-few-public-methods
             self.gnomonicus = Path(args.gnomonicus)
             self.name_mapping = Path(args.name_mapping)
         self.output = Path(args.output)
+        self.assembled_species = args.assembled_species
 
     def _get_report(self, reports_list: list, report_type: ReportType) -> Path:
         """Get the path for a given report (e.g. from Gnomonicus).

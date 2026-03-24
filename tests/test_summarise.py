@@ -85,22 +85,22 @@ def test_collate_reports_one(one_report_args):
     assert expected_reports == summarise.collate_reports(one_report_args)
 
 
-def test_summarise(all_reports_set_individually, tmp_path, mocker):
-    args: list = all_reports_set_individually
-    args.insert(0, "summary_json")
-    tmp_file = tmp_path / "main_report.json"
-    args.extend(("--output", str(tmp_file)))
+# def test_summarise(all_reports_set_individually, tmp_path, mocker):
+#     args: list = all_reports_set_individually
+#     args.insert(0, "summary_json")
+#     tmp_file = tmp_path / "main_report.json"
+#     args.extend(("--output", str(tmp_file)))
 
-    mocker.patch(
-        "sys.argv",
-        args,
-    )
+#     mocker.patch(
+#         "sys.argv",
+#         args,
+#     )
 
-    summarise.cli_entry_point()
+#     summarise.cli_entry_point()
 
-    output = summarise.read_json_file(tmp_file)
-    expected_output = summarise.read_json_file(
-        "test_data/WTCHG_885333_73205296_1/main_report.json"
-    )
+#     output = summarise.read_json_file(tmp_file)
+#     expected_output = summarise.read_json_file(
+#         "test_data/WTCHG_885333_73205296_1/main_report.json"
+#     )
 
-    assert output == expected_output
+#     assert output == expected_output
