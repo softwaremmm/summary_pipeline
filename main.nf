@@ -64,7 +64,7 @@ process summary_json {
     cpus 1
     memory '0.5 GB'
     container {
-        params.test_container_myco_summary == "" ? params.container_prefix + '/gpas/summary_pipeline:b412793' : params.test_container_myco_summary
+        params.test_container_myco_summary == "" ? params.container_prefix + '/gpas/summary_pipeline:512127d' : params.test_container_myco_summary
     }
 
     pod label: "name", value: "summary_pipeline:summary_json"
