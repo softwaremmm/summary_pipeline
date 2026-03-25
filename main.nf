@@ -80,7 +80,9 @@ process summary_json {
     tuple val(sample_name), path ("main_report.json"), emit: main_report
 
     script:
-    ASSEMBLED_SPECIES = assembled_species.length() > 0 ? "--assembled_species ${assembled_species.replace("Mycobacterium ", "M.").split(',').join(' ')}" : ""
+    // Annoyingly taking a list means you can't directly do `.length()` because nextflow is amazing :')
+    // So we have to convert to string before checking length - an empty list give length 2 ("[]")
+    ASSEMBLED_SPECIES = assembled_species.toString().length() > 2 ? "--assembled_species ${assembled_species.join(' ')}" : ""
     """
     summary_json --reports ${reports} --output main_report.json ${ASSEMBLED_SPECIES}
     """
