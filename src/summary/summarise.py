@@ -257,11 +257,15 @@ def generate_assembled_results(
 
     # Pull out the hits based on non-case-sensitive match to the assembled species
     # Much easier to do this than guarantee all cases match
+    # Input should already be of the form `M.` in order to avoid confusion in CLI args
     assembled_species = {sp.lower() for sp in assembled_species}
+
+    # Pull out just hits for the assembled species
+    # being lenient about case and whether `M.` or `Mycobacterium` is used
     hits = [
         hit
         for hit in mappings_sorted.head(1).to_dict(orient="records")
-        if hit["genome_name"].lower() in assembled_species
+        if hit["genome_name"].replace("Mycobacterium ", "M.").lower() in assembled_species
     ]
 
     # Species comes directly from competitive mapping
