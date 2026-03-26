@@ -217,6 +217,7 @@ def generate_assembled_results(
         dict: Summary of Competitive Mapping and Mykrobe outputs.
     """
     myco: dict[str, list] = {
+        "Assembled Species": assembled_species,
         "Summary": [],
         "Species": [],
         "Phylogenic Group": [],
