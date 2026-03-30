@@ -199,6 +199,110 @@ def generate_mycobacterium_results(
     return myco
 
 
+def generate_assembled_results(
+    mappings: dict,
+    mykrobe_data: dict,
+    name_mapping: pd.DataFrame,
+    assembled_species: list[str],
+) -> dict:
+    """Summarises Competitive Mapping and Mykrobe outputs.
+
+    Args:
+        mappings (dict): Output from Competitive Mapping.
+        mykrobe_data (dict): Output from Mykrobe.
+        name_mapping (pd.DataFrame): Mapping of reference names and mykrobe "lineages" to reportable names.
+        assembled_species (list[str]): List of the species with assembled genomes.
+
+    Returns:
+        dict: Summary of Competitive Mapping and Mykrobe outputs.
+    """
+    myco: dict[str, list] = {
+        "Assembled Species": [
+            sp.replace("M.", "Mycobacterium_") for sp in assembled_species
+        ],
+        "Summary": [],
+        "Species": [],
+        "Phylogenic Group": [],
+        "Subspecies": [],
+        "Lineage": [],
+    }
+    if len(assembled_species) == 0:
+        return myco
+
+    # Add mykrobe data for phylo group, subspecies, and lineage
+    if mykrobe_data != {}:
+        # Phylogenetic Group (mykrobe)
+        myco["Phylogenic Group"] = process_phylo_group(
+            mykrobe_data.get("phylo_group", {})
+        )
+
+        # "Subspecies" (mykrobe)
+        if "species" in mykrobe_data:
+            myco["Subspecies"] = process_subspecies(
+                mykrobe_data.get("species", {})
+            )  # Why is species assigned to subspecies? Because these ideas are conflated in TB complex.
+
+        # Lineage (mykrobe)
+        if "lineage" in mykrobe_data:
+            myco["Lineage"] = process_lineages(mykrobe_data.get("lineage", {}))
+
+    lineages = [lin["Name"] for lin in myco["Lineage"]]
+    subspecies = [sub["Name"] for sub in myco["Subspecies"]]
+
+    # Which hits to report?
+    # Should report TB first if TB genome assembled
+    # Should always report TB if present
+    # Should report non-TB species if mixed phylogenetic population
+
+    mappings_sorted = pd.DataFrame.from_dict(mappings["references"]).sort_values(
+        by=["meandepth"], ascending=False
+    )
+
+    # Pull out the hits based on non-case-sensitive match to the assembled species
+    # Much easier to do this than guarantee all cases match
+    # Input should already be of the form `M.` in order to avoid confusion in CLI args
+    assembled_species = {sp.lower() for sp in assembled_species}
+
+    # Pull out just hits for the assembled species
+    # being lenient about case and whether `M.` or `Mycobacterium` is used
+    hits = [
+        hit
+        for hit in mappings_sorted.to_dict(orient="records")
+        if hit["genome_name"].replace("Mycobacterium ", "M.").lower()
+        in assembled_species
+    ]
+
+    # Species comes directly from competitive mapping
+    myco["Species"] = [
+        {
+            "Name": hit["genome_name"],
+            "Num Reads": int(hit["numreads"]),
+            "Coverage": hit["coverage"],
+            "Mean Depth": hit["meandepth"],
+            "Length": hit["length"],
+        }
+        for hit in hits
+    ]
+
+    # Summary is just species with the reportable name
+    myco["Summary"] = [
+        {
+            "Name": organism_name(
+                hit["genome_name"],
+                name_mapping,
+                subspecies,
+                lineages,
+            ),
+            "Num Reads": int(hit["numreads"]),
+            "Coverage": hit["coverage"],
+            "Depth": hit["meandepth"],
+        }
+        for hit in hits
+    ]
+
+    return myco
+
+
 def process_phylo_group(phylo_group: dict) -> list[dict]:
     """Restructure phylogenetic group information from mykrobe
 
@@ -746,11 +850,13 @@ def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
 
 def create_summary(
     reports: dict,
+    assembled_species: list[str] = [],
 ) -> dict:
     """Summarises GPAS pipeline output.
 
     Args:
         reports (dict): A collection of reports to summarise.
+        assembled_species (list[str], optional): List of species with assembled genomes. Defaults to [].
 
     Returns:
         dict: Summary GPAS pipeline output.
@@ -769,13 +875,16 @@ def create_summary(
         output = "Pipeline failed to produce a summary (summary_pipeline could not find gatekeeper report)."
     if "mapping" in reports and "mykrobe" in reports:
         output["Pipeline Outcome"] = (
-            "Mycobacterial species identified. Reads mapped to M. tuberculosis (H37Rv v3) too low to proceed to M. tuberculosis complex genome assembly."
+            "Mycobacterial species identified. Reads too low to proceed to genome assembly."
         )
         mapping_json = read_json_file(reports["mapping"])
         mykrobe_data = read_json_file(reports["mykrobe"])
         name_mapping = pd.read_csv(reports["name_mapping"])
         output["Mycobacterium Results"] = generate_mycobacterium_results(
             mapping_json, mykrobe_data, name_mapping, "creation_report" in reports
+        )
+        output["Assembled NTM Results"] = generate_assembled_results(
+            mapping_json, mykrobe_data, name_mapping, assembled_species
         )
     else:
         output["Mycobacterium Results"] = None
@@ -789,7 +898,7 @@ def create_summary(
         and "gnomonicus" in reports
     ):
         output["Pipeline Outcome"] = (
-            "Sufficient reads mapped to M. tuberculosis (H37Rv v3) for genome assembly, resistance prediction and relatedness assessment."
+            f"Sufficient reads mapped to {len(assembled_species)} species for genome assembly and resistance prediction."
         )
         creation_report_json = read_json_file(reports["creation_report"])
         gnom_json = read_json_file(reports["gnomonicus"])
@@ -811,6 +920,13 @@ def create_summary(
     if "knowledge" in reports:
         knowledge = read_json_file(reports["knowledge"])
         output["Metadata"]["Reference Data Files"] = knowledge
+
+    if len(assembled_species) > 0:
+        # Lots of these checks are TB specific, so override the pipeline outcome based on
+        # the species spat out of clockwork
+        output["Pipeline Outcome"] = (
+            f"Sufficient reads mapped to {len(assembled_species)} species for genome assembly and resistance prediction."
+        )
 
     return output
 
@@ -910,5 +1026,5 @@ def cli_entry_point() -> None:
     """CLI entry point."""
     cli_args = Arguments(sys.argv[1:])
     reports = collate_reports(cli_args)
-    summary = create_summary(reports)
+    summary = create_summary(reports, assembled_species=cli_args.assembled_species)
     write_summary(summary, cli_args.output)
