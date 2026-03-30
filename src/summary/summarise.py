@@ -217,7 +217,9 @@ def generate_assembled_results(
         dict: Summary of Competitive Mapping and Mykrobe outputs.
     """
     myco: dict[str, list] = {
-        "Assembled Species": assembled_species,
+        "Assembled Species": [
+            sp.replace("M.", "Mycobacterium_") for sp in assembled_species
+        ],
         "Summary": [],
         "Species": [],
         "Phylogenic Group": [],
@@ -265,8 +267,9 @@ def generate_assembled_results(
     # being lenient about case and whether `M.` or `Mycobacterium` is used
     hits = [
         hit
-        for hit in mappings_sorted.head(1).to_dict(orient="records")
-        if hit["genome_name"].replace("Mycobacterium ", "M.").lower() in assembled_species
+        for hit in mappings_sorted.to_dict(orient="records")
+        if hit["genome_name"].replace("Mycobacterium ", "M.").lower()
+        in assembled_species
     ]
 
     # Species comes directly from competitive mapping
