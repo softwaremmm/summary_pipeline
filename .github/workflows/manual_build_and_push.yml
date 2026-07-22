@@ -1,15 +1,15 @@
-name: Build and Push Container
+name: Manually Build and Push Container
 
 on:
-  push:
-    tags:
-      - '*.*.*'
-      - '*.*.*-rc*'
-      - '*.*.*\+*'
-  workflow_call:
+  workflow_dispatch:
     inputs:
-      tag:
+      ref:
+        description: 'Git ref to check out and build from (tag, branch, or commit hash)'
         required: true
+        type: string
+      image_tag:
+        description: 'Image tag to publish as (optional - defaults to ref)'
+        required: false
         type: string
 
 env:
@@ -29,14 +29,15 @@ jobs:
         with:
           token: "${{ secrets.PAT_TOKEN }}"
           fetch-depth: 0
+          ref: ${{ inputs.ref }}
 
       - name: Determine the tag to use
         id: image-tag
         run: |
-          if [[ -n "${{ inputs.tag }}" ]]; then
-            echo "tag=${{ inputs.tag }}" >> $GITHUB_ENV
+          if [[ -n "${{ inputs.image_tag }}" ]]; then
+            echo "tag=${{ inputs.image_tag }}" >> $GITHUB_ENV
           else
-            echo "tag=${{ github.ref_name }}" >> $GITHUB_ENV
+            echo "tag=${{ inputs.ref }}" >> $GITHUB_ENV
           fi
 
       - name: Set up Docker Buildx
@@ -61,8 +62,6 @@ jobs:
           context: .
           push: true
           file: Dockerfile
-          # Attestation/SBOM manifests wrap the image in an OCI index, which has caused
-          # "manifest not found" pull failures when the attestation child is unreachable.
           provenance: false
           sbom: false
           tags: |
