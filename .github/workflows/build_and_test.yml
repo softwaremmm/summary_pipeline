@@ -38,12 +38,8 @@ jobs:
           source venv/bin/activate
           pytest
   nf-test:
-    runs-on: self-hosted # Uses https://github.com/GlobalPathogenAnalysisService/git_runners
+    runs-on: ubuntu-latest
     steps:
-      - name: clean up # nf-test needs to sudo to remove, so will fail automatic cleanup
-        run: |
-          sudo rm -rf .nf-test || true
-
       - uses: actions/checkout@v4
         with:
           token: "${{ secrets.PAT_TOKEN }}"
@@ -57,8 +53,3 @@ jobs:
 
       - name: Run nf-test
         run: nf-test test tests/workflow.nf.test --profile local_docker
-
-      - name: clean up 2
-        if: always()
-        run: |
-          sudo rm -rf .nf-test || true
