@@ -12,16 +12,18 @@
                 "Name": "M. tuberculosis (lineage Unknown)",
                 "Num Reads": 3953463,
                 "Coverage": 98.6802,
-                "Depth": 132.507
+                "Depth": 132.507,
+                "Length": 4411532
             }
         ],
         "Species": [
             {
                 "Name": "M.tuberculosis",
+                "Genome": "M.tuberculosis",
                 "Num Reads": 3953463,
                 "Coverage": 98.6802,
                 "Mean Depth": 132.507,
-                "Length": 4411532.0
+                "Length": 4411532
             }
         ],
         "Phylogenic Group": [
@@ -45,12 +47,12 @@
             "Name": "M. tuberculosis",
             "Sequencing Quality": {
                 "Mapped To": "M. tuberculosis (H37Rv v3) NC_000962.3",
-                "Num Reads": 3953463.0,
                 "Coverage": 98.132,
-                "Mean Depth": 132.507,
                 "Mixed calls": 351,
                 "Null calls": 87041,
-                "Reference genome length": 4411532
+                "Reference genome length": 4411532,
+                "Num Reads": 3953463,
+                "Mean Depth": 132.507
             },
             "Resistance Prediction": {
                 "Resistance Prediction Summary": {
@@ -93,7 +95,7 @@
                                 "Prediction": "U",
                                 "Evidence": {
                                     "reporting_rule": "True"
-                                  }
+                                }
                             },
                             {
                                 "Gene": "rrl",
@@ -109,16 +111,16 @@
                                 "Evidence": {
                                     "Resistant prediction": "g2270t",
                                     "Observed_samples": {
-                                      "Present_SOLO_SR": 6,
-                                      "Present_SOLO_R": 4,
-                                      "Present_SOLO_S": 2
+                                        "Present_SOLO_SR": 6,
+                                        "Present_SOLO_R": 4,
+                                        "Present_SOLO_S": 2
                                     },
                                     "Additional grading criteria applied": "Selection evidence",
                                     "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
                                     "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
                                     "WHO HGVS": "rrl_n.2270G>T",
                                     "FASTA called": "N"
-                                  }
+                                }
                             },
                             {
                                 "Gene": "rrl",
@@ -134,16 +136,16 @@
                                 "Evidence": {
                                     "Resistant prediction": "g2299t",
                                     "Observed_samples": {
-                                      "Present_SOLO_SR": 1,
-                                      "Present_SOLO_R": 1,
-                                      "Present_SOLO_S": 0
+                                        "Present_SOLO_SR": 1,
+                                        "Present_SOLO_R": 1,
+                                        "Present_SOLO_S": 0
                                     },
                                     "Additional grading criteria applied": "Selection evidence",
                                     "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
                                     "INITIAL CONFIDENCE GRADING": "3) Uncertain significance",
                                     "WHO HGVS": "rrl_n.2299G>T",
                                     "FASTA called": "N"
-                                  }
+                                }
                             }
                         ]
                     },
@@ -164,16 +166,16 @@
                                 "Evidence": {
                                     "Resistant prediction": "g878a",
                                     "Observed_samples": {
-                                      "Present_SOLO_SR": 38,
-                                      "Present_SOLO_R": 33,
-                                      "Present_SOLO_S": 5
+                                        "Present_SOLO_SR": 38,
+                                        "Present_SOLO_R": 33,
+                                        "Present_SOLO_S": 5
                                     },
                                     "Additional grading criteria applied": "Evidence from ALL dataset only",
                                     "FINAL CONFIDENCE GRADING": "2) Assoc w R - Interim",
                                     "INITIAL CONFIDENCE GRADING": "1) Assoc w R",
                                     "WHO HGVS": "rrs_n.878G>A",
                                     "FASTA called": "N"
-                                  }
+                                }
                             }
                         ]
                     }

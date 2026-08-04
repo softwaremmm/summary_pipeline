@@ -6,26 +6,11 @@ OVERWRITE_EXPECTED_OUTPUT = False
 
 
 def test_regression(regression_test_set: dict):
-    test_reports = {}
-    if "PIPELINE_BUILD" in regression_test_set:
-        test_reports["versions"] = regression_test_set["PIPELINE_BUILD"]
-    if "knowledge" in regression_test_set:
-        test_reports["knowledge"] = regression_test_set["knowledge"]
-    test_reports["gatekeeper"] = regression_test_set["gatekeeper_report"]
-    if "competitivemapping_report" in regression_test_set:
-        test_reports["mapping"] = regression_test_set["competitivemapping_report"]
-    if "mykrobe_report" in regression_test_set:
-        test_reports["mykrobe"] = regression_test_set["mykrobe_report"]
-    if "creation_report" in regression_test_set:
-        test_reports["creation_report"] = regression_test_set["creation_report"]
-    if "gnomonicus" in regression_test_set:
-        test_reports["gnomonicus"] = regression_test_set["gnomonicus"]
-    if "name_mapping" in regression_test_set:
-        test_reports["name_mapping"] = regression_test_set["name_mapping"]
+    test_reports = summarise.report_list_to_dict(list(regression_test_set.values()))
 
     summary = summarise.create_summary(test_reports)
 
-    with open(regression_test_set["expected_output"], "r") as file:
+    with open(regression_test_set["expected_output"], "r", encoding="utf-8") as file:
         expected_summary = json.load(file)
 
     if summary != expected_summary:

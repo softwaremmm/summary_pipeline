@@ -12,16 +12,18 @@
                 "Name": "M. tuberculosis (lineage Unknown)",
                 "Num Reads": 1661,
                 "Coverage": 0.201631,
-                "Depth": 0.0242648
+                "Depth": 0.0242648,
+                "Length": 4411532
             }
         ],
         "Species": [
             {
                 "Name": "M.tuberculosis",
+                "Genome": "M.tuberculosis",
                 "Num Reads": 1661,
                 "Coverage": 0.201631,
                 "Mean Depth": 0.0242648,
-                "Length": 4411532.0
+                "Length": 4411532
             }
         ],
         "Phylogenic Group": [],

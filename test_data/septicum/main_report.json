@@ -12,29 +12,48 @@
                 "Name": "M. septicum",
                 "Num Reads": 573848,
                 "Coverage": 61.6525,
-                "Depth": 12.07
+                "Depth": 12.07,
+                "Length": 6515693
+            },
+            {
+                "Name": "M. abscessus subsp. abscessus",
+                "Num Reads": 92865,
+                "Coverage": 76.639,
+                "Depth": 2.44258,
+                "Length": 5067172
             },
             {
                 "Name": "M. tuberculosis (lineage Unknown)",
                 "Num Reads": 608,
                 "Coverage": 1.35089,
-                "Depth": 0.0166817
+                "Depth": 0.0166817,
+                "Length": 4411532
             }
         ],
         "Species": [
             {
                 "Name": "M.septicum",
+                "Genome": "M.septicum",
                 "Num Reads": 573848,
                 "Coverage": 61.6525,
                 "Mean Depth": 12.07,
-                "Length": 6515693.0
+                "Length": 6515693
+            },
+            {
+                "Name": "M.abscessus",
+                "Genome": "M.abscessus",
+                "Num Reads": 92865,
+                "Coverage": 76.639,
+                "Mean Depth": 2.44258,
+                "Length": 5067172
             },
             {
                 "Name": "M.tuberculosis",
+                "Genome": "M.tuberculosis",
                 "Num Reads": 608,
                 "Coverage": 1.35089,
                 "Mean Depth": 0.0166817,
-                "Length": 4411532.0
+                "Length": 4411532
             }
         ],
         "Phylogenic Group": [

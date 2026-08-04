@@ -12,29 +12,33 @@
                 "Name": "M. tuberculosis (lineage 4.1.2.1)",
                 "Num Reads": 1250832,
                 "Coverage": 99.0892,
-                "Depth": 37.8527
+                "Depth": 37.8527,
+                "Length": 4411532
             },
             {
                 "Name": "M. avium",
                 "Num Reads": 581035,
                 "Coverage": 91.2336,
-                "Depth": 14.9584
+                "Depth": 14.9584,
+                "Length": 5118245
             }
         ],
         "Species": [
             {
                 "Name": "M.tuberculosis",
+                "Genome": "M.tuberculosis",
                 "Num Reads": 1250832,
                 "Coverage": 99.0892,
                 "Mean Depth": 37.8527,
-                "Length": 4411532.0
+                "Length": 4411532
             },
             {
                 "Name": "M.avium",
+                "Genome": "M.avium",
                 "Num Reads": 581035,
                 "Coverage": 91.2336,
                 "Mean Depth": 14.9584,
-                "Length": 5118245.0
+                "Length": 5118245
             }
         ],
         "Phylogenic Group": [
@@ -74,12 +78,12 @@
             "Name": "M. tuberculosis",
             "Sequencing Quality": {
                 "Mapped To": "M. tuberculosis (H37Rv v3) NC_000962.3",
-                "Num Reads": 1250832.0,
                 "Coverage": 97.109,
-                "Mean Depth": 37.8527,
                 "Mixed calls": 134,
                 "Null calls": 87041,
-                "Reference genome length": 4411532
+                "Reference genome length": 4411532,
+                "Num Reads": 1250832,
+                "Mean Depth": 37.8527
             },
             "Resistance Prediction": {
                 "Resistance Prediction Summary": {

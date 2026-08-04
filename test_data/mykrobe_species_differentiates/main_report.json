@@ -12,29 +12,48 @@
                 "Name": "M. gordonae",
                 "Num Reads": 252921,
                 "Coverage": 54.1159,
-                "Depth": 4.90154
+                "Depth": 4.90154,
+                "Length": 7103222
+            },
+            {
+                "Name": "M. paragordonae",
+                "Num Reads": 158811,
+                "Coverage": 45.6098,
+                "Depth": 3.18373,
+                "Length": 6730319
             },
             {
                 "Name": "M. tuberculosis (lineage Unknown)",
                 "Num Reads": 1012,
                 "Coverage": 1.07076,
-                "Depth": 0.0204344
+                "Depth": 0.0204344,
+                "Length": 4411532
             }
         ],
         "Species": [
             {
                 "Name": "M.gordonae",
+                "Genome": "M.gordonae",
                 "Num Reads": 252921,
                 "Coverage": 54.1159,
                 "Mean Depth": 4.90154,
-                "Length": 7103222.0
+                "Length": 7103222
+            },
+            {
+                "Name": "M.paragordonae",
+                "Genome": "M.paragordonae",
+                "Num Reads": 158811,
+                "Coverage": 45.6098,
+                "Mean Depth": 3.18373,
+                "Length": 6730319
             },
             {
                 "Name": "M.tuberculosis",
+                "Genome": "M.tuberculosis",
                 "Num Reads": 1012,
                 "Coverage": 1.07076,
                 "Mean Depth": 0.0204344,
-                "Length": 4411532.0
+                "Length": 4411532
             }
         ],
         "Phylogenic Group": [

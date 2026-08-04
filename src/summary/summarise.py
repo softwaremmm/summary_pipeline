@@ -2,74 +2,85 @@
 
 # pylint: disable=logging-not-lazy
 
+import argparse
+from enum import Enum
 import json
 import logging
 import os
-import sys
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
 
-from summary.cli_args import Arguments
+from summary.summarise_gnomonicus import summarise_gnomonicus
+
+REPORT_NAME_MAP = {
+    "PIPELINE_BUILD": "versions",
+    "knowledge.json": "knowledge",
+    "speciation_report.json": "gatekeeper",
+    "species_comparison_report.json": "mapping",
+    "subspecies_report.json": "mykrobe",
+    "genome_creation_report.json": "creation_report",
+    "resistance_prediction_report.json": "gnomonicus",
+    "name_mapping.csv": "name_mapping",
+}
+
+
+class PipelineOutcome(Enum):
+    """Potential outcomes of the pipeline."""
+
+    LOW_MYCO = "Number of Mycobacterial reads is too low to proceed to Mycobacterial species identification."
+    LOW_TB = "Mycobacterial species identified. Reads mapped to M. tuberculosis (H37Rv v3) too low to proceed to M. tuberculosis complex genome assembly."
+    TB_ASSEMBLED = "Sufficient reads mapped to M. tuberculosis (H37Rv v3) for genome assembly, resistance prediction and relatedness assessment."
+
 
 logging.basicConfig(
     format="%(asctime)s — %(name)s — %(levelname)s — %(funcName)s:%(lineno)d — %(message)s",
     datefmt="%Y-%m-%dT%H:%M:%S%z",
     level=logging.DEBUG,
 )
-
-treatment_classes = {
-    "First-line treatment": ["INH", "RIF", "PZA", "EMB"],
-    "Second-line treatment": ["MXF", "LEV", "LZD", "BDQ"],
-    "Reserve treatment": ["AMI", "KAN", "STM", "CAP", "ETH", "DLM", "CFZ"],
-}
-
-drug_names = {
-    "AMC": "Amoxicilin-Clavulanate",
-    "AMI": "Amikacin",
-    "AMX": "Amoxicilin",
-    "AZM": "Azithromycin",
-    "BDQ": "Bedaquiline",
-    "CAP": "Capreomycin",
-    "CFZ": "Clofazimine",
-    "CIP": "Ciprofloxacin",
-    "CLR": "Clarithromycin",
-    "CYC": "Cycloserine",
-    "DCS": "D-Cycloserine",
-    "DLM": "Delamanid",
-    "EMB": "Ethambutol",
-    "ETH": "Ethionamide",
-    "ETP": "Ertapenem",
-    "FQS": "Fluoroquinolone",
-    "GEN": "Gentamicin",
-    "GFX": "Gatifloxacin",
-    "IMI": "Imipenem",
-    "INH": "Isoniazid",
-    "KAN": "Kanamycin",
-    "LEV": "Levofloxacin",
-    "LZD": "Linezolid",
-    "MEF": "Mefloquine",
-    "MPM": "Meropenem",
-    "MXF": "Moxifloxacin",
-    "OFX": "Ofloxacin",
-    "PAN": "Pretomanid",
-    "PAS": "Pas",
-    "PTO": "Prothionamide",
-    "PZA": "Pyrazinamide",
-    "RFB": "Rifabutin",
-    "RIF": "Rifampicin",
-    "STM": "Streptomycin",
-    "STX": "Sitafloxacin",
-    "SXT": "Cotrimoxazole",
-    "SZD": "Sutezolid",
-    "TRD": "Terizidone",
-    "TZE": "Thioacetazone",
-}
+logger = logging.getLogger(__name__)
 
 
-def generate_organism_identification(gatekeeper_data: dict) -> dict:
-    """Summarises organism identification data.
+def read_json_file(path: Path) -> dict:
+    """Utility function to load JSON files.
+
+    Args:
+        path (Path): Path to JSON file.
+
+    Raises:
+        FileNotFoundError: JSON file does not exist.
+
+    Returns:
+        dict: JSON file represented as a dictionary.
+    """
+    if not os.path.isfile(path):
+        raise FileNotFoundError(
+            "File " + str(path) + " does not exist. Data could not be loaded"
+        )
+    with open(path, "r", encoding="utf-8") as file:
+        data = json.load(file)
+    return data
+
+
+def read_pipeline_build(path: Path) -> str:
+    """Read the pipeline build file to find the pipeline build tag
+
+    Args:
+        path (Path): Path to the `PIPELINE_BUILD` file
+
+    Returns:
+        str: Poller release tag which built this pipeline
+    """
+    if not os.path.isfile(path):
+        raise FileNotFoundError(
+            "File " + str(path) + " does not exist. Data could not be loaded"
+        )
+    with open(path, "r", encoding="utf-8") as file:
+        return file.read().strip()
+
+
+def summarise_gatekeeper(gatekeeper_data: dict) -> dict:
+    """Summarises Gatekeeper data.
 
     Args:
         gatekeeper_data (dict): Output from Gatekeeper
@@ -83,169 +94,11 @@ def generate_organism_identification(gatekeeper_data: dict) -> dict:
         "Non-Mycobacterium Bacteria Reads": None,
         "Mycobacterium Reads": gatekeeper_data.get("Mycobacteriaceae"),
     }
-    logging.warning("Human read data not supported in this version")
+    logger.warning("Human read data not supported in this version")
     organism["Non-Mycobacterium Bacteria Reads"] = (
         gatekeeper_data["Bacteria"] - organism["Mycobacterium Reads"]
     )
     return organism
-
-
-def generate_mycobacterium_results(
-    mappings: dict,
-    mykrobe_data: dict,
-    name_mapping: pd.DataFrame,
-    tb_genome_assembled: bool = False,
-    tb_reference_name: str = "M.tuberculosis",
-) -> dict:
-    """Summarises Competitive Mapping and Mykrobe outputs.
-
-    Args:
-        mappings (dict): Output from Competitive Mapping.
-        mykrobe_data (dict): Output from Mykrobe.
-        name_mapping (pd.DataFrame): Mapping of reference names and mykrobe "lineages" to reportable names.
-        tb_genome_assembled (bool, optional): True if M. tuberculosis genome was assembled. Defaults to False.
-        tb_reference_name (str, optional): Name of M. tuberculosis reference. Defaults to "M.tuberculosis".
-
-    Returns:
-        dict: Summary of Competitive Mapping and Mykrobe outputs.
-    """
-    myco: dict[str, list] = {
-        "Summary": [],
-        "Species": [],
-        "Phylogenic Group": [],
-        "Subspecies": [],
-        "Lineage": [],
-    }
-
-    # Add mykrobe data for phylo group, subspecies, and lineage
-    mixed_phylo_pop = False
-    if mykrobe_data != {}:
-        # Phylogenetic Group (mykrobe)
-        myco["Phylogenic Group"] = process_phylo_group(
-            mykrobe_data.get("phylo_group", {})
-        )
-
-        # "Subspecies" (mykrobe)
-        if "species" in mykrobe_data:
-            myco["Subspecies"] = process_subspecies(
-                mykrobe_data.get("species", {})
-            )  # Why is species assigned to subspecies? Because these ideas are conflated in TB complex.
-
-        # Lineage (mykrobe)
-        if "lineage" in mykrobe_data:
-            myco["Lineage"] = process_lineages(mykrobe_data.get("lineage", {}))
-
-        if len(myco["Phylogenic Group"]) == 2:
-            mixed_phylo_pop = True
-        elif len(myco["Phylogenic Group"]) > 2:
-            raise ValueError("Mixed population with more than two phylo groups.")
-    lineages = [lin["Name"] for lin in myco["Lineage"]]
-    subspecies = [sub["Name"] for sub in myco["Subspecies"]]
-
-    # Which hits to report?
-    # Should report TB first if TB genome assembled
-    # Should always report TB if present
-    # Should report non-TB species if mixed phylogenetic population
-
-    mappings_sorted = pd.DataFrame.from_dict(mappings["references"]).sort_values(
-        by=["meandepth"], ascending=False
-    )
-    tophit = mappings_sorted.head(1).to_dict(orient="records")[0]
-    hits = [tophit]
-
-    # if tb present always include it
-    if tophit["genome_name"] != tb_reference_name:
-        tb_row = mappings_sorted[mappings_sorted["genome_name"] == tb_reference_name]
-        if not tb_row.empty:
-            tb_hit = tb_row.to_dict(orient="records")[0]
-            if tb_genome_assembled:
-                hits.insert(0, tb_hit)
-            else:
-                hits.append(tb_hit)
-
-    # if mixed phylo population, make sure top non-tb hit is included
-    if tophit["genome_name"] == tb_reference_name and mixed_phylo_pop:
-        second_hit = mappings_sorted.head(2).to_dict(orient="records")[1]
-        hits.append(second_hit)
-
-    # Species comes directly from competitive mapping
-    myco["Species"] = [
-        {
-            "Name": hit["genome_name"],
-            "Num Reads": int(hit["numreads"]),
-            "Coverage": hit["coverage"],
-            "Mean Depth": hit["meandepth"],
-            "Length": hit["length"],
-        }
-        for hit in hits
-    ]
-
-    # Summary is just species with the reportable name
-    myco["Summary"] = [
-        {
-            "Name": organism_name(
-                hit["genome_name"],
-                name_mapping,
-                subspecies,
-                lineages,
-            ),
-            "Num Reads": int(hit["numreads"]),
-            "Coverage": hit["coverage"],
-            "Depth": hit["meandepth"],
-        }
-        for hit in hits
-    ]
-
-    return myco
-
-
-def process_phylo_group(phylo_group: dict) -> list[dict]:
-    """Restructure phylogenetic group information from mykrobe
-
-    Args:
-        phylo_group (dict): Phylogenetic group information from mykrobe
-
-    Raises:
-        ValueError: Thrown if multiple phyogenetic groups are found
-
-    Returns:
-        list[dict]: Restructured phylogenetic information
-    """
-    phylos = []
-    for group in phylo_group:
-        phylo = {
-            "Name": group,
-            "Coverage": phylo_group[group].get("percent_coverage"),
-            "Median Depth": phylo_group[group].get("median_depth"),
-        }
-        phylos.append(phylo)
-
-    return phylos
-
-
-def process_subspecies(species: dict) -> list[dict]:
-    """Restructure species information from mykrobe
-
-    Args:
-        species (dict): Species information from mykrobe
-
-    Raises:
-        ValueError: Throws an error if mykrobe returns more than one species
-
-    Returns:
-        list[dict]: Restructured species information
-    """
-
-    subspecies = []
-    for specie in species:
-        specie = {
-            "Name": specie,
-            "Coverage": species[specie].get("percent_coverage"),
-            "Median Depth": species[specie].get("median_depth"),
-        }
-        subspecies.append(specie)
-
-    return subspecies
 
 
 def process_lineages(lineages: dict) -> list[dict]:
@@ -285,7 +138,7 @@ def process_lineages(lineages: dict) -> list[dict]:
         }
 
         if lineage_name not in calls:
-            logging.warning(f"Lineage {lineage_name} not found in calls")
+            logger.warning(f"Lineage {lineage_name} not found in calls")
             lineage_summary.append(new_line)
             continue
 
@@ -298,14 +151,14 @@ def process_lineages(lineages: dict) -> list[dict]:
         # Only expect to find one variant call for a lineage
         variants = list(call_support.keys())
         if len(variants) != 1:
-            logging.warning(f"Multiple variant calls found for lineage {lineage_name}")
+            logger.warning(f"Multiple variant calls found for lineage {lineage_name}")
             lineage_summary.append(new_line)
             continue
         variant_support = call_support.get(variants[0], {})
 
         genotype = variant_support.get("genotype", [])
         if len(genotype) != 2:
-            logging.warning(
+            logger.warning(
                 f"Genotype for lineage {lineage_name} not as expected. Should be form [a, b]"
             )
             lineage_summary.append(new_line)
@@ -314,7 +167,7 @@ def process_lineages(lineages: dict) -> list[dict]:
         called_allele = genotype[0]
         if genotype[0] != genotype[1]:
             # mixed call
-            logging.info(
+            logger.info(
                 f"Lineage {lineage_name} has mixed call."
                 + " Will report depth/cov for alternate allele."
                 + " Unless call is lineage 4 or 4.10 (H37Rv) which uses ref."
@@ -338,19 +191,158 @@ def process_lineages(lineages: dict) -> list[dict]:
     return lineage_summary
 
 
-def organism_name(
+def summarise_mykrobe(mykrobe_data: dict) -> dict:
+    """Summarises Mykrobe data.
+
+    Args:
+        mykrobe_data (dict): Output from Mykrobe
+
+    Returns:
+        dict: Summary of Mykrobe data
+    """
+    results = {
+        "Phylogenic Group": [],
+        "Subspecies": [],
+        "Lineage": [],
+    }
+
+    if mykrobe_data == {}:
+        return results
+
+    # Phylo group
+    phylo_dict = mykrobe_data.get("phylo_group", {})
+    results["Phylogenic Group"] = [
+        {
+            "Name": group,
+            "Coverage": phylo_dict[group].get("percent_coverage"),
+            "Median Depth": phylo_dict[group].get("median_depth"),
+        }
+        for group in phylo_dict
+    ]
+
+    # "Subspecies" is called species in mykrobe confusingly
+    subspecies_dict = mykrobe_data.get("species", {})
+    results["Subspecies"] = [
+        {
+            "Name": species,
+            "Coverage": subspecies_dict[species].get("percent_coverage"),
+            "Median Depth": subspecies_dict[species].get("median_depth"),
+        }
+        for species in subspecies_dict
+    ]
+
+    # Lineage (mykrobe)
+    if "lineage" in mykrobe_data:
+        results["Lineage"] = process_lineages(mykrobe_data.get("lineage", {}))
+
+    return results
+
+
+def summarise_comp_mapping(
+    mapping_data: dict, mykrobe_results: dict, tb_assembled: bool
+) -> dict:
+    """Summarises Competitive Mapping data.
+
+    Args:
+        mapping_data (dict): Output from Competitive Mapping
+
+    Returns:
+        dict: Summary of species hits
+    """
+    mapping_df = pd.DataFrame.from_dict(mapping_data["references"]).sort_values(
+        by=["meandepth"], ascending=False
+    )
+
+    # depending on competitive mapping the species name will either be in the genome_name column or species column if present
+    # For consistency will add species column if not present and populate with genome_name
+    if "species" not in mapping_df.columns:
+        mapping_df["species"] = mapping_df["genome_name"]
+
+    # For consistency replace "Mycobacterium " with "M." in species column
+    mapping_df["species"] = mapping_df["species"].str.replace(
+        "Mycobacterium ", "M.", regex=False
+    )
+
+    # Want to keep any references which are
+    # 1. TB
+    # 2. the top hit
+    # 3. or has genome coverage over 40%
+    # 4. Top NTM hit if mykrobe contains a phylo group other than Mycobacterium_tuberculosis_complex
+
+    winners = mapping_df[
+        mapping_df["species"].str.contains("tuberculosis")
+        | (mapping_df["coverage"] > 40)
+        | (mapping_df["meandepth"] == mapping_df["meandepth"].max())
+    ]
+
+    mykrobe_ntm = False
+    for phylo_group in mykrobe_results.get("Phylogenic Group", []):
+        if phylo_group["Name"] != "Mycobacterium_tuberculosis_complex":
+            mykrobe_ntm = True
+            break
+
+    if mykrobe_ntm:
+        ntm = mapping_df[~mapping_df["species"].str.contains("tuberculosis")]
+        # keep first row
+        if not ntm.empty:
+            winners = pd.concat([winners, ntm.head(1)]).drop_duplicates()
+
+    winners = winners.sort_values(by="meandepth", ascending=False)
+
+    if tb_assembled:
+        # If TB is assembled then TB should go first
+        winners = pd.concat(
+            [
+                winners[winners["species"].str.contains("tuberculosis")],
+                winners[~winners["species"].str.contains("tuberculosis")],
+            ]
+        )
+
+    return {
+        "Species": [
+            {
+                "Name": row["species"],
+                "Genome": row["genome_name"],
+                "Num Reads": int(row["numreads"]),
+                "Coverage": row["coverage"],
+                "Mean Depth": row["meandepth"],
+                "Length": int(row["length"]),
+            }
+            for _, row in winners.iterrows()
+        ]
+    }
+
+
+def summarise_genome_creation(genome_creation_report: dict) -> dict:
+    """Summarises sequencing quality"""
+    seq_quality = genome_creation_report.get("Sequencing Quality", {})
+
+    if not seq_quality:
+        logger.warning("Sequencing Quality not found in genome creation report")
+        return {}
+
+    return {
+        "Mapped To": "M. tuberculosis (H37Rv v3) NC_000962.3",
+        "Coverage": seq_quality["Fixed coverage"],
+        "Mixed calls": seq_quality["Mixed calls"],
+        "Null calls": seq_quality["Null calls"],
+        "Reference genome length": seq_quality["Reference genome length"],
+    }
+
+
+def get_reporting_name(
     cm_name: str,
-    mapping: pd.DataFrame,
-    species: list[str],
+    name_mapping: pd.DataFrame,
+    subspecies: list[str],
     lineages: list[str],
 ) -> str:
     """Determine the name to report for the organism.
 
     Args:
         cm_name (str): Name from Competitive Mapping.
-        mapping (pd.DataFrame): Reference data mapping Competitive Mapping
+        name_mapping (pd.DataFrame): Reference data mapping Competitive Mapping
         and mykrobe outputs to reportable name.
-        species (str): All species from mykrobe.
+        subspecies (str): All "subspecies" from mykrobe.
         lineages (str): All lineages from mykrobe.
 
     Returns:
@@ -366,7 +358,10 @@ def organism_name(
     if cm_name == "M.tuberculosis":
         new_rows = []
         for lineage in lineages:
-            if is_digit_lineage(lineage) and lineage not in mapping.LINEAGE.unique():
+            if (
+                is_digit_lineage(lineage)
+                and lineage not in name_mapping.LINEAGE.unique()
+            ):
                 # add new lineage to mapping
                 new_rows.append(
                     {
@@ -377,23 +372,23 @@ def organism_name(
                     }
                 )
         if new_rows:
-            mapping = pd.concat([mapping, pd.DataFrame(new_rows)])
+            name_mapping = pd.concat([name_mapping, pd.DataFrame(new_rows)])
 
     # subset to only the rows that match the competitive mapping name
-    mapping = mapping[mapping.reference == cm_name].copy()
+    name_mapping = name_mapping[name_mapping.reference == cm_name].copy()
 
     # subset by species
-    species_df = mapping[mapping.SPECIES.isin(species)]
+    species_df = name_mapping[name_mapping.SPECIES.isin(subspecies)]
     if species_df.empty:
         # No matches found, fall back to generic case
-        species_df = mapping[mapping.SPECIES == "Unknown"]
+        species_df = name_mapping[name_mapping.SPECIES == "Unknown"]
 
     # count number of unique species in table now
     if species_df.SPECIES.nunique() > 1:
         if cm_name == "M.tuberculosis":
             # Special case of mixed species. e.g. canetti and normal tb
             return "MTB Complex (mixed lineage)"
-        logging.warning(
+        logger.warning(
             f"More than one unique species {species_df.SPECIES.unique()} found for {cm_name}"
         )
         return f"{cm_name.replace('M.', 'M. ')} (mixed lineage)"
@@ -417,7 +412,7 @@ def organism_name(
                 return "M. bovis (mixed lineage) (MTB complex)"
             return "M. tuberculosis (mixed lineage)"
 
-        logging.warning(
+        logger.warning(
             f"More than one unique lineage {lineage_df.LINEAGE.unique()} found for {cm_name}"
         )
         return f"{cm_name.replace('M.', 'M. ')} (mixed lineage)"
@@ -431,319 +426,6 @@ def organism_name(
     return reporting_names[0]
 
 
-def generate_sequencing_quality(mappings: dict, genome_creation_report: dict) -> dict:
-    """Summarises sequencing quality.
-
-    Args:
-        mappings (dict): Competitive Mapping output.
-
-    Returns:
-        dict: Summary of sequencing quality.
-    """
-    # Much of this data is a repeat of data already in Myco Results
-    tb_mappings = list(
-        filter(
-            lambda mapping: "tuberculosis" in mapping["genome_name"],
-            mappings["references"],
-        )
-    )
-    if len(tb_mappings) > 1:
-        raise ValueError(
-            "More than one mapping to M.tuberculosis. Possible manifest problem."
-        )
-    tb_mapping = tb_mappings[0]
-
-    genome_name = tb_mapping["genome_name"]
-
-    match genome_name:
-        case "M.tuberculosis":
-            mapped_to_name = "M. tuberculosis (H37Rv v3) NC_000962.3"
-        case _:
-            mapped_to_name = genome_name
-
-    seq_qual = {
-        "Mapped To": mapped_to_name,
-        "Num Reads": tb_mapping["numreads"],
-        "Coverage": genome_creation_report["Sequencing Quality"]["Fixed coverage"],
-        "Mean Depth": tb_mapping["meandepth"],
-        "Mixed calls": genome_creation_report["Sequencing Quality"]["Mixed calls"],
-        "Null calls": genome_creation_report["Sequencing Quality"]["Null calls"],
-        "Reference genome length": genome_creation_report["Sequencing Quality"][
-            "Reference genome length"
-        ],
-    }
-
-    return seq_qual
-
-
-def construct_payload(significant_variants_df: pd.DataFrame) -> list:
-    """Construct Resistance Prediction Details payload for the summary JSON.
-
-    Args:
-        significant_variants_df (pd.DataFrame):
-
-    Returns:
-        list: results for incorporation in summary JSON
-    """
-
-    drugs = []
-    payload = []
-    valid_nucleotides = ["a", "t", "c", "g", "x", "z"]
-
-    # TODO: tried to do more elegantly with pd.to_json() but ended up doing simply
-
-    # create an alphabetical list of the drugs
-    drugs = significant_variants_df.drug.unique()
-    drugs = sorted(drugs)
-
-    drug_blocks = {}
-    for drug in drugs:
-        drug_blocks[drug] = {"Drug Name": drug, "Mutations": []}
-
-    seen_mutations = {}
-
-    for idx, row in significant_variants_df.iterrows():
-        significant_variant = {}
-        keep = True
-
-        if pd.isnull(row.gene):
-            significant_variant["Gene"] = None
-        else:
-            significant_variant["Gene"] = row.gene
-
-        significant_variant["Mutation"] = row.mutation
-
-        if pd.isnull(row.gene_position):
-            significant_variant["Position"] = None
-        else:
-            significant_variant["Position"] = int(row.gene_position)
-
-        if isinstance(row.ref, str):
-            significant_variant["Ref"] = row.ref
-        elif (
-            row.mutation[0] in valid_nucleotides
-            and row.mutation[-1] in valid_nucleotides
-        ):
-            significant_variant["Ref"] = row.mutation[0]
-        else:
-            significant_variant["Ref"] = ""
-        if isinstance(row.alt, str):
-            significant_variant["Alt"] = row.alt
-        elif (
-            row.mutation[0] in valid_nucleotides
-            and row.mutation[-1] in valid_nucleotides
-        ):
-            significant_variant["Alt"] = row.mutation[-1]
-        else:
-            significant_variant["Alt"] = ""
-        if row.coverage_ref == "Complex" and row.coverage_alt == "Complex":
-            significant_variant["Coverage"] = ["Complex", "Complex"]
-        else:
-            significant_variant["Coverage"] = [
-                int(row.coverage_ref)
-                if row.coverage_ref is not None and row.coverage_ref >= 0
-                else None,
-                int(row.coverage_alt)
-                if row.coverage_alt is not None and row.coverage_alt >= 0
-                else None,
-            ]
-
-        if seen_mutations.get(
-            (row.drug, significant_variant["Gene"], significant_variant["Mutation"])
-        ):
-            # Already seen this mutation so check if this is variant's coverage is less
-            old_idx, significant_cov = seen_mutations.get(
-                (row.drug, significant_variant["Gene"], significant_variant["Mutation"])
-            )
-            if significant_cov[0] is not None and significant_cov[0] != "Complex":
-                if significant_variant["Coverage"][0] is not None:
-                    if significant_variant["Coverage"][0] > significant_cov[0]:
-                        keep = False
-                else:
-                    # Last row for this codon gave a specific value, this didn't, so don't keep this
-                    keep = False
-            if significant_cov[1] is not None and significant_cov[1] != "Complex":
-                if significant_variant["Coverage"][1] is not None:
-                    if significant_variant["Coverage"][1] > significant_cov[1]:
-                        keep = False
-                else:
-                    # Last row for this codon gave a specific value, this didn't, so don't keep this
-                    keep = False
-
-            if keep:
-                # Remove the old one in favour of this
-                del drug_blocks[row.drug]["Mutations"][old_idx]
-
-        significant_variant["Prediction"] = row.prediction
-        if row.evidence == {}:
-            significant_variant["Evidence"] = ""
-        else:
-            significant_variant["Evidence"] = row.evidence
-
-        drug_blocks[row.drug]["Mutations"].append(significant_variant)
-        seen_mutations[
-            (row.drug, significant_variant["Gene"], significant_variant["Mutation"])
-        ] = (
-            len(drug_blocks[row.drug]["Mutations"]) - 1,
-            significant_variant["Coverage"],
-        )
-
-    for drug_name in drugs:
-        payload.append(drug_blocks[drug_name])
-
-    return payload
-
-
-def unpack_COV_from_info(row: pd.Series) -> pd.Series:
-    """Helper pd function for retrieving the COV from the INFO column
-
-    Args:
-        row (pd.Series): row passed from pd apply function
-
-    Returns:
-        pd.Series: REF and ALT coverage values
-    """
-    result = pd.Series([np.float64("nan"), np.float64("nan")])
-    if row.vcf_idx is not None and row.vcf_idx >= 0:
-        idx = int(row.vcf_idx)
-        if "COV" in row.vcf_evidence:
-            if len(row.vcf_evidence["COV"]) == 1:
-                # Edge case of only one COV value
-                if idx == 0:
-                    # It's a ref (probably a null) so put in just the ref coverage
-                    result = pd.Series([row.vcf_evidence["COV"][0], 0])
-                else:
-                    # It's an alt (probably a null) so put in just the alt coverage
-                    result = pd.Series([0, row.vcf_evidence["COV"][idx]])
-            else:
-                if idx == 0:
-                    # It's a ref (probably a null) so put in the ref coverage
-                    result = pd.Series([row.vcf_evidence["COV"][0], 0])
-                else:
-                    # It's not a ref call, so give ref and alt coverage
-                    result = pd.Series(
-                        [row.vcf_evidence["COV"][0], row.vcf_evidence["COV"][idx]]
-                    )
-        elif "VCF row is complex" in row.vcf_evidence:
-            # Complex row, so despite no VCF evidence, we want to mark as such
-            result = pd.Series(["Complex", "Complex"])
-    return result
-
-
-def generate_resistance_prediction(gnomonicus_data: dict) -> dict:
-    """Summarises resistance prediction information,
-
-    Args:
-        gnomonicus_data (dict): Gnomonicus output.
-
-    Raises:
-        ValueError: Unknown mutation.
-        ValueError: Unknown gene position.
-        ValueError: Unknown gene.
-
-    Returns:
-        dict: Summary of resistance prediction information.
-    """
-    amr = {"Resistance Prediction Summary": {}, "Resistance Prediction Detail": []}
-    data = gnomonicus_data.get("data")
-    meta = gnomonicus_data.get("meta")
-
-    # There's 2 main situations here:
-    # 1. Populated everything - a sample had >=1 variant within a resistance gene
-    # 2. Limited fields populated - a sample had 0 variants within resistance genes
-    # In both, the antibiogram is populated
-
-    # let's put the drugs in alphabetical order
-    raw_antibiogram = dict(sorted((data.get("antibiogram")).items()))
-    if meta.get("catalogue_name") != "WHO-UCN-GTB-PCI-2023.5":
-        # Filter out BDQ if we haven't used WHO v2
-        raw_antibiogram["BDQ"] = "-"
-    antibiogram = {}
-    # the code below groups the drugs according to the treatment_classes
-    # this effectively hardcodes version 1 of the WHO catalogue
-    # -> will need generalising if we are to use multiple catalogues
-    for treatment_category, drug_list in treatment_classes.items():
-        antibiogram[treatment_category] = {}
-        # drug3 is the 3 letter code
-        for drug3 in drug_list:
-            drug_name_long = drug_names[drug3] + " (" + drug3 + ")"
-            antibiogram[treatment_category][drug_name_long] = raw_antibiogram.get(
-                drug3, "-"
-            )
-
-    amr["Resistance Prediction Summary"] = antibiogram
-
-    # Check if we have situtation 1 or 2
-    if len(data.get("effects")) == 0:
-        # Situation 2 - no variants
-        amr["Resistance Prediction Detail"] = []
-    else:
-        # Situation 1 - variants
-
-        # retrieve the effects block and build our base pd DataFrame
-        effects = data.get("effects")
-        effects_list = []
-        for drug_name in effects:
-            for effect_mutation in effects[drug_name]:
-                if "phenotype" not in effect_mutation:
-                    effect_mutation["drug"] = drug_name
-                    effects_list.append(effect_mutation)
-        effects_df = pd.DataFrame(effects_list)
-        effects_df.set_index(["gene", "mutation"], inplace=True)
-
-        # retrieve the mutations block and build another pd DataFrame
-        mutations_list = data.get("mutations")
-        mutations_df = pd.DataFrame(mutations_list)
-        # In cases of 0 AA mutations, no `ref` or `alt` fields are present
-        # so put in dummy values for these
-        if "ref" not in mutations_df.columns:
-            mutations_df["ref"] = np.nan
-        if "alt" not in mutations_df.columns:
-            mutations_df["alt"] = np.nan
-        mutations_df.set_index(["gene", "mutation"], inplace=True)
-
-        # now left-join mutations to effects so we can get the a few extra columns
-        # note that this can be many:1 since a single mutation can affect multiple drugs
-        effects_muts_df = effects_df.join(mutations_df[["ref", "alt", "gene_position"]])
-        effects_muts_df.reset_index(inplace=True)
-        effects_muts_df.set_index(["gene", "gene_position"], inplace=True)
-
-        # finally, retrieve the variants block and build the final DataFrame
-        variants = data.get("variants")
-        variants_df = pd.DataFrame(variants)
-        variants_df.rename(columns={"gene_name": "gene"}, inplace=True)
-        variants_df.set_index(["gene", "gene_position"], inplace=True)
-
-        # now left-join to variants so we can get at the INFO field held
-        #  in vcf_evidence as this contains COV
-        # note this can be 1:many since a single mutation can be made up
-        #  of multiple variants (e.g. multiple SNPs, minor alleles etc)
-        effects_muts_vars_df = effects_muts_df.join(
-            variants_df[["vcf_evidence", "vcf_idx"]]
-        )
-        effects_muts_vars_df.reset_index(inplace=True)
-        effects_muts_vars_df.set_index(["drug", "gene", "mutation"], inplace=True)
-
-        # use the pd helper function defined elsewhere to extract COV from the vcf_evidence field
-        effects_muts_vars_df[["coverage_ref", "coverage_alt"]] = (
-            effects_muts_vars_df.apply(unpack_COV_from_info, axis=1)
-        )
-        effects_muts_vars_df.drop(columns=["vcf_evidence", "vcf_idx"], inplace=True)
-
-        # ignore mutations that have no effect
-        # now we have a DataFrame with all the fields and so can construct the dict payload
-        effects_muts_vars_df.reset_index(inplace=True)
-        effects_muts_vars_df = effects_muts_vars_df[
-            (effects_muts_vars_df["mutation"].str.contains(r"&"))
-            | (effects_muts_vars_df.prediction != "S")
-        ]
-
-        payload = construct_payload(effects_muts_vars_df)
-        amr["Resistance Prediction Detail"] = payload
-
-    return amr
-
-
 def create_summary(
     reports: dict,
 ) -> dict:
@@ -751,61 +433,19 @@ def create_summary(
 
     Args:
         reports (dict): A collection of reports to summarise.
-        assembled_species (list[str], optional): List of species with assembled genomes. Defaults to [].
 
     Returns:
         dict: Summary GPAS pipeline output.
     """
 
-    output = {}
-    if "gatekeeper" in reports:
-        output["Pipeline Outcome"] = (
-            "Number of Mycobacterial reads is too low to proceed to Mycobacterial species identification."
-        )
-        gatekeeper_json = read_json_file(reports["gatekeeper"])
-        output["Organism Identification"] = generate_organism_identification(
-            gatekeeper_json
-        )
-    else:
-        output = "Pipeline failed to produce a summary (summary_pipeline could not find gatekeeper report)."
-    if "mapping" in reports and "mykrobe" in reports:
-        output["Pipeline Outcome"] = (
-            "Mycobacterial species identified. Reads mapped to M. tuberculosis (H37Rv v3) too low to proceed to M. tuberculosis complex genome assembly."
-        )
-        mapping_json = read_json_file(reports["mapping"])
-        mykrobe_data = read_json_file(reports["mykrobe"])
-        name_mapping = pd.read_csv(reports["name_mapping"])
-        output["Mycobacterium Results"] = generate_mycobacterium_results(
-            mapping_json, mykrobe_data, name_mapping, "creation_report" in reports
-        )
-    else:
-        output["Mycobacterium Results"] = None
-    # make this next block a list to cope with the future when other species are also mapped,
-    # and potentially also have resistance predictions returned
-    # FIXME for now we can hard code much of this since there will only ever be one and it will always
-    # be M. tuberculosis
-    if (
-        "mapping" in reports
-        and "creation_report" in reports
-        and "gnomonicus" in reports
-    ):
-        output["Pipeline Outcome"] = (
-            "Sufficient reads mapped to M. tuberculosis (H37Rv v3) for genome assembly, resistance prediction and relatedness assessment."
-        )
-        creation_report_json = read_json_file(reports["creation_report"])
-        gnom_json = read_json_file(reports["gnomonicus"])
-        output["Genomes"] = []
-        genome = {}
-        genome["Name"] = "M. tuberculosis"
-        genome["Sequencing Quality"] = generate_sequencing_quality(
-            mapping_json, creation_report_json
-        )
-        genome["Resistance Prediction"] = generate_resistance_prediction(gnom_json)
-        output["Genomes"].append(genome)
-    else:
-        output["Genomes"] = None  #
-    if "versions" in reports or "knowledge" in reports:
-        output["Metadata"] = {}
+    output = {
+        "Pipeline Outcome": PipelineOutcome.LOW_MYCO,
+        "Organism Identification": None,
+        "Mycobacterium Results": None,
+        "Genomes": None,
+        "Metadata": {},
+    }
+
     if "versions" in reports:
         pipeline_build = read_pipeline_build(reports["versions"])
         output["Metadata"]["Pipeline build"] = pipeline_build
@@ -813,103 +453,160 @@ def create_summary(
         knowledge = read_json_file(reports["knowledge"])
         output["Metadata"]["Reference Data Files"] = knowledge
 
+    if "gatekeeper" in reports:
+        output["Organism Identification"] = summarise_gatekeeper(
+            read_json_file(reports["gatekeeper"])
+        )
+    else:
+        logger.warning("No gatekeeper report found. Pipeline must have failed.")
+        return output
+
+    mykrobe_summary = (
+        summarise_mykrobe(read_json_file(reports["mykrobe"]))
+        if "mykrobe" in reports
+        else {}
+    )
+
+    mapping_summary = (
+        summarise_comp_mapping(
+            read_json_file(reports["mapping"]),
+            mykrobe_summary,
+            "creation_report" in reports,
+        )
+        if "mapping" in reports
+        else {}
+    )
+
+    if "mapping" in reports or "mykrobe" in reports:
+        output["Pipeline Outcome"] = PipelineOutcome.LOW_TB
+        output["Mycobacterium Results"] = mapping_summary | mykrobe_summary
+
+    # For assemblies currently only support TB
+    if "creation_report" in reports:
+        output["Pipeline Outcome"] = PipelineOutcome.TB_ASSEMBLED
+        assembly_dict = {
+            "Name": "M. tuberculosis",
+            "Sequencing Quality": summarise_genome_creation(
+                read_json_file(reports["creation_report"]),
+            ),
+        }
+
+        if "gnomonicus" in reports:
+            assembly_dict["Resistance Prediction"] = summarise_gnomonicus(
+                read_json_file(reports["gnomonicus"])
+            )
+        output["Genomes"] = [assembly_dict]
+
+    # Now want to make summary section which is a combination of the above
+    # Each "species" entry from mapping should get an entry in summary
+    if mapping_summary and "name_mapping" in reports:
+        name_mapping = pd.read_csv(reports["name_mapping"])
+        mykrobe_subspecies = [s["Name"] for s in mykrobe_summary.get("Subspecies", [])]
+        mykrobe_lineages = [lin["Name"] for lin in mykrobe_summary.get("Lineage", [])]
+        summary = []
+
+        for species_data in mapping_summary["Species"]:
+            reporting_name = get_reporting_name(
+                species_data["Name"],
+                name_mapping,
+                mykrobe_subspecies,
+                mykrobe_lineages,
+            )
+            summary.append(
+                {
+                    "Name": reporting_name,
+                    "Num Reads": species_data["Num Reads"],
+                    "Coverage": species_data["Coverage"],
+                    "Depth": species_data["Mean Depth"],
+                    "Length": species_data["Length"],
+                }
+            )
+
+        output["Mycobacterium Results"] = {
+            "Summary": summary,
+            **output["Mycobacterium Results"],
+        }
+
+    # need to convert pipeline outcome to string for JSON serialisation
+    output["Pipeline Outcome"] = output["Pipeline Outcome"].value
+
+    # make changes for backwards compatibility with old summary JSONs
+    if not output["Metadata"]:
+        del output["Metadata"]
+
+    if output["Genomes"]:
+        # need to add Num Reads and Mean Depth to Genomes for backwards compatibility
+        tb_mapping_data = next(
+            sp
+            for sp in output["Mycobacterium Results"]["Species"]
+            if "tuberculosis" in sp["Name"].lower()
+        )
+        output["Genomes"][0]["Sequencing Quality"]["Num Reads"] = tb_mapping_data[
+            "Num Reads"
+        ]
+        output["Genomes"][0]["Sequencing Quality"]["Mean Depth"] = tb_mapping_data[
+            "Mean Depth"
+        ]
+
     return output
-
-
-def read_json_file(path: Path) -> dict:
-    """Utility function to load JSON files.
-
-    Args:
-        path (Path): Path to JSON file.
-
-    Raises:
-        FileNotFoundError: JSON file does not exist.
-
-    Returns:
-        dict: JSON file represented as a dictionary.
-    """
-    if not os.path.isfile(path):
-        raise FileNotFoundError(
-            "File " + str(path) + " does not exist. Data could not be loaded"
-        )
-    with open(path, "r") as file:
-        data = json.load(file)
-    return data
-
-
-def read_pipeline_build(path: Path) -> str:
-    """Read the pipeline build file to find the pipeline build tag
-
-    Args:
-        path (Path): Path to the `PIPELINE_BUILD` file
-
-    Returns:
-        str: Poller release tag which built this pipeline
-    """
-    if not os.path.isfile(path):
-        raise FileNotFoundError(
-            "File " + str(path) + " does not exist. Data could not be loaded"
-        )
-    with open(path, "r") as file:
-        return file.read().strip()
-
-
-def write_summary(output: dict, location: Path = Path("Mega.json")) -> None:
-    """Write summary to JSON file.
-
-    Args:
-        output (dict): Summary information.
-        location (Path, optional): Path to write to. Defaults to "Mega.json".
-    """
-    with open(location, "w") as file:
-        file.write(json.dumps(output, indent=4))
-
-
-def collate_reports(cli_args: Arguments) -> dict:
-    """Builds a dict of reports from the cli arguments.
-
-    Args:
-        cli_args (Arguments): Command line arguments.
-
-    Returns:
-        dict: Pipeline reports.
-    """
-    reports = {}
-    try:
-        reports["versions"] = cli_args.versions
-    except AttributeError as error:
-        logging.info(error)
-    try:
-        reports["knowledge"] = cli_args.knowledge
-    except AttributeError as error:
-        logging.info(error)
-    reports["gatekeeper"] = cli_args.gatekeeper
-    try:
-        reports["mapping"] = cli_args.mapping
-    except AttributeError as error:
-        logging.info(error)
-    try:
-        reports["mykrobe"] = cli_args.mykrobe
-    except AttributeError as error:
-        logging.info(error)
-    try:
-        reports["creation_report"] = cli_args.creation_report
-    except AttributeError as error:
-        logging.info(error)
-    try:
-        reports["gnomonicus"] = cli_args.gnomonicus
-    except AttributeError as error:
-        logging.info(error)
-    try:
-        reports["name_mapping"] = cli_args.name_mapping
-    except AttributeError as error:
-        logging.info(error)
-    return reports
 
 
 def cli_entry_point() -> None:
     """CLI entry point."""
-    cli_args = Arguments(sys.argv[1:])
-    reports = collate_reports(cli_args)
+    reports, output = read_args()
     summary = create_summary(reports)
-    write_summary(summary, cli_args.output)
+    with open(output, "w", encoding="utf-8") as file:
+        file.write(json.dumps(summary, indent=4))
+
+
+def report_list_to_dict(report_list: list[str]) -> dict:
+    """Convert a list of report files to a dictionary.
+
+    Args:
+        report_list (list[str]): List of report files.
+
+    Returns:
+        dict: Dictionary of report files.
+    """
+    reports = {}
+    for report in report_list:
+        report_name = os.path.basename(report)
+        if report_name in REPORT_NAME_MAP:
+            reports[REPORT_NAME_MAP[report_name]] = report
+        else:
+            assigned = False
+            for filename, report_type in REPORT_NAME_MAP.items():
+                filename_stem = filename.split(".")[0]
+                if filename_stem in report_name:
+                    reports[report_type] = report
+                    assigned = True
+                    break
+
+            if not assigned:
+                logger.warning(
+                    f"Report {report_name} not recognised and will be ignored."
+                )
+    return reports
+
+
+def read_args() -> tuple[dict, str]:
+    """Use argparse to read reports to dictionary"""
+    parser = argparse.ArgumentParser(
+        description="Process pipeline output to create a Summary JSON"
+    )
+    parser.add_argument(
+        "--reports",
+        nargs="+",
+        required=True,
+        help="A list of report files, the contents of which will be inferred by filename",
+    )
+    parser.add_argument(
+        "-o",
+        "--output",
+        default="main_report.json",
+        help="Path including name for output json file",
+    )
+    args = parser.parse_args()
+    reports = report_list_to_dict(args.reports)
+
+    return reports, args.output

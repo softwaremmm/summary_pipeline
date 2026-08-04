@@ -12,29 +12,33 @@
                 "Name": "M. avium subsp. silvaticum (MAC)",
                 "Num Reads": 562248,
                 "Coverage": 87.6706,
-                "Depth": 15.908499999999998
+                "Depth": 15.908499999999998,
+                "Length": 5118245
             },
             {
                 "Name": "M. tuberculosis (lineage Unknown)",
                 "Num Reads": 35,
                 "Coverage": 0.107378,
-                "Depth": 0.00108738
+                "Depth": 0.00108738,
+                "Length": 4411532
             }
         ],
         "Species": [
             {
                 "Name": "M.avium",
+                "Genome": "M.avium",
                 "Num Reads": 562248,
                 "Coverage": 87.6706,
                 "Mean Depth": 15.908499999999998,
-                "Length": 5118245.0
+                "Length": 5118245
             },
             {
                 "Name": "M.tuberculosis",
+                "Genome": "M.tuberculosis",
                 "Num Reads": 35,
                 "Coverage": 0.107378,
                 "Mean Depth": 0.00108738,
-                "Length": 4411532.0
+                "Length": 4411532
             }
         ],
         "Phylogenic Group": [

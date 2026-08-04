@@ -12,29 +12,33 @@
                 "Name": "M. avium",
                 "Num Reads": 89007,
                 "Coverage": 75.9888,
-                "Depth": 2.34133
+                "Depth": 2.34133,
+                "Length": 5118245
             },
             {
                 "Name": "M. tuberculosis (mixed lineage)",
                 "Num Reads": 41055,
                 "Coverage": 63.0743,
-                "Depth": 1.29548
+                "Depth": 1.29548,
+                "Length": 4411532
             }
         ],
         "Species": [
             {
                 "Name": "M.avium",
+                "Genome": "M.avium",
                 "Num Reads": 89007,
                 "Coverage": 75.9888,
                 "Mean Depth": 2.34133,
-                "Length": 5118245.0
+                "Length": 5118245
             },
             {
                 "Name": "M.tuberculosis",
+                "Genome": "M.tuberculosis",
                 "Num Reads": 41055,
                 "Coverage": 63.0743,
                 "Mean Depth": 1.29548,
-                "Length": 4411532.0
+                "Length": 4411532
             }
         ],
         "Phylogenic Group": [

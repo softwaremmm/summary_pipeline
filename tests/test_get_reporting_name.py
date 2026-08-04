@@ -1,24 +1,23 @@
 import pandas as pd
-import pytest
 
-from summary.summarise import organism_name
+from summary.summarise import get_reporting_name
 
 
-def test_organism_name_simple(name_mapping):
+def test_get_reporting_name_simple(name_mapping):
     name_mapping = pd.read_csv(name_mapping)
-    assert organism_name("M.acidiphilus", name_mapping, [], []) == "M. acidiphilus"
-    assert organism_name("M.abscessus", name_mapping, [], []) == "M. abscessus"
+    assert get_reporting_name("M.acidiphilus", name_mapping, [], []) == "M. acidiphilus"
+    assert get_reporting_name("M.abscessus", name_mapping, [], []) == "M. abscessus"
     assert (
-        organism_name("M.tuberculosis", name_mapping, [], [])
+        get_reporting_name("M.tuberculosis", name_mapping, [], [])
         == "M. tuberculosis (lineage Unknown)"
     )
 
 
-def test_organism_name_ntm_lineage(name_mapping):
+def test_get_reporting_name_ntm_lineage(name_mapping):
     name_mapping = pd.read_csv(name_mapping)
 
     assert (
-        organism_name(
+        get_reporting_name(
             "M.abscessus",
             name_mapping,
             ["Mycobacterium_abscessus"],
@@ -28,7 +27,7 @@ def test_organism_name_ntm_lineage(name_mapping):
     )
 
     assert (
-        organism_name(
+        get_reporting_name(
             "M.abscessus",
             name_mapping,
             ["Mycobacterium_abscessus", "Irrelevant"],
@@ -38,7 +37,7 @@ def test_organism_name_ntm_lineage(name_mapping):
     )
 
     assert (
-        organism_name(
+        get_reporting_name(
             "M.abscessus",
             name_mapping,
             ["Mycobacterium_abscessus"],
@@ -51,7 +50,7 @@ def test_organism_name_ntm_lineage(name_mapping):
     )
 
     assert (
-        organism_name(
+        get_reporting_name(
             "M.heraklionensis",
             name_mapping,
             ["Mycobacterium_heraklionense_A", "Mycobacterium_heraklionense_B"],
@@ -61,11 +60,11 @@ def test_organism_name_ntm_lineage(name_mapping):
     )
 
 
-def test_organism_name_tb(name_mapping):
+def test_get_reporting_name_tb(name_mapping):
     name_mapping = pd.read_csv(name_mapping)
 
     assert (
-        organism_name(
+        get_reporting_name(
             "M.tuberculosis",
             name_mapping,
             ["Mycobacterium_tuberculosis"],
@@ -75,7 +74,7 @@ def test_organism_name_tb(name_mapping):
     )
 
     assert (
-        organism_name(
+        get_reporting_name(
             "M.tuberculosis",
             name_mapping,
             ["Mycobacterium_tuberculosis"],
@@ -85,7 +84,7 @@ def test_organism_name_tb(name_mapping):
     )
 
     assert (
-        organism_name(
+        get_reporting_name(
             "M.tuberculosis",
             name_mapping,
             ["Mycobacterium_tuberculosis"],
@@ -95,7 +94,7 @@ def test_organism_name_tb(name_mapping):
     )
 
     assert (
-        organism_name(
+        get_reporting_name(
             "M.tuberculosis",
             name_mapping,
             ["Mycobacterium_tuberculosis_variant_africanum"],
@@ -105,7 +104,7 @@ def test_organism_name_tb(name_mapping):
     )
 
     assert (
-        organism_name(
+        get_reporting_name(
             "M.tuberculosis",
             name_mapping,
             ["Mycobacterium_tuberculosis_variant_africanum"],
@@ -115,7 +114,7 @@ def test_organism_name_tb(name_mapping):
     )
 
     assert (
-        organism_name(
+        get_reporting_name(
             "M.tuberculosis",
             name_mapping,
             ["Mycobacterium_tuberculosis", "other"],
@@ -125,7 +124,7 @@ def test_organism_name_tb(name_mapping):
     )
 
     assert (
-        organism_name(
+        get_reporting_name(
             "M.tuberculosis",
             name_mapping,
             [
@@ -138,7 +137,7 @@ def test_organism_name_tb(name_mapping):
     )
 
     assert (
-        organism_name(
+        get_reporting_name(
             "M.tuberculosis",
             name_mapping,
             [
