@@ -12,16 +12,18 @@
                 "Name": "M. bovis subsp. BCG (MTB complex)",
                 "Num Reads": 848988,
                 "Coverage": 93.0073,
-                "Depth": 26.9736
+                "Depth": 26.9736,
+                "Length": 4411532
             }
         ],
         "Species": [
             {
                 "Name": "M.tuberculosis",
+                "Genome": "M.tuberculosis",
                 "Num Reads": 848988,
                 "Coverage": 93.0073,
                 "Mean Depth": 26.9736,
-                "Length": 4411532.0
+                "Length": 4411532
             }
         ],
         "Phylogenic Group": [
@@ -51,12 +53,12 @@
             "Name": "M. tuberculosis",
             "Sequencing Quality": {
                 "Mapped To": "M. tuberculosis (H37Rv v3) NC_000962.3",
-                "Num Reads": 848988.0,
                 "Coverage": 86.7234,
-                "Mean Depth": 26.9736,
                 "Mixed calls": 95,
                 "Null calls": 87041,
-                "Reference genome length": 4411532
+                "Reference genome length": 4411532,
+                "Num Reads": 848988,
+                "Mean Depth": 26.9736
             },
             "Resistance Prediction": {
                 "Resistance Prediction Summary": {

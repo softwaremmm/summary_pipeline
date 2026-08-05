@@ -12,29 +12,33 @@
                 "Name": "M. malmoense",
                 "Num Reads": 1829356,
                 "Coverage": 98.1481,
-                "Depth": 45.9673
+                "Depth": 45.9673,
+                "Length": 5319859
             },
             {
                 "Name": "M. tuberculosis (lineage Unknown)",
                 "Num Reads": 582,
                 "Coverage": 0.838008,
-                "Depth": 0.0148735
+                "Depth": 0.0148735,
+                "Length": 4411532
             }
         ],
         "Species": [
             {
                 "Name": "M.malmoense",
+                "Genome": "M.malmoense",
                 "Num Reads": 1829356,
                 "Coverage": 98.1481,
                 "Mean Depth": 45.9673,
-                "Length": 5319859.0
+                "Length": 5319859
             },
             {
                 "Name": "M.tuberculosis",
+                "Genome": "M.tuberculosis",
                 "Num Reads": 582,
                 "Coverage": 0.838008,
                 "Mean Depth": 0.0148735,
-                "Length": 4411532.0
+                "Length": 4411532
             }
         ],
         "Phylogenic Group": [
@@ -53,5 +57,6 @@
         ],
         "Lineage": []
     },
-    "Genomes": null
+    "Genomes": null,
+    "Metadata": {}
 }

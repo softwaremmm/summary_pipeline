@@ -12,34 +12,54 @@
                 "Name": "M. komanii",
                 "Num Reads": 377667,
                 "Coverage": 63.2765020326,
-                "Depth": 8.6599462091
+                "Depth": 8.6599462091,
+                "Length": 5378970
+            },
+            {
+                "Name": "M. malmesburyense",
+                "Num Reads": 181718,
+                "Coverage": 46.8521315989,
+                "Depth": 3.9844297589,
+                "Length": 5470965
             },
             {
                 "Name": "M. tuberculosis (lineage Unknown)",
                 "Num Reads": 494,
                 "Coverage": 0.666231,
-                "Depth": 0.0103273
+                "Depth": 0.0103273,
+                "Length": 4411532
             }
         ],
         "Species": [
             {
                 "Name": "M.komanii",
+                "Genome": "M.komanii",
                 "Num Reads": 377667,
                 "Coverage": 63.2765020326,
                 "Mean Depth": 8.6599462091,
-                "Length": 5378970.0
+                "Length": 5378970
+            },
+            {
+                "Name": "M.malmesburyense",
+                "Genome": "M.malmesburyense",
+                "Num Reads": 181718,
+                "Coverage": 46.8521315989,
+                "Mean Depth": 3.9844297589,
+                "Length": 5470965
             },
             {
                 "Name": "M.tuberculosis",
+                "Genome": "M.tuberculosis",
                 "Num Reads": 494,
                 "Coverage": 0.666231,
                 "Mean Depth": 0.0103273,
-                "Length": 4411532.0
+                "Length": 4411532
             }
         ],
         "Phylogenic Group": [],
         "Subspecies": [],
         "Lineage": []
     },
-    "Genomes": null
+    "Genomes": null,
+    "Metadata": {}
 }

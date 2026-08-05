@@ -12,16 +12,18 @@
                 "Name": "M. mungi (MTB complex)",
                 "Num Reads": 15127751,
                 "Coverage": 98.1387,
-                "Depth": 302.466
+                "Depth": 302.466,
+                "Length": 4411532
             }
         ],
         "Species": [
             {
                 "Name": "M.tuberculosis",
+                "Genome": "M.tuberculosis",
                 "Num Reads": 15127751,
                 "Coverage": 98.1387,
                 "Mean Depth": 302.466,
-                "Length": 4411532.0
+                "Length": 4411532
             }
         ],
         "Phylogenic Group": [
@@ -46,5 +48,6 @@
             }
         ]
     },
-    "Genomes": null
+    "Genomes": null,
+    "Metadata": {}
 }

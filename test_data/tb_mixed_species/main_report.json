@@ -12,16 +12,18 @@
                 "Name": "MTB Complex (mixed lineage)",
                 "Num Reads": 5036701,
                 "Coverage": 99.99,
-                "Depth": 211.522
+                "Depth": 211.522,
+                "Length": 4411532
             }
         ],
         "Species": [
             {
                 "Name": "M.tuberculosis",
+                "Genome": "M.tuberculosis",
                 "Num Reads": 5036701,
                 "Coverage": 99.99,
                 "Mean Depth": 211.522,
-                "Length": 4411532.0
+                "Length": 4411532
             }
         ],
         "Phylogenic Group": [
@@ -51,5 +53,6 @@
             }
         ]
     },
-    "Genomes": null
+    "Genomes": null,
+    "Metadata": {}
 }
