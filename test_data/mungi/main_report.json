@@ -48,5 +48,6 @@
             }
         ]
     },
-    "Genomes": null
+    "Genomes": null,
+    "Metadata": {}
 }

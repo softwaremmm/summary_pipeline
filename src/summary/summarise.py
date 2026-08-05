@@ -530,10 +530,6 @@ def create_summary(
     # need to convert pipeline outcome to string for JSON serialisation
     output["Pipeline Outcome"] = output["Pipeline Outcome"].value
 
-    # make changes for backwards compatibility with old summary JSONs
-    if not output["Metadata"]:
-        del output["Metadata"]
-
     if output["Genomes"]:
         # need to add Num Reads and Mean Depth to Genomes for backwards compatibility
         tb_mapping_data = next(
