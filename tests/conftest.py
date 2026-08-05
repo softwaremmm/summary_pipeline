@@ -266,6 +266,7 @@ GTDB_TB = {
     "gnomonicus": "test_data/gtdb_tb/resistance_prediction_report.json",
     "expected_output": "test_data/gtdb_tb/main_report.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
+    "knowledge": "test_data/gtdb_tb/knowledge.json",
 }
 
 
