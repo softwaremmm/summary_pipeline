@@ -101,7 +101,7 @@ def summarise_gatekeeper(gatekeeper_data: dict) -> dict:
     return organism
 
 
-def process_lineages(lineages: dict) -> list[dict]:
+def process_lineages(lineage_dict: dict) -> list[dict]:
     """Summarise mykrobe lineages output.
 
     See https://github.com/Mykrobe-tools/mykrobe/wiki/AMR-prediction-output
@@ -119,18 +119,18 @@ def process_lineages(lineages: dict) -> list[dict]:
     lineage_summary = []
 
     # For subspecies like Mycobacterium_avium_subsp._silvaticum the structure is simpler
-    if "lineage" not in lineages:
-        for lineage_name in lineages:
+    if "lineage" not in lineage_dict:
+        for lineage_name in lineage_dict:
             new_line = {
                 "Name": lineage_name,
-                "Coverage": lineages[lineage_name]["percent_coverage"],
-                "Median Depth": lineages[lineage_name]["median_depth"],
+                "Coverage": lineage_dict[lineage_name]["percent_coverage"],
+                "Median Depth": lineage_dict[lineage_name]["median_depth"],
             }
             lineage_summary.append(new_line)
         return lineage_summary
 
-    calls = lineages.get("calls", {})
-    for lineage_name in lineages.get("lineage", []):
+    calls = lineage_dict.get("calls", {})
+    for lineage_name in lineage_dict.get("lineage", []):
         new_line = {
             "Name": lineage_name,
             "Coverage": 0,
@@ -186,6 +186,10 @@ def process_lineages(lineages: dict) -> list[dict]:
 
         new_line["Coverage"] = coverage_info.get("percent_coverage", 0)
         new_line["Median Depth"] = coverage_info.get("median_depth", 0)
+
+        filters = variant_support.get("info", {}).get("filter", [])
+        if filters:
+            new_line["Filters"] = filters
         lineage_summary.append(new_line)
 
     return lineage_summary

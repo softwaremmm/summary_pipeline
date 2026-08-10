@@ -69,12 +69,18 @@
             {
                 "Name": "lineage5",
                 "Coverage": 100,
-                "Median Depth": 2
+                "Median Depth": 2,
+                "Filters": [
+                    "LOW_GT_CONF"
+                ]
             },
             {
                 "Name": "lineage6",
                 "Coverage": 100,
-                "Median Depth": 1
+                "Median Depth": 1,
+                "Filters": [
+                    "LOW_GT_CONF"
+                ]
             }
         ]
     },

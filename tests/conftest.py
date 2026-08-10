@@ -269,6 +269,14 @@ GTDB_TB = {
     "knowledge": "test_data/gtdb_tb/knowledge.json",
 }
 
+FILTERED_LINEAGE = {
+    "gatekeeper_report": "test_data/filtered_lineage/speciation_report.json",
+    "competitivemapping_report": "test_data/filtered_lineage/species_comparison_report.json",
+    "mykrobe_report": "test_data/filtered_lineage/subspecies_report.json",
+    "expected_output": "test_data/filtered_lineage/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
+}
+
 
 @pytest.fixture(
     params=[
@@ -300,6 +308,7 @@ GTDB_TB = {
         TB_MIXED_SPECIES,
         TB_NEW_LINEAGE,
         GTDB_TB,
+        FILTERED_LINEAGE,
     ],
     ids=[
         "covid",
@@ -330,6 +339,7 @@ GTDB_TB = {
         "TB_MIXED_SPECIES",
         "TB_NEW_LINEAGE",
         "GTDB_TB",
+        "FILTERED_LINEAGE",
     ],
 )
 def regression_test_set(request) -> dict:
