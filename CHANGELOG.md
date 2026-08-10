@@ -1,4 +1,4 @@
-## New
+## 2.6.0
 * Simplify code to summarise tools separately where possible
 * Support competitive mapping from GTDB which has separate species and genome field
 

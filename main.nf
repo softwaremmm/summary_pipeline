@@ -38,11 +38,12 @@ workflow {
     }
 
     if (params.reports.contains("*")) {
-        reports_ch = Channel.fromPath(params.reports).collect().map { ["sample", it] }
-    } else {
+        reports_ch = channel.fromPath(params.reports).collect().map { it -> ["sample", it] }
+    }
+    else {
         reports_list = params.reports?.split(',') as List
         reports_list_abs = reports_list.collect { it -> projectDir / it }
-        reports_ch = Channel.of(reports_list_abs).map { ["sample", it] }
+        reports_ch = channel.of(reports_list_abs).map { it -> ["sample", it] }
     }
     reports_ch.view()
     summary(reports_ch)
@@ -64,7 +65,7 @@ process summary_json {
     cpus 1
     memory '0.5 GB'
     container {
-        params.test_container_myco_summary == "" ? params.container_prefix + '/gpas/summary_pipeline:f96c07e' : params.test_container_myco_summary
+        params.test_container_myco_summary == "" ? params.container_prefix + '/gpas/summary_pipeline:2.6.0' : params.test_container_myco_summary
     }
 
     pod label: "name", value: "summary_pipeline:summary_json"
@@ -72,10 +73,10 @@ process summary_json {
     pod label: "run_id", value: "${params.run_id}"
 
     input:
-    tuple val(sample_name), path (reports)
+    tuple val(sample_name), path(reports)
 
     output:
-    tuple val(sample_name), path ("main_report.json"), emit: main_report
+    tuple val(sample_name), path("main_report.json"), emit: main_report
 
     script:
     """
