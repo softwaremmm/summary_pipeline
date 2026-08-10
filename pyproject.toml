@@ -35,7 +35,7 @@ version_provider = "pep621"
 tag_format = "$version"
 
 [tool.version_bumper]
-active_version = "f96c07e"
+active_version = "62d0928"
 version_files = [
     "main.nf",
 ]
