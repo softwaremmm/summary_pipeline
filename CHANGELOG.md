@@ -1,6 +1,7 @@
 ## 2.6.0
 * Simplify code to summarise tools separately where possible
 * Support competitive mapping from GTDB which has separate species and genome field
+* Add mykrobe filters to main report
 
 ## 2.5.3
 * Correct container image name
