@@ -12,29 +12,33 @@
                 "Name": "M. africanum (mixed lineage) (MTB complex)",
                 "Num Reads": 9414,
                 "Coverage": 98.0922,
-                "Depth": 4.25294
+                "Depth": 4.25294,
+                "Length": 4411532
             },
             {
                 "Name": "M. abscessus",
                 "Num Reads": 154369,
                 "Coverage": 97.9465,
-                "Depth": 30.4485
+                "Depth": 30.4485,
+                "Length": 5067172
             }
         ],
         "Species": [
             {
                 "Name": "M.tuberculosis",
+                "Genome": "M.tuberculosis",
                 "Num Reads": 9414,
                 "Coverage": 98.0922,
                 "Mean Depth": 4.25294,
-                "Length": 4411532.0
+                "Length": 4411532
             },
             {
                 "Name": "M.abscessus",
+                "Genome": "M.abscessus",
                 "Num Reads": 154369,
                 "Coverage": 97.9465,
                 "Mean Depth": 30.4485,
-                "Length": 5067172.0
+                "Length": 5067172
             }
         ],
         "Phylogenic Group": [
@@ -65,12 +69,18 @@
             {
                 "Name": "lineage5",
                 "Coverage": 100,
-                "Median Depth": 2
+                "Median Depth": 2,
+                "Filters": [
+                    "LOW_GT_CONF"
+                ]
             },
             {
                 "Name": "lineage6",
                 "Coverage": 100,
-                "Median Depth": 1
+                "Median Depth": 1,
+                "Filters": [
+                    "LOW_GT_CONF"
+                ]
             }
         ]
     },
@@ -79,12 +89,12 @@
             "Name": "M. tuberculosis",
             "Sequencing Quality": {
                 "Mapped To": "M. tuberculosis (H37Rv v3) NC_000962.3",
-                "Num Reads": 9414,
                 "Coverage": 27.879203868406712,
-                "Mean Depth": 4.25294,
                 "Mixed calls": 70,
                 "Null calls": 218778,
-                "Reference genome length": 4411532
+                "Reference genome length": 4411532,
+                "Num Reads": 9414,
+                "Mean Depth": 4.25294
             },
             "Resistance Prediction": {
                 "Resistance Prediction Summary": {
@@ -8580,5 +8590,6 @@
                 ]
             }
         }
-    ]
+    ],
+    "Metadata": {}
 }

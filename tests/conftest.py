@@ -1,18 +1,16 @@
-import json
 from pathlib import Path
 
 import pytest
 
-from summary.cli_args import Arguments
 
-covid = {
+COVID = {
     "PIPELINE_BUILD": "test_data/covid/PIPELINE_BUILD",
     "gatekeeper_report": "test_data/covid/speciation_report.json",
     "expected_output": "test_data/covid/main_report.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
-covid_no_meta = {
+COVID_NO_META = {
     "gatekeeper_report": "test_data/covid_no_meta/speciation_report.json",
     "expected_output": "test_data/covid_no_meta/main_report.json",
     "name_mapping": "test_data/reference/name_mapping.csv",
@@ -260,11 +258,30 @@ TB_NEW_LINEAGE = {
     "name_mapping": "test_data/reference/name_mapping.csv",
 }
 
+GTDB_TB = {
+    "gatekeeper_report": "test_data/gtdb_tb/speciation_report.json",
+    "competitivemapping_report": "test_data/gtdb_tb/species_comparison_report.json",
+    "mykrobe_report": "test_data/gtdb_tb/subspecies_report.json",
+    "creation_report": "test_data/gtdb_tb/genome_creation_report.json",
+    "gnomonicus": "test_data/gtdb_tb/resistance_prediction_report.json",
+    "expected_output": "test_data/gtdb_tb/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
+    "knowledge": "test_data/gtdb_tb/knowledge.json",
+}
+
+FILTERED_LINEAGE = {
+    "gatekeeper_report": "test_data/filtered_lineage/speciation_report.json",
+    "competitivemapping_report": "test_data/filtered_lineage/species_comparison_report.json",
+    "mykrobe_report": "test_data/filtered_lineage/subspecies_report.json",
+    "expected_output": "test_data/filtered_lineage/main_report.json",
+    "name_mapping": "test_data/reference/name_mapping.csv",
+}
+
 
 @pytest.fixture(
     params=[
-        covid,
-        covid_no_meta,
+        COVID,
+        COVID_NO_META,
         SRR2097047,
         TB_NO_MYKROBE,
         SEPTICUM,
@@ -290,6 +307,8 @@ TB_NEW_LINEAGE = {
         MUNGI,
         TB_MIXED_SPECIES,
         TB_NEW_LINEAGE,
+        GTDB_TB,
+        FILTERED_LINEAGE,
     ],
     ids=[
         "covid",
@@ -319,6 +338,8 @@ TB_NEW_LINEAGE = {
         "mungi",
         "TB_MIXED_SPECIES",
         "TB_NEW_LINEAGE",
+        "GTDB_TB",
+        "FILTERED_LINEAGE",
     ],
 )
 def regression_test_set(request) -> dict:
@@ -326,199 +347,8 @@ def regression_test_set(request) -> dict:
 
 
 @pytest.fixture
-def all_reports_set_individually() -> list:
-    return [
-        "--versions",
-        "test_data/WTCHG_885333_73205296_1/PIPELINE_BUILD",
-        "--knowledge",
-        "test_data/WTCHG_885333_73205296_1/knowledge.json",
-        "--gatekeeper",
-        "test_data/WTCHG_885333_73205296_1/speciation_report.json",
-        "--mapping",
-        "test_data/WTCHG_885333_73205296_1/species_comparison_report.json",
-        "--mykrobe",
-        "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
-        "--creation_report",
-        "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
-        "--gnomonicus",
-        "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
-        "--name_mapping",
-        "test_data/reference/name_mapping.csv",
-    ]
-
-
-@pytest.fixture
-def all_reports_set_individually_args(all_reports_set_individually) -> Arguments:
-    return Arguments(all_reports_set_individually)
-
-
-@pytest.fixture
-def all_reports() -> list:
-    return [
-        "--reports",
-        "test_data/WTCHG_885333_73205296_1/PIPELINE_BUILD",
-        "test_data/WTCHG_885333_73205296_1/knowledge.json",
-        "test_data/WTCHG_885333_73205296_1/speciation_report.json",
-        "test_data/WTCHG_885333_73205296_1/species_comparison_report.json",
-        "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
-        "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
-        "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
-        "test_data/reference/name_mapping.csv",
-    ]
-
-
-@pytest.fixture
-def all_reports_args(all_reports) -> Arguments:
-    return Arguments(all_reports)
-
-
-@pytest.fixture
-def five_reports() -> list:
-    return [
-        "--reports",
-        "test_data/WTCHG_885333_73205296_1/speciation_report.json",
-        "test_data/WTCHG_885333_73205296_1/species_comparison_report.json",
-        "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
-        "test_data/WTCHG_885333_73205296_1/genome_creation_report.json",
-        "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
-        "test_data/reference/name_mapping.csv",
-    ]
-
-
-@pytest.fixture
-def five_reports_args(five_reports) -> Arguments:
-    return Arguments(five_reports)
-
-
-@pytest.fixture
-def three_reports() -> list:
-    return [
-        "--reports",
-        "test_data/WTCHG_885333_73205296_1/speciation_report.json",
-        "test_data/WTCHG_885333_73205296_1/species_comparison_report.json",
-        "test_data/WTCHG_885333_73205296_1/subspecies_report.json",
-        "test_data/reference/name_mapping.csv",
-    ]
-
-
-@pytest.fixture
-def three_reports_args(three_reports) -> Arguments:
-    return Arguments(three_reports)
-
-
-@pytest.fixture
-def one_report() -> list:
-    return [
-        "--reports",
-        "test_data/WTCHG_885333_73205296_1/speciation_report.json",
-        "test_data/reference/name_mapping.csv",
-    ]
-
-
-@pytest.fixture
-def one_report_args(one_report) -> Arguments:
-    return Arguments(one_report)
-
-
-@pytest.fixture
-def bad_report_combination() -> list:
-    return [
-        "--reports",
-        "test_data/WTCHG_885333_73205296_1/speciation_report.json",
-        "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json",
-    ]
-
-
-@pytest.fixture
-def no_reports() -> list:
-    return ["--reports"]
-
-
-@pytest.fixture
-def bad_reports() -> list:
-    return ["--bad", "bad"]
-
-
-@pytest.fixture
-def bad_path() -> Path:
-    return Path("does/not/exist")
-
-
-@pytest.fixture
 def eg_PIPELINE_BUILD() -> Path:
     return Path("test_data/WTCHG_885333_73205296_1/PIPELINE_BUILD")
-
-
-@pytest.fixture
-def eg_gatekeeper_report() -> Path:
-    return Path("test_data/WTCHG_885333_73205296_1/speciation_report.json")
-
-
-@pytest.fixture
-def eg_gatekeeper_report_contents(eg_gatekeeper_report) -> dict:
-    with open(eg_gatekeeper_report, "r") as file:
-        return json.load(file)
-
-
-@pytest.fixture
-def eg_competitivemapping_report() -> Path:
-    return Path("test_data/WTCHG_885333_73205296_1/species_comparison_report.json")
-
-
-@pytest.fixture
-def eg_competitivemapping_report_contents(eg_competitivemapping_report) -> dict:
-    with open(eg_competitivemapping_report, "r") as file:
-        return json.load(file)
-
-
-@pytest.fixture
-def eg_duplicate_tb_competitivemapping_report() -> Path:
-    return Path(
-        "test_data/WTCHG_885333_73205296_1/duplicate_tb_species_comparison_report.json"
-    )
-
-
-@pytest.fixture
-def eg_duplicate_tb_competitivemapping_report_contents(
-    eg_duplicate_tb_competitivemapping_report,
-) -> dict:
-    with open(eg_duplicate_tb_competitivemapping_report, "r") as file:
-        return json.load(file)
-
-
-@pytest.fixture
-def eg_mykrobe_report() -> Path:
-    return Path("test_data/WTCHG_885333_73205296_1/subspecies_report.json")
-
-
-@pytest.fixture
-def eg_mykrobe_report_contents(eg_mykrobe_report) -> dict:
-    with open(eg_mykrobe_report, "r") as file:
-        return json.load(file)
-
-
-@pytest.fixture
-def eg_creation_report() -> Path:
-    return Path("test_data/WTCHG_885333_73205296_1/genome_creation_report.json")
-
-
-@pytest.fixture
-def eg_creation_report_contents(eg_creation_report) -> dict:
-    with open(eg_creation_report, "r") as file:
-        return json.load(file)
-
-
-@pytest.fixture
-def eg_gnomonicus_report() -> Path:
-    return Path(
-        "test_data/WTCHG_885333_73205296_1/tb/resistance_prediction_report.json"
-    )
-
-
-@pytest.fixture
-def eg_gnomonicus_report_contents(eg_gnomonicus_report) -> dict:
-    with open(eg_gnomonicus_report, "r") as file:
-        return json.load(file)
 
 
 @pytest.fixture
