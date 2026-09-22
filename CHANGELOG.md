@@ -1,4 +1,4 @@
-## New
+## 2.6.1
 * always add a space after "M." when reporting name. (septicum removed from name_mapping.csv to test this)
 
 ## 2.6.0
