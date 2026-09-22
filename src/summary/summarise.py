@@ -405,7 +405,7 @@ def get_reporting_name(
 
     if lineage_df.empty:
         # No matches found for cm_name, so return cm_name directly
-        return cm_name
+        return cm_name.replace("M.", "M. ")
 
     if lineage_df.LINEAGE.nunique() > 1:
         if cm_name == "M.tuberculosis":
