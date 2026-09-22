@@ -1,5 +1,5 @@
 ## New
-* always add a space after "M." when reporting name
+* always add a space after "M." when reporting name. (septicum removed from name_mapping.csv to test this)
 
 ## 2.6.0
 * Simplify code to summarise tools separately where possible
